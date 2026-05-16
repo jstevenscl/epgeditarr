@@ -89,7 +89,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.19"
+    version = "0.1.0"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
