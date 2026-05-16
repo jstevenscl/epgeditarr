@@ -89,7 +89,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.0"
+    version = "0.1.1"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -636,11 +636,6 @@ class Plugin:
                     add(b[:-len(sfx)])
                 else:
                     add(b + sfx)
-
-        # Strip trailing lone digit (e.g. 'limited edition 1' → 'limited edition')
-        no_digit = re.sub(r'\s+\d+$', '', base)
-        if no_digit != base:
-            add(no_digit)
 
         # & ↔ and for all variants collected so far
         for k in list(keys):
@@ -1525,7 +1520,7 @@ class Plugin:
         # 2. Number embedded in channel name (e.g. "Sports 963" → 963, "ACC 955" → 955)
         # 3. float('inf') — truly unresolvable, placed at the very end
         def _name_number(name):
-            m = re.search(r'\b(\d{2,4})\b', name)
+            m = re.search(r'\b(\d{3,4})\b', name)
             return int(m.group(1)) if m else None
 
         numbered = []    # (sort_key, ch) — Wikipedia match, sport block, or embedded number
