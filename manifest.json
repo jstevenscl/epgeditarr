@@ -13,11 +13,11 @@
         "author": "jstevenscl",
         "license": "MIT",
         "last_updated": "2026-05-16T00:00:00Z",
-        "latest_version": "0.1.6",
-        "latest_md5": "e81be51e31e9b0b4a21b9f436cf72f38",
-        "latest_sha256": "66a42457b13f8f4c011efebe604e5924927b389938f582506634f70593110148",
-        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.1.6/epgeditarr-v0.1.6.zip",
-        "latest_size": 21061,
+        "latest_version": "0.1.7",
+        "latest_md5": "6a02f74a65ca090e097ab04456081f19",
+        "latest_sha256": "e196416997c340e3d238f7d5f030048c2ba3976ddd8c5e104a2b0e765053ea6a",
+        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.1.7/epgeditarr-v0.1.7.zip",
+        "latest_size": 21367,
         "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html"
       }
     ]
