@@ -100,7 +100,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.4"
+    version = "0.1.5"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -629,17 +629,19 @@ class Plugin:
                 seen.add(k)
                 keys.append(k)
 
-        # Prefix variants: strip or add 'the ' / 'siriusxm '
-        no_the  = base[4:] if base.startswith('the ') else None
-        no_sxm  = base[9:] if base.startswith('siriusxm ') else None
-        with_the = None if base.startswith('the ') else 'the ' + base
-        with_sxm = None if base.startswith('siriusxm ') else 'siriusxm ' + base
-        for v in (no_the, no_sxm, with_the, with_sxm):
+        # Prefix variants: strip or add 'the ' / 'siriusxm ' / 'sirius xm '
+        no_the   = base[4:]  if base.startswith('the ')       else None
+        no_sxm   = base[9:]  if base.startswith('siriusxm ')  else None
+        no_sxm2  = base[10:] if base.startswith('sirius xm ') else None
+        with_the  = None if base.startswith('the ')       else 'the '       + base
+        with_sxm  = None if base.startswith('siriusxm ')  else 'siriusxm '  + base
+        with_sxm2 = None if base.startswith('sirius xm ') else 'sirius xm ' + base
+        for v in (no_the, no_sxm, no_sxm2, with_the, with_sxm, with_sxm2):
             if v: add(v)
 
         # Suffix variants for each prefix variant
         SUFFIXES = (' radio', ' channel', ' network', ' live')
-        for b in (base, no_the, no_sxm, with_the, with_sxm):
+        for b in (base, no_the, no_sxm, no_sxm2, with_the, with_sxm, with_sxm2):
             if not b:
                 continue
             for sfx in SUFFIXES:
@@ -1650,7 +1652,7 @@ class Plugin:
             f"  Seasonal (out of season)   : {seasonal_deferred:,}",
             f"  Matched via sport block    : {sport_matched:,}",
             f"  Matched via name number    : {name_matched:,}",
-            f"  No match (placed at end)   : {len(no_number):,}",
+            f"  No match (placed at end)   : {len(no_number) - seasonal_deferred:,}",
             f"  Channel numbers updated    : {updated:,}",
         ]
         if seasonal_names:
