@@ -20,7 +20,7 @@ jobs:
           python-version: '3.12'
 
       - name: Build channel cache
-        run: python scripts/build_channel_cache.py
+        run: python scripts/build_channels.py
 
       - name: Commit and push if changed
         run: |
