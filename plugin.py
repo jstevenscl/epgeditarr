@@ -89,7 +89,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.1"
+    version = "0.1.2"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -792,7 +792,7 @@ class Plugin:
         raise RuntimeError(f"Could not fetch SiriusXM data — {last_error}")
 
     def _parse_wiki_tables(self, html):
-        """Parse MediaWiki HTML tables → dict of lowercased_name → {name, description, genre}."""
+        """Parse MediaWiki HTML tables → dict of lowercased_name → {name, description, genre, sxm_number, seasonal}."""
         channels = {}
 
         def clean(text):
@@ -804,57 +804,94 @@ class Plugin:
                 text = text.replace(ent, rep)
             return re.sub(r'\s+', ' ', text).strip()
 
-        for table_m in re.finditer(
-            r'<table[^>]+class="[^"]*wikitable[^"]*"[^>]*>(.*?)</table>',
-            html, re.DOTALL | re.IGNORECASE
-        ):
-            table = table_m.group(1)
-            rows = re.findall(r'<tr[^>]*>(.*?)</tr>', table, re.DOTALL | re.IGNORECASE)
-            if len(rows) < 2:
-                continue
+        _MONTH = {
+            'january': 1, 'february': 2, 'march': 3, 'april': 4,
+            'may': 5, 'june': 6, 'july': 7, 'august': 8,
+            'september': 9, 'october': 10, 'november': 11, 'december': 12,
+        }
 
-            headers = []
-            for row in rows:
-                ths = re.findall(r'<th[^>]*>(.*?)</th>', row, re.DOTALL | re.IGNORECASE)
-                if ths:
-                    headers = [clean(h).lower() for h in ths]
-                    break
-            if not headers:
-                continue
+        def _parse_season(heading):
+            """Return [start_month, end_month] from a heading like 'early November – early January', or None."""
+            months = re.findall(
+                r'(january|february|march|april|may|june|july|august|'
+                r'september|october|november|december)',
+                heading.lower()
+            )
+            if len(months) >= 2:
+                return [_MONTH[months[0]], _MONTH[months[1]]]
+            return None
 
-            name_idx = next((i for i, h in enumerate(headers) if 'name' in h), None)
-            desc_idx = next((i for i, h in enumerate(headers) if 'descri' in h or ('format' in h and 'name' not in h)), None)
-            genre_idx = next((i for i, h in enumerate(headers) if 'genre' in h), None)
-            num_idx = next((
-                i for i, h in enumerate(headers)
-                if h in ('channel', 'ch', 'ch.', '#', 'no.', 'no', 'number',
-                         'siriusxm', 'sirius xm', 'sirius',
-                         'siriusxm #', 'xm #', 'sirius #') and 'name' not in h
-            ), None)
-            if name_idx is None:
-                continue
+        # Split the HTML by heading tags so we can track which section each table belongs to.
+        # sections alternates: content_chunk, heading_tag, content_chunk, heading_tag, ...
+        parts = re.split(r'(<h[234][^>]*>.*?</h[234]>)', html, flags=re.DOTALL | re.IGNORECASE)
+        current_season = None
 
-            for row in rows:
-                tds = re.findall(r'<td[^>]*>(.*?)</td>', row, re.DOTALL | re.IGNORECASE)
-                if not tds or name_idx >= len(tds):
+        def _process_tables_in(chunk, seasonal):
+            for table_m in re.finditer(
+                r'<table[^>]+class="[^"]*wikitable[^"]*"[^>]*>(.*?)</table>',
+                chunk, re.DOTALL | re.IGNORECASE
+            ):
+                table = table_m.group(1)
+                rows = re.findall(r'<tr[^>]*>(.*?)</tr>', table, re.DOTALL | re.IGNORECASE)
+                if len(rows) < 2:
                     continue
 
-                name = clean(tds[name_idx])
-                name_key = self._normalize_channel_name(name)
-                if not name_key or len(name_key) < 2 or name_key in ('tba', 'tbd', 'vacant', 'n/a', '—', '-'):
+                headers = []
+                for row in rows:
+                    ths = re.findall(r'<th[^>]*>(.*?)</th>', row, re.DOTALL | re.IGNORECASE)
+                    if ths:
+                        headers = [clean(h).lower() for h in ths]
+                        break
+                if not headers:
                     continue
 
-                desc = clean(tds[desc_idx]) if desc_idx is not None and desc_idx < len(tds) else ''
-                genre = clean(tds[genre_idx]) if genre_idx is not None and genre_idx < len(tds) else ''
+                name_idx = next((i for i, h in enumerate(headers) if 'name' in h), None)
+                desc_idx = next((i for i, h in enumerate(headers) if 'descri' in h or ('format' in h and 'name' not in h)), None)
+                genre_idx = next((i for i, h in enumerate(headers) if 'genre' in h), None)
+                num_idx = next((
+                    i for i, h in enumerate(headers)
+                    if h in ('channel', 'ch', 'ch.', '#', 'no.', 'no', 'number',
+                             'siriusxm', 'sirius xm', 'sirius',
+                             'siriusxm #', 'xm #', 'sirius #') and 'name' not in h
+                ), None)
+                if name_idx is None:
+                    continue
 
-                sxm_number = None
-                if num_idx is not None and num_idx < len(tds):
-                    num_raw = re.sub(r'\[.*?\]', '', clean(tds[num_idx])).strip()
-                    m = re.match(r'\d+', num_raw)
-                    if m:
-                        sxm_number = int(m.group())
+                for row in rows:
+                    tds = re.findall(r'<td[^>]*>(.*?)</td>', row, re.DOTALL | re.IGNORECASE)
+                    if not tds or name_idx >= len(tds):
+                        continue
 
-                channels[name_key] = {'name': name, 'description': desc, 'genre': genre, 'sxm_number': sxm_number}
+                    name = clean(tds[name_idx])
+                    name_key = self._normalize_channel_name(name)
+                    if not name_key or len(name_key) < 2 or name_key in ('tba', 'tbd', 'vacant', 'n/a', '—', '-'):
+                        continue
+
+                    desc = clean(tds[desc_idx]) if desc_idx is not None and desc_idx < len(tds) else ''
+                    genre = clean(tds[genre_idx]) if genre_idx is not None and genre_idx < len(tds) else ''
+
+                    sxm_number = None
+                    if num_idx is not None and num_idx < len(tds):
+                        num_raw = re.sub(r'\[.*?\]', '', clean(tds[num_idx])).strip()
+                        m = re.match(r'\d+', num_raw)
+                        if m:
+                            sxm_number = int(m.group())
+
+                    channels[name_key] = {
+                        'name': name, 'description': desc, 'genre': genre,
+                        'sxm_number': sxm_number,
+                        'seasonal': seasonal,
+                    }
+
+        for part in parts:
+            if re.match(r'<h[234]', part, re.IGNORECASE):
+                heading_text = re.sub(r'<[^>]+>', '', part)
+                if 'seasonal' in heading_text.lower() or 'holiday channel' in heading_text.lower():
+                    current_season = _parse_season(heading_text)
+                else:
+                    current_season = None
+            else:
+                _process_tables_in(part, current_season)
 
         return channels
 
@@ -1523,9 +1560,23 @@ class Plugin:
             m = re.search(r'\b(\d{3,4})\b', name)
             return int(m.group(1)) if m else None
 
+        from datetime import date as _date
+        _today = _date.today()
+
+        def _in_season(seasonal):
+            """Return True if today falls within the seasonal window [start_month, end_month]."""
+            if not seasonal:
+                return True
+            sm, em = seasonal[0], seasonal[1]
+            m = _today.month
+            if sm <= em:
+                return sm <= m <= em
+            return m >= sm or m <= em  # wraps around year-end (e.g. Nov–Jan)
+
         numbered = []    # (sort_key, ch) — Wikipedia match, sport block, or embedded number
         no_number = []   # no number source at all → placed after numbered
         wiki_matched = 0
+        seasonal_deferred = 0
         sport_matched = 0
         name_matched = 0
 
@@ -1533,8 +1584,12 @@ class Plugin:
             enrich = self._lookup_enrich(enrich_cache, ch.name)
             sxm_num = enrich.get('sxm_number')
             if sxm_num is not None:
-                numbered.append((sxm_num, ch))
-                wiki_matched += 1
+                if not _in_season(enrich.get('seasonal')):
+                    no_number.append(ch)
+                    seasonal_deferred += 1
+                else:
+                    numbered.append((sxm_num, ch))
+                    wiki_matched += 1
             else:
                 sport_anchor = _SPORT_TEAM_SORT.get(self._normalize_channel_name(ch.name))
                 if sport_anchor is not None:
@@ -1565,6 +1620,7 @@ class Plugin:
         lines = [
             f"Sort complete — {len(ordered):,} channels renumbered from {start_number}{start_note}\n",
             f"  Matched via Wikipedia      : {wiki_matched:,}",
+            f"  Seasonal (out of season)   : {seasonal_deferred:,}",
             f"  Matched via sport block    : {sport_matched:,}",
             f"  Matched via name number    : {name_matched:,}",
             f"  No match (placed at end)   : {len(no_number):,}",
