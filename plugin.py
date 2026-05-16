@@ -100,7 +100,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.3"
+    version = "0.1.4"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -1625,6 +1625,16 @@ class Plugin:
         no_number.sort(key=lambda ch: (ch.channel_number if ch.channel_number is not None else float('inf'), ch.name))
         ordered = [ch for _, ch in numbered] + no_number
 
+        # Track which no_number channels are seasonal-deferred vs genuinely unmatched
+        seasonal_names = set()
+        unmatched_channels = []
+        for ch in no_number:
+            enrich = self._lookup_enrich(enrich_cache, ch.name)
+            if enrich.get('sxm_number') is not None:
+                seasonal_names.add(ch.name)
+            else:
+                unmatched_channels.append(ch)
+
         updated = 0
         for i, ch in enumerate(ordered):
             new_num = start_number + i
@@ -1643,9 +1653,14 @@ class Plugin:
             f"  No match (placed at end)   : {len(no_number):,}",
             f"  Channel numbers updated    : {updated:,}",
         ]
-        if no_number:
-            lines.append(f"\nChannels with no lineup position (placed at end):")
+        if seasonal_names:
+            lines.append(f"\nSeasonal channels (out of season — will sort correctly when active):")
             for ch in no_number:
+                if ch.name in seasonal_names:
+                    lines.append(f"  {ch.name}")
+        if unmatched_channels:
+            lines.append(f"\nChannels with no lineup match (placed at end):")
+            for ch in unmatched_channels:
                 lines.append(f"  {ch.name}")
             lines.append(
                 "\nTip: Check these names against SiriusXM's lineup for abbreviations "
