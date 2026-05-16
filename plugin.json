@@ -1,6 +1,6 @@
 {
   "name": "EPGeditARR",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Create transformed virtual copies of EPG sources using per-source, per-field regex and find/replace rules. Channels are auto-reassigned and kept in sync after every refresh. Also generates fill EPG schedules for channels with no EPG data.",
   "author": "jstevenscl",
   "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html",

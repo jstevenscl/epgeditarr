@@ -100,7 +100,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.5"
+    version = "0.1.6"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -633,9 +633,14 @@ class Plugin:
         no_the   = base[4:]  if base.startswith('the ')       else None
         no_sxm   = base[9:]  if base.startswith('siriusxm ')  else None
         no_sxm2  = base[10:] if base.startswith('sirius xm ') else None
+
+        # Core = base with any SXM prefix stripped, used to build cross-variants
+        _core = no_sxm if no_sxm is not None else (no_sxm2 if no_sxm2 is not None else base)
+
         with_the  = None if base.startswith('the ')       else 'the '       + base
-        with_sxm  = None if base.startswith('siriusxm ')  else 'siriusxm '  + base
-        with_sxm2 = None if base.startswith('sirius xm ') else 'sirius xm ' + base
+        with_sxm  = None if base.startswith('siriusxm ')  else 'siriusxm '  + _core
+        with_sxm2 = None if base.startswith('sirius xm ') else 'sirius xm ' + _core
+
         for v in (no_the, no_sxm, no_sxm2, with_the, with_sxm, with_sxm2):
             if v: add(v)
 
