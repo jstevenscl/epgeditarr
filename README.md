@@ -30,6 +30,9 @@ For channels that have no EPG data at all, EPGeditARR can generate a repeating p
 For SiriusXM channel groups specifically, EPGeditARR can:
 - **Enrich** generated EPG entries with real channel descriptions pulled from Wikipedia
 - **Sort** your SiriusXM channels into SiriusXM's official lineup order, assigning sequential channel numbers starting from wherever your current range begins
+- **Defer seasonal channels** automatically — holiday channels (e.g. SiriusXM Holly, Country Christmas) are placed at the end of the list when they're out of season, and sort to their correct lineup positions when active
+
+The SiriusXM channel list is rebuilt weekly from Wikipedia by a GitHub Actions workflow and served from GitHub Pages — no load on your Dispatcharr server.
 
 ---
 
@@ -129,21 +132,49 @@ Click **Fill** to generate the schedules. Channels in your Fill Groups that have
 
 > All SiriusXM features are in **Settings → SiriusXM Channels Only** section and use the **Sort**, **Fill & Sort**, and **Refresh Channel Data** actions.
 
+![SiriusXM settings section](docs/screenshots/06_settings_siriusxm.png)
+
 ### Enrichment (real descriptions)
 
 1. In **Settings → SiriusXM Channels Only**, enable **Enable SiriusXM Enrichment**
 2. Make sure your SiriusXM group name is in **Fill Groups**
-3. Click **Refresh Channel Data** to pull the current channel list from Wikipedia
-4. Run **Fill** or **Fill & Sort** — matched channels get their real descriptions in the generated EPG
+3. Run **Fill** or **Fill & Sort** — matched channels get their real descriptions in the generated EPG
 
-Channel names are matched case-insensitively with fuzzy fallbacks for common variations (leading quotes like `'40s Junction`, `The ` prefix differences, `&` vs `and`). The cache auto-refreshes every 7 days.
+Channel names are matched case-insensitively with fuzzy fallbacks for common variations (leading quotes, `The ` prefix, `SiriusXM ` vs `Sirius XM ` prefix differences, `&` vs `and`, trailing ` Radio`/` Channel`). The channel list is refreshed from Wikipedia weekly via GitHub Actions and cached locally for 7 days.
 
 ### Sorting (match SiriusXM's lineup order)
 
 1. Leave **Sort Start Number** blank to auto-detect from your current channel range, or enter a specific starting number
 2. Click **Sort** (or **Fill & Sort** to do both at once)
 
-Channels are renumbered sequentially in SiriusXM's official lineup order. Channels that can't be matched are placed at the end of the list with their names shown in the output so you can investigate.
+Channels are renumbered sequentially in SiriusXM's official lineup order. The output shows a clear breakdown:
+
+```
+Sort complete — 445 channels renumbered from 3258 (auto-detected)
+
+  Matched via Wikipedia      : 200
+  Seasonal (out of season)   : 13
+  Matched via sport block    : 124
+  Matched via name number    : 60
+  No match (placed at end)   : 48
+
+Seasonal channels (out of season — will sort correctly when active):
+  Holly
+  Country Christmas
+  Hallmark Radio
+  ...
+
+Channels with no lineup match (placed at end):
+  Limited Edition 10
+  Alt2K
+  ...
+```
+
+**Seasonal channels** are placed at the end while out of season and automatically sort to their correct Wikipedia lineup positions when the season begins — no manual intervention needed.
+
+**Sport play-by-play channels** (NFL, NBA, NHL, MLB team feeds) are grouped with their league's block using a built-in team roster.
+
+**Embedded channel numbers** (e.g. `Sports 963`, `ACC 955`) are used as a fallback sort key for channels not in the Wikipedia lineup.
 
 ---
 
@@ -311,10 +342,16 @@ No — click **Apply Now**. Setup is only needed when adding a new source for th
 Click **Teardown**. This deletes all virtual EPG sources (including Fill EPG) and reassigns your channels back to their original sources.
 
 **My SiriusXM channel didn't get a description even though enrichment is on.**
-The output of Fill (or Fill & Sort) shows how many channels matched. If a channel missed, the most common causes are a name difference between your Dispatcharr channel and SiriusXM's official lineup. Run **Refresh Channel Data** to pull the latest list, then check for extra words, abbreviations, or punctuation differences. The Sort output also lists every unmatched channel by name to make this easier to investigate.
+The Fill output shows how many channels matched. If a channel missed, the most common cause is a name difference between your Dispatcharr channel and SiriusXM's Wikipedia listing. Run **Refresh Channel Data** to pull the latest list. The Sort output also lists every unmatched channel by name to help you investigate.
+
+**Why are my holiday channels at the end of the sort even though they have Wikipedia numbers?**
+Channels in SiriusXM's seasonal holiday section (active early November – early January) are automatically placed at the end of the list when they're out of season. They'll sort to their correct positions — Holly at #4, Country Christmas at #58, etc. — as soon as the season begins. No action needed.
 
 **The unicode broadcast flags (`ᴺᵉʷ`, `ᴸᶦᵛᵉ`) show zero matches in Sample Data.**
 These are provider-specific — not all EPG sources include them. Use Sample Data with each enabled source individually to find which one has them. They're typically found in Gracenote-sourced or aggregator feeds.
+
+**How does the SiriusXM channel list stay up to date?**
+A GitHub Actions workflow rebuilds `channels.json` from Wikipedia every Monday and commits it to the repo. It's served via GitHub Pages so your Dispatcharr server never has to hit Wikipedia directly. You can also force a refresh any time with **Refresh Channel Data**.
 
 ---
 
