@@ -1,0 +1,11 @@
+_workshop/
+__pycache__/
+*.pyc
+*.pyo
+.claude/
+.playwright-mcp/
+*.zip
+node_modules/
+package-lock.json
+package.json
+.mcp.json

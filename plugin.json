@@ -1,0 +1,108 @@
+{
+  "name": "EPGeditARR",
+  "version": "0.1.0",
+  "description": "Create transformed virtual copies of EPG sources using per-source, per-field regex and find/replace rules. Channels are auto-reassigned and kept in sync after every refresh. Also generates fill EPG schedules for channels with no EPG data.",
+  "author": "jstevenscl",
+  "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html",
+  "actions": [
+    {
+      "id": "setup",
+      "label": "Setup Virtual EPGs",
+      "button_label": "Setup",
+      "description": "Create virtual EPG sources for all enabled sources, run the initial transform, and reassign channels. Run once after enabling sources and configuring rules.",
+      "button_variant": "filled",
+      "button_color": "green"
+    },
+    {
+      "id": "apply_now",
+      "label": "Apply Rules Now",
+      "button_label": "Apply Now",
+      "description": "Re-run the transformation on all enabled sources. Use this after changing rules without waiting for the next EPG refresh.",
+      "button_variant": "filled",
+      "button_color": "blue"
+    },
+    {
+      "id": "scan",
+      "label": "Scan for Channels Without EPG",
+      "button_label": "Scan",
+      "description": "List all channels that have no EPG data assigned, grouped by channel group. Shows which groups are targeted by Fill EPG.",
+      "button_variant": "outline",
+      "button_color": "cyan"
+    },
+    {
+      "id": "fill_epg",
+      "label": "Fill EPG",
+      "button_label": "Fill",
+      "description": "Generate a repeating EPG schedule for all channels in the configured Fill Groups that have no EPG data. Optionally enriches matched SiriusXM channels with real descriptions.",
+      "button_variant": "filled",
+      "button_color": "violet"
+    },
+    {
+      "id": "sort_epg",
+      "label": "Sort Channels",
+      "button_label": "Sort",
+      "description": "Reorder all channels in your Fill Groups to match the SiriusXM official lineup. Assigns sequential channel numbers starting from Sort Start Number. Unmatched channels are placed at the end. Requires SiriusXM Enrichment data.",
+      "button_variant": "filled",
+      "button_color": "indigo"
+    },
+    {
+      "id": "fill_and_sort",
+      "label": "Fill EPG & Sort Channels",
+      "button_label": "Fill & Sort",
+      "description": "Run Fill EPG and Sort in sequence — generates schedules then reorders all channels in your Fill Groups to match SiriusXM's lineup.",
+      "button_variant": "filled",
+      "button_color": "grape"
+    },
+    {
+      "id": "refresh_channel_data",
+      "label": "Refresh Channel Data",
+      "button_label": "Refresh Channel Data",
+      "description": "Force an immediate refresh of the SiriusXM channel list from Wikipedia, overwriting the local cache.",
+      "button_variant": "outline",
+      "button_color": "violet"
+    },
+    {
+      "id": "test_rule",
+      "label": "Test Rule",
+      "button_label": "Test Rule",
+      "description": "Apply the Pattern and Replacement from the Rule Tester section to the Test Text and show matches and the transformed result.",
+      "button_variant": "outline",
+      "button_color": "cyan"
+    },
+    {
+      "id": "sample",
+      "label": "Sample Source Data",
+      "button_label": "Sample Data",
+      "description": "Show raw title, sub-title, and description values from each enabled source so you can write accurate rules.",
+      "button_variant": "outline",
+      "button_color": "cyan"
+    },
+    {
+      "id": "preview",
+      "label": "Preview Rule Changes",
+      "button_label": "Preview",
+      "description": "Dry run across all enabled sources — show which programs would change and before/after values. No data is modified.",
+      "button_variant": "outline",
+      "button_color": "cyan"
+    },
+    {
+      "id": "status",
+      "label": "Show Status",
+      "button_label": "Status",
+      "description": "Show all EPG sources, which are enabled, virtual EPG program counts, and configured rules.",
+      "button_variant": "outline",
+      "button_color": "blue"
+    },
+    {
+      "id": "teardown",
+      "label": "Remove Virtual EPGs",
+      "button_label": "Teardown",
+      "description": "Delete all virtual EPG sources and Fill EPG, and reassign channels back to their original sources.",
+      "button_variant": "filled",
+      "button_color": "red",
+      "confirm": {
+        "message": "This will delete all virtual EPGs (including Fill EPG) and reassign channels back to their original sources. Continue?"
+      }
+    }
+  ]
+}
