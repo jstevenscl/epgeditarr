@@ -71,6 +71,17 @@ _SPORT_TEAM_SORT = {
     "texas rangers": 189.5, "toronto blue jays": 189.5, "washington nationals": 189.5,
 }
 
+# Display-name mismatches between user channel names and Wikipedia entries.
+# Key: _normalize_channel_name(user_channel_name)
+# Value: exact key in channels.json
+_CHANNEL_ALIASES = {
+    "fallon holiday seasoning":    "jimmy fallon holiday seasoning radio",
+    "hallmark radio":              "hallmark channel radio",
+    "holidays with annemurray":    "holidays with anne murray",
+    "smokey's holidaysoultown":    "smokey's holiday soul town",
+    "trans-siberianorchradio":     "trans-siberian orchestra radio",
+}
+
 _RULE_FORMAT_HELP = (
     "One rule per line. Lines starting with # are comments.\n"
     "Formats:\n"
@@ -89,7 +100,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.1.2"
+    version = "0.1.3"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -648,6 +659,12 @@ class Plugin:
 
     def _lookup_enrich(self, cache, name):
         """Try multiple normalized variants of name against cache; return first hit or {}."""
+        normalized = self._normalize_channel_name(name)
+        alias_key = _CHANNEL_ALIASES.get(normalized)
+        if alias_key:
+            hit = cache.get(alias_key)
+            if hit:
+                return hit
         for key in self._fuzzy_channel_keys(name):
             hit = cache.get(key)
             if hit:
