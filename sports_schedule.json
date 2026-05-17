@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T17:34:03Z",
+  "generated_at": "2026-05-17T18:21:50Z",
   "events": [
     {
       "slug": "pga",
@@ -20,16 +20,6 @@
       "end_utc": "2026-05-17T19:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
-      ]
-    },
-    {
-      "slug": "indycar",
-      "title": "Indy 500 Qualifying",
-      "description": "SiriusXM INDYCAR Nation · Indy 500 Qualifying · Indianapolis Motor Speedway",
-      "start_utc": "2026-05-17T16:00:00Z",
-      "end_utc": "2026-05-17T18:30:00Z",
-      "channels": [
-        "SiriusXM INDYCAR Nation"
       ]
     },
     {
