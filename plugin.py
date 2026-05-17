@@ -1639,6 +1639,7 @@ class Plugin:
     def _action_sxm_fill_epg(self, settings, logger):
         import xml.etree.ElementTree as ET
         import urllib.request
+        import io
         from datetime import datetime, timedelta, timezone
         from apps.epg.models import EPGSource, EPGData, ProgramData
 
@@ -1655,8 +1656,7 @@ class Plugin:
             defaults={"source_type": "standard", "url": SXM_EPG_URL},
         )
 
-        # Download the community XMLTV and populate EPGData + ProgramData ourselves —
-        # no separate Dispatcharr refresh step required.
+        # Download the community XMLTV.
         try:
             req = urllib.request.Request(
                 SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
@@ -1666,11 +1666,11 @@ class Plugin:
         except Exception as e:
             return {"success": False, "message": f"Failed to download SiriusXM EPG data: {e}"}
 
+        # Validate XML before touching the DB.
         try:
-            root = ET.fromstring(xml_bytes)
+            ET.fromstring(xml_bytes[:512])  # parse just the opening tag to catch corrupt files
         except ET.ParseError as e:
             return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
-        del xml_bytes  # release raw bytes — DOM is all we need now
 
         def _parse_xmltv_dt(s):
             s = s.strip()
@@ -1690,67 +1690,80 @@ class Plugin:
         channel_map = {}  # ch_id → EPGData
         total_programs = 0
 
-        # Phase 1: EPGData — lightweight, own transaction
+        # Phase 1: EPGData — stream <channel> elements one at a time, clear each
+        # after processing so the DOM never accumulates. io.BytesIO wraps xml_bytes
+        # without copying; xml_bytes stays alive for the second pass below.
         with transaction.atomic():
-            for ch_elem in root.findall('channel'):
-                ch_id = ch_elem.get('id', '').strip()
-                if not ch_id:
+            for _event, elem in ET.iterparse(io.BytesIO(xml_bytes), events=('end',)):
+                if elem.tag != 'channel':
                     continue
-                display = (ch_elem.findtext('display-name') or ch_id).strip()
-                icon_elem = ch_elem.find('icon')
-                icon_url = (icon_elem.get('src', '') if icon_elem is not None else '').strip()
+                ch_id = elem.get('id', '').strip()
+                if ch_id:
+                    display = (elem.findtext('display-name') or ch_id).strip()
+                    icon_src = elem.find('icon')
+                    icon_url = (icon_src.get('src', '') if icon_src is not None else '').strip()
+                    if ch_id in existing_epg:
+                        entry = existing_epg[ch_id]
+                        changed = []
+                        if entry.name != display:
+                            entry.name = display
+                            changed.append('name')
+                        if entry.icon_url != icon_url:
+                            entry.icon_url = icon_url
+                            changed.append('icon_url')
+                        if changed:
+                            entry.save(update_fields=changed)
+                    else:
+                        entry = EPGData.objects.create(
+                            tvg_id=ch_id, name=display, icon_url=icon_url, epg_source=sxm_src,
+                        )
+                    channel_map[ch_id] = entry
+                elem.clear()  # free element content immediately
 
-                if ch_id in existing_epg:
-                    entry = existing_epg[ch_id]
-                    changed = []
-                    if entry.name != display:
-                        entry.name = display
-                        changed.append('name')
-                    if entry.icon_url != icon_url:
-                        entry.icon_url = icon_url
-                        changed.append('icon_url')
-                    if changed:
-                        entry.save(update_fields=changed)
-                else:
-                    entry = EPGData.objects.create(
-                        tvg_id=ch_id, name=display, icon_url=icon_url, epg_source=sxm_src,
-                    )
-                channel_map[ch_id] = entry
+        del existing_epg  # no longer needed
 
-        # Phase 2: ProgramData — purge stale then rebuild; own transaction keeps
-        # delete+insert atomic so channels never see an empty schedule window.
+        # Phase 2: ProgramData — stream <programme> elements one at a time.
+        # Purge stale rows then rebuild; own transaction keeps delete+insert atomic.
         with transaction.atomic():
             ProgramData.objects.filter(epg__epg_source=sxm_src, end_time__lt=purge_before).delete()
             ProgramData.objects.filter(epg__epg_source=sxm_src, start_time__gte=now).delete()
 
             batch = []
-            for prog in root.findall('programme'):
-                ch_id = prog.get('channel', '').strip()
+            for _event, elem in ET.iterparse(io.BytesIO(xml_bytes), events=('end',)):
+                if elem.tag == 'channel':
+                    elem.clear()
+                    continue
+                if elem.tag != 'programme':
+                    continue
+                ch_id = elem.get('channel', '').strip()
                 entry = channel_map.get(ch_id)
-                if not entry:
-                    continue
-                try:
-                    start = _parse_xmltv_dt(prog.get('start', ''))
-                    end   = _parse_xmltv_dt(prog.get('stop', ''))
-                except Exception:
-                    continue
-                if end <= purge_before:
-                    continue
-                title    = (prog.findtext('title') or '').strip()
-                subtitle = (prog.findtext('sub-title') or '').strip() or None
-                desc     = (prog.findtext('desc') or '').strip()
-                batch.append(ProgramData(
-                    epg=entry, start_time=start, end_time=end,
-                    title=title, sub_title=subtitle, description=desc,
-                    tvg_id=ch_id, custom_properties={},
-                ))
-                if len(batch) >= 2000:
-                    ProgramData.objects.bulk_create(batch)
-                    total_programs += len(batch)
-                    batch = []
+                if entry:
+                    try:
+                        start = _parse_xmltv_dt(elem.get('start', ''))
+                        end   = _parse_xmltv_dt(elem.get('stop', ''))
+                    except Exception:
+                        elem.clear()
+                        continue
+                    if end > purge_before:
+                        title    = (elem.findtext('title') or '').strip()
+                        subtitle = (elem.findtext('sub-title') or '').strip() or None
+                        desc     = (elem.findtext('desc') or '').strip()
+                        batch.append(ProgramData(
+                            epg=entry, start_time=start, end_time=end,
+                            title=title, sub_title=subtitle, description=desc,
+                            tvg_id=ch_id, custom_properties={},
+                        ))
+                        if len(batch) >= 2000:
+                            ProgramData.objects.bulk_create(batch)
+                            total_programs += len(batch)
+                            batch = []
+                elem.clear()  # free element content immediately
             if batch:
                 ProgramData.objects.bulk_create(batch)
                 total_programs += len(batch)
+
+        # xml_bytes is no longer needed — release it so Python can reuse the heap.
+        del xml_bytes
 
         sxm_src.status = "success"
         sxm_src.last_message = (
@@ -1773,10 +1786,14 @@ class Plugin:
 
         channels = self._get_sxm_channels(settings)
         if not channels:
+            import gc
+            n_ch = len(channel_map)
+            del channel_map
+            gc.collect()
             return {
                 "success": True,
                 "message": (
-                    f"SiriusXM EPG downloaded: {len(channel_map):,} channels, {total_programs:,} programs.\n"
+                    f"SiriusXM EPG downloaded: {n_ch:,} channels, {total_programs:,} programs.\n"
                     f"No channels found in SiriusXM Channel Group {sxm_group_names!r} without EPG — "
                     f"run Scan to check."
                 ),
@@ -1806,10 +1823,18 @@ class Plugin:
                 else:
                     unmatched_names.append(ch.name)
 
+        # Explicitly release large objects so Python's allocator can reuse the
+        # heap sooner. Memory isn't returned to the OS (that's uWSGI's job via
+        # max-requests) but it reduces the high-water mark for subsequent requests.
+        import gc
+        n_channels_loaded = len(channel_map)
+        del channel_map, epg_lookup
+        gc.collect()
+
         lines = [
             f"SiriusXM Fill EPG complete\n",
             f"  Channels assigned : {matched:,} / {len(channels):,}",
-            f"  Programs loaded   : {total_programs:,}  ({len(channel_map):,} XMLTV channels)",
+            f"  Programs loaded   : {total_programs:,}  ({n_channels_loaded:,} XMLTV channels)",
             f"  Groups targeted   : {', '.join(sxm_group_names)}",
         ]
         if unmatched_names:
