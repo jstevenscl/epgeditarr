@@ -1,0 +1,586 @@
+{
+  "generated_at": "2026-05-17T09:03:44Z",
+  "events": [
+    {
+      "slug": "soccer",
+      "title": "Genoa @ AC Milan",
+      "description": "SOCCER · Genoa @ AC Milan",
+      "start_utc": "2026-05-17T10:35:00Z",
+      "end_utc": "2026-05-17T12:35:00Z",
+      "channels": [
+        "AC Milan",
+        "Genoa",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester United @ Nottingham Forest",
+      "description": "SOCCER · Manchester United @ Nottingham Forest",
+      "start_utc": "2026-05-17T11:30:00Z",
+      "end_utc": "2026-05-17T13:30:00Z",
+      "channels": [
+        "Nottingham Forest",
+        "Manchester United",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Indy 500 Practice",
+      "description": "SiriusXM INDYCAR Nation · Indy 500 Practice · Indianapolis Motor Speedway",
+      "start_utc": "2026-05-17T13:30:00Z",
+      "end_utc": "2026-05-17T16:00:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Leeds @ Brighton",
+      "description": "SOCCER · Leeds @ Brighton",
+      "start_utc": "2026-05-17T14:00:00Z",
+      "end_utc": "2026-05-17T16:00:00Z",
+      "channels": [
+        "Brighton",
+        "Leeds",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "PGA Championship",
+      "description": "SiriusXM PGA Tour Radio · PGA Championship · Aronimink Golf Club",
+      "start_utc": "2026-05-17T14:00:00Z",
+      "end_utc": "2026-05-17T19:00:00Z",
+      "channels": [
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NASCAR All-Star Race",
+      "description": "SiriusXM NASCAR Radio · NASCAR All-Star Race · Dover Motor Speedway",
+      "start_utc": "2026-05-17T16:00:00Z",
+      "end_utc": "2026-05-17T19:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Indy 500 Qualifying",
+      "description": "SiriusXM INDYCAR Nation · Indy 500 Qualifying · Indianapolis Motor Speedway",
+      "start_utc": "2026-05-17T16:00:00Z",
+      "end_utc": "2026-05-17T18:30:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Tampa Bay Rays @ Miami Marlins",
+      "description": "MLB · Tampa Bay Rays @ Miami Marlins",
+      "start_utc": "2026-05-17T16:15:00Z",
+      "end_utc": "2026-05-17T19:15:00Z",
+      "channels": [
+        "Miami Marlins",
+        "Tampa Bay Rays",
+        "MLB Play-by-Play 175",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Newcastle @ West Ham",
+      "description": "SOCCER · Newcastle @ West Ham",
+      "start_utc": "2026-05-17T16:30:00Z",
+      "end_utc": "2026-05-17T18:30:00Z",
+      "channels": [
+        "West Ham",
+        "Newcastle",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Washington Nationals @ Baltimore Orioles",
+      "description": "MLB · Washington Nationals @ Baltimore Orioles",
+      "start_utc": "2026-05-17T17:35:00Z",
+      "end_utc": "2026-05-17T20:35:00Z",
+      "channels": [
+        "Baltimore Orioles",
+        "Washington Nationals",
+        "MLB Play-by-Play 176",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Pittsburgh Pirates @ Philadelphia Phillies",
+      "description": "MLB · Pittsburgh Pirates @ Philadelphia Phillies",
+      "start_utc": "2026-05-17T17:35:00Z",
+      "end_utc": "2026-05-17T20:35:00Z",
+      "channels": [
+        "Philadelphia Phillies",
+        "Pittsburgh Pirates",
+        "MLB Play-by-Play 178",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Atlanta Braves @ Boston Red Sox",
+      "description": "MLB · Atlanta Braves @ Boston Red Sox",
+      "start_utc": "2026-05-17T17:35:00Z",
+      "end_utc": "2026-05-17T20:35:00Z",
+      "channels": [
+        "Boston Red Sox",
+        "Atlanta Braves",
+        "MLB Play-by-Play 177",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "New York Mets @ New York Yankees",
+      "description": "MLB · New York Mets @ New York Yankees",
+      "start_utc": "2026-05-17T17:40:00Z",
+      "end_utc": "2026-05-17T20:40:00Z",
+      "channels": [
+        "New York Yankees",
+        "New York Mets",
+        "MLB Play-by-Play 180",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Detroit Tigers @ Toronto Blue Jays",
+      "description": "MLB · Detroit Tigers @ Toronto Blue Jays",
+      "start_utc": "2026-05-17T17:40:00Z",
+      "end_utc": "2026-05-17T20:40:00Z",
+      "channels": [
+        "Toronto Blue Jays",
+        "Detroit Tigers",
+        "MLB Play-by-Play 181",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Cleveland Guardians @ Cincinnati Reds",
+      "description": "MLB · Cleveland Guardians @ Cincinnati Reds",
+      "start_utc": "2026-05-17T17:40:00Z",
+      "end_utc": "2026-05-17T20:40:00Z",
+      "channels": [
+        "Cincinnati Reds",
+        "Cleveland Guardians",
+        "MLB Play-by-Play 179",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Minnesota Twins @ Milwaukee Brewers",
+      "description": "MLB · Minnesota Twins @ Milwaukee Brewers",
+      "start_utc": "2026-05-17T18:10:00Z",
+      "end_utc": "2026-05-17T21:10:00Z",
+      "channels": [
+        "Milwaukee Brewers",
+        "Minnesota Twins",
+        "MLB Play-by-Play 183",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Houston Astros @ Texas Rangers",
+      "description": "MLB · Houston Astros @ Texas Rangers",
+      "start_utc": "2026-05-17T18:10:00Z",
+      "end_utc": "2026-05-17T21:10:00Z",
+      "channels": [
+        "Texas Rangers",
+        "Houston Astros",
+        "MLB Play-by-Play 184",
+        "SiriusXM Channel 870",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Chicago White Sox @ Chicago Cubs",
+      "description": "MLB · Chicago White Sox @ Chicago Cubs",
+      "start_utc": "2026-05-17T18:10:00Z",
+      "end_utc": "2026-05-17T21:10:00Z",
+      "channels": [
+        "Chicago Cubs",
+        "Chicago White Sox",
+        "MLB Play-by-Play 182",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "St. Louis Cardinals @ Kansas City Royals",
+      "description": "MLB · St. Louis Cardinals @ Kansas City Royals",
+      "start_utc": "2026-05-17T18:15:00Z",
+      "end_utc": "2026-05-17T21:15:00Z",
+      "channels": [
+        "Kansas City Royals",
+        "St. Louis Cardinals",
+        "MLB Play-by-Play 185",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Colorado Rockies @ Arizona Diamondbacks",
+      "description": "MLB · Colorado Rockies @ Arizona Diamondbacks",
+      "start_utc": "2026-05-17T19:10:00Z",
+      "end_utc": "2026-05-17T22:10:00Z",
+      "channels": [
+        "Arizona Diamondbacks",
+        "Colorado Rockies",
+        "MLB Play-by-Play 186",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Athletics @ San Francisco Giants",
+      "description": "MLB · Athletics @ San Francisco Giants",
+      "start_utc": "2026-05-17T20:05:00Z",
+      "end_utc": "2026-05-17T23:05:00Z",
+      "channels": [
+        "San Francisco Giants",
+        "Athletics",
+        "MLB Play-by-Play 187",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Los Angeles Angels @ Los Angeles Dodgers",
+      "description": "MLB · Los Angeles Angels @ Los Angeles Dodgers",
+      "start_utc": "2026-05-17T20:07:00Z",
+      "end_utc": "2026-05-17T23:07:00Z",
+      "channels": [
+        "Los Angeles Dodgers",
+        "Los Angeles Angels",
+        "MLB Network Radio",
+        "SiriusXM Channel 871"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Inter Miami CF @ Portland Timbers",
+      "description": "SOCCER · Inter Miami CF @ Portland Timbers",
+      "start_utc": "2026-05-17T22:00:00Z",
+      "end_utc": "2026-05-18T00:00:00Z",
+      "channels": [
+        "Portland Timbers",
+        "Inter Miami CF",
+        "SiriusXM Channel 1999",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Seattle Mariners @ San Diego Padres",
+      "description": "MLB · Seattle Mariners @ San Diego Padres",
+      "start_utc": "2026-05-17T23:20:00Z",
+      "end_utc": "2026-05-18T02:20:00Z",
+      "channels": [
+        "San Diego Padres",
+        "Seattle Mariners",
+        "MLB Network Radio",
+        "MLB Play-by-Play 175"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Detroit Pistons @ Cleveland Cavaliers",
+      "description": "NBA · Detroit Pistons @ Cleveland Cavaliers",
+      "start_utc": "2026-05-18T00:00:00Z",
+      "end_utc": "2026-05-18T02:30:00Z",
+      "channels": [
+        "Cleveland Cavaliers",
+        "Detroit Pistons",
+        "ESPN Radio",
+        "ESPN Xtra",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Nashville SC @ LAFC",
+      "description": "SOCCER · Nashville SC @ LAFC",
+      "start_utc": "2026-05-18T00:00:00Z",
+      "end_utc": "2026-05-18T02:00:00Z",
+      "channels": [
+        "LAFC",
+        "Nashville SC",
+        "SiriusXM Channel 1999",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Indy 500 Practice",
+      "description": "SiriusXM INDYCAR Nation · Indy 500 Practice · Indianapolis Motor Speedway",
+      "start_utc": "2026-05-18T17:00:00Z",
+      "end_utc": "2026-05-18T19:30:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Arsenal @ Burnley",
+      "description": "SOCCER · Arsenal @ Burnley",
+      "start_utc": "2026-05-18T19:00:00Z",
+      "end_utc": "2026-05-18T21:00:00Z",
+      "channels": [
+        "Burnley",
+        "Arsenal",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Bournemouth @ Manchester City",
+      "description": "SOCCER · Bournemouth @ Manchester City",
+      "start_utc": "2026-05-19T18:30:00Z",
+      "end_utc": "2026-05-19T20:30:00Z",
+      "channels": [
+        "Manchester City",
+        "Bournemouth",
+        "College Sports Play-by-Play 964",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chelsea @ Tottenham",
+      "description": "SOCCER · Chelsea @ Tottenham",
+      "start_utc": "2026-05-19T19:15:00Z",
+      "end_utc": "2026-05-19T21:15:00Z",
+      "channels": [
+        "Tottenham",
+        "Chelsea",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "The CJ Cup Byron Nelson",
+      "description": "SiriusXM PGA Tour Radio · The CJ Cup Byron Nelson · TPC Craig Ranch",
+      "start_utc": "2026-05-21T17:00:00Z",
+      "end_utc": "2026-05-21T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Indy 500 Carb Day",
+      "description": "SiriusXM INDYCAR Nation · Indy 500 Carb Day · Indianapolis Motor Speedway",
+      "start_utc": "2026-05-22T15:00:00Z",
+      "end_utc": "2026-05-22T17:30:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit Gilles Villeneuve",
+      "start_utc": "2026-05-22T16:25:00Z",
+      "end_utc": "2026-05-22T18:25:00Z",
+      "channels": [
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "The CJ Cup Byron Nelson",
+      "description": "SiriusXM PGA Tour Radio · The CJ Cup Byron Nelson · TPC Craig Ranch",
+      "start_utc": "2026-05-22T17:00:00Z",
+      "end_utc": "2026-05-22T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Sprint Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Sprint Qualifying · Circuit Gilles Villeneuve",
+      "start_utc": "2026-05-22T18:25:00Z",
+      "end_utc": "2026-05-22T20:25:00Z",
+      "channels": [
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "North Carolina Education Lottery 200",
+      "description": "SiriusXM NASCAR Radio · North Carolina Education Lottery 200 · Charlotte Motor Speedway",
+      "start_utc": "2026-05-22T23:00:00Z",
+      "end_utc": "2026-05-23T02:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Sprint Race",
+      "description": "Formula 1 Racing and Analysis · F-1 Sprint Race · Circuit Gilles Villeneuve",
+      "start_utc": "2026-05-23T15:55:00Z",
+      "end_utc": "2026-05-23T17:55:00Z",
+      "channels": [
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "The CJ Cup Byron Nelson",
+      "description": "SiriusXM PGA Tour Radio · The CJ Cup Byron Nelson · TPC Craig Ranch",
+      "start_utc": "2026-05-23T17:00:00Z",
+      "end_utc": "2026-05-23T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Charlotte Motor Speedway",
+      "start_utc": "2026-05-23T17:30:00Z",
+      "end_utc": "2026-05-23T21:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Circuit Gilles Villeneuve",
+      "start_utc": "2026-05-23T19:55:00Z",
+      "end_utc": "2026-05-23T21:55:00Z",
+      "channels": [
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Charbroil 300",
+      "description": "SiriusXM NASCAR Radio · Charbroil 300 · Charlotte Motor Speedway",
+      "start_utc": "2026-05-23T20:30:00Z",
+      "end_utc": "2026-05-24T00:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Indianapolis 500",
+      "description": "SiriusXM INDYCAR Nation · Indianapolis 500 · Indianapolis Motor Speedway",
+      "start_utc": "2026-05-24T15:00:00Z",
+      "end_utc": "2026-05-24T17:30:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "The CJ Cup Byron Nelson",
+      "description": "SiriusXM PGA Tour Radio · The CJ Cup Byron Nelson · TPC Craig Ranch",
+      "start_utc": "2026-05-24T17:00:00Z",
+      "end_utc": "2026-05-24T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "Grand Prix of Canada",
+      "description": "Formula 1 Racing and Analysis · Grand Prix of Canada · Circuit Gilles Villeneuve",
+      "start_utc": "2026-05-24T20:00:00Z",
+      "end_utc": "2026-05-24T22:00:00Z",
+      "channels": [
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Coca-Cola 600",
+      "description": "SiriusXM NASCAR Radio · Coca-Cola 600 · Charlotte Motor Speedway",
+      "start_utc": "2026-05-24T21:00:00Z",
+      "end_utc": "2026-05-25T00:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Flote 200",
+      "description": "SiriusXM NASCAR Radio · Flote 200 · Nashville Superspeedway",
+      "start_utc": "2026-05-29T23:30:00Z",
+      "end_utc": "2026-05-30T03:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Nashville Superspeedway",
+      "start_utc": "2026-05-30T20:30:00Z",
+      "end_utc": "2026-05-31T00:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Tennessee Lottery 250",
+      "description": "SiriusXM NASCAR Radio · Tennessee Lottery 250 · Nashville Superspeedway",
+      "start_utc": "2026-05-30T23:00:00Z",
+      "end_utc": "2026-05-31T02:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "INDY NXT Race",
+      "description": "SiriusXM INDYCAR Nation · INDY NXT Race · Streets of Detroit",
+      "start_utc": "2026-05-31T14:30:00Z",
+      "end_utc": "2026-05-31T17:00:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "indycar",
+      "title": "Chevrolet Detroit Grand Prix",
+      "description": "SiriusXM INDYCAR Nation · Chevrolet Detroit Grand Prix · Streets of Detroit",
+      "start_utc": "2026-05-31T16:30:00Z",
+      "end_utc": "2026-05-31T19:00:00Z",
+      "channels": [
+        "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Cracker Barrel 400",
+      "description": "SiriusXM NASCAR Radio · Cracker Barrel 400 · Nashville Superspeedway",
+      "start_utc": "2026-05-31T22:00:00Z",
+      "end_utc": "2026-06-01T01:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    }
+  ]
+}
