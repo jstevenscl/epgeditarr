@@ -132,7 +132,7 @@ def main():
                     f"(e.g. `Away Team @ Home Team`)\n"
                     f"- [ ] Confirm channel numbers are mapping to correct channel names\n"
                     f"- [ ] Confirm start/end times look reasonable for that sport\n"
-                    f"- [ ] Run `fill_sports_epg` in Dispatcharr and check the guide\n"
+                    f"- [ ] Run **SiriusXM Fill** in Dispatcharr and check the guide\n"
                     f"- [ ] Check Upcoming / LIVE / Post-game block titles look right\n\n"
                     f"Close this issue once verified.",
                 )

@@ -34,8 +34,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add siriusxm_sports_epg.xml sports_schedule.json sports_counts.json
-          if git diff --staged -- siriusxm_sports_epg.xml | grep -q .; then
+          git add siriusxm_epg.xml sports_schedule.json sports_counts.json
+          if git diff --staged -- siriusxm_epg.xml | grep -q .; then
             git commit -m "chore: update SiriusXM sports EPG"
             git push
           else

@@ -3,7 +3,7 @@
 Build SiriusXM sports EPG from siriusxm.com/sports schedule pages.
 
 Outputs (repo root, served via GitHub Pages):
-  siriusxm_sports_epg.xml  — XMLTV file for community use as an EPG source
+  siriusxm_epg.xml          — XMLTV file for community use as an EPG source
   sports_schedule.json      — structured schedule for plugin use
 
 Run manually:
@@ -28,8 +28,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 CHANNELS_JSON = ROOT / "channels.json"
-OUT_XML = ROOT / "siriusxm_sports_epg.xml"
+LOGOS_DIR = ROOT / "logos"
+OUT_XML = ROOT / "siriusxm_epg.xml"
 OUT_JSON = ROOT / "sports_schedule.json"
+
+GITHUB_PAGES_BASE = "https://jstevenscl.github.io/epgeditarr/logos"
 
 UA = "EPGeditARR-SportsEPG/1.0 (github.com/jstevenscl/epgeditarr)"
 
@@ -348,14 +351,43 @@ def _parse_event_item(li_html, sport_slug, start_utc, end_utc, ch_map):
     }
 
 
-def load_channel_descriptions():
-    """Return dict of channel name -> description from channels.json."""
+def logo_slug(name):
+    """Normalize a channel name to a logo filename slug (mirrors cache_logos.py)."""
+    name = re.sub(r"\s*\[.*?\]", "", name)
+    name = re.sub(r"\s*\(.*?\)", "", name)
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+def supplement_logos(ch_logos, ch_names):
+    """Add logo URLs for ch_names not already in ch_logos by checking logos/ dir.
+
+    Uses the same slug formula as cache_logos.py so team names like
+    'Anaheim Ducks' resolve to logos/anaheimducks.png automatically.
+    Returns the number of logos added.
+    """
+    added = 0
+    for name in ch_names:
+        if name in ch_logos:
+            continue
+        slug = logo_slug(name)
+        for ext in ("png", "svg", "jpg"):
+            if (LOGOS_DIR / f"{slug}.{ext}").exists():
+                ch_logos[name] = f"{GITHUB_PAGES_BASE}/{slug}.{ext}"
+                added += 1
+                break
+    return added
+
+
+def load_channel_info():
+    """Return (descriptions, logos) dicts of channel name -> value from channels.json."""
     try:
         data = json.loads(CHANNELS_JSON.read_text(encoding="utf-8"))
-        return {v["name"]: v.get("description", "") for v in data.values() if v.get("name")}
+        descriptions = {v["name"]: v.get("description", "") for v in data.values() if v.get("name")}
+        logos        = {v["name"]: v["logo_url"] for v in data.values() if v.get("name") and v.get("logo_url")}
+        return descriptions, logos
     except Exception as e:
-        print(f"  Warning: could not load channel descriptions: {e}", file=sys.stderr)
-        return {}
+        print(f"  Warning: could not load channel info: {e}", file=sys.stderr)
+        return {}, {}
 
 
 def format_game_time_et(dt_utc):
@@ -463,18 +495,21 @@ def xml_esc(s):
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 
-def build_xmltv(all_events, ch_segments):
+def build_xmltv(all_events, ch_segments, ch_logos=None):
     """Build XMLTV covering all SiriusXM channels.
 
     all_events  — list of game event dicts (for the sports_schedule.json channels)
     ch_segments — dict of ch_name -> [(start_dt, end_dt, title, desc), ...]
                   covering ALL channels (sports + fill-only)
+    ch_logos    — dict of ch_name -> logo URL (from channels.json)
     """
+    ch_logos = ch_logos or {}
+
     lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     lines.append('<!DOCTYPE tv SYSTEM "xmltv.dtd">')
     lines.append(
         '<tv source-info-name="SiriusXM EPG" '
-        'source-info-url="https://jstevenscl.github.io/epgeditarr/siriusxm_sports_epg.xml" '
+        'source-info-url="https://jstevenscl.github.io/epgeditarr/siriusxm_epg.xml" '
         'generator-info-name="EPGeditARR">'
     )
 
@@ -482,6 +517,8 @@ def build_xmltv(all_events, ch_segments):
         ch_e = xml_esc(ch)
         lines.append(f'  <channel id="{ch_e}">')
         lines.append(f'    <display-name>{ch_e}</display-name>')
+        if ch in ch_logos:
+            lines.append(f'    <icon src="{xml_esc(ch_logos[ch])}" />')
         lines.append(f'  </channel>')
 
     for ch in sorted(ch_segments):
@@ -501,10 +538,10 @@ def build_xmltv(all_events, ch_segments):
 
 
 def main():
-    print("Loading channel map and descriptions...")
-    ch_map   = load_channel_map()
-    ch_descs = load_channel_descriptions()  # name -> description from channels.json
-    print(f"  {len(ch_map)} channels with lineup numbers, {len(ch_descs)} with descriptions")
+    print("Loading channel map, descriptions and logos...")
+    ch_map            = load_channel_map()
+    ch_descs, ch_logos = load_channel_info()  # name -> description / logo URL
+    print(f"  {len(ch_map)} channels with lineup numbers, {len(ch_descs)} with descriptions, {len(ch_logos)} with logos")
 
     all_events = []
 
@@ -566,6 +603,11 @@ def main():
     #   2. Any sports-schedule channels not already covered (team names, etc.)
     all_ch_names = set(ch_descs.keys()) | set(ch_name_to_ev_list.keys())
 
+    # Supplement logos: check logos/ dir for team/college channels not in channels.json
+    extra_logos = supplement_logos(ch_logos, all_ch_names)
+    if extra_logos:
+        print(f"  + {extra_logos} additional logos matched in logos/ (total {len(ch_logos)})")
+
     ch_segments = {}
     for ch_name in all_ch_names:
         ev_list  = ch_name_to_ev_list.get(ch_name, [])
@@ -574,8 +616,8 @@ def main():
             ch_name, ch_desc, ev_list, window_start, window_end, block_delta,
         )
 
-    # Write siriusxm_sports_epg.xml  (all channels: sports segments + fill for every channel)
-    xml_str = build_xmltv(all_events, ch_segments)
+    # Write siriusxm_epg.xml  (all channels: sports segments + fill for every channel)
+    xml_str = build_xmltv(all_events, ch_segments, ch_logos)
     OUT_XML.write_text(xml_str, encoding="utf-8")
     total_programmes = sum(len(v) for v in ch_segments.values())
     print(f"Written: {OUT_XML}  ({len(ch_segments)} channels, {total_programmes} programmes)")
