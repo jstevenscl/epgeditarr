@@ -1,6 +1,6 @@
 {
   "name": "EPGeditARR",
-  "version": "0.2.03",
+  "version": "0.2.04",
   "logo": "logo.png",
   "icon": "logo.png",
   "description": "EPGeditARR cleans, transforms, and organizes your EPG data.\n\nEPG TRANSFORMATION: Strip episode codes, broadcast flags, quality tags, and other noise from program titles and descriptions using regex or find/replace rules. Virtual copies of your sources are kept in sync automatically after every refresh — originals are never touched.\n\nFILL EPG: Generate repeating placeholder schedules for channels with no EPG data so every channel shows something in your TV guide.\n\nSIRIUSXM TOOLS: Match channels to the official SiriusXM API channel database for real descriptions, sort your entire channel group into official lineup order, and automatically defer seasonal holiday channels to the end of the list until they go active. All SiriusXM actions use the dedicated SiriusXM Channel Group setting — completely separate from Fill Groups.\n\nRULE DESIGNER: Build and test rules visually at https://jstevenscl.github.io/epgeditarr/designer.html — pick from preset libraries or write your own, with live before/after preview.",

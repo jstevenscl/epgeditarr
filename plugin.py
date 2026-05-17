@@ -24,6 +24,10 @@ FILL_CACHE_TTL_DAYS = 7
 
 SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.json"
 
+# Prevent running the heavy SXM fill (200MB download + 248k inserts) more than once per
+# refresh cycle — multiple sources refreshing in quick succession each fire the signal.
+SXM_FILL_COOLDOWN_SECS = 4 * 3600
+
 # Sport team → sort anchor (float places teams at end of their league's play-by-play block)
 # MLB 175-189, NBA 212-217, NHL 219-223, NFL 225-234
 _SPORT_TEAM_SORT = {
@@ -136,7 +140,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.03"
+    version = "0.2.04"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -145,6 +149,7 @@ class Plugin:
 
     def __init__(self):
         self._signal_uid = "epgeditarr_transform"
+        self._sxm_fill_last_run = 0.0
         self.fields = self._build_fields()
         LOGGER.info("EPGeditARR: initialized")
         self._connect_signal()
@@ -521,11 +526,20 @@ class Plugin:
                     LOGGER.error(f"EPGeditARR: auto Fill EPG failed: {e}")
 
             if settings.get("sxm_groups", "").strip() and settings.get("fill_sxm_enrich"):
-                LOGGER.info(f"EPGeditARR: running SiriusXM Fill after '{instance.name}' refresh")
-                try:
-                    self._action_sxm_fill_epg(settings, LOGGER)
-                except Exception as e:
-                    LOGGER.error(f"EPGeditARR: auto SiriusXM Fill EPG failed: {e}")
+                import time as _time
+                _now = _time.monotonic()
+                if _now - self._sxm_fill_last_run >= SXM_FILL_COOLDOWN_SECS:
+                    self._sxm_fill_last_run = _now
+                    LOGGER.info(f"EPGeditARR: running SiriusXM Fill after '{instance.name}' refresh")
+                    try:
+                        self._action_sxm_fill_epg(settings, LOGGER)
+                    except Exception as e:
+                        LOGGER.error(f"EPGeditARR: auto SiriusXM Fill EPG failed: {e}")
+                else:
+                    LOGGER.info(
+                        f"EPGeditARR: SiriusXM Fill cooldown active — skipping auto-run "
+                        f"after '{instance.name}' (runs at most every 4 h)"
+                    )
 
         post_save.connect(
             _on_epg_refresh,
@@ -1055,19 +1069,19 @@ class Plugin:
         if assigned_tvg_ids:
             source_entries = EPGData.objects.filter(
                 epg_source=source, tvg_id__in=assigned_tvg_ids
-            ).prefetch_related("programs")
+            )
         else:
-            source_entries = EPGData.objects.filter(epg_source=source).prefetch_related("programs")
+            source_entries = EPGData.objects.filter(epg_source=source)
 
         total = 0
         with transaction.atomic():
             ProgramData.objects.filter(epg__epg_source=virtual).delete()
             batch = []
-            for se in source_entries:
+            for se in source_entries.iterator(chunk_size=200):
                 ve = virtual_map.get(se.tvg_id)
                 if not ve:
                     continue
-                for prog in se.programs.all():
+                for prog in ProgramData.objects.filter(epg=se).iterator(chunk_size=500):
                     batch.append(ProgramData(
                         epg=ve,
                         start_time=prog.start_time,
@@ -1656,6 +1670,7 @@ class Plugin:
             root = ET.fromstring(xml_bytes)
         except ET.ParseError as e:
             return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
+        del xml_bytes  # release raw bytes — DOM is all we need now
 
         def _parse_xmltv_dt(s):
             s = s.strip()
@@ -1675,8 +1690,8 @@ class Plugin:
         channel_map = {}  # ch_id → EPGData
         total_programs = 0
 
+        # Phase 1: EPGData — lightweight, own transaction
         with transaction.atomic():
-            # Build / update EPGData records from XMLTV <channel> elements
             for ch_elem in root.findall('channel'):
                 ch_id = ch_elem.get('id', '').strip()
                 if not ch_id:
@@ -1702,7 +1717,9 @@ class Plugin:
                     )
                 channel_map[ch_id] = entry
 
-            # Purge stale programs and rebuild from the XMLTV
+        # Phase 2: ProgramData — purge stale then rebuild; own transaction keeps
+        # delete+insert atomic so channels never see an empty schedule window.
+        with transaction.atomic():
             ProgramData.objects.filter(epg__epg_source=sxm_src, end_time__lt=purge_before).delete()
             ProgramData.objects.filter(epg__epg_source=sxm_src, start_time__gte=now).delete()
 
