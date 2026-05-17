@@ -8,6 +8,7 @@ Outputs a dict keyed by lowercased channel name with fields:
   genre        – genre if present
   sxm_number   – SiriusXM lineup channel number (int or null)
   seasonal     – [start_month, end_month] if channel is in a seasonal section, else null
+  logo_url     – xmplaylist.com station logo URL (may 404 for lesser-known channels)
 
 Run manually:
   python scripts/build_channels.py
@@ -18,6 +19,7 @@ Called automatically by .github/workflows/update-channels.yml on a weekly schedu
 import json
 import re
 import sys
+import unicodedata
 import urllib.request
 from pathlib import Path
 
@@ -29,6 +31,12 @@ _MONTH = {
     "may": 5, "june": 6, "july": 7, "august": 8,
     "september": 9, "october": 10, "november": 11, "december": 12,
 }
+
+
+def logo_slug(name):
+    """Derive xmplaylist.com station slug from channel display name."""
+    name = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode('ascii')
+    return re.sub(r'[^a-z0-9]', '', name.lower())
 
 
 def fetch_html(url):
@@ -125,12 +133,14 @@ def parse_tables(html):
                     if m:
                         sxm_number = int(m.group())
 
+                slug = logo_slug(name)
                 channels[name_key] = {
                     "name": name,
                     "description": desc,
                     "genre": genre,
                     "sxm_number": sxm_number,
                     "seasonal": seasonal,
+                    "logo_url": f"https://xmplaylist.com/img/station/{slug}-lg.png",
                 }
 
     parts = re.split(r"(<h[234][^>]*>.*?</h[234]>)", html, flags=re.DOTALL | re.IGNORECASE)
