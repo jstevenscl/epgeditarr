@@ -34,7 +34,13 @@ _MONTH = {
 
 
 def logo_slug(name):
-    """Derive xmplaylist.com station slug from channel display name."""
+    """Derive xmplaylist.com station slug from channel display name.
+
+    Strips Wikipedia-specific parentheticals and bracket tags before slugifying
+    so '40s Junction (formerly 40s on 4)' → '40sjunction' not '40sjunctionformerly40son4'.
+    """
+    name = re.sub(r'\s*\[.*?\]', '', name)   # strip [E], [explicit], etc.
+    name = re.sub(r'\s*\(.*?\)', '', name)   # strip (formerly ...), (special ...), etc.
     name = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode('ascii')
     return re.sub(r'[^a-z0-9]', '', name.lower())
 

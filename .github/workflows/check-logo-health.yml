@@ -1,0 +1,77 @@
+name: Logo Health Check
+
+on:
+  schedule:
+    - cron: '0 8 1 * *'   # First day of each month at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-logos:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check logo URLs
+        id: health
+        run: |
+          python - << 'EOF'
+          import json, sys, urllib.request
+          from pathlib import Path
+
+          channels = json.loads(Path("channels.json").read_text(encoding="utf-8"))
+          UA = "EPGeditARR-healthcheck/1.0 (github.com/jstevenscl/epgeditarr)"
+
+          broken = []
+          for key, ch in channels.items():
+              url = ch.get("logo_url", "")
+              if not url:
+                  continue
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent": UA}, method="HEAD")
+                  with urllib.request.urlopen(req, timeout=15) as r:
+                      if r.status >= 400:
+                          broken.append((ch["name"], url, r.status))
+              except Exception as e:
+                  broken.append((ch["name"], url, str(e)))
+
+          if not broken:
+              print("All logo URLs OK.")
+              Path("logo_health.md").write_text("", encoding="utf-8")
+              sys.exit(0)
+
+          lines = [f"## Broken Logo URLs ({len(broken)})\n"]
+          for name, url, status in broken:
+              lines.append(f"- **{name}**: `{status}`")
+              lines.append(f"  {url}")
+          lines.append("\n---")
+          lines.append(
+              "_Detected by [EPGeditARR](https://github.com/jstevenscl/epgeditarr) "
+              "monthly logo health check. Run `python scripts/cache_logos.py` to re-cache._"
+          )
+          Path("logo_health.md").write_text("\n".join(lines), encoding="utf-8")
+          print(f"BROKEN: {len(broken)} logo URLs failed.")
+          sys.exit(1)
+          EOF
+        continue-on-error: true
+
+      - name: Open GitHub issue for broken logos
+        if: steps.health.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          BODY=$(cat logo_health.md)
+          if [ -n "$BODY" ]; then
+            gh issue create \
+              --title "Broken logo URLs detected — $DATE" \
+              --body "$BODY" \
+              --label "logo-health"
+          fi
