@@ -54,14 +54,14 @@ jobs:
             --title "Sports EPG build failed -- ${DATE}" \
             --body "## Sports EPG workflow failed
 
-The \`update-sports-epg\` workflow crashed on ${DATE}.
+          The \`update-sports-epg\` workflow crashed on ${DATE}.
 
-**Workflow run:** ${RUN_URL}
+          **Workflow run:** ${RUN_URL}
 
-**Likely causes:**
-- Network error fetching SiriusXM schedule pages
-- SiriusXM page structure changed (parser broke)
-- Python exception in build script
+          **Likely causes:**
+          - Network error fetching SiriusXM schedule pages
+          - SiriusXM page structure changed (parser broke)
+          - Python exception in build script
 
-Check the run logs linked above and fix before the next scheduled run." \
+          Check the run logs linked above and fix before the next scheduled run." \
             --label "sports-epg" || true
