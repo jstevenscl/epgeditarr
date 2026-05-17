@@ -1623,7 +1623,10 @@ class Plugin:
         return {"success": True, "message": "\n".join(lines)}
 
     def _action_sxm_fill_epg(self, settings, logger):
-        from apps.epg.models import EPGSource, EPGData
+        import xml.etree.ElementTree as ET
+        import urllib.request
+        from datetime import datetime, timedelta, timezone
+        from apps.epg.models import EPGSource, EPGData, ProgramData
 
         if not settings.get('fill_sxm_enrich', False):
             return {"success": False, "message": "SiriusXM Enrichment must be enabled. Enable it in Settings → SiriusXM."}
@@ -1632,38 +1635,111 @@ class Plugin:
         if not sxm_group_names:
             return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
 
-        # Ensure the Standard XMLTV EPG source exists. Dispatcharr will refresh it on the
-        # next EPG refresh cycle and populate EPGData — we then assign channels to those records.
-        sxm_src, created = EPGSource.objects.get_or_create(
+        # Create the Standard XMLTV source record if it doesn't exist yet
+        sxm_src, _ = EPGSource.objects.get_or_create(
             name=SXM_SOURCE_NAME,
             defaults={"source_type": "standard", "url": SXM_EPG_URL},
         )
-        if created:
-            return {
-                "success": True,
-                "message": (
-                    f"Created '{SXM_SOURCE_NAME}' EPG source pointing to the community SiriusXM XMLTV.\n\n"
-                    f"Trigger an EPG refresh in Dispatcharr so the source can download its data, "
-                    f"then run Fill SiriusXM EPG again to assign channels."
-                ),
-            }
 
-        # Build fuzzy lookup from the XMLTV source's parsed EPGData records
-        epg_entries = list(EPGData.objects.filter(epg_source=sxm_src))
-        if not epg_entries:
-            return {
-                "success": False,
-                "message": (
-                    f"'{SXM_SOURCE_NAME}' exists but has no EPG data yet.\n"
-                    f"Trigger an EPG refresh in Dispatcharr so the source can download its data, "
-                    f"then run Fill SiriusXM EPG again."
-                ),
-            }
+        # Download the community XMLTV and populate EPGData + ProgramData ourselves —
+        # no separate Dispatcharr refresh step required.
+        try:
+            req = urllib.request.Request(
+                SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
+            )
+            with urllib.request.urlopen(req, timeout=60) as r:
+                xml_bytes = r.read()
+        except Exception as e:
+            return {"success": False, "message": f"Failed to download SiriusXM EPG data: {e}"}
 
-        epg_lookup = {}
-        for entry in epg_entries:
-            for key in self._fuzzy_channel_keys(entry.name):
-                epg_lookup.setdefault(key, entry)
+        try:
+            root = ET.fromstring(xml_bytes)
+        except ET.ParseError as e:
+            return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
+
+        def _parse_xmltv_dt(s):
+            s = s.strip()
+            dt = datetime.strptime(s[:14], "%Y%m%d%H%M%S")
+            tz_str = s[14:].strip()
+            if tz_str:
+                sign = 1 if tz_str[0] == '+' else -1
+                offset = timedelta(hours=int(tz_str[1:3]), minutes=int(tz_str[3:5])) * sign
+            else:
+                offset = timedelta(0)
+            return (dt - offset).replace(tzinfo=timezone.utc)
+
+        now = datetime.now(timezone.utc)
+        purge_before = now - timedelta(days=1)
+
+        existing_epg = {e.tvg_id: e for e in EPGData.objects.filter(epg_source=sxm_src)}
+        channel_map = {}  # ch_id → EPGData
+        total_programs = 0
+
+        with transaction.atomic():
+            # Build / update EPGData records from XMLTV <channel> elements
+            for ch_elem in root.findall('channel'):
+                ch_id = ch_elem.get('id', '').strip()
+                if not ch_id:
+                    continue
+                display = (ch_elem.findtext('display-name') or ch_id).strip()
+                icon_elem = ch_elem.find('icon')
+                icon_url = (icon_elem.get('src', '') if icon_elem is not None else '').strip()
+
+                if ch_id in existing_epg:
+                    entry = existing_epg[ch_id]
+                    changed = []
+                    if entry.name != display:
+                        entry.name = display
+                        changed.append('name')
+                    if entry.icon_url != icon_url:
+                        entry.icon_url = icon_url
+                        changed.append('icon_url')
+                    if changed:
+                        entry.save(update_fields=changed)
+                else:
+                    entry = EPGData.objects.create(
+                        tvg_id=ch_id, name=display, icon_url=icon_url, epg_source=sxm_src,
+                    )
+                channel_map[ch_id] = entry
+
+            # Purge stale programs and rebuild from the XMLTV
+            ProgramData.objects.filter(epg__epg_source=sxm_src, end_time__lt=purge_before).delete()
+            ProgramData.objects.filter(epg__epg_source=sxm_src, start_time__gte=now).delete()
+
+            batch = []
+            for prog in root.findall('programme'):
+                ch_id = prog.get('channel', '').strip()
+                entry = channel_map.get(ch_id)
+                if not entry:
+                    continue
+                try:
+                    start = _parse_xmltv_dt(prog.get('start', ''))
+                    end   = _parse_xmltv_dt(prog.get('stop', ''))
+                except Exception:
+                    continue
+                if end <= purge_before:
+                    continue
+                title    = (prog.findtext('title') or '').strip()
+                subtitle = (prog.findtext('sub-title') or '').strip() or None
+                desc     = (prog.findtext('desc') or '').strip()
+                batch.append(ProgramData(
+                    epg=entry, start_time=start, end_time=end,
+                    title=title, sub_title=subtitle, description=desc,
+                    tvg_id=ch_id, custom_properties={},
+                ))
+                if len(batch) >= 2000:
+                    ProgramData.objects.bulk_create(batch)
+                    total_programs += len(batch)
+                    batch = []
+            if batch:
+                ProgramData.objects.bulk_create(batch)
+                total_programs += len(batch)
+
+        sxm_src.status = "success"
+        sxm_src.last_message = (
+            f"EPGeditARR: {len(channel_map):,} channels, {total_programs:,} programs"
+        )
+        sxm_src.save(update_fields=["status", "last_message"])
 
         # Migrate channels still on legacy sources so _get_sxm_channels picks them up
         try:
@@ -1681,12 +1757,19 @@ class Plugin:
         channels = self._get_sxm_channels(settings)
         if not channels:
             return {
-                "success": False,
+                "success": True,
                 "message": (
-                    f"No channels found in SiriusXM Channel Group {sxm_group_names!r} without EPG. "
-                    f"Run Scan to see what's available."
+                    f"SiriusXM EPG downloaded: {len(channel_map):,} channels, {total_programs:,} programs.\n"
+                    f"No channels found in SiriusXM Channel Group {sxm_group_names!r} without EPG — "
+                    f"run Scan to check."
                 ),
             }
+
+        # Fuzzy-match channels to EPGData and assign
+        epg_lookup = {}
+        for entry in channel_map.values():
+            for key in self._fuzzy_channel_keys(entry.name):
+                epg_lookup.setdefault(key, entry)
 
         matched = 0
         unmatched_names = []
@@ -1709,7 +1792,7 @@ class Plugin:
         lines = [
             f"SiriusXM Fill EPG complete\n",
             f"  Channels assigned : {matched:,} / {len(channels):,}",
-            f"  EPG source        : {SXM_SOURCE_NAME}  ({len(epg_entries):,} entries)",
+            f"  Programs loaded   : {total_programs:,}  ({len(channel_map):,} XMLTV channels)",
             f"  Groups targeted   : {', '.join(sxm_group_names)}",
         ]
         if unmatched_names:
