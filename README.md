@@ -29,14 +29,14 @@ For channels that have no EPG data at all, EPGeditARR can generate a repeating p
 
 For SiriusXM channel groups specifically, EPGeditARR provides a complete channel management toolkit:
 
-- **Fill EPG** — Generate EPG for all channels in your SiriusXM group. Sports channels (NFL, NBA, MLB, NHL, Soccer, NASCAR, PGA Tour, IndyCar, F1) automatically get smart schedule blocks: Upcoming announcements before each game, a LIVE block during the game, and a Post-game block after. All other channels get repeating fill blocks with real SiriusXM names and descriptions. Sports data is refreshed every 4 hours from the live schedule — if the schedule is unavailable, all channels fall back to fill blocks automatically.
+- **Fill EPG** — Downloads the community SiriusXM XMLTV directly and assigns real EPG to every channel in your SiriusXM group in one step — no separate EPG refresh needed. Sports channels (NFL, NBA, MLB, NHL, Soccer, NASCAR, PGA Tour, IndyCar, F1) get smart schedule blocks: Upcoming announcements before each game, a LIVE block during the game, and a Post-game block after. All other channels get repeating fill blocks with real SiriusXM descriptions.
 - **Sort** — Reorder your SiriusXM channels into SiriusXM's official lineup order, assigning sequential channel numbers starting from wherever your current range begins
 - **Rename Channels** — Rename channels in your group to their official SiriusXM names, correcting provider name variants automatically using a built-in alias library
-- **Assign Logos** — Assign channel logos to every matched SiriusXM channel from a self-hosted logo cache (~460 channels covered, served via GitHub Pages — no third-party CDN dependency)
+- **Assign Logos** — Assign channel logos to every matched SiriusXM channel from a self-hosted logo cache (714 channels, 100% coverage, served via GitHub Pages — no third-party CDN dependency)
 - **Defer seasonal channels** — Holiday channels (e.g. Holly, Country Christmas) are placed at the end of the list when out of season, and sort to their correct lineup positions when active
 - **Fill, Sort & Logos** — Run all three SiriusXM setup steps in one click
 
-The SiriusXM channel list is rebuilt weekly from Wikipedia by a GitHub Actions workflow and served from GitHub Pages — no load on your Dispatcharr server.
+The SiriusXM channel list is sourced from the official SiriusXM API and rebuilt weekly by a GitHub Actions workflow, served from GitHub Pages — no load on your Dispatcharr server.
 
 ### Community SiriusXM EPG
 
@@ -46,11 +46,11 @@ EPGeditARR publishes a ready-to-use XMLTV EPG file covering all SiriusXM channel
 https://jstevenscl.github.io/epgeditarr/siriusxm_epg.xml
 ```
 
-- **338 channels** — all SiriusXM channels from the Wikipedia lineup plus sport play-by-play feeds
+- **741 channels** — all SiriusXM channels from the official API lineup plus sport play-by-play feeds
 - **Sports channels** get smart blocks: Upcoming → LIVE → Post-game
 - **All other channels** get repeating fill blocks with real SiriusXM descriptions
 - **14 days** of schedule generated, refreshed every 4 hours
-- **Channel logos** included via `<icon>` tags for ~460 channels
+- **Channel logos** included via `<icon>` tags for all 714 channels (100% coverage)
 - Set your channel's `tvg-id` to the SiriusXM channel name (e.g. `SiriusXM NFL Radio`, `SiriusXM NBA Radio`) to match the EPG
 
 ---
@@ -155,7 +155,7 @@ Click **Fill** to generate the schedules. Channels in your Fill Groups that have
 
 ### Step 1 — Enable Enrichment
 
-In **Settings → SiriusXM Channels Only**, enable **Enable SiriusXM Enrichment** and set your **SiriusXM Channel Group** name. This loads the Wikipedia channel data needed for all SiriusXM actions.
+In **Settings → SiriusXM Channels Only**, enable **Enable SiriusXM Enrichment** and set your **SiriusXM Channel Group** name. This loads the official SiriusXM API channel data needed for all SiriusXM actions.
 
 ### Step 2 — Rename Channels (optional but recommended)
 
@@ -165,7 +165,7 @@ Click **Rename Channels** to correct any provider name variants. EPGeditARR uses
 
 Click **Fill, Sort & Logos** to run all three steps at once:
 
-1. **Fill SiriusXM EPG** — Generates EPG entries with real channel descriptions from Wikipedia for all matched channels in your SiriusXM Channel Group
+1. **Fill SiriusXM EPG** — Downloads the community XMLTV and assigns EPG with real SiriusXM channel descriptions to all matched channels in your SiriusXM Channel Group
 2. **Sort Channels** — Reorders channels to match SiriusXM's official lineup order and assigns sequential channel numbers
 3. **Assign Logos** — Assigns channel logos from the self-hosted GitHub Pages logo cache (~460 channels covered)
 
@@ -176,7 +176,7 @@ Or run each step individually with the dedicated action buttons.
 ```
 Sort complete — 312 channels renumbered from 1001 (auto-detected)
 
-  Matched via Wikipedia      : 148
+  Matched via SiriusXM API   : 148
   Seasonal (out of season)   :  11
   Matched via sport block    :  96
   Matched via name number    :  38
@@ -208,7 +208,7 @@ Seasonal channels (out of season — will sort correctly when active):
 | **Test Rule** | Test a single rule against live data from any source and field. Uses the Rule Tester settings. |
 | **Scan** | List all channels with no EPG data, grouped by channel group. Shows which groups are targeted by Fill EPG. |
 | **Fill** | Generate repeating placeholder EPG schedules for channels in your Fill Groups with no EPG data. |
-| **Fill SiriusXM EPG** | *(SiriusXM)* Generate EPG for all channels in your SiriusXM Channel Group. Sports channels get smart Upcoming/LIVE/Post-game blocks from the live schedule; all other channels get repeating fill blocks with real SiriusXM descriptions. Falls back to fill-only if the sports schedule is unavailable. |
+| **Fill SiriusXM EPG** | *(SiriusXM)* Download the community SiriusXM XMLTV and assign EPG to all channels in your SiriusXM Channel Group. Sports channels get smart Upcoming/LIVE/Post-game blocks; all other channels get repeating fill blocks with real SiriusXM descriptions. Creates the `EPGeditARR: SiriusXM` source automatically if it doesn't exist. |
 | **Sort** | *(SiriusXM)* Reorder channels in your SiriusXM Channel Group to match SiriusXM's official lineup order. |
 | **Fill & Sort** | *(SiriusXM)* Run Fill SiriusXM EPG and Sort together in one step. |
 | **Fill, Sort & Logos** | *(SiriusXM)* Run Fill SiriusXM EPG, Sort, and Assign Logos in one step — the full SiriusXM setup. |
@@ -317,7 +317,7 @@ Each EPG source in Dispatcharr gets its own section. Per-source settings:
 
 | Setting | Description |
 |---|---|
-| **Enable SiriusXM Enrichment** | Match channel names against the Wikipedia lineup and add real descriptions to generated EPG entries. Required for Sort, Rename, and Assign Logos to function. |
+| **Enable SiriusXM Enrichment** | Match channel names against the official SiriusXM API channel database and add real descriptions to generated EPG entries. Required for Sort, Rename, and Assign Logos to function. |
 | **SiriusXM Channel Group** | The Dispatcharr channel group containing your SiriusXM channels. All SiriusXM actions operate on this group exclusively. |
 | **Sort Start Number** | Channel number for the first sorted channel. Leave blank to auto-detect from the lowest number currently in your SiriusXM Channel Group. |
 
@@ -366,7 +366,7 @@ No — click **Apply Now**. Setup is only needed when adding a new source for th
 Click **Teardown**. This deletes all virtual EPG sources (including Fill EPG) and reassigns your channels back to their original sources.
 
 **My SiriusXM channel didn't get a description even though enrichment is on.**
-The Fill output shows how many channels matched. If a channel missed, the most common cause is a name difference between your Dispatcharr channel and SiriusXM's Wikipedia listing. Run **Refresh Channel Data** to pull the latest list, or use **Rename Channels** to correct provider name variants first.
+The Fill output shows how many channels matched and lists any unmatched names. If a channel missed, the most common cause is a name difference between your Dispatcharr channel and the official SiriusXM channel name. Run **Refresh Channel Data** to pull the latest API data, or use **Rename Channels** to correct provider name variants first.
 
 **Rename Channels changed a name I didn't want changed.**
 The rename is based on a built-in alias library that maps known provider variants to official SiriusXM names. If a match is wrong, the channel can be manually renamed back in Dispatcharr. You can also run **Rename Channels** selectively — only matched channels are renamed, unmatched ones are left alone.
@@ -378,10 +378,10 @@ Channels in SiriusXM's seasonal holiday section (active early November – early
 These are provider-specific — not all EPG sources include them. Use Sample Data with each enabled source individually to find which one has them. They're typically found in Gracenote-sourced or aggregator feeds.
 
 **How does the SiriusXM channel list stay up to date?**
-A GitHub Actions workflow rebuilds `channels.json` from Wikipedia every Monday and commits it to the repo. It's served via GitHub Pages so your Dispatcharr server never has to hit Wikipedia directly. You can also force a refresh any time with **Refresh Channel Data**.
+A GitHub Actions workflow fetches the latest channel list directly from the official SiriusXM API every week and commits it to the repo. It's served via GitHub Pages so your Dispatcharr server never hits the API directly. You can also force a refresh any time with **Refresh Channel Data**.
 
 **Where do the channel logos come from?**
-~460 SiriusXM channel logos are downloaded from official SiriusXM CDN sources and cached in this repository, served via GitHub Pages. This covers all 270 Wikipedia-listed channels plus team/college sport channel logos (NHL, NFL, MLB, NBA team feeds). There is no dependency on any third-party logo service. A monthly health check automatically opens a GitHub issue if any logos become unavailable.
+All 714 SiriusXM channel logos are downloaded directly from the official SiriusXM player CDN and cached in this repository, served via GitHub Pages. This gives 100% logo coverage across all channels in the official lineup. There is no dependency on any third-party logo service. Logo URLs are content-addressed (the CDN embeds an MD5 hash) so logos are only re-downloaded when they actually change.
 
 ---
 
