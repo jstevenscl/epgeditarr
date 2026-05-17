@@ -72,6 +72,14 @@
       "button_color": "violet"
     },
     {
+      "id": "fill_sports_epg",
+      "label": "Fill Sports EPG",
+      "button_label": "Sports EPG",
+      "description": "Generate EPG for all channels in the SiriusXM Channel Group. Sports channels (NBA, MLB, NHL, NFL, Soccer, NASCAR, PGA Tour, IndyCar, Formula 1) get smart blocks — Upcoming announcements before each game, LIVE blocks during the game, and Post-game blocks after. All other channels get repeating fill blocks with real SiriusXM descriptions, the same as SiriusXM Fill EPG. Schedule is refreshed every 4 hours automatically. Off-season sports fall back to fill blocks and auto-populate with game data when their season starts.",
+      "button_variant": "filled",
+      "button_color": "cyan"
+    },
+    {
       "id": "sort_epg",
       "label": "Sort Channels",
       "button_label": "Sort",
