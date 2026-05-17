@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
       - uses: actions/checkout@v4
@@ -19,17 +20,47 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Snapshot current channel cache
+        run: cp channels.json channels_prev.json
+
       - name: Build channel cache
         run: python scripts/build_channels.py
+
+      - name: Detect lineup changes
+        id: changes
+        run: |
+          if python scripts/detect_channel_changes.py channels_prev.json channels.json > channel_changes.md; then
+            echo "significant=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "significant=true" >> "$GITHUB_OUTPUT"
+          fi
+        continue-on-error: true
+
+      - name: Open GitHub issue on significant changes
+        if: steps.changes.outputs.significant == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          gh issue create \
+            --title "SiriusXM lineup changed — $DATE" \
+            --body "$(cat channel_changes.md)" \
+            --label "channel-update"
+
+      - name: Cache logos
+        run: python scripts/cache_logos.py
+
+      - name: Clean up temp file
+        run: rm -f channels_prev.json channel_changes.md
 
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add channels.json
+          git add channels.json logos/
           if git diff --staged --quiet; then
             echo "Channel cache unchanged — nothing to commit"
           else
-            git commit -m "chore: update SiriusXM channel cache"
+            git commit -m "chore: update SiriusXM channel cache and logos"
             git push
           fi
