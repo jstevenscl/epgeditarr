@@ -20,6 +20,9 @@ FILL_CACHE_KEY = "fill_channel_cache"
 FILL_CACHE_UPDATED_KEY = "fill_channel_cache_updated"
 FILL_CACHE_TTL_DAYS = 7
 
+SPORTS_SOURCE_NAME = "EPGeditARR: Sports"
+SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.json"
+
 # Sport team → sort anchor (float places teams at end of their league's play-by-play block)
 # MLB 175-189, NBA 212-217, NHL 219-223, NFL 225-234
 _SPORT_TEAM_SORT = {
@@ -1120,6 +1123,7 @@ class Plugin:
             "scan":                   self._action_scan,
             "fill_epg":               self._action_fill_epg,
             "sxm_fill_epg":           self._action_sxm_fill_epg,
+            "fill_sports_epg":        self._action_fill_sports_epg,
             "sort_epg":               self._action_sort_epg,
             "fill_and_sort":          self._action_fill_and_sort,
             "rename_channels":        self._action_rename_channels,
@@ -1686,6 +1690,289 @@ class Plugin:
             f"  Groups targeted : {', '.join(sxm_group_names)}",
             f"  SiriusXM matched: {matched_enrich:,} / {len(channels):,} channels",
         ]
+
+        return {"success": True, "message": "\n".join(lines)}
+
+    @staticmethod
+    def _format_game_time_et(dt_utc):
+        """Format a UTC datetime as Eastern Time string, e.g. 'Sun, May 17 12:15 PM EDT'."""
+        from datetime import timedelta
+        _DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        is_edt = 3 <= dt_utc.month <= 11
+        local = dt_utc + timedelta(hours=-4 if is_edt else -5)
+        tz = "EDT" if is_edt else "EST"
+        hour = local.hour % 12 or 12
+        ampm = "AM" if local.hour < 12 else "PM"
+        return f"{_DAYS[local.weekday()]}, {_MONTHS[local.month - 1]} {local.day} {hour}:{local.minute:02d} {ampm} {tz}"
+
+    @staticmethod
+    def _build_sports_segments(ch_name, fill_desc, ev_list, window_start, window_end, block_delta):
+        """Build the full EPG segment list for a sports channel over the fill window.
+
+        Block sequence around each game:
+          [generic fill] → [Upcoming: title — Day, Mon D H:MM AM/PM TZ] → [LIVE: title] → [Post-game: title] → ...
+
+        The Upcoming block starts at the block boundary 1 full block_delta before game start,
+        so there is always at least ~1 block of pre-game announcement.
+        The Post-game block runs for 1 block_delta after the game ends (or until the next
+        game's Upcoming window starts, whichever is sooner).
+        """
+        from datetime import timedelta
+
+        sorted_evs = sorted(ev_list, key=lambda x: x[1])
+        segments = []   # (start, end, title, description)
+        current = window_start
+
+        for i, (ev, start_dt, end_dt) in enumerate(sorted_evs):
+            if start_dt >= window_end:
+                break
+
+            # Clamp end to window
+            end_dt = min(end_dt, window_end)
+
+            # upcoming_anchor: last block boundary at least 1 block_delta before game start
+            elapsed_s = (start_dt - window_start).total_seconds()
+            block_s = block_delta.total_seconds()
+            n_before_upcoming = max(0, int(elapsed_s / block_s) - 1)
+            upcoming_anchor = window_start + timedelta(seconds=n_before_upcoming * block_s)
+            if upcoming_anchor < current:
+                upcoming_anchor = current
+
+            # Generic fill from current to upcoming_anchor
+            slot = current
+            while slot < upcoming_anchor:
+                slot_end = min(slot + block_delta, upcoming_anchor)
+                segments.append((slot, slot_end, ch_name, fill_desc or None))
+                slot = slot_end
+            current = slot
+
+            # Upcoming block(s): from upcoming_anchor to game start
+            if current < start_dt:
+                time_str = Plugin._format_game_time_et(start_dt)
+                up_title = f"Upcoming: {ev['title']} — {time_str}"
+                up_desc = f"Upcoming on {ch_name}: {ev['title']} — {time_str}"
+                slot = current
+                while slot < start_dt:
+                    slot_end = min(slot + block_delta, start_dt)
+                    segments.append((slot, slot_end, up_title, up_desc))
+                    slot = slot_end
+                current = slot
+
+            # LIVE block (exact game times)
+            if start_dt < window_end:
+                live_desc = ev.get("description") or f"Live coverage on {ch_name}"
+                segments.append((start_dt, end_dt, f"LIVE: {ev['title']}", live_desc or None))
+                current = end_dt
+
+            # Post-game block — 1 block_delta, capped at next game's upcoming_anchor
+            next_ev = sorted_evs[i + 1] if i + 1 < len(sorted_evs) else None
+            if next_ev:
+                next_start = next_ev[1]
+                next_elapsed_s = (next_start - window_start).total_seconds()
+                next_n = max(0, int(next_elapsed_s / block_s) - 1)
+                next_upcoming = window_start + timedelta(seconds=next_n * block_s)
+                post_end = min(current + block_delta, next_upcoming, window_end)
+            else:
+                post_end = min(current + block_delta, window_end)
+
+            if post_end > current:
+                pg_title = f"Post-game: {ev['title']}"
+                pg_desc = f"Post-game coverage following {ev['title']} on {ch_name}"
+                segments.append((current, post_end, pg_title, pg_desc))
+                current = post_end
+
+        # Generic fill for the remainder of the window
+        while current < window_end:
+            slot_end = min(current + block_delta, window_end)
+            segments.append((current, slot_end, ch_name, fill_desc or None))
+            current = slot_end
+
+        return segments
+
+    def _action_fill_sports_epg(self, settings, logger):
+        import json
+        import urllib.request
+        from datetime import datetime, timedelta, timezone
+        from apps.epg.models import EPGSource, EPGData, ProgramData
+        from apps.channels.models import Channel
+
+        sxm_group_names = [g.strip() for g in (settings.get('sxm_groups') or '').split(',') if g.strip()]
+        if not sxm_group_names:
+            return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
+
+        block_hours = int(settings.get('fill_block_hours') or 1)
+        days_ahead = int(settings.get('fill_days_ahead') or 14)
+        block_delta = timedelta(hours=block_hours)
+
+        # SXM enrichment cache for channel descriptions (best-effort)
+        enrich_cache = {}
+        enrich_msg = ''
+        try:
+            enrich_cache, refreshed = self._load_sxm_cache(settings)
+            enrich_msg = (
+                f' — SiriusXM data refreshed ({len(enrich_cache):,} channels)'
+                if refreshed else
+                f' — SiriusXM cache: {len(enrich_cache):,} channels'
+            )
+        except Exception as e:
+            enrich_msg = f' — SiriusXM descriptions unavailable: {e}'
+
+        try:
+            req = urllib.request.Request(SPORTS_SCHEDULE_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                schedule = json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            return {"success": False, "message": f"Could not fetch sports schedule from GitHub Pages: {e}"}
+
+        events = schedule.get("events", [])
+        generated_at = schedule.get("generated_at", "unknown")
+
+        # Build channel lookup from SXM group
+        channels_qs = Channel.objects.filter(channel_group__name__in=sxm_group_names)
+        ch_lookup = {}
+        for ch in channels_qs:
+            for key in self._fuzzy_channel_keys(ch.name):
+                ch_lookup.setdefault(key, ch)
+
+        if not ch_lookup:
+            return {"success": False, "message": f"No channels found in SiriusXM Channel Group {sxm_group_names!r}."}
+
+        sports_source, _ = EPGSource.objects.get_or_create(
+            name=SPORTS_SOURCE_NAME,
+            defaults={"source_type": "dummy", "custom_properties": {"epgeditarr_sports": True}},
+        )
+        existing_epgdata = {e.tvg_id: e for e in EPGData.objects.filter(epg_source=sports_source)}
+
+        now = datetime.now(timezone.utc)
+        window_start = now.replace(minute=0, second=0, microsecond=0)
+        window_end = window_start + timedelta(days=days_ahead)
+
+        # Invert events: schedule channel name → [(event_dict, start_dt, end_dt)]
+        ch_name_to_events = {}
+        for ev in events:
+            try:
+                start_dt = datetime.strptime(ev["start_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                end_dt = datetime.strptime(ev["end_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            except Exception:
+                continue
+            if end_dt <= now:
+                continue
+            for ch_name in ev.get("channels", []):
+                ch_name_to_events.setdefault(ch_name, []).append((ev, start_dt, end_dt))
+
+        total_programs = 0
+        sports_ch_count = 0
+        fill_ch_count = 0
+        unmatched_schedule_names = set()
+        processed_ch_pks = set()  # Channel PKs already handled with sports segments
+
+        with transaction.atomic():
+            # Purge programs that ended more than 1 day ago
+            purge_before = now - timedelta(days=1)
+            ProgramData.objects.filter(epg__epg_source=sports_source, end_time__lt=purge_before).delete()
+
+            # ── Pass 1: sports channels — full segment treatment ──────────────
+            for ch_name, ev_list in ch_name_to_events.items():
+                matched_ch = None
+                for key in self._fuzzy_channel_keys(ch_name):
+                    if key in ch_lookup:
+                        matched_ch = ch_lookup[key]
+                        break
+
+                if not matched_ch:
+                    unmatched_schedule_names.add(ch_name)
+                    continue
+
+                processed_ch_pks.add(matched_ch.pk)
+                slug = re.sub(r'[^a-z0-9]+', '-', matched_ch.name.lower()).strip('-')
+                tvg_id = f"epgeditarr-sports-{slug}"
+
+                if tvg_id in existing_epgdata:
+                    epg_entry = existing_epgdata[tvg_id]
+                else:
+                    epg_entry = EPGData.objects.create(
+                        tvg_id=tvg_id, name=matched_ch.name, icon_url='', epg_source=sports_source,
+                    )
+                    existing_epgdata[tvg_id] = epg_entry
+
+                if matched_ch.epg_data_id != epg_entry.id:
+                    matched_ch.epg_data = epg_entry
+                    matched_ch.save(update_fields=['epg_data'])
+
+                ProgramData.objects.filter(epg=epg_entry, start_time__gte=now).delete()
+
+                enrich = self._lookup_enrich(enrich_cache, matched_ch.name)
+                fill_desc = enrich.get('description', '') if enrich else ''
+
+                segments = self._build_sports_segments(
+                    matched_ch.name, fill_desc, ev_list, window_start, window_end, block_delta,
+                )
+                batch = [
+                    ProgramData(
+                        epg=epg_entry,
+                        start_time=seg_start,
+                        end_time=seg_end,
+                        title=seg_title,
+                        sub_title=None,
+                        description=seg_desc,
+                        tvg_id=tvg_id,
+                        custom_properties={},
+                    )
+                    for seg_start, seg_end, seg_title, seg_desc in segments
+                ]
+                ProgramData.objects.bulk_create(batch)
+                total_programs += len(batch)
+                sports_ch_count += 1
+
+            # ── Pass 2: all remaining SXM channels — regular fill blocks ──────
+            for ch in channels_qs:
+                if ch.pk in processed_ch_pks:
+                    continue  # already handled with sports segments above
+
+                slug = re.sub(r'[^a-z0-9]+', '-', ch.name.lower()).strip('-')
+                tvg_id = f"epgeditarr-sports-{slug}"
+
+                if tvg_id in existing_epgdata:
+                    epg_entry = existing_epgdata[tvg_id]
+                else:
+                    epg_entry = EPGData.objects.create(
+                        tvg_id=tvg_id, name=ch.name, icon_url='', epg_source=sports_source,
+                    )
+                    existing_epgdata[tvg_id] = epg_entry
+
+                if ch.epg_data_id != epg_entry.id:
+                    ch.epg_data = epg_entry
+                    ch.save(update_fields=['epg_data'])
+
+                ProgramData.objects.filter(epg=epg_entry, start_time__gte=now).delete()
+
+                enrich = self._lookup_enrich(enrich_cache, ch.name)
+                fill_desc = enrich.get('description', '') if enrich else ''
+
+                fill_batch = self._generate_fill_blocks(epg_entry, ch.name, fill_desc, block_hours, days_ahead)
+                ProgramData.objects.bulk_create(fill_batch)
+                total_programs += len(fill_batch)
+                fill_ch_count += 1
+
+        sports_source.status = "success"
+        sports_source.last_message = (
+            f"Sports EPG: {sports_ch_count} sports + {fill_ch_count} fill channels, {total_programs} programs"
+        )
+        sports_source.save(update_fields=["status", "last_message"])
+
+        lines = [
+            f"Sports EPG complete — schedule generated {generated_at}{enrich_msg}\n",
+            f"  Events in schedule    : {len(events)}",
+            f"  Sports channels       : {sports_ch_count}  (Upcoming / LIVE / Post-game blocks)",
+            f"  Fill-only channels    : {fill_ch_count}  ({block_hours}h repeating blocks × {days_ahead} days)",
+            f"  Programs written      : {total_programs}",
+        ]
+        if unmatched_schedule_names:
+            lines.append(f"  Not in your lineup    : {len(unmatched_schedule_names)}")
+            sample = sorted(unmatched_schedule_names)[:5]
+            lines.append(f"  (sample: {', '.join(sample)})")
 
         return {"success": True, "message": "\n".join(lines)}
 
