@@ -24,7 +24,10 @@ jobs:
         run: cp channels.json channels_prev.json
 
       - name: Build channel cache
-        run: python scripts/build_channels.py
+        env:
+          SIRIUSXM_USERNAME: ${{ secrets.SIRIUSXM_USERNAME }}
+          SIRIUSXM_PASSWORD: ${{ secrets.SIRIUSXM_PASSWORD }}
+        run: python scripts/build_channels_sxm.py
 
       - name: Detect lineup changes
         id: changes

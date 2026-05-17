@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/favicon.ico" data-qa="cdn-link" />
+    <script>window.LOG_LEVEL = "silent"; window.APP_ENV = "prod"</script>
+      <title>SiriusXM Streaming: Music, Sports, News, Podcasts & Talk</title>
+      <meta name="description" content="Bring music & entertainment wherever you go with SiriusXM. Listen to music, live sports play-by-play, talk & entertainment radio & favorite podcasts." data-rh="true" />
+      <link rel="canonical" href="https://www.siriusxm.com/player" data-rh="true" data-qa="cdn-link" />
+      <meta property="og:title" content="SiriusXM Streaming: Music, Sports, News, Podcasts & Talk" data-rh="true" />
+      <meta property="og:description" content="Bring music & entertainment wherever you go with SiriusXM. Listen to music, live sports play-by-play, talk & entertainment radio & favorite podcasts." data-rh="true" />
+      <meta property="og:url" content="https://www.siriusxm.com/player" data-rh="true" />
+      <meta property="og:type" content="website" data-rh="true" />
+      <meta property="og:site_name" content="SiriusXM" data-rh="true" />
+      <meta property="og:image" content="https://www.siriusxm.com/content/dam/sxm-com/logos/sxm/SXMGeneric-OpenGraph-v1.jpg" data-rh="true" />
+      <meta name='apple-itunes-app' content='app-id=317951436' data-rh="true" />
+    
+    <script async type="module" crossorigin src="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/assets/index-CZNYqlst.js"></script>
+    <link rel="modulepreload" crossorigin href="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/assets/lottie-DmNFReyP.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/assets/conviva-Dl0K9uAB.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/assets/hls-Cd-TEWoK.js">
+    <link rel="stylesheet" crossorigin href="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/assets/index-CRnd6W5R.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.web-cloud.siriusxm.com/sxm-player-web/shared/static/js/cpmbanners.js" defer></script>
+
+    <div id="boot-error">
+      <div class="boot-error-container">
+        <div class="boot-error-title">Something went wrong</div>
+        <div class="boot-error-subtitle">Please refresh the page or check your connection.</div>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="noscript-warning">
+        <div class="noscript-content">
+          <div class="noscript-title">JavaScript is required</div>
+          <div class="noscript-subtitle">
+            Please enable JavaScript in your browser settings and refresh this page.
+          </div>
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>

@@ -62,10 +62,16 @@ def clean(text):
 
 
 def normalize(name):
-    name = re.sub(r"^['\"‘’“”\s]+", "", name)
-    name = re.sub(r"\s*\[[^\]]{1,5}\]", "", name)
-    name = re.sub(r"\s*\(.*", "", name)
+    name = re.sub(r”^[‘\”’’””\s]+”, “”, name)
+    name = re.sub(r”\s*\[[^\]]{1,5}\]”, “”, name)
+    name = re.sub(r”\s*\(.*”, “”, name)
     return name.lower().strip()
+
+
+def display_name(name):
+    name = re.sub(r”\s*\[[^\]]{1,5}\]”, “”, name)  # strip [E], [explicit], etc.
+    name = re.sub(r”\s*\(.*”, “”, name)              # strip (formerly ...), etc.
+    return name.strip()
 
 
 def parse_season(heading):
@@ -141,7 +147,7 @@ def parse_tables(html):
 
                 slug = logo_slug(name)
                 channels[name_key] = {
-                    "name": name,
+                    "name": display_name(name),
                     "description": desc,
                     "genre": genre,
                     "sxm_number": sxm_number,
