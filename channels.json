@@ -5,7 +5,7 @@
     "genre": "",
     "sxm_number": 1,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmpreview-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmpreview.svg"
   },
   "sirius xm 107": {
     "name": "Sirius XM 107",
@@ -13,7 +13,7 @@
     "genre": "",
     "sxm_number": null,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxm107-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/dateline247.png"
   },
   "siriusxm hits 1": {
     "name": "SiriusXM Hits 1",
@@ -21,7 +21,7 @@
     "genre": "",
     "sxm_number": 2,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmhits1-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmhits1.png"
   },
   "unwell music": {
     "name": "Unwell Music [E]",
@@ -29,7 +29,7 @@
     "genre": "",
     "sxm_number": 3,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/unwellmusice-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/unwellmusic.png"
   },
   "life with john mayer": {
     "name": "Life with John Mayer",
@@ -37,7 +37,7 @@
     "genre": "",
     "sxm_number": 4,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/lifewithjohnmayer-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/lifewithjohnmayer.png"
   },
   "the pulse": {
     "name": "The Pulse (formerly Flight 26)",
@@ -45,7 +45,7 @@
     "genre": "",
     "sxm_number": 5,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thepulseformerlyflight26-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thepulse.png"
   },
   "poprocks": {
     "name": "PopRocks",
@@ -53,7 +53,7 @@
     "genre": "",
     "sxm_number": 6,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/poprocks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/poprocks.png"
   },
   "70s on 7": {
     "name": "'70s on 7",
@@ -61,7 +61,7 @@
     "genre": "",
     "sxm_number": 7,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/70son7-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/70son7.png"
   },
   "80s on 8": {
     "name": "'80s on 8",
@@ -69,7 +69,7 @@
     "genre": "",
     "sxm_number": 8,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/80son8-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/80son8.png"
   },
   "90s on 9": {
     "name": "'90s on 9",
@@ -77,7 +77,7 @@
     "genre": "",
     "sxm_number": 9,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/90son9-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/90son9.png"
   },
   "pop2k": {
     "name": "Pop2K (formerly KISS and XM Hitlist)",
@@ -85,7 +85,7 @@
     "genre": "",
     "sxm_number": 10,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/pop2kformerlykissandxmhitlist-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/pop2k.png"
   },
   "the 10s spot": {
     "name": "The 10s Spot (Formerly KIIS-Los Angeles)",
@@ -93,7 +93,7 @@
     "genre": "",
     "sxm_number": 11,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/the10sspotformerlykiislosangeles-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/the10sspot.png"
   },
   "kelly clarkson connection": {
     "name": "Kelly Clarkson Connection",
@@ -101,7 +101,7 @@
     "genre": "",
     "sxm_number": 12,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/kellyclarksonconnection-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kellyclarksonconnection.png"
   },
   "pitbull's globalization": {
     "name": "Pitbull's Globalization",
@@ -109,7 +109,7 @@
     "genre": "",
     "sxm_number": 13,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/pitbullsglobalization-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/pitbullsglobalization.png"
   },
   "yacht rock radio": {
     "name": "Yacht Rock Radio",
@@ -117,7 +117,7 @@
     "genre": "",
     "sxm_number": 15,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/yachtrockradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/yachtrockradio.png"
   },
   "the blend": {
     "name": "The Blend",
@@ -125,7 +125,7 @@
     "genre": "",
     "sxm_number": 16,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theblend-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theblend.png"
   },
   "the coffee house": {
     "name": "The Coffee House",
@@ -133,7 +133,7 @@
     "genre": "",
     "sxm_number": 17,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thecoffeehouse-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thecoffeehouse.png"
   },
   "50s gold": {
     "name": "'50s Gold (formerly '50s on 5)",
@@ -141,7 +141,7 @@
     "genre": "",
     "sxm_number": 72,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/50sgoldformerly50son5-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/50sgold.png"
   },
   "60s gold": {
     "name": "'60s Gold (formerly '60s on 6)",
@@ -149,7 +149,7 @@
     "genre": "",
     "sxm_number": 73,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/60sgoldformerly60son6-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/60sgold.png"
   },
   "elvis radio": {
     "name": "Elvis Radio",
@@ -157,7 +157,7 @@
     "genre": "",
     "sxm_number": 76,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/elvisradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/elvisradio.png"
   },
   "road trip radio": {
     "name": "Road Trip Radio",
@@ -165,7 +165,7 @@
     "genre": "",
     "sxm_number": 301,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/roadtripradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/roadtripradio.png"
   },
   "andy cohen 's kiki lounge": {
     "name": "Andy Cohen 's Kiki Lounge",
@@ -173,7 +173,7 @@
     "genre": "",
     "sxm_number": 302,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/andycohenskikilounge-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/andycohenskikilounge.png"
   },
   "mosaic": {
     "name": "Mosaic",
@@ -181,7 +181,7 @@
     "genre": "",
     "sxm_number": 305,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/mosaic-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/mosaic.png"
   },
   "pop top 500 countdown": {
     "name": "Pop Top 500 Countdown",
@@ -189,7 +189,7 @@
     "genre": "",
     "sxm_number": 550,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/poptop500countdown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/poptop500.png"
   },
   "80's on 8 top 500 countdown": {
     "name": "80's on 8 Top 500 Countdown",
@@ -197,7 +197,7 @@
     "genre": "",
     "sxm_number": 551,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/80son8top500countdown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/80son8top500.png"
   },
   "90's on 9 top 500 countdown": {
     "name": "90's on 9 Top 500 Countdown",
@@ -205,7 +205,7 @@
     "genre": "",
     "sxm_number": 552,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/90son9top500countdown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/90son9top500.png"
   },
   "pandora now": {
     "name": "Pandora Now [E] (formerly Top 20 on 20 )",
@@ -213,7 +213,7 @@
     "genre": "",
     "sxm_number": 703,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/pandoranoweformerlytop20on20-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/pandoranow.png"
   },
   "soulcycle radio": {
     "name": "SoulCycle Radio",
@@ -221,7 +221,7 @@
     "genre": "",
     "sxm_number": 704,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/soulcycleradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/soulcycleradio.png"
   },
   "siriusxm k-pop": {
     "name": "SiriusXM K-Pop [E]",
@@ -229,7 +229,7 @@
     "genre": "",
     "sxm_number": 705,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmkpope-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmkpop.png"
   },
   "siriusxm love": {
     "name": "SiriusXM Love",
@@ -237,7 +237,7 @@
     "genre": "",
     "sxm_number": 708,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmlove-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmlove.png"
   },
   "sirius xo": {
     "name": "Sirius XO",
@@ -245,7 +245,7 @@
     "genre": "",
     "sxm_number": 709,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxo-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxo.png"
   },
   "the bridge": {
     "name": "The Bridge",
@@ -253,7 +253,7 @@
     "genre": "",
     "sxm_number": 14,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thebridge-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thebridge.png"
   },
   "the beatles channel": {
     "name": "The Beatles Channel",
@@ -261,7 +261,7 @@
     "genre": "",
     "sxm_number": 18,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thebeatleschannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thebeatleschannel.png"
   },
   "bob marley's tuff gong radio": {
     "name": "Bob Marley's Tuff Gong Radio",
@@ -269,7 +269,7 @@
     "genre": "",
     "sxm_number": 19,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bobmarleystuffgongradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bobmarleystuffgong.png"
   },
   "e street radio": {
     "name": "E Street Radio",
@@ -277,7 +277,7 @@
     "genre": "",
     "sxm_number": 20,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/estreetradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/estreetradio.png"
   },
   "underground garage": {
     "name": "Underground Garage",
@@ -285,7 +285,7 @@
     "genre": "",
     "sxm_number": 21,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/undergroundgarage-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/undergroundgarage.png"
   },
   "pearl jam radio": {
     "name": "Pearl Jam Radio",
@@ -293,7 +293,7 @@
     "genre": "",
     "sxm_number": 22,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/pearljamradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/pearljamradio.png"
   },
   "the grateful dead channel": {
     "name": "The Grateful Dead Channel",
@@ -301,7 +301,7 @@
     "genre": "",
     "sxm_number": 23,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thegratefuldeadchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/gratefuldead.png"
   },
   "radio margaritaville": {
     "name": "Radio Margaritaville",
@@ -309,7 +309,7 @@
     "genre": "",
     "sxm_number": 24,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/radiomargaritaville-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/radiomargaritaville.png"
   },
   "classic rewind": {
     "name": "Classic Rewind (formerly Big Tracks)",
@@ -317,7 +317,7 @@
     "genre": "",
     "sxm_number": 25,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/classicrewindformerlybigtracks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/classicrewind.png"
   },
   "classic vinyl": {
     "name": "Classic Vinyl (formerly Top Tracks)",
@@ -325,7 +325,7 @@
     "genre": "",
     "sxm_number": 26,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/classicvinylformerlytoptracks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/classicvinyl.png"
   },
   "alt 2k": {
     "name": "Alt 2K",
@@ -333,7 +333,7 @@
     "genre": "",
     "sxm_number": 27,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/alt2k-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/alt2k.png"
   },
   "the spectrum": {
     "name": "The Spectrum (formerly XM's XM Café )",
@@ -341,7 +341,7 @@
     "genre": "",
     "sxm_number": 28,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thespectrumformerlyxmsxmcafe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thespectrum.png"
   },
   "phish radio": {
     "name": "Phish Radio",
@@ -349,7 +349,7 @@
     "genre": "",
     "sxm_number": 29,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/phishradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/phishradio.png"
   },
   "dave matthews band radio": {
     "name": "Dave Matthews Band Radio",
@@ -357,7 +357,7 @@
     "genre": "",
     "sxm_number": 30,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/davematthewsbandradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/davematthewsbandradio.png"
   },
   "tom petty radio": {
     "name": "Tom Petty Radio",
@@ -365,7 +365,7 @@
     "genre": "",
     "sxm_number": 31,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/tompettyradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/tompettyradio.png"
   },
   "u2 x-radio": {
     "name": "U2 X-Radio",
@@ -373,7 +373,7 @@
     "genre": "",
     "sxm_number": 32,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/u2xradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/u2xradio.png"
   },
   "1st wave": {
     "name": "1st Wave",
@@ -381,7 +381,7 @@
     "genre": "",
     "sxm_number": 33,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/1stwave-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/1stwave.png"
   },
   "lithium": {
     "name": "Lithium (formerly Lucy)",
@@ -389,7 +389,7 @@
     "genre": "",
     "sxm_number": 34,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/lithiumformerlylucy-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/lithium.png"
   },
   "siriusxmu": {
     "name": "SiriusXMU (replaced from XM's XMU)",
@@ -397,7 +397,7 @@
     "genre": "",
     "sxm_number": 35,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmureplacedfromxmsxmu-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmu.png"
   },
   "alt nation": {
     "name": "Alt Nation (replaced from XM's Lucy)",
@@ -405,7 +405,7 @@
     "genre": "",
     "sxm_number": 36,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/altnationreplacedfromxmslucy-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/altnation.png"
   },
   "octane": {
     "name": "Octane [E] (replaced from XM's xL SquiZZ)",
@@ -413,7 +413,7 @@
     "genre": "",
     "sxm_number": 37,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/octaneereplacedfromxmsxlsquizz-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/octane.png"
   },
   "ozzy's boneyard": {
     "name": "Ozzy's Boneyard (formerly XM's xL Boneyard)",
@@ -421,7 +421,7 @@
     "genre": "",
     "sxm_number": 38,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/ozzysboneyardformerlyxmsxlboneyard-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/ozzysboneyard.png"
   },
   "hair nation": {
     "name": "Hair Nation (replaced from XM's Big Tracks)",
@@ -429,7 +429,7 @@
     "genre": "",
     "sxm_number": 39,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hairnationreplacedfromxmsbigtracks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hairnation.png"
   },
   "liquid metal": {
     "name": "Liquid Metal [E]",
@@ -437,7 +437,7 @@
     "genre": "",
     "sxm_number": 40,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/liquidmetale-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/liquidmetal.png"
   },
   "siriusxm turbo": {
     "name": "SiriusXM Turbo [E]",
@@ -445,7 +445,7 @@
     "genre": "",
     "sxm_number": 41,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmturboe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmturbo.png"
   },
   "maximum metallica": {
     "name": "Maximum Metallica [E]",
@@ -453,7 +453,7 @@
     "genre": "",
     "sxm_number": 42,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/maximummetallicae-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/maximummetallica.png"
   },
   "deep tracks": {
     "name": "Deep Tracks",
@@ -461,7 +461,7 @@
     "genre": "",
     "sxm_number": 308,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/deeptracks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/deeptracks.png"
   },
   "jam on 309": {
     "name": "Jam on 309",
@@ -469,7 +469,7 @@
     "genre": "",
     "sxm_number": 309,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/jamon309-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/jamon309.png"
   },
   "bon jovi radio": {
     "name": "Bon Jovi Radio",
@@ -477,7 +477,7 @@
     "genre": "",
     "sxm_number": 312,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bonjoviradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bonjoviradio.png"
   },
   "green day's idiot nation": {
     "name": "Green Day's Idiot Nation (formerly Faction Punk) [E]",
@@ -485,7 +485,7 @@
     "genre": "",
     "sxm_number": 314,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/greendaysidiotnationformerlyfactionpunke-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/factionpunk.png"
   },
   "whole lotta red hot": {
     "name": "Whole Lotta Red Hot",
@@ -493,7 +493,7 @@
     "genre": "",
     "sxm_number": 315,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/wholelottaredhot-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/redhotchilipeppers.png"
   },
   "classic rock top 1000 countdown": {
     "name": "Classic Rock Top 1000 Countdown",
@@ -501,7 +501,7 @@
     "genre": "",
     "sxm_number": 553,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/classicrocktop1000countdown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/classicrocktop1000.png"
   },
   "the loft": {
     "name": "The Loft",
@@ -509,7 +509,7 @@
     "genre": "",
     "sxm_number": 710,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theloft-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theloft.png"
   },
   "tom petty's buried treasure": {
     "name": "Tom Petty's Buried Treasure",
@@ -517,7 +517,7 @@
     "genre": "",
     "sxm_number": 711,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/tompettysburiedtreasure-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/pettysburiedtreasure.png"
   },
   "marky ramone's punk rock blitzkrieg": {
     "name": "Marky Ramone's Punk Rock Blitzkrieg",
@@ -525,7 +525,7 @@
     "genre": "",
     "sxm_number": 712,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/markyramonespunkrockblitzkrieg-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/markyramonespunkrock.png"
   },
   "rock bar radio": {
     "name": "Rock Bar Radio",
@@ -533,7 +533,7 @@
     "genre": "",
     "sxm_number": 713,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/rockbarradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rockbar.png"
   },
   "classic rock party": {
     "name": "Classic Rock Party",
@@ -541,7 +541,7 @@
     "genre": "",
     "sxm_number": 715,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/classicrockparty-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/classicrockparty.png"
   },
   "little steven 's coolest songs in the world": {
     "name": "Little Steven 's Coolest Songs in the World",
@@ -549,7 +549,7 @@
     "genre": "",
     "sxm_number": 721,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/littlestevenscoolestsongsintheworld-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/steviescoolestsongs.png"
   },
   "rock the bells radio": {
     "name": "Rock the Bells Radio [E] (replaced XM's xL The Rhyme , formerly Back Spin)",
@@ -557,7 +557,7 @@
     "genre": "",
     "sxm_number": 43,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/rockthebellsradioereplacedxmsxltherhymeformerlybackspin-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rockthebellsradio.png"
   },
   "hip-hop nation": {
     "name": "Hip-Hop Nation [E] (replaced XM's The City )",
@@ -565,7 +565,7 @@
     "genre": "",
     "sxm_number": 44,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hiphopnationereplacedxmsthecity-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hiphopnation.png"
   },
   "shade 45": {
     "name": "Shade 45 [E] (replaced XM's xL 66 Raw)",
@@ -573,7 +573,7 @@
     "genre": "",
     "sxm_number": 45,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/shade45ereplacedxmsxl66raw-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shade45.png"
   },
   "the heat": {
     "name": "The Heat (replaced XM's The Eye formerly Hot Jamz)",
@@ -581,7 +581,7 @@
     "genre": "",
     "sxm_number": 46,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theheatreplacedxmstheeyeformerlyhotjamz-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theheat.png"
   },
   "heart & soul": {
     "name": "Heart & Soul (replaced XM's Suite 62)",
@@ -589,7 +589,7 @@
     "genre": "",
     "sxm_number": 47,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/heartsoulreplacedxmssuite62-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/heartsoul.png"
   },
   "the flow": {
     "name": "The Flow",
@@ -597,7 +597,7 @@
     "genre": "",
     "sxm_number": 48,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theflow-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theflow.png"
   },
   "flex2k": {
     "name": "Flex2K [E]",
@@ -605,7 +605,7 @@
     "genre": "",
     "sxm_number": 49,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/flex2ke-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/flex2k.png"
   },
   "siriusxm fly": {
     "name": "SiriusXM FLY [E]",
@@ -613,7 +613,7 @@
     "genre": "",
     "sxm_number": 50,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmflye-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmfly.png"
   },
   "the groove": {
     "name": "The Groove",
@@ -621,7 +621,7 @@
     "genre": "",
     "sxm_number": 51,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thegroove-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thegroove.png"
   },
   "smokey's soul town": {
     "name": "Smokey's Soul Town (formerly Soul Revue; replaced XM's Soul Street )",
@@ -629,7 +629,7 @@
     "genre": "",
     "sxm_number": 74,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/smokeyssoultownformerlysoulrevuereplacedxmssoulstreet-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/smokeyssoultown.png"
   },
   "siriusxm silk 330": {
     "name": "SiriusXM Silk 330",
@@ -637,7 +637,7 @@
     "genre": "",
     "sxm_number": 330,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmsilk330-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmsilk330.png"
   },
   "shaggy's boombastic radio": {
     "name": "Shaggy's Boombastic Radio (formerly The Joint)",
@@ -645,7 +645,7 @@
     "genre": "",
     "sxm_number": 332,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/shaggysboombasticradioformerlythejoint-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shaggyboombasticradio.png"
   },
   "grown folks jamz": {
     "name": "Grown Folks JAMZ",
@@ -653,7 +653,7 @@
     "genre": "",
     "sxm_number": 362,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/grownfolksjamz-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/grownfolkjamz.png"
   },
   "hip-hop chronicles": {
     "name": "Hip-hop Chronicles [E]",
@@ -661,7 +661,7 @@
     "genre": "",
     "sxm_number": 556,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hiphopchroniclese-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hiphopchronicles.png"
   },
   "sway's universe": {
     "name": "Sway's Universe [E]",
@@ -669,7 +669,7 @@
     "genre": "",
     "sxm_number": 720,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/swaysuniversee-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/swaysuniverse.png"
   },
   "rock the bells mixdown": {
     "name": "Rock the Bells Mixdown [E]",
@@ -677,7 +677,7 @@
     "genre": "",
     "sxm_number": 723,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/rockthebellsmixdowne-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rockthebellsradio.png"
   },
   "soundcloud radio": {
     "name": "SoundCloud Radio [E]",
@@ -685,7 +685,7 @@
     "genre": "",
     "sxm_number": 724,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/soundcloudradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/soundcloudradio.png"
   },
   "bpm": {
     "name": "BPM",
@@ -693,7 +693,7 @@
     "genre": "",
     "sxm_number": 52,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bpm-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bpm.png"
   },
   "diplo's revolution": {
     "name": "Diplo's Revolution [E] (formerly Electric Area and The Move )",
@@ -701,7 +701,7 @@
     "genre": "",
     "sxm_number": 53,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/diplosrevolutioneformerlyelectricareaandthemove-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/diplosrevolution.png"
   },
   "studio 54 radio": {
     "name": "Studio 54 Radio (formerly BBC Radio 1 simulcast, Chrome (XM), and The Strobe )",
@@ -709,7 +709,7 @@
     "genre": "",
     "sxm_number": 54,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/studio54radioformerlybbcradio1simulcastchromexmandthestrobe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/studio54radio.png"
   },
   "sirius xm chill": {
     "name": "Sirius XM Chill",
@@ -717,7 +717,7 @@
     "genre": "",
     "sxm_number": 55,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmchill-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmchill.png"
   },
   "radio monaco": {
     "name": "Radio Monaco",
@@ -725,7 +725,7 @@
     "genre": "",
     "sxm_number": 340,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/radiomonaco-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/radiomonaco.png"
   },
   "utopia": {
     "name": "Utopia",
@@ -733,7 +733,7 @@
     "genre": "",
     "sxm_number": 341,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/utopia-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/utopia.png"
   },
   "steve aoki remix radio": {
     "name": "Steve Aoki Remix Radio",
@@ -741,7 +741,7 @@
     "genre": "",
     "sxm_number": 735,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/steveaokiremixradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/steveaokisremixradio.png"
   },
   "a state of armin": {
     "name": "A State of Armin",
@@ -749,7 +749,7 @@
     "genre": "",
     "sxm_number": 736,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/astateofarmin-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/astateofarmin.png"
   },
   "one world radio": {
     "name": "One World Radio [E]",
@@ -757,7 +757,7 @@
     "genre": "",
     "sxm_number": 738,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/oneworldradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/oneworldradio.png"
   },
   "the highway": {
     "name": "The Highway (formerly Highway 16 )",
@@ -765,7 +765,7 @@
     "genre": "",
     "sxm_number": 56,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thehighwayformerlyhighway16-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thehighway.png"
   },
   "y2kountry": {
     "name": "Y2Kountry",
@@ -773,7 +773,7 @@
     "genre": "",
     "sxm_number": 57,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/y2kountry-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/y2kountry.png"
   },
   "prime country": {
     "name": "Prime Country (formerly U.S. Country)",
@@ -781,7 +781,7 @@
     "genre": "",
     "sxm_number": 58,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/primecountryformerlyuscountry-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/primecountry.png"
   },
   "no shoes radio": {
     "name": "No Shoes Radio",
@@ -789,7 +789,7 @@
     "genre": "",
     "sxm_number": 59,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/noshoesradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/noshoesradio.png"
   },
   "carrie's country": {
     "name": "Carrie's Country",
@@ -797,7 +797,7 @@
     "genre": "",
     "sxm_number": 60,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/carriescountry-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/carriescountry.png"
   },
   "willie's roadhouse": {
     "name": "Willie's Roadhouse (formerly The Roadhouse and Willie's Place )",
@@ -805,7 +805,7 @@
     "genre": "",
     "sxm_number": 61,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/williesroadhouseformerlytheroadhouseandwilliesplace-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/williesroadhouse.png"
   },
   "outlaw country": {
     "name": "Outlaw Country",
@@ -813,7 +813,7 @@
     "genre": "",
     "sxm_number": 62,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/outlawcountry-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/outlawcountry.png"
   },
   "chris stapleton radio": {
     "name": "Chris Stapleton Radio",
@@ -821,7 +821,7 @@
     "genre": "",
     "sxm_number": 63,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/chrisstapletonradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/chrisstapletonradio.png"
   },
   "morgan wallen radio": {
     "name": "Morgan Wallen Radio",
@@ -829,7 +829,7 @@
     "genre": "",
     "sxm_number": null,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/morganwallenradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/morganwallenradio.svg"
   },
   "bluegrass junction": {
     "name": "Bluegrass Junction",
@@ -837,7 +837,7 @@
     "genre": "",
     "sxm_number": 77,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bluegrassjunction-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bluegrassjunction.png"
   },
   "dwight yoakam & the bakersfield beat": {
     "name": "Dwight Yoakam & the Bakersfield Beat",
@@ -845,7 +845,7 @@
     "genre": "",
     "sxm_number": 349,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/dwightyoakamthebakersfieldbeat-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bakersfieldbeat.png"
   },
   "red, white & booze": {
     "name": "Red, White & Booze",
@@ -853,7 +853,7 @@
     "genre": "",
     "sxm_number": 350,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/redwhitebooze-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/redwhitebooze.png"
   },
   "country top 1000 countdown": {
     "name": "Country Top 1000 Countdown",
@@ -861,7 +861,7 @@
     "genre": "",
     "sxm_number": 558,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/countrytop1000countdown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/countrytop1000.png"
   },
   "savior sunday daily by carrie's country": {
     "name": "Savior Sunday Daily by Carrie's Country",
@@ -869,7 +869,7 @@
     "genre": "",
     "sxm_number": 739,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/saviorsundaydailybycarriescountry-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/saviorsundaydaily.png"
   },
   "eric church's outsiders radio": {
     "name": "Eric Church's Outsiders Radio",
@@ -877,7 +877,7 @@
     "genre": "",
     "sxm_number": 740,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/ericchurchsoutsidersradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/outsidersradio.png"
   },
   "the village": {
     "name": "The Village",
@@ -885,7 +885,7 @@
     "genre": "",
     "sxm_number": 741,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thevillage-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thevillage.png"
   },
   "kirk franklin's praise": {
     "name": "Kirk Franklin's Praise (formerly Spirit)",
@@ -893,7 +893,7 @@
     "genre": "",
     "sxm_number": 64,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/kirkfranklinspraiseformerlyspirit-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kirkfranklinspraise.png"
   },
   "the message": {
     "name": "The Message",
@@ -901,7 +901,7 @@
     "genre": "",
     "sxm_number": 65,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/themessage-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/themessage.png"
   },
   "message worship": {
     "name": "Message Worship",
@@ -909,7 +909,7 @@
     "genre": "",
     "sxm_number": 68,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/messageworship-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/themessage.png"
   },
   "bill gaither 's enlighten": {
     "name": "Bill Gaither 's enLighten",
@@ -917,7 +917,7 @@
     "genre": "",
     "sxm_number": 150,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/billgaithersenlighten-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/billgaithersenlighten.png"
   },
   "watercolors": {
     "name": "Watercolors",
@@ -925,7 +925,7 @@
     "genre": "",
     "sxm_number": 66,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/watercolors-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/watercolors.png"
   },
   "real jazz": {
     "name": "Real Jazz",
@@ -933,7 +933,7 @@
     "genre": "",
     "sxm_number": 67,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/realjazz-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/realjazz.png"
   },
   "on broadway": {
     "name": "On Broadway",
@@ -941,7 +941,7 @@
     "genre": "",
     "sxm_number": 69,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/onbroadway-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/onbroadway.png"
   },
   "siriusly sinatra": {
     "name": "Siriusly Sinatra (formerly High Standards)",
@@ -949,7 +949,7 @@
     "genre": "",
     "sxm_number": 70,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriuslysinatraformerlyhighstandards-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriuslysinatra.png"
   },
   "40s junction": {
     "name": "'40s Junction (formerly 40s on 4)",
@@ -957,7 +957,7 @@
     "genre": "",
     "sxm_number": 71,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/40sjunctionformerly40son4-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/40sjunction.png"
   },
   "b.b. king's bluesville": {
     "name": "B.B. King's Bluesville",
@@ -965,7 +965,7 @@
     "genre": "",
     "sxm_number": 75,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bbkingsbluesville-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bbkingsbluesville.png"
   },
   "symphony hall": {
     "name": "Symphony Hall",
@@ -973,7 +973,7 @@
     "genre": "",
     "sxm_number": 78,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/symphonyhall-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/symphonyhall.png"
   },
   "escape": {
     "name": "Escape",
@@ -981,7 +981,7 @@
     "genre": "",
     "sxm_number": 149,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/escape-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/escape.png"
   },
   "met opera radio": {
     "name": "Met Opera Radio",
@@ -989,7 +989,7 @@
     "genre": "",
     "sxm_number": 744,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/metoperaradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/metoperaradio.png"
   },
   "sirius xm pops": {
     "name": "Sirius XM Pops",
@@ -997,7 +997,7 @@
     "genre": "",
     "sxm_number": 745,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmpops-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmpops.png"
   },
   "spa": {
     "name": "Spa",
@@ -1005,7 +1005,7 @@
     "genre": "",
     "sxm_number": 746,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/spa-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/spa.png"
   },
   "disney hits": {
     "name": "Disney Hits",
@@ -1013,7 +1013,7 @@
     "genre": "",
     "sxm_number": 133,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/disneyhits-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/disneyhits.png"
   },
   "kids place live": {
     "name": "Kids Place Live",
@@ -1021,7 +1021,7 @@
     "genre": "",
     "sxm_number": 134,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/kidsplacelive-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kidsplace.png"
   },
   "kidz bop radio": {
     "name": "Kidz Bop Radio",
@@ -1029,7 +1029,7 @@
     "genre": "",
     "sxm_number": 135,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/kidzbopradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kidzbopradio.png"
   },
   "cocomelon & friends": {
     "name": "CoComelon & Friends",
@@ -1037,7 +1037,7 @@
     "genre": "",
     "sxm_number": 136,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/cocomelonfriends-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cocomelonfriends.svg"
   },
   "disney jr. radio": {
     "name": "Disney Jr. Radio",
@@ -1045,7 +1045,7 @@
     "genre": "",
     "sxm_number": 702,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/disneyjrradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/disneyjrradio.png"
   },
   "espn radio": {
     "name": "ESPN Radio",
@@ -1053,7 +1053,7 @@
     "genre": "",
     "sxm_number": 80,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/espnradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/espnradio.png"
   },
   "espn xtra": {
     "name": "ESPN Xtra",
@@ -1061,7 +1061,7 @@
     "genre": "",
     "sxm_number": 81,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/espnxtra-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/espnxtra.png"
   },
   "mad dog sports radio": {
     "name": "Mad Dog Sports Radio",
@@ -1069,7 +1069,7 @@
     "genre": "",
     "sxm_number": 82,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/maddogsportsradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/maddogsportsradio.png"
   },
   "fox sports on siriusxm": {
     "name": "Fox Sports on SiriusXM",
@@ -1077,7 +1077,7 @@
     "genre": "",
     "sxm_number": 83,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/foxsportsonsiriusxm-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/foxsportsonsiriusxm.png"
   },
   "siriusxm college sports radio": {
     "name": "SiriusXM College Sports Radio (formerly ESPNU Radio)",
@@ -1085,7 +1085,7 @@
     "genre": "",
     "sxm_number": 84,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmcollegesportsradioformerlyespnuradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/collegesportsradio.png"
   },
   "nbc sports audio": {
     "name": "NBC Sports Audio",
@@ -1093,7 +1093,7 @@
     "genre": "",
     "sxm_number": 85,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/nbcsportsaudio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/nbcsportsradio.png"
   },
   "siriusxm nba radio": {
     "name": "SiriusXM NBA Radio",
@@ -1101,7 +1101,7 @@
     "genre": "",
     "sxm_number": 86,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmnbaradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmnbaradio.png"
   },
   "siriusxm fantasy sports radio": {
     "name": "SiriusXM Fantasy Sports Radio",
@@ -1109,7 +1109,7 @@
     "genre": "",
     "sxm_number": 87,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmfantasysportsradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/fantasysportsradio.png"
   },
   "siriusxm nfl radio": {
     "name": "SiriusXM NFL Radio",
@@ -1117,7 +1117,7 @@
     "genre": "",
     "sxm_number": 88,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmnflradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmnflradio.png"
   },
   "mlb network radio": {
     "name": "MLB Network Radio",
@@ -1125,7 +1125,7 @@
     "genre": "",
     "sxm_number": 89,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/mlbnetworkradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/mlbnetworkradio.png"
   },
   "siriusxm nascar radio": {
     "name": "SiriusXM NASCAR Radio",
@@ -1133,7 +1133,7 @@
     "genre": "",
     "sxm_number": 90,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmnascarradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmnascarradio.png"
   },
   "siriusxm nhl network radio": {
     "name": "SiriusXM NHL Network Radio",
@@ -1141,7 +1141,7 @@
     "genre": "",
     "sxm_number": 91,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmnhlnetworkradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/nhlnetworkradio.png"
   },
   "siriusxm pga tour radio": {
     "name": "SiriusXM PGA Tour Radio",
@@ -1149,7 +1149,7 @@
     "genre": "",
     "sxm_number": 92,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmpgatourradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmpgatourradio.png"
   },
   "siriusxm pro wrestling nation 24/7": {
     "name": "SiriusXM Pro Wrestling Nation 24/7",
@@ -1157,7 +1157,7 @@
     "genre": "",
     "sxm_number": 156,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmprowrestlingnation247-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/prowrestlingnation247.png"
   },
   "siriusxm fc": {
     "name": "SiriusXM FC",
@@ -1165,7 +1165,7 @@
     "genre": "",
     "sxm_number": 157,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmfc-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmfc.png"
   },
   "vsin radio": {
     "name": "VSiN Radio",
@@ -1173,7 +1173,7 @@
     "genre": "",
     "sxm_number": 158,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/vsinradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/vsin.png"
   },
   "sportsgrid radio": {
     "name": "SportsGrid Radio",
@@ -1181,7 +1181,7 @@
     "genre": "",
     "sxm_number": 159,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/sportsgridradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/vsin.png"
   },
   "siriusxm indycar nation": {
     "name": "SiriusXM INDYCAR Nation",
@@ -1189,7 +1189,7 @@
     "genre": "",
     "sxm_number": 218,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmindycarnation-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmindycarnation.png"
   },
   "espn podcasts": {
     "name": "ESPN Podcasts",
@@ -1197,7 +1197,7 @@
     "genre": "",
     "sxm_number": 370,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/espnpodcasts-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/espnpodcasts.png"
   },
   "siriusxm acc radio": {
     "name": "SiriusXM ACC Radio",
@@ -1205,7 +1205,7 @@
     "genre": "",
     "sxm_number": 371,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmaccradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmaccradio.png"
   },
   "siriusxm big ten radio": {
     "name": "SiriusXM Big Ten Radio",
@@ -1213,7 +1213,7 @@
     "genre": "",
     "sxm_number": 372,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmbigtenradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmbigtenradio.png"
   },
   "siriusxm sec radio": {
     "name": "SiriusXM SEC Radio",
@@ -1221,7 +1221,7 @@
     "genre": "",
     "sxm_number": 374,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmsecradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmsecradio.png"
   },
   "westwood one sports": {
     "name": "Westwood One Sports (formerly CBS Sports Radio and Infinity Sports Network)",
@@ -1229,7 +1229,7 @@
     "genre": "",
     "sxm_number": 375,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/westwoodonesportsformerlycbssportsradioandinfinitysportsnetwork-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/westwoodonesports.svg"
   },
   "netflix is a joke radio": {
     "name": "Netflix is a Joke Radio [E]",
@@ -1237,7 +1237,7 @@
     "genre": "",
     "sxm_number": 93,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/netflixisajokeradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/netflixisajokeradio.png"
   },
   "comedy greats": {
     "name": "Comedy Greats [E]",
@@ -1245,7 +1245,7 @@
     "genre": "",
     "sxm_number": 94,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/comedygreatse-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedygreats.png"
   },
   "comedy central radio": {
     "name": "Comedy Central Radio [E]",
@@ -1253,7 +1253,7 @@
     "genre": "",
     "sxm_number": 95,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/comedycentralradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedycentralradio.png"
   },
   "kevin hart's laugh out loud radio": {
     "name": "Kevin Hart's Laugh Out Loud Radio [E]",
@@ -1261,7 +1261,7 @@
     "genre": "",
     "sxm_number": 96,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/kevinhartslaughoutloudradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kevinhartslolradio.png"
   },
   "jeff & larry's comedy roundup": {
     "name": "Jeff & Larry's Comedy Roundup [E] (formerly Blue Collar Radio )",
@@ -1269,7 +1269,7 @@
     "genre": "",
     "sxm_number": 97,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/jefflarryscomedyroundupeformerlybluecollarradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyroundup.png"
   },
   "pure comedy": {
     "name": "Pure Comedy (formerly Laugh USA)",
@@ -1277,7 +1277,7 @@
     "genre": "",
     "sxm_number": 98,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/purecomedyformerlylaughusa-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/purecomedy.png"
   },
   "raw comedy": {
     "name": "Raw Comedy [E] (formerly Raw Dog Comedy)",
@@ -1285,7 +1285,7 @@
     "genre": "",
     "sxm_number": 99,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/rawcomedyeformerlyrawdogcomedy-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rawcomedy.png"
   },
   "she's so funny": {
     "name": "She's So Funny [E]",
@@ -1293,7 +1293,7 @@
     "genre": "",
     "sxm_number": 771,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/shessofunnye-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shessofunny.png"
   },
   "comedy classics": {
     "name": "Comedy Classics [E]",
@@ -1301,7 +1301,7 @@
     "genre": "",
     "sxm_number": 772,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/comedyclassicse-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyclassics.png"
   },
   "howard 100 and howard 101": {
     "name": "Howard 100 and Howard 101 [E]",
@@ -1309,7 +1309,7 @@
     "genre": "",
     "sxm_number": 100,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/howard100andhoward101e-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/howard100andhoward101.png"
   },
   "radio andy": {
     "name": "Radio Andy [E]",
@@ -1317,7 +1317,7 @@
     "genre": "",
     "sxm_number": 102,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/radioandye-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/radioandy.png"
   },
   "faction talk": {
     "name": "Faction Talk [E]",
@@ -1325,7 +1325,7 @@
     "genre": "",
     "sxm_number": 103,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/factiontalke-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/factiontalk.png"
   },
   "conan o'brien radio": {
     "name": "Conan O'Brien Radio [E] (formerly Team Coco Radio)",
@@ -1333,7 +1333,7 @@
     "genre": "",
     "sxm_number": 104,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/conanobrienradioeformerlyteamcocoradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/conanobrienradio.png"
   },
   "dateline 24/7": {
     "name": "Dateline 24/7",
@@ -1341,7 +1341,7 @@
     "genre": "",
     "sxm_number": 107,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/dateline247-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/dateline247.png"
   },
   "today show radio": {
     "name": "TODAY Show Radio",
@@ -1349,7 +1349,7 @@
     "genre": "",
     "sxm_number": 108,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/todayshowradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/todayshowradio.png"
   },
   "stars": {
     "name": "Stars [E]",
@@ -1357,7 +1357,7 @@
     "genre": "",
     "sxm_number": 109,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/starse-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/stars.png"
   },
   "doctor radio": {
     "name": "Doctor Radio",
@@ -1365,7 +1365,7 @@
     "genre": "",
     "sxm_number": 110,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/doctorradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/doctorradio.png"
   },
   "triumph": {
     "name": "Triumph",
@@ -1373,7 +1373,7 @@
     "genre": "",
     "sxm_number": 123,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/triumph-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/triumph.png"
   },
   "business radio": {
     "name": "Business Radio",
@@ -1381,7 +1381,7 @@
     "genre": "",
     "sxm_number": 132,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/businessradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/businessradio.png"
   },
   "road dog trucking": {
     "name": "Road Dog Trucking",
@@ -1389,7 +1389,7 @@
     "genre": "",
     "sxm_number": 146,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/roaddogtrucking-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/roaddogtrucking.png"
   },
   "radio classics": {
     "name": "Radio Classics",
@@ -1397,7 +1397,7 @@
     "genre": "",
     "sxm_number": 148,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/radioclassics-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/radioclassics.png"
   },
   "siriusxm app originals": {
     "name": "SiriusXM App Originals",
@@ -1405,7 +1405,7 @@
     "genre": "",
     "sxm_number": 781,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmapporiginals-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmapporiginals.png"
   },
   "unwell on air": {
     "name": "Unwell On Air [E]",
@@ -1413,7 +1413,7 @@
     "genre": "",
     "sxm_number": 786,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/unwellonaire-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/unwellonair.png"
   },
   "smartless radio": {
     "name": "SmartLess Radio [E]",
@@ -1421,7 +1421,7 @@
     "genre": "",
     "sxm_number": 787,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/smartlessradioe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/smartlessradio.png"
   },
   "crime junkie radio": {
     "name": "Crime Junkie Radio",
@@ -1429,7 +1429,7 @@
     "genre": "",
     "sxm_number": 788,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/crimejunkieradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/crimejunkieradio.png"
   },
   "the jeff lewis channel": {
     "name": "The Jeff Lewis Channel [E]",
@@ -1437,7 +1437,7 @@
     "genre": "",
     "sxm_number": 789,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thejefflewischannele-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thejefflewischannel.png"
   },
   "entertainment now": {
     "name": "Entertainment Now",
@@ -1445,7 +1445,7 @@
     "genre": "",
     "sxm_number": 790,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/entertainmentnow-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/entertainmentnow.png"
   },
   "freakonomics radio network": {
     "name": "Freakonomics Radio Network",
@@ -1453,7 +1453,7 @@
     "genre": "",
     "sxm_number": 791,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/freakonomicsradionetwork-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/freakonomicsradio.png"
   },
   "ramsey network": {
     "name": "Ramsey Network",
@@ -1461,7 +1461,7 @@
     "genre": "",
     "sxm_number": 792,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/ramseynetwork-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/ramseynetwork.png"
   },
   "law&crime": {
     "name": "Law&Crime",
@@ -1469,7 +1469,7 @@
     "genre": "",
     "sxm_number": 793,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/lawcrime-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/lawcrime.png"
   },
   "the megyn kelly channel": {
     "name": "The Megyn Kelly Channel",
@@ -1477,7 +1477,7 @@
     "genre": "",
     "sxm_number": 111,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/themegynkellychannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/themegynkellychannel.png"
   },
   "cnbc": {
     "name": "CNBC",
@@ -1485,7 +1485,7 @@
     "genre": "",
     "sxm_number": 112,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/cnbc-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cnbc.png"
   },
   "fox business": {
     "name": "Fox Business",
@@ -1493,7 +1493,7 @@
     "genre": "",
     "sxm_number": 113,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/foxbusiness-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/foxbusiness.png"
   },
   "fox news channel": {
     "name": "Fox News Channel",
@@ -1501,7 +1501,7 @@
     "genre": "",
     "sxm_number": 114,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/foxnewschannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/foxnewschannel.png"
   },
   "fox news headlines 24/7": {
     "name": "Fox News Headlines 24/7",
@@ -1509,7 +1509,7 @@
     "genre": "",
     "sxm_number": 115,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/foxnewsheadlines247-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/foxnewsheadlines247.png"
   },
   "cnn": {
     "name": "CNN",
@@ -1517,7 +1517,7 @@
     "genre": "",
     "sxm_number": 116,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/cnn-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cnn.png"
   },
   "ms now": {
     "name": "MS NOW",
@@ -1525,7 +1525,7 @@
     "genre": "",
     "sxm_number": 118,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/msnow-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/msnow.png"
   },
   "prx remix": {
     "name": "PRX Remix",
@@ -1533,7 +1533,7 @@
     "genre": "",
     "sxm_number": 119,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/prxremix-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/prxremix.png"
   },
   "bbc world service": {
     "name": "BBC World Service (English North American feed)",
@@ -1541,7 +1541,7 @@
     "genre": "",
     "sxm_number": 120,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bbcworldserviceenglishnorthamericanfeed-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bbcworldservice.png"
   },
   "bloomberg radio": {
     "name": "Bloomberg Radio",
@@ -1549,7 +1549,7 @@
     "genre": "",
     "sxm_number": 121,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/bloombergradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/bloombergradio.png"
   },
   "npr now": {
     "name": "NPR Now",
@@ -1557,7 +1557,7 @@
     "genre": "",
     "sxm_number": 122,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/nprnow-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/nprnow.png"
   },
   "p.o.t.u.s.": {
     "name": "P.O.T.U.S.",
@@ -1565,7 +1565,7 @@
     "genre": "",
     "sxm_number": 124,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/potus-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/potuspolitics.png"
   },
   "siriusxm patriot": {
     "name": "SiriusXM Patriot",
@@ -1573,7 +1573,7 @@
     "genre": "",
     "sxm_number": 125,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmpatriot-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmpatriot.png"
   },
   "siriusxm urban view": {
     "name": "SiriusXM Urban View",
@@ -1581,7 +1581,7 @@
     "genre": "",
     "sxm_number": 126,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmurbanview-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmurbanview.png"
   },
   "siriusxm progress": {
     "name": "SiriusXM Progress",
@@ -1589,7 +1589,7 @@
     "genre": "",
     "sxm_number": 127,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmprogress-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmprogress.png"
   },
   "rural radio": {
     "name": "Rural Radio",
@@ -1597,7 +1597,7 @@
     "genre": "",
     "sxm_number": 147,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/ruralradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/ruralradio.png"
   },
   "c-span radio": {
     "name": "C-SPAN Radio",
@@ -1605,7 +1605,7 @@
     "genre": "",
     "sxm_number": 455,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/cspanradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cspanradio.png"
   },
   "nbc news now": {
     "name": "NBC News NOW",
@@ -1613,7 +1613,7 @@
     "genre": "",
     "sxm_number": 798,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/nbcnewsnow-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/nbcnewsnow.png"
   },
   "alerts from the weather channel": {
     "name": "Alerts from The Weather Channel",
@@ -1621,7 +1621,7 @@
     "genre": "",
     "sxm_number": 799,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/alertsfromtheweatherchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theweatherchannel.png"
   },
   "joel osteen radio": {
     "name": "Joel Osteen Radio",
@@ -1629,7 +1629,7 @@
     "genre": "",
     "sxm_number": 128,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/joelosteenradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/joelosteenradio.png"
   },
   "the catholic channel": {
     "name": "The Catholic Channel",
@@ -1637,7 +1637,7 @@
     "genre": "",
     "sxm_number": 129,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thecatholicchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thecatholicchannel.png"
   },
   "ewtn global catholic network": {
     "name": "EWTN Global Catholic Network",
@@ -1645,7 +1645,7 @@
     "genre": "",
     "sxm_number": 130,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/ewtnglobalcatholicnetwork-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/ewtnradio.png"
   },
   "familytalk": {
     "name": "FamilyTalk",
@@ -1653,7 +1653,7 @@
     "genre": "",
     "sxm_number": 131,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/familytalk-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/familytalk.png"
   },
   "the billy graham channel": {
     "name": "The Billy Graham Channel",
@@ -1661,7 +1661,7 @@
     "genre": "",
     "sxm_number": 460,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thebillygrahamchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thebillygrahamchannel.png"
   },
   "holy culture radio": {
     "name": "Holy Culture Radio",
@@ -1669,7 +1669,7 @@
     "genre": "",
     "sxm_number": 140,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/holycultureradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holycultureradio.png"
   },
   "h.u.r. voices": {
     "name": "H.U.R. Voices",
@@ -1677,7 +1677,7 @@
     "genre": "",
     "sxm_number": 141,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hurvoices-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hurvoices.png"
   },
   "hbcu": {
     "name": "HBCU",
@@ -1685,7 +1685,7 @@
     "genre": "",
     "sxm_number": 142,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hbcu-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hbcu.png"
   },
   "byu radio": {
     "name": "BYU Radio",
@@ -1693,7 +1693,7 @@
     "genre": "",
     "sxm_number": 143,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/byuradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/byuradio.png"
   },
   "slam! radio": {
     "name": "SLAM! Radio",
@@ -1701,7 +1701,7 @@
     "genre": "",
     "sxm_number": 145,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/slamradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/slamradio.png"
   },
   "hits uno": {
     "name": "Hits Uno [E]",
@@ -1709,7 +1709,7 @@
     "genre": "",
     "sxm_number": 151,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/hitsunoe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hitsuno.png"
   },
   "caliente": {
     "name": "Caliente",
@@ -1717,7 +1717,7 @@
     "genre": "",
     "sxm_number": 152,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/caliente-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/caliente.png"
   },
   "águila": {
     "name": "Águila",
@@ -1725,7 +1725,7 @@
     "genre": "",
     "sxm_number": 153,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/aguila-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/aguila.png"
   },
   "en vivo": {
     "name": "En Vivo",
@@ -1733,7 +1733,7 @@
     "genre": "",
     "sxm_number": 154,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/envivo-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/envivo.png"
   },
   "latin vault": {
     "name": "Latin Vault",
@@ -1741,7 +1741,7 @@
     "genre": "",
     "sxm_number": 155,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/latinvault-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/latinvault.png"
   },
   "chucho valdes ' cuba & beyond": {
     "name": "Chucho Valdes ' Cuba & Beyond",
@@ -1749,7 +1749,7 @@
     "genre": "",
     "sxm_number": 760,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/chuchovaldescubabeyond-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/chuchoscubabeyond.png"
   },
   "celia cruz azúcar!": {
     "name": "Celia Cruz AZÚCAR!",
@@ -1757,7 +1757,7 @@
     "genre": "",
     "sxm_number": 761,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/celiacruzazucar-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/celiacruzazucar.png"
   },
   "caricia": {
     "name": "Caricia",
@@ -1765,7 +1765,7 @@
     "genre": "",
     "sxm_number": 762,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/caricia-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/caricia.png"
   },
   "viva": {
     "name": "Viva",
@@ -1773,7 +1773,7 @@
     "genre": "",
     "sxm_number": 763,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/viva-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/viva.png"
   },
   "latidos": {
     "name": "Latidos",
@@ -1781,7 +1781,7 @@
     "genre": "",
     "sxm_number": 764,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/latidos-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/latidos.png"
   },
   "flow nación": {
     "name": "Flow Nación",
@@ -1789,7 +1789,7 @@
     "genre": "",
     "sxm_number": 765,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/flownacion-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/flownacion.png"
   },
   "luna": {
     "name": "Luna",
@@ -1797,7 +1797,7 @@
     "genre": "",
     "sxm_number": 766,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/luna-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/luna.png"
   },
   "rumbón": {
     "name": "Rumbón",
@@ -1805,7 +1805,7 @@
     "genre": "",
     "sxm_number": 767,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/rumbon-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rumbon.png"
   },
   "la kueva": {
     "name": "La Kueva",
@@ -1813,7 +1813,7 @@
     "genre": "",
     "sxm_number": 768,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/lakueva-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/lakueva.png"
   },
   "korea today radio network": {
     "name": "Korea Today Radio Network",
@@ -1821,7 +1821,7 @@
     "genre": "",
     "sxm_number": 144,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/koreatodayradionetwork-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/koreatoday.png"
   },
   "attitude franco": {
     "name": "Attitude Franco",
@@ -1829,7 +1829,7 @@
     "genre": "",
     "sxm_number": 163,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/attitudefranco-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/attitudefranco.png"
   },
   "mixtape: north": {
     "name": "Mixtape: North [E]",
@@ -1837,7 +1837,7 @@
     "genre": "",
     "sxm_number": 164,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/mixtapenorthe-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/mixtapenorth.png"
   },
   "the indigiverse": {
     "name": "The Indigiverse",
@@ -1845,7 +1845,7 @@
     "genre": "",
     "sxm_number": 165,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theindigiverse-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theindigiverse.png"
   },
   "racines musicales": {
     "name": "Racines Musicales",
@@ -1853,7 +1853,7 @@
     "genre": "",
     "sxm_number": 166,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/racinesmusicales-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/racinesmusicales.png"
   },
   "canada talks": {
     "name": "Canada Talks",
@@ -1861,7 +1861,7 @@
     "genre": "",
     "sxm_number": 167,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/canadatalks-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/canadatalks.png"
   },
   "siriusxm comedy club": {
     "name": "SiriusXM Comedy Club [E]",
@@ -1869,7 +1869,7 @@
     "genre": "",
     "sxm_number": 168,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmcomedyclube-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmcomedyclub.png"
   },
   "cbc radio one": {
     "name": "CBC Radio One (special national feed)",
@@ -1877,7 +1877,7 @@
     "genre": "",
     "sxm_number": 169,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/cbcradioonespecialnationalfeed-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cbcradioone.png"
   },
   "ici radio-canada première": {
     "name": "Ici Radio-Canada Première",
@@ -1885,7 +1885,7 @@
     "genre": "",
     "sxm_number": 170,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/iciradiocanadapremiere-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/icipremiere.png"
   },
   "top of the country radio": {
     "name": "Top of the Country Radio",
@@ -1893,7 +1893,7 @@
     "genre": "",
     "sxm_number": 171,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/topofthecountryradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/topofthecountryradio.png"
   },
   "siriusxm scoreboard": {
     "name": "SiriusXM Scoreboard",
@@ -1901,7 +1901,7 @@
     "genre": "",
     "sxm_number": 172,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmscoreboard-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmscoreboard.png"
   },
   "the verge": {
     "name": "The Verge",
@@ -1909,7 +1909,7 @@
     "genre": "",
     "sxm_number": 173,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/theverge-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/theverge.png"
   },
   "influence franco": {
     "name": "Influence Franco",
@@ -1917,7 +1917,7 @@
     "genre": "",
     "sxm_number": 174,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/influencefranco-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/influencefranco.png"
   },
   "north americana": {
     "name": "North Americana",
@@ -1925,7 +1925,7 @@
     "genre": "",
     "sxm_number": 359,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/northamericana-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/northamericana.png"
   },
   "poplandia": {
     "name": "Poplandia [E]",
@@ -1933,7 +1933,7 @@
     "genre": "",
     "sxm_number": 754,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/poplandiae-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/poplandia.png"
   },
   "the tragically hip radio": {
     "name": "The Tragically Hip Radio",
@@ -1941,7 +1941,7 @@
     "genre": "",
     "sxm_number": 757,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/thetragicallyhipradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thetragicallyhipradio.png"
   },
   "iceberg radio": {
     "name": "Iceberg Radio",
@@ -1949,7 +1949,7 @@
     "genre": "",
     "sxm_number": 758,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/icebergradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/iceberg.png"
   },
   "les tubes franco": {
     "name": "Les Tubes Franco (formerly Attitude Franco as pre-Rock music channel)",
@@ -1957,7 +1957,7 @@
     "genre": "",
     "sxm_number": 759,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/lestubesfrancoformerlyattitudefrancoasprerockmusicchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/lestubesfranco.png"
   },
   "siriusxm dhamaka": {
     "name": "SiriusXM Dhamaka",
@@ -1965,7 +1965,7 @@
     "genre": "",
     "sxm_number": 796,
     "seasonal": null,
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmdhamaka-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmdhamaka.png"
   },
   "siriusxm holly": {
     "name": "SiriusXM Holly",
@@ -1976,7 +1976,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/siriusxmholly-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holly.png"
   },
   "jimmy fallon holiday seasoning radio": {
     "name": "Jimmy Fallon Holiday Seasoning Radio",
@@ -1987,7 +1987,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/jimmyfallonholidayseasoningradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/fallonholidayseasoning.png"
   },
   "country christmas": {
     "name": "Country Christmas",
@@ -1998,7 +1998,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/countrychristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/countrychristmas.png"
   },
   "christmas spirit": {
     "name": "Christmas Spirit",
@@ -2009,7 +2009,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/christmasspirit-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/christmasspirit.png"
   },
   "holiday traditions": {
     "name": "Holiday Traditions",
@@ -2020,7 +2020,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/holidaytraditions-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holidaytraditions.png"
   },
   "smokey's holiday soul town": {
     "name": "Smokey's Holiday Soul Town",
@@ -2031,7 +2031,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/smokeysholidaysoultown-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/smokeysholidaysoultown.png"
   },
   "holiday pops": {
     "name": "Holiday Pops",
@@ -2042,7 +2042,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/holidaypops-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holidaypops.svg"
   },
   "new year's nation": {
     "name": "New Year's Nation",
@@ -2053,7 +2053,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/newyearsnation-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/newyearsnation.png"
   },
   "hallmark channel radio": {
     "name": "Hallmark Channel Radio",
@@ -2064,7 +2064,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/hallmarkchannelradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hallmarkradio.png"
   },
   "jolly christmas": {
     "name": "Jolly Christmas",
@@ -2075,7 +2075,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/jollychristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/jollychristmas.svg"
   },
   "jingle jamz": {
     "name": "Jingle Jamz",
@@ -2086,7 +2086,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/jinglejamz-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/jinglejamz.jpg"
   },
   "real jazz holiday": {
     "name": "Real Jazz Holiday",
@@ -2097,7 +2097,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/realjazzholiday-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/realjazzholiday.svg"
   },
   "cool jazz christmas": {
     "name": "Cool Jazz Christmas",
@@ -2108,7 +2108,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/cooljazzchristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cooljazzchristmas.jpg"
   },
   "mannheim steamroller channel": {
     "name": "Mannheim Steamroller Channel",
@@ -2119,7 +2119,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/mannheimsteamrollerchannel-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/mannheimsteamroller.png"
   },
   "trans-siberian orchestra radio": {
     "name": "Trans-Siberian Orchestra Radio",
@@ -2130,7 +2130,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/transsiberianorchestraradio-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/transsiberianorchradio.png"
   },
   "holiday instrumentals": {
     "name": "Holiday Instrumentals",
@@ -2141,7 +2141,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/holidayinstrumentals-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holidayinstrumentals.svg"
   },
   "navidad": {
     "name": "Navidad",
@@ -2152,7 +2152,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/navidad-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png"
   },
   "rockin' xmas": {
     "name": "Rockin' Xmas",
@@ -2163,7 +2163,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/rockinxmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/rockinxmas.svg"
   },
   "acoustic christmas": {
     "name": "Acoustic Christmas",
@@ -2174,7 +2174,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/acousticchristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/acousticchristmas.svg"
   },
   "kids christmas": {
     "name": "Kids Christmas",
@@ -2185,7 +2185,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/kidschristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/kidschristmas.jpg"
   },
   "sleep christmas": {
     "name": "Sleep Christmas",
@@ -2196,7 +2196,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/sleepchristmas-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/sleepchristmas.svg"
   },
   "radio hanukkah": {
     "name": "Radio Hanukkah",
@@ -2207,7 +2207,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/radiohanukkah-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/radiohanukkah.png"
   },
   "holidays with anne murray & friends": {
     "name": "Holidays with Anne Murray & Friends",
@@ -2218,7 +2218,7 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/holidayswithannemurrayfriends-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holidayswithannemurray.png"
   },
   "noël incontournable": {
     "name": "Noël Incontournable",
@@ -2229,6 +2229,6 @@
       11,
       1
     ],
-    "logo_url": "https://xmplaylist.com/img/station/noelincontournable-lg.png"
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/noelincontournable.png"
   }
 }
