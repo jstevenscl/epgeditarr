@@ -236,7 +236,7 @@ def main() -> None:
                 missing += 1
                 continue
 
-        # Priority 4: try xmplaylist.com fallback — download and cache it
+        # Priority 5: try xmplaylist.com fallback — download and cache it
         elif "xmplaylist.com" in current_url:
             slug = logo_slug(ch_data["name"])
             dest = LOGOS_DIR / f"{slug}.png"
