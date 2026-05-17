@@ -16,6 +16,8 @@ VIRTUAL_PREFIX = "EPGeditARR: "
 PLUGIN_KEY = "epgeditarr"
 
 FILL_SOURCE_NAME = "EPGeditARR: Fill"
+SXM_SOURCE_NAME  = "EPGeditARR: SiriusXM"
+SXM_EPG_URL      = "https://jstevenscl.github.io/epgeditarr/siriusxm_epg.xml"
 FILL_CACHE_KEY = "fill_channel_cache"
 FILL_CACHE_UPDATED_KEY = "fill_channel_cache_updated"
 FILL_CACHE_TTL_DAYS = 7
@@ -134,7 +136,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.01"
+    version = "0.2.03"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -270,7 +272,7 @@ class Plugin:
                 "The settings and actions below apply exclusively to SiriusXM channels "
                 "and use the SiriusXM Channel Group setting below — completely separate from "
                 "Fill Groups above. Channel data (names, descriptions, lineup order) is fetched "
-                "from Wikipedia and cached locally. Cache auto-refreshes every 7 days — use "
+                "from the official SiriusXM API and cached locally. Cache auto-refreshes every 7 days — use "
                 "'Refresh Channel Data' to force an immediate update. Channel names are matched "
                 "case-insensitively with fuzzy fallbacks for common variations (leading quotes, "
                 "'The ' prefix, '&' vs 'and')."
@@ -293,7 +295,7 @@ class Plugin:
             "type": "boolean",
             "default": False,
             "help_text": (
-                "SiriusXM only — matches channel names against the Wikipedia lineup and adds real "
+                "SiriusXM only — matches channel names against the official SiriusXM channel database and adds real "
                 "descriptions to generated EPG entries."
             ),
         },
@@ -753,7 +755,7 @@ class Plugin:
         return f"epgeditarr-fill-{slug}"
 
     def _get_fill_channels(self, settings):
-        """Return Channel objects eligible for fill EPG (in fill groups, no EPG or already on fill source)."""
+        """Return Channel objects eligible for fill EPG (in fill groups, no EPG or on a dummy source)."""
         from django.db.models import Q
         from apps.channels.models import Channel
         from apps.epg.models import EPGSource
@@ -762,40 +764,31 @@ class Plugin:
         if not fill_group_names:
             return []
 
-        try:
-            fill_src = EPGSource.objects.get(name=FILL_SOURCE_NAME)
-            qs = Channel.objects.filter(channel_group__name__in=fill_group_names).filter(
-                Q(epg_data__isnull=True) | Q(epg_data__epg_source=fill_src)
-            )
-        except EPGSource.DoesNotExist:
-            qs = Channel.objects.filter(
-                channel_group__name__in=fill_group_names,
-                epg_data__isnull=True,
-            )
+        # Include channels with no EPG, already on our fill, or on any dummy source
+        # (covers Dispatcharr's built-in dummy fill so we can replace it)
+        qs = Channel.objects.filter(channel_group__name__in=fill_group_names).filter(
+            Q(epg_data__isnull=True) | Q(epg_data__epg_source__source_type='dummy')
+        )
 
         skip = {n.strip().lower() for n in (settings.get('fill_skip_channels') or '').splitlines() if n.strip()}
         return [c for c in qs.select_related('channel_group') if c.name.lower() not in skip]
 
     def _get_sxm_channels(self, settings):
-        """Return Channel objects eligible for SiriusXM fill EPG (in sxm_groups, no EPG or already on fill source)."""
+        """Return Channel objects eligible for SiriusXM fill EPG (in sxm_groups, no EPG or on a dummy/SXM source)."""
         from django.db.models import Q
         from apps.channels.models import Channel
-        from apps.epg.models import EPGSource
 
         sxm_group_names = [g.strip() for g in (settings.get('sxm_groups') or '').split(',') if g.strip()]
         if not sxm_group_names:
             return []
 
-        try:
-            fill_src = EPGSource.objects.get(name=FILL_SOURCE_NAME)
-            qs = Channel.objects.filter(channel_group__name__in=sxm_group_names).filter(
-                Q(epg_data__isnull=True) | Q(epg_data__epg_source=fill_src)
-            )
-        except EPGSource.DoesNotExist:
-            qs = Channel.objects.filter(
-                channel_group__name__in=sxm_group_names,
-                epg_data__isnull=True,
-            )
+        # Include channels with no EPG, on any dummy source (Dispatcharr built-in),
+        # or already on our SXM XMLTV source (so they can be re-matched)
+        qs = Channel.objects.filter(channel_group__name__in=sxm_group_names).filter(
+            Q(epg_data__isnull=True)
+            | Q(epg_data__epg_source__source_type='dummy')
+            | Q(epg_data__epg_source__name=SXM_SOURCE_NAME)
+        )
 
         return list(qs.select_related('channel_group'))
 
@@ -1321,6 +1314,7 @@ class Plugin:
 
     def _action_status(self, settings, logger):
         from apps.epg.models import EPGSource, EPGData, ProgramData
+        from apps.channels.models import Channel
 
         sources = list(EPGSource.objects.exclude(source_type="dummy").order_by("name"))
         if not sources:
@@ -1351,6 +1345,19 @@ class Plugin:
             lines.append(f"Fill EPG: ACTIVE — {fill_epg_count:,} channel(s), {fill_prog_count:,} program blocks")
         except EPGSource.DoesNotExist:
             lines.append("Fill EPG: not created — run Fill EPG")
+
+        # SiriusXM XMLTV source status
+        try:
+            sxm_src = EPGSource.objects.get(name=SXM_SOURCE_NAME)
+            sxm_epg_count  = EPGData.objects.filter(epg_source=sxm_src).count()
+            sxm_prog_count = ProgramData.objects.filter(epg__epg_source=sxm_src).count()
+            sxm_assigned   = Channel.objects.filter(epg_data__epg_source=sxm_src).count()
+            lines.append(
+                f"SiriusXM EPG: ACTIVE — {sxm_epg_count:,} channel entries, "
+                f"{sxm_prog_count:,} programs, {sxm_assigned:,} channels assigned"
+            )
+        except EPGSource.DoesNotExist:
+            lines.append(f"SiriusXM EPG: not created — run Fill SiriusXM EPG")
 
         return {"success": True, "message": "\n".join(lines)}
 
@@ -1467,9 +1474,33 @@ class Plugin:
         fill_group_names = {g.strip() for g in (settings.get('fill_groups') or '').split(',') if g.strip()}
         sxm_group_names = {g.strip() for g in (settings.get('sxm_groups') or '').split(',') if g.strip()}
 
+        from django.db.models import Q
+
+        fill_src = None
+        try:
+            fill_src = EPGSource.objects.get(name=FILL_SOURCE_NAME)
+        except EPGSource.DoesNotExist:
+            pass
+
+        sxm_src = None
+        try:
+            sxm_src = EPGSource.objects.get(name=SXM_SOURCE_NAME)
+        except EPGSource.DoesNotExist:
+            pass
+
+        fill_count = Channel.objects.filter(epg_data__epg_source=fill_src).count() if fill_src else 0
+        sxm_count  = Channel.objects.filter(epg_data__epg_source=sxm_src).count() if sxm_src else 0
+
+        # Channels with no EPG or only Dispatcharr's built-in dummy (excludes our fill/SXM sources)
+        dummy_q = Q(epg_data__isnull=True) | Q(epg_data__epg_source__source_type='dummy')
+        if fill_src:
+            dummy_q &= ~Q(epg_data__epg_source=fill_src)
+        if sxm_src:
+            dummy_q &= ~Q(epg_data__epg_source=sxm_src)
+
         channels_no_epg = (
             Channel.objects
-            .filter(epg_data__isnull=True)
+            .filter(dummy_q)
             .select_related('channel_group')
             .order_by('channel_group__name', 'name')
         )
@@ -1479,14 +1510,7 @@ class Plugin:
             gname = ch.channel_group.name if ch.channel_group else '(no group)'
             by_group[gname].append(ch.name)
 
-        fill_count = 0
-        try:
-            fill_src = EPGSource.objects.get(name=FILL_SOURCE_NAME)
-            fill_count = Channel.objects.filter(epg_data__epg_source=fill_src).count()
-        except EPGSource.DoesNotExist:
-            pass
-
-        if not by_group and not fill_count:
+        if not by_group and not fill_count and not sxm_count:
             return {"success": True, "message": "No channels without EPG found. All channels have EPG data assigned."}
 
         total = sum(len(v) for v in by_group.values())
@@ -1517,6 +1541,8 @@ class Plugin:
             lines.append(f"In SiriusXM Group: {in_sxm:,} channel(s) targeted by SiriusXM actions")
         if fill_count:
             lines.append(f"Already on Fill EPG: {fill_count:,} channel(s)")
+        if sxm_count:
+            lines.append(f"Already on SiriusXM EPG: {sxm_count:,} channel(s)")
         lines.append("\nPaste channel names into 'Skip Channels' to exclude them from Fill EPG.")
 
         return {"success": True, "message": "\n".join(lines)}
@@ -1597,10 +1623,7 @@ class Plugin:
         return {"success": True, "message": "\n".join(lines)}
 
     def _action_sxm_fill_epg(self, settings, logger):
-        import json
-        import urllib.request
-        from datetime import datetime, timedelta, timezone
-        from apps.epg.models import EPGSource, EPGData, ProgramData
+        from apps.epg.models import EPGSource, EPGData
 
         if not settings.get('fill_sxm_enrich', False):
             return {"success": False, "message": "SiriusXM Enrichment must be enabled. Enable it in Settings → SiriusXM."}
@@ -1609,48 +1632,49 @@ class Plugin:
         if not sxm_group_names:
             return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
 
-        block_hours = int(settings.get('fill_block_hours') or 1)
-        days_ahead  = int(settings.get('fill_days_ahead') or 14)
-        block_delta = timedelta(hours=block_hours)
+        # Ensure the Standard XMLTV EPG source exists. Dispatcharr will refresh it on the
+        # next EPG refresh cycle and populate EPGData — we then assign channels to those records.
+        sxm_src, created = EPGSource.objects.get_or_create(
+            name=SXM_SOURCE_NAME,
+            defaults={"source_type": "standard", "url": SXM_EPG_URL},
+        )
+        if created:
+            return {
+                "success": True,
+                "message": (
+                    f"Created '{SXM_SOURCE_NAME}' EPG source pointing to the community SiriusXM XMLTV.\n\n"
+                    f"Trigger an EPG refresh in Dispatcharr so the source can download its data, "
+                    f"then run Fill SiriusXM EPG again to assign channels."
+                ),
+            }
 
-        # SXM enrichment cache (best-effort — continue without descriptions on failure)
-        enrich_cache = {}
-        enrich_msg = ''
-        try:
-            enrich_cache, refreshed = self._load_sxm_cache(settings)
-            enrich_msg = (
-                f' — SiriusXM data refreshed ({len(enrich_cache):,} channels)'
-                if refreshed else
-                f' — SiriusXM cache: {len(enrich_cache):,} channels'
-            )
-        except Exception as e:
-            enrich_msg = f' — SiriusXM enrichment unavailable: {e}'
-            LOGGER.warning(f"EPGeditARR: SiriusXM enrichment failed: {e}")
+        # Build fuzzy lookup from the XMLTV source's parsed EPGData records
+        epg_entries = list(EPGData.objects.filter(epg_source=sxm_src))
+        if not epg_entries:
+            return {
+                "success": False,
+                "message": (
+                    f"'{SXM_SOURCE_NAME}' exists but has no EPG data yet.\n"
+                    f"Trigger an EPG refresh in Dispatcharr so the source can download its data, "
+                    f"then run Fill SiriusXM EPG again."
+                ),
+            }
 
-        # Sports schedule (best-effort — fall back to pure fill if unavailable)
-        events = []
-        sports_msg = ''
-        try:
-            req = urllib.request.Request(SPORTS_SCHEDULE_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                schedule = json.loads(r.read().decode("utf-8"))
-            events = schedule.get("events", [])
-            sports_msg = f' — {len(events)} sports events'
-        except Exception as e:
-            sports_msg = f' — sports schedule unavailable ({e}), fill-only fallback'
-            LOGGER.warning(f"EPGeditARR: sports schedule fetch failed: {e}")
+        epg_lookup = {}
+        for entry in epg_entries:
+            for key in self._fuzzy_channel_keys(entry.name):
+                epg_lookup.setdefault(key, entry)
 
-        # Migrate any channels still pointing at the old EPGeditARR: Sports source
-        # so _get_sxm_channels picks them up (it only looks for fill source or no EPG)
+        # Migrate channels still on legacy sources so _get_sxm_channels picks them up
         try:
-            from apps.epg.models import EPGSource as _ES
-            old_sports_src = _ES.objects.filter(name="EPGeditARR: Sports").first()
-            if old_sports_src:
-                from apps.channels.models import Channel as _Ch
-                _Ch.objects.filter(
-                    channel_group__name__in=sxm_group_names,
-                    epg_data__epg_source=old_sports_src,
-                ).update(epg_data=None)
+            for legacy_name in ("EPGeditARR: Sports", FILL_SOURCE_NAME):
+                legacy_src = EPGSource.objects.filter(name=legacy_name).first()
+                if legacy_src:
+                    from apps.channels.models import Channel as _Ch
+                    _Ch.objects.filter(
+                        channel_group__name__in=sxm_group_names,
+                        epg_data__epg_source=legacy_src,
+                    ).update(epg_data=None)
         except Exception:
             pass
 
@@ -1659,118 +1683,42 @@ class Plugin:
             return {
                 "success": False,
                 "message": (
-                    f"No channels found in SiriusXM Channel Group {sxm_group_names!r} with no EPG. "
+                    f"No channels found in SiriusXM Channel Group {sxm_group_names!r} without EPG. "
                     f"Run Scan to see what's available."
                 ),
             }
 
-        fill_source, _ = EPGSource.objects.get_or_create(
-            name=FILL_SOURCE_NAME,
-            defaults={"source_type": "dummy", "custom_properties": {"epgeditarr_fill": True}},
-        )
-
-        # Build fuzzy lookup: schedule channel name → matched Channel object
-        ch_lookup = {}
-        for ch in channels:
-            for key in self._fuzzy_channel_keys(ch.name):
-                ch_lookup.setdefault(key, ch)
-
-        now          = datetime.now(timezone.utc)
-        window_start = now.replace(minute=0, second=0, microsecond=0)
-        window_end   = window_start + timedelta(days=days_ahead)
-
-        # Invert events: Channel PK → [(ev, start_dt, end_dt)]
-        channel_events = {}
-        for ev in events:
-            try:
-                s = datetime.strptime(ev["start_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-                e = datetime.strptime(ev["end_utc"],   "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-            except Exception:
-                continue
-            if e <= now:
-                continue
-            for ch_name in ev.get("channels", []):
-                for key in self._fuzzy_channel_keys(ch_name):
-                    if key in ch_lookup:
-                        pk = ch_lookup[key].pk
-                        channel_events.setdefault(pk, []).append((ev, s, e))
-                        break
-
-        existing_epgdata = {e.tvg_id: e for e in EPGData.objects.filter(epg_source=fill_source)}
-        tvg_ids_to_fill  = [self._channel_tvg_id(ch.name) for ch in channels]
-        total_programs   = 0
-        sports_ch_count  = 0
-        fill_ch_count    = 0
-        matched_enrich   = 0
+        matched = 0
+        unmatched_names = []
 
         with transaction.atomic():
-            # Purge stale programs (>1 day old) and rebuild from window_start forward
-            purge_before = now - timedelta(days=1)
-            ProgramData.objects.filter(epg__epg_source=fill_source, end_time__lt=purge_before).delete()
-            ProgramData.objects.filter(epg__epg_source=fill_source, epg__tvg_id__in=tvg_ids_to_fill,
-                                       start_time__gte=now).delete()
-
-            batch = []
             for ch in channels:
-                tvg_id = self._channel_tvg_id(ch.name)
-
-                if tvg_id in existing_epgdata:
-                    epg_entry = existing_epgdata[tvg_id]
+                best = None
+                for key in self._fuzzy_channel_keys(ch.name):
+                    if key in epg_lookup:
+                        best = epg_lookup[key]
+                        break
+                if best:
+                    if ch.epg_data_id != best.id:
+                        ch.epg_data = best
+                        ch.save(update_fields=['epg_data'])
+                    matched += 1
                 else:
-                    epg_entry = EPGData.objects.create(
-                        tvg_id=tvg_id, name=ch.name, icon_url='', epg_source=fill_source,
-                    )
-                    existing_epgdata[tvg_id] = epg_entry
-
-                if ch.epg_data_id != epg_entry.id:
-                    ch.epg_data = epg_entry
-                    ch.save(update_fields=['epg_data'])
-
-                enrich      = self._lookup_enrich(enrich_cache, ch.name)
-                fill_desc   = enrich.get('description', '') if enrich else ''
-                if enrich:
-                    matched_enrich += 1
-
-                ev_list = channel_events.get(ch.pk, [])
-                if ev_list:
-                    segments = self._build_sports_segments(
-                        ch.name, fill_desc, ev_list, window_start, window_end, block_delta,
-                    )
-                    for seg_start, seg_end, seg_title, seg_desc in segments:
-                        batch.append(ProgramData(
-                            epg=epg_entry, start_time=seg_start, end_time=seg_end,
-                            title=seg_title, sub_title=None, description=seg_desc,
-                            tvg_id=tvg_id, custom_properties={},
-                        ))
-                    total_programs  += len(segments)
-                    sports_ch_count += 1
-                else:
-                    fill_progs = self._generate_fill_blocks(epg_entry, ch.name, fill_desc, block_hours, days_ahead)
-                    batch.extend(fill_progs)
-                    total_programs += len(fill_progs)
-                    fill_ch_count  += 1
-
-                if len(batch) >= 2000:
-                    ProgramData.objects.bulk_create(batch)
-                    batch = []
-
-            if batch:
-                ProgramData.objects.bulk_create(batch)
-
-        fill_source.status       = "success"
-        fill_source.last_message = (
-            f"SiriusXM Fill: {len(channels):,} channels, {total_programs:,} programs"
-        )
-        fill_source.save(update_fields=["status", "last_message"])
+                    unmatched_names.append(ch.name)
 
         lines = [
-            f"SiriusXM Fill EPG complete{enrich_msg}{sports_msg}\n",
-            f"  Sports channels : {sports_ch_count:,}  (Upcoming / LIVE / Post-game blocks)",
-            f"  Fill channels   : {fill_ch_count:,}  ({block_hours}h blocks × {days_ahead} days)",
-            f"  Programs written: {total_programs:,}",
-            f"  Groups targeted : {', '.join(sxm_group_names)}",
-            f"  SiriusXM matched: {matched_enrich:,} / {len(channels):,} channels",
+            f"SiriusXM Fill EPG complete\n",
+            f"  Channels assigned : {matched:,} / {len(channels):,}",
+            f"  EPG source        : {SXM_SOURCE_NAME}  ({len(epg_entries):,} entries)",
+            f"  Groups targeted   : {', '.join(sxm_group_names)}",
         ]
+        if unmatched_names:
+            sample = unmatched_names[:8]
+            more = len(unmatched_names) - len(sample)
+            lines.append(
+                f"  Unmatched ({len(unmatched_names)}): {', '.join(sample)}"
+                + (f" (+{more} more)" if more else "")
+            )
         return {"success": True, "message": "\n".join(lines)}
 
     @staticmethod
@@ -1879,7 +1827,7 @@ class Plugin:
             return {
                 "success": True,
                 "message": (
-                    f"SiriusXM channel data refreshed from Wikipedia.\n"
+                    f"SiriusXM channel data refreshed from official API cache.\n"
                     f"{len(data):,} channels cached ({has_numbers} with lineup position)."
                 ),
             }
@@ -2011,7 +1959,7 @@ class Plugin:
         start_note = " (auto-detected)" if auto_detected else ""
         lines = [
             f"Sort complete — {len(ordered):,} channels renumbered from {start_number}{start_note}\n",
-            f"  Matched via Wikipedia      : {wiki_matched:,}",
+            f"  Matched via SiriusXM API   : {wiki_matched:,}",
             f"  Seasonal (out of season)   : {seasonal_deferred:,}",
             f"  Matched via sport block    : {sport_matched:,}",
             f"  Matched via name number    : {name_matched:,}",
@@ -2068,7 +2016,7 @@ class Plugin:
         if not renamed:
             msg = "All matched channels already use their official SiriusXM names."
             if skipped:
-                msg += f" ({skipped} channels had no Wikipedia match and were left unchanged.)"
+                msg += f" ({skipped} channels had no SiriusXM API match and were left unchanged.)"
             return {"success": True, "message": msg}
 
         lines = [f"Renamed {len(renamed)} channels to official SiriusXM names:\n"]
@@ -2078,7 +2026,7 @@ class Plugin:
             lines.append(f"  {old_name!r}  →  {new_name!r}")
 
         if skipped:
-            lines.append(f"\n{skipped} channels had no Wikipedia match and were left unchanged.")
+            lines.append(f"\n{skipped} channels had no SiriusXM API match and were left unchanged.")
 
         return {"success": True, "message": "\n".join(lines)}
 
@@ -2145,7 +2093,7 @@ class Plugin:
 
         lines = [f"Assign Logos complete — {assigned} channels updated"]
         if skipped_no_match:
-            lines.append(f"  {skipped_no_match} channels had no Wikipedia match (skipped)")
+            lines.append(f"  {skipped_no_match} channels had no SiriusXM API match (skipped)")
         if skipped_no_logo:
             lines.append(f"  {skipped_no_logo} matched channels had no logo URL (skipped)")
         if errors:
