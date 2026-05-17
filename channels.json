@@ -4,1722 +4,1968 @@
     "description": "Sirius XM Promos and Information",
     "genre": "",
     "sxm_number": 1,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmpreview-lg.png"
   },
   "sirius xm 107": {
     "name": "Sirius XM 107",
     "description": "Available",
     "genre": "",
     "sxm_number": null,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxm107-lg.png"
   },
   "siriusxm hits 1": {
     "name": "SiriusXM Hits 1",
     "description": "Contemporary hits",
     "genre": "",
     "sxm_number": 2,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmhits1-lg.png"
   },
   "unwell music": {
     "name": "Unwell Music [E]",
     "description": "Nostalgic throwbacks and trending hits curated by Call Her Daddy host Alex Cooper",
     "genre": "",
     "sxm_number": 3,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/unwellmusice-lg.png"
   },
   "life with john mayer": {
     "name": "Life with John Mayer",
     "description": "John Mayer's own music, including unreleased and live recordings, and his personally curated music from all genres",
     "genre": "",
     "sxm_number": 4,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/lifewithjohnmayer-lg.png"
   },
   "the pulse": {
     "name": "The Pulse (formerly Flight 26)",
     "description": "Hot Adult Contemporary , modern adult Pop hits and Soul",
     "genre": "",
     "sxm_number": 5,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thepulseformerlyflight26-lg.png"
   },
   "poprocks": {
     "name": "PopRocks",
     "description": "90s to recent pop rock hits",
     "genre": "",
     "sxm_number": 6,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/poprocks-lg.png"
   },
   "70s on 7": {
     "name": "'70s on 7",
     "description": "Hits from the 1970s",
     "genre": "",
     "sxm_number": 7,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/70son7-lg.png"
   },
   "80s on 8": {
     "name": "'80s on 8",
     "description": "Hits from the 1980s",
     "genre": "",
     "sxm_number": 8,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/80son8-lg.png"
   },
   "90s on 9": {
     "name": "'90s on 9",
     "description": "Hits from the 1990s",
     "genre": "",
     "sxm_number": 9,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/90son9-lg.png"
   },
   "pop2k": {
     "name": "Pop2K (formerly KISS and XM Hitlist)",
     "description": "Hits from the 2000s",
     "genre": "",
     "sxm_number": 10,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/pop2kformerlykissandxmhitlist-lg.png"
   },
   "the 10s spot": {
     "name": "The 10s Spot (Formerly KIIS-Los Angeles)",
     "description": "Hits from the 2010s",
     "genre": "",
     "sxm_number": 11,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/the10sspotformerlykiislosangeles-lg.png"
   },
   "kelly clarkson connection": {
     "name": "Kelly Clarkson Connection",
     "description": "Kelly Clarkson 's own music and music that she loves and inspires her",
     "genre": "",
     "sxm_number": 12,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/kellyclarksonconnection-lg.png"
   },
   "pitbull's globalization": {
     "name": "Pitbull's Globalization",
     "description": "Global hits curated by Pitbull , and DJs from around the world",
     "genre": "",
     "sxm_number": 13,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/pitbullsglobalization-lg.png"
   },
   "yacht rock radio": {
     "name": "Yacht Rock Radio",
     "description": "Smooth-sailing soft rock from the 70s and 80s",
     "genre": "",
     "sxm_number": 15,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/yachtrockradio-lg.png"
   },
   "the blend": {
     "name": "The Blend",
     "description": "Soft adult contemporary from the 70s and 80s",
     "genre": "",
     "sxm_number": 16,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theblend-lg.png"
   },
   "the coffee house": {
     "name": "The Coffee House",
     "description": "Singer-Songwriters, acoustic rock , folk rock",
     "genre": "",
     "sxm_number": 17,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thecoffeehouse-lg.png"
   },
   "50s gold": {
     "name": "'50s Gold (formerly '50s on 5)",
     "description": "Hits from the 1950s",
     "genre": "",
     "sxm_number": 72,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/50sgoldformerly50son5-lg.png"
   },
   "60s gold": {
     "name": "'60s Gold (formerly '60s on 6)",
     "description": "Hits from the 1960s",
     "genre": "",
     "sxm_number": 73,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/60sgoldformerly60son6-lg.png"
   },
   "elvis radio": {
     "name": "Elvis Radio",
     "description": "Elvis Presley Music 24/7",
     "genre": "",
     "sxm_number": 76,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/elvisradio-lg.png"
   },
   "road trip radio": {
     "name": "Road Trip Radio",
     "description": "Music to drive to, 2010s and pop",
     "genre": "",
     "sxm_number": 301,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/roadtripradio-lg.png"
   },
   "andy cohen 's kiki lounge": {
     "name": "Andy Cohen 's Kiki Lounge",
     "description": "Mix of pop, rock, and dance",
     "genre": "",
     "sxm_number": 302,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/andycohenskikilounge-lg.png"
   },
   "mosaic": {
     "name": "Mosaic",
     "description": "Modern Adult Contemporary Pop from the 90s to today",
     "genre": "",
     "sxm_number": 305,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/mosaic-lg.png"
   },
   "pop top 500 countdown": {
     "name": "Pop Top 500 Countdown",
     "description": "Repeat loop of program featuring the 500 best pop songs of all time",
     "genre": "",
     "sxm_number": 550,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/poptop500countdown-lg.png"
   },
   "80's on 8 top 500 countdown": {
     "name": "80's on 8 Top 500 Countdown",
     "description": "Repeat loop of program featuring the 500 best pop songs of the 1980s",
     "genre": "",
     "sxm_number": 551,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/80son8top500countdown-lg.png"
   },
   "90's on 9 top 500 countdown": {
     "name": "90's on 9 Top 500 Countdown",
     "description": "Repeat loop of program featuring the 500 best pop songs of the 1990s",
     "genre": "",
     "sxm_number": 552,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/90son9top500countdown-lg.png"
   },
   "pandora now": {
     "name": "Pandora Now [E] (formerly Top 20 on 20 )",
     "description": "What's trending on Pandora",
     "genre": "",
     "sxm_number": 703,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/pandoranoweformerlytop20on20-lg.png"
   },
   "soulcycle radio": {
     "name": "SoulCycle Radio",
     "description": "Music programmed by SoulCycle",
     "genre": "",
     "sxm_number": 704,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/soulcycleradio-lg.png"
   },
   "siriusxm k-pop": {
     "name": "SiriusXM K-Pop [E]",
     "description": "K-pop hits by Korean idol groups",
     "genre": "",
     "sxm_number": 705,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmkpope-lg.png"
   },
   "siriusxm love": {
     "name": "SiriusXM Love",
     "description": "Love songs and soft adult contemporary hits from the 60s through 80s",
     "genre": "",
     "sxm_number": 708,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmlove-lg.png"
   },
   "sirius xo": {
     "name": "Sirius XO",
     "description": "Love songs and soft adult contemporary hits from the 90s to today",
     "genre": "",
     "sxm_number": 709,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxo-lg.png"
   },
   "the bridge": {
     "name": "The Bridge",
     "description": "Mellow classic rock from the 70s and 80s",
     "genre": "",
     "sxm_number": 14,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thebridge-lg.png"
   },
   "the beatles channel": {
     "name": "The Beatles Channel",
     "description": "The Beatles music, solo music from their members, covers and songs which influenced them; music from Apple Records",
     "genre": "",
     "sxm_number": 18,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thebeatleschannel-lg.png"
   },
   "bob marley's tuff gong radio": {
     "name": "Bob Marley's Tuff Gong Radio",
     "description": "Music from Bob Marley",
     "genre": "",
     "sxm_number": 19,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bobmarleystuffgongradio-lg.png"
   },
   "e street radio": {
     "name": "E Street Radio",
     "description": "Music from Bruce Springsteen and his E Street Band",
     "genre": "",
     "sxm_number": 20,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/estreetradio-lg.png"
   },
   "underground garage": {
     "name": "Underground Garage",
     "description": "Garage rock curated by Little Steven",
     "genre": "",
     "sxm_number": 21,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/undergroundgarage-lg.png"
   },
   "pearl jam radio": {
     "name": "Pearl Jam Radio",
     "description": "Pearl Jam , 24/7",
     "genre": "",
     "sxm_number": 22,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/pearljamradio-lg.png"
   },
   "the grateful dead channel": {
     "name": "The Grateful Dead Channel",
     "description": "Music from the Grateful Dead",
     "genre": "",
     "sxm_number": 23,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thegratefuldeadchannel-lg.png"
   },
   "radio margaritaville": {
     "name": "Radio Margaritaville",
     "description": "Jimmy Buffett and other music appealing to Parrotheads",
     "genre": "",
     "sxm_number": 24,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/radiomargaritaville-lg.png"
   },
   "classic rewind": {
     "name": "Classic Rewind (formerly Big Tracks)",
     "description": "Classic rock from the late 70s and 80s",
     "genre": "",
     "sxm_number": 25,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/classicrewindformerlybigtracks-lg.png"
   },
   "classic vinyl": {
     "name": "Classic Vinyl (formerly Top Tracks)",
     "description": "Album-oriented rock from the 60s and early 70s",
     "genre": "",
     "sxm_number": 26,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/classicvinylformerlytoptracks-lg.png"
   },
   "alt 2k": {
     "name": "Alt 2K",
     "description": "Alternative rock from the 2000s",
     "genre": "",
     "sxm_number": 27,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/alt2k-lg.png"
   },
   "the spectrum": {
     "name": "The Spectrum (formerly XM's XM Café )",
     "description": "Adult album alternative",
     "genre": "",
     "sxm_number": 28,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thespectrumformerlyxmsxmcafe-lg.png"
   },
   "phish radio": {
     "name": "Phish Radio",
     "description": "Music from Phish",
     "genre": "",
     "sxm_number": 29,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/phishradio-lg.png"
   },
   "dave matthews band radio": {
     "name": "Dave Matthews Band Radio",
     "description": "Music from Dave Matthews Band",
     "genre": "",
     "sxm_number": 30,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/davematthewsbandradio-lg.png"
   },
   "tom petty radio": {
     "name": "Tom Petty Radio",
     "description": "Music from Tom Petty",
     "genre": "",
     "sxm_number": 31,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/tompettyradio-lg.png"
   },
   "u2 x-radio": {
     "name": "U2 X-Radio",
     "description": "Music from U2",
     "genre": "",
     "sxm_number": 32,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/u2xradio-lg.png"
   },
   "1st wave": {
     "name": "1st Wave",
     "description": "Classic alternative rock",
     "genre": "",
     "sxm_number": 33,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/1stwave-lg.png"
   },
   "lithium": {
     "name": "Lithium (formerly Lucy)",
     "description": "1990s alternative rock , grunge , and alternative metal",
     "genre": "",
     "sxm_number": 34,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/lithiumformerlylucy-lg.png"
   },
   "siriusxmu": {
     "name": "SiriusXMU (replaced from XM's XMU)",
     "description": "Indie and college rock",
     "genre": "",
     "sxm_number": 35,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmureplacedfromxmsxmu-lg.png"
   },
   "alt nation": {
     "name": "Alt Nation (replaced from XM's Lucy)",
     "description": "Modern alternative rock",
     "genre": "",
     "sxm_number": 36,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/altnationreplacedfromxmslucy-lg.png"
   },
   "octane": {
     "name": "Octane [E] (replaced from XM's xL SquiZZ)",
     "description": "Today's hard rock and alternative metal",
     "genre": "",
     "sxm_number": 37,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/octaneereplacedfromxmsxlsquizz-lg.png"
   },
   "ozzy's boneyard": {
     "name": "Ozzy's Boneyard (formerly XM's xL Boneyard)",
     "description": "Classic hard rock and heavy metal curated by Ozzy Osbourne",
     "genre": "",
     "sxm_number": 38,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/ozzysboneyardformerlyxmsxlboneyard-lg.png"
   },
   "hair nation": {
     "name": "Hair Nation (replaced from XM's Big Tracks)",
     "description": "Glam and hair metal from the 80s",
     "genre": "",
     "sxm_number": 39,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hairnationreplacedfromxmsbigtracks-lg.png"
   },
   "liquid metal": {
     "name": "Liquid Metal [E]",
     "description": "Today's extreme metal",
     "genre": "",
     "sxm_number": 40,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/liquidmetale-lg.png"
   },
   "siriusxm turbo": {
     "name": "SiriusXM Turbo [E]",
     "description": "Nu metal and alternative metal from the 90s and 2000s",
     "genre": "",
     "sxm_number": 41,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmturboe-lg.png"
   },
   "maximum metallica": {
     "name": "Maximum Metallica [E]",
     "description": "Metallica music 24/7",
     "genre": "",
     "sxm_number": 42,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/maximummetallicae-lg.png"
   },
   "deep tracks": {
     "name": "Deep Tracks",
     "description": "Deep classic rock , progressive rock , Album-oriented rock",
     "genre": "",
     "sxm_number": 308,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/deeptracks-lg.png"
   },
   "jam on 309": {
     "name": "Jam on 309",
     "description": "Jam bands",
     "genre": "",
     "sxm_number": 309,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/jamon309-lg.png"
   },
   "bon jovi radio": {
     "name": "Bon Jovi Radio",
     "description": "Hits and concerts from Bon Jovi along other selected groups",
     "genre": "",
     "sxm_number": 312,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bonjoviradio-lg.png"
   },
   "green day's idiot nation": {
     "name": "Green Day's Idiot Nation (formerly Faction Punk) [E]",
     "description": "Punk rock ; curated by Green Day",
     "genre": "",
     "sxm_number": 314,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/greendaysidiotnationformerlyfactionpunke-lg.png"
   },
   "whole lotta red hot": {
     "name": "Whole Lotta Red Hot",
     "description": "Music from Red Hot Chili Peppers",
     "genre": "",
     "sxm_number": 315,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/wholelottaredhot-lg.png"
   },
   "classic rock top 1000 countdown": {
     "name": "Classic Rock Top 1000 Countdown",
     "description": "Repeat loop of program featuring the 1000 best classic rock songs",
     "genre": "",
     "sxm_number": 553,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/classicrocktop1000countdown-lg.png"
   },
   "the loft": {
     "name": "The Loft",
     "description": "Singers-Songwriters rock, soft rock and alternative rock",
     "genre": "",
     "sxm_number": 710,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theloft-lg.png"
   },
   "tom petty's buried treasure": {
     "name": "Tom Petty's Buried Treasure",
     "description": "Loop of archived radio show episodes",
     "genre": "",
     "sxm_number": 711,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/tompettysburiedtreasure-lg.png"
   },
   "marky ramone's punk rock blitzkrieg": {
     "name": "Marky Ramone's Punk Rock Blitzkrieg",
     "description": "Classic punk rock ; curated by Marky Ramone",
     "genre": "",
     "sxm_number": 712,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/markyramonespunkrockblitzkrieg-lg.png"
   },
   "rock bar radio": {
     "name": "Rock Bar Radio",
     "description": "Rock & Roll Jukebox Songs",
     "genre": "",
     "sxm_number": 713,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/rockbarradio-lg.png"
   },
   "classic rock party": {
     "name": "Classic Rock Party",
     "description": "Classic EDM-inspired rock and roll hits",
     "genre": "",
     "sxm_number": 715,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/classicrockparty-lg.png"
   },
   "little steven 's coolest songs in the world": {
     "name": "Little Steven 's Coolest Songs in the World",
     "description": "Garage Rock, curated by Little Steven of his Underground Garage radio",
     "genre": "",
     "sxm_number": 721,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/littlestevenscoolestsongsintheworld-lg.png"
   },
   "rock the bells radio": {
     "name": "Rock the Bells Radio [E] (replaced XM's xL The Rhyme , formerly Back Spin)",
     "description": "Golden age hip hop , gangsta rap , 1980s–early 1990s \" New school hip hop \"",
     "genre": "",
     "sxm_number": 43,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/rockthebellsradioereplacedxmsxltherhymeformerlybackspin-lg.png"
   },
   "hip-hop nation": {
     "name": "Hip-Hop Nation [E] (replaced XM's The City )",
     "description": "Modern Hip hop hits",
     "genre": "",
     "sxm_number": 44,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hiphopnationereplacedxmsthecity-lg.png"
   },
   "shade 45": {
     "name": "Shade 45 [E] (replaced XM's xL 66 Raw)",
     "description": "Progressive hip hop / rap music by Eminem",
     "genre": "",
     "sxm_number": 45,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/shade45ereplacedxmsxl66raw-lg.png"
   },
   "the heat": {
     "name": "The Heat (replaced XM's The Eye formerly Hot Jamz)",
     "description": "Rhythmic Contemporary ( Urban contemporary hip hop and R&B hits)",
     "genre": "",
     "sxm_number": 46,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theheatreplacedxmstheeyeformerlyhotjamz-lg.png"
   },
   "heart & soul": {
     "name": "Heart & Soul (replaced XM's Suite 62)",
     "description": "Urban Adult Contemporary (Adult R&B hits)",
     "genre": "",
     "sxm_number": 47,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/heartsoulreplacedxmssuite62-lg.png"
   },
   "the flow": {
     "name": "The Flow",
     "description": "R&B hits from the 2000s",
     "genre": "",
     "sxm_number": 48,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theflow-lg.png"
   },
   "flex2k": {
     "name": "Flex2K [E]",
     "description": "Hip hop hits from the 2000s",
     "genre": "",
     "sxm_number": 49,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/flex2ke-lg.png"
   },
   "siriusxm fly": {
     "name": "SiriusXM FLY [E]",
     "description": "Hip hop and R&B hits from the 90s to 2000s",
     "genre": "",
     "sxm_number": 50,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmflye-lg.png"
   },
   "the groove": {
     "name": "The Groove",
     "description": "1970s–early 90s Old school R&B, funk , and disco",
     "genre": "",
     "sxm_number": 51,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thegroove-lg.png"
   },
   "smokey's soul town": {
     "name": "Smokey's Soul Town (formerly Soul Revue; replaced XM's Soul Street )",
     "description": "Classic soul and R&B curated by Smokey Robinson",
     "genre": "",
     "sxm_number": 74,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/smokeyssoultownformerlysoulrevuereplacedxmssoulstreet-lg.png"
   },
   "siriusxm silk 330": {
     "name": "SiriusXM Silk 330",
     "description": "Smooth and sexy R&B love songs",
     "genre": "",
     "sxm_number": 330,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmsilk330-lg.png"
   },
   "shaggy's boombastic radio": {
     "name": "Shaggy's Boombastic Radio (formerly The Joint)",
     "description": "Reggae and Afrobeats curated by Shaggy",
     "genre": "",
     "sxm_number": 332,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/shaggysboombasticradioformerlythejoint-lg.png"
   },
   "grown folks jamz": {
     "name": "Grown Folks JAMZ",
     "description": "Our true R&B experience",
     "genre": "",
     "sxm_number": 362,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/grownfolksjamz-lg.png"
   },
   "hip-hop chronicles": {
     "name": "Hip-hop Chronicles [E]",
     "description": "Playing the most iconic 500 hip-hop songs of all time",
     "genre": "",
     "sxm_number": 556,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hiphopchroniclese-lg.png"
   },
   "sway's universe": {
     "name": "Sway's Universe [E]",
     "description": "Urban music and lifestyle",
     "genre": "",
     "sxm_number": 720,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/swaysuniversee-lg.png"
   },
   "rock the bells mixdown": {
     "name": "Rock the Bells Mixdown [E]",
     "description": "Hip hop mixes",
     "genre": "",
     "sxm_number": 723,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/rockthebellsmixdowne-lg.png"
   },
   "soundcloud radio": {
     "name": "SoundCloud Radio [E]",
     "description": "Hip hop from up-and-coming artists from SoundCloud",
     "genre": "",
     "sxm_number": 724,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/soundcloudradioe-lg.png"
   },
   "bpm": {
     "name": "BPM",
     "description": "Modern EDM hits",
     "genre": "",
     "sxm_number": 52,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bpm-lg.png"
   },
   "diplo's revolution": {
     "name": "Diplo's Revolution [E] (formerly Electric Area and The Move )",
     "description": "EDM and occasional remixes by Diplo and his friends",
     "genre": "",
     "sxm_number": 53,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/diplosrevolutioneformerlyelectricareaandthemove-lg.png"
   },
   "studio 54 radio": {
     "name": "Studio 54 Radio (formerly BBC Radio 1 simulcast, Chrome (XM), and The Strobe )",
     "description": "Classic house and disco bangers",
     "genre": "",
     "sxm_number": 54,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/studio54radioformerlybbcradio1simulcastchromexmandthestrobe-lg.png"
   },
   "sirius xm chill": {
     "name": "Sirius XM Chill",
     "description": "Downtempo ambient house , chillwave , deep / tropical house",
     "genre": "",
     "sxm_number": 55,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmchill-lg.png"
   },
   "radio monaco": {
     "name": "Radio Monaco",
     "description": "European dance and regular Pop hits",
     "genre": "",
     "sxm_number": 340,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/radiomonaco-lg.png"
   },
   "utopia": {
     "name": "Utopia",
     "description": "Dance hits from the 1990s and 2000s",
     "genre": "",
     "sxm_number": 341,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/utopia-lg.png"
   },
   "steve aoki remix radio": {
     "name": "Steve Aoki Remix Radio",
     "description": "Remixes curated by Steve Aoki",
     "genre": "",
     "sxm_number": 735,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/steveaokiremixradio-lg.png"
   },
   "a state of armin": {
     "name": "A State of Armin",
     "description": "Trance and progressive house",
     "genre": "",
     "sxm_number": 736,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/astateofarmin-lg.png"
   },
   "one world radio": {
     "name": "One World Radio [E]",
     "description": "Curated music and live sets from Tomorrowland , one of the largest electronic dance music festivals held in Belgium",
     "genre": "",
     "sxm_number": 738,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/oneworldradioe-lg.png"
   },
   "the highway": {
     "name": "The Highway (formerly Highway 16 )",
     "description": "Modern Country music",
     "genre": "",
     "sxm_number": 56,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thehighwayformerlyhighway16-lg.png"
   },
   "y2kountry": {
     "name": "Y2Kountry",
     "description": "Country music from the 2000s and 2010s (2000–2019)",
     "genre": "",
     "sxm_number": 57,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/y2kountry-lg.png"
   },
   "prime country": {
     "name": "Prime Country (formerly U.S. Country)",
     "description": "Classic Country from the 1980s and 1990s",
     "genre": "",
     "sxm_number": 58,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/primecountryformerlyuscountry-lg.png"
   },
   "no shoes radio": {
     "name": "No Shoes Radio",
     "description": "Music from Kenny Chesney along with some easy country",
     "genre": "",
     "sxm_number": 59,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/noshoesradio-lg.png"
   },
   "carrie's country": {
     "name": "Carrie's Country",
     "description": "Music from Carrie Underwood, plus her favorite artists and influences, including classic rock and new country.",
     "genre": "",
     "sxm_number": 60,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/carriescountry-lg.png"
   },
   "willie's roadhouse": {
     "name": "Willie's Roadhouse (formerly The Roadhouse and Willie's Place )",
     "description": "Classic country and Willie Nelson 's Texas Traditional Country from the 1960s, 1970s, and 1980s",
     "genre": "",
     "sxm_number": 61,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/williesroadhouseformerlytheroadhouseandwilliesplace-lg.png"
   },
   "outlaw country": {
     "name": "Outlaw Country",
     "description": "Outlaw country , alternative country , Americana",
     "genre": "",
     "sxm_number": 62,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/outlawcountry-lg.png"
   },
   "chris stapleton radio": {
     "name": "Chris Stapleton Radio",
     "description": "Music from Chris Stapleton",
     "genre": "",
     "sxm_number": 63,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/chrisstapletonradio-lg.png"
   },
   "morgan wallen radio": {
     "name": "Morgan Wallen Radio",
     "description": "Music from Morgan Wallen",
     "genre": "",
     "sxm_number": null,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/morganwallenradio-lg.png"
   },
   "bluegrass junction": {
     "name": "Bluegrass Junction",
     "description": "Bluegrass music",
     "genre": "",
     "sxm_number": 77,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bluegrassjunction-lg.png"
   },
   "dwight yoakam & the bakersfield beat": {
     "name": "Dwight Yoakam & the Bakersfield Beat",
     "description": "Music from Dwight Yoakam",
     "genre": "",
     "sxm_number": 349,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/dwightyoakamthebakersfieldbeat-lg.png"
   },
   "red, white & booze": {
     "name": "Red, White & Booze",
     "description": "Country bar songs",
     "genre": "",
     "sxm_number": 350,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/redwhitebooze-lg.png"
   },
   "country top 1000 countdown": {
     "name": "Country Top 1000 Countdown",
     "description": "Repeat loop of program featuring the 1000 best country songs of all time",
     "genre": "",
     "sxm_number": 558,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/countrytop1000countdown-lg.png"
   },
   "savior sunday daily by carrie's country": {
     "name": "Savior Sunday Daily by Carrie's Country",
     "description": "Country gospel curated by Carrie Underwood",
     "genre": "",
     "sxm_number": 739,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/saviorsundaydailybycarriescountry-lg.png"
   },
   "eric church's outsiders radio": {
     "name": "Eric Church's Outsiders Radio",
     "description": "Music from Eric \"The Chief\" Church and his friends",
     "genre": "",
     "sxm_number": 740,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/ericchurchsoutsidersradio-lg.png"
   },
   "the village": {
     "name": "The Village",
     "description": "Folk music",
     "genre": "",
     "sxm_number": 741,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thevillage-lg.png"
   },
   "kirk franklin's praise": {
     "name": "Kirk Franklin's Praise (formerly Spirit)",
     "description": "Gospel curated by Kirk Franklin",
     "genre": "",
     "sxm_number": 64,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/kirkfranklinspraiseformerlyspirit-lg.png"
   },
   "the message": {
     "name": "The Message",
     "description": "Contemporary Christian",
     "genre": "",
     "sxm_number": 65,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/themessage-lg.png"
   },
   "message worship": {
     "name": "Message Worship",
     "description": "Contemporary Worship",
     "genre": "",
     "sxm_number": 68,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/messageworship-lg.png"
   },
   "bill gaither 's enlighten": {
     "name": "Bill Gaither 's enLighten",
     "description": "Southern Gospel",
     "genre": "",
     "sxm_number": 150,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/billgaithersenlighten-lg.png"
   },
   "watercolors": {
     "name": "Watercolors",
     "description": "Smooth jazz",
     "genre": "",
     "sxm_number": 66,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/watercolors-lg.png"
   },
   "real jazz": {
     "name": "Real Jazz",
     "description": "Jazz",
     "genre": "",
     "sxm_number": 67,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/realjazz-lg.png"
   },
   "on broadway": {
     "name": "On Broadway",
     "description": "Showtunes",
     "genre": "",
     "sxm_number": 69,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/onbroadway-lg.png"
   },
   "siriusly sinatra": {
     "name": "Siriusly Sinatra (formerly High Standards)",
     "description": "Standards , Jazz , and Swing",
     "genre": "",
     "sxm_number": 70,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriuslysinatraformerlyhighstandards-lg.png"
   },
   "40s junction": {
     "name": "'40s Junction (formerly 40s on 4)",
     "description": "Big Band, Swing and Pop Hits from the 1940s",
     "genre": "",
     "sxm_number": 71,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/40sjunctionformerly40son4-lg.png"
   },
   "b.b. king's bluesville": {
     "name": "B.B. King's Bluesville",
     "description": "Blues",
     "genre": "",
     "sxm_number": 75,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bbkingsbluesville-lg.png"
   },
   "symphony hall": {
     "name": "Symphony Hall",
     "description": "Classical music",
     "genre": "",
     "sxm_number": 78,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/symphonyhall-lg.png"
   },
   "escape": {
     "name": "Escape",
     "description": "Beautiful music",
     "genre": "",
     "sxm_number": 149,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/escape-lg.png"
   },
   "met opera radio": {
     "name": "Met Opera Radio",
     "description": "Opera from the Metropolitan Opera",
     "genre": "",
     "sxm_number": 744,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/metoperaradio-lg.png"
   },
   "sirius xm pops": {
     "name": "Sirius XM Pops",
     "description": "Popular classical",
     "genre": "",
     "sxm_number": 745,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmpops-lg.png"
   },
   "spa": {
     "name": "Spa",
     "description": "New Age / Ambient Music",
     "genre": "",
     "sxm_number": 746,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/spa-lg.png"
   },
   "disney hits": {
     "name": "Disney Hits",
     "description": "Songs from the Disney Songbook",
     "genre": "",
     "sxm_number": 133,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/disneyhits-lg.png"
   },
   "kids place live": {
     "name": "Kids Place Live",
     "description": "Children's music and live shows",
     "genre": "",
     "sxm_number": 134,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/kidsplacelive-lg.png"
   },
   "kidz bop radio": {
     "name": "Kidz Bop Radio",
     "description": "Today's pop songs covered by the Kidz Bop Kids",
     "genre": "",
     "sxm_number": 135,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/kidzbopradio-lg.png"
   },
   "cocomelon & friends": {
     "name": "CoComelon & Friends",
     "description": "Children's music and shows from iconic Moonbug characters",
     "genre": "",
     "sxm_number": 136,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/cocomelonfriends-lg.png"
   },
   "disney jr. radio": {
     "name": "Disney Jr. Radio",
     "description": "Music and shows from Disney Jr.",
     "genre": "",
     "sxm_number": 702,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/disneyjrradio-lg.png"
   },
   "espn radio": {
     "name": "ESPN Radio",
     "description": "Sports talk",
     "genre": "",
     "sxm_number": 80,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/espnradio-lg.png"
   },
   "espn xtra": {
     "name": "ESPN Xtra",
     "description": "Sports news (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 81,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/espnxtra-lg.png"
   },
   "mad dog sports radio": {
     "name": "Mad Dog Sports Radio",
     "description": "Sports Talk created and hosted by Chris \"Mad Dog\" Russo (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 82,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/maddogsportsradio-lg.png"
   },
   "fox sports on siriusxm": {
     "name": "Fox Sports on SiriusXM",
     "description": "Sports talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 83,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/foxsportsonsiriusxm-lg.png"
   },
   "siriusxm college sports radio": {
     "name": "SiriusXM College Sports Radio (formerly ESPNU Radio)",
     "description": "College sports talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 84,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmcollegesportsradioformerlyespnuradio-lg.png"
   },
   "nbc sports audio": {
     "name": "NBC Sports Audio",
     "description": "Sports talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 85,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/nbcsportsaudio-lg.png"
   },
   "siriusxm nba radio": {
     "name": "SiriusXM NBA Radio",
     "description": "National Basketball Association talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 86,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmnbaradio-lg.png"
   },
   "siriusxm fantasy sports radio": {
     "name": "SiriusXM Fantasy Sports Radio",
     "description": "Fantasy sports talk from FantasyGuru.com",
     "genre": "",
     "sxm_number": 87,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmfantasysportsradio-lg.png"
   },
   "siriusxm nfl radio": {
     "name": "SiriusXM NFL Radio",
     "description": "National Football League talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 88,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmnflradio-lg.png"
   },
   "mlb network radio": {
     "name": "MLB Network Radio",
     "description": "Major League Baseball talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 89,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/mlbnetworkradio-lg.png"
   },
   "siriusxm nascar radio": {
     "name": "SiriusXM NASCAR Radio",
     "description": "NASCAR racing talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 90,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmnascarradio-lg.png"
   },
   "siriusxm nhl network radio": {
     "name": "SiriusXM NHL Network Radio",
     "description": "National Hockey League talk and play-by-play (when available)",
     "genre": "",
     "sxm_number": 91,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmnhlnetworkradio-lg.png"
   },
   "siriusxm pga tour radio": {
     "name": "SiriusXM PGA Tour Radio",
     "description": "PGA Tour golf talks and play-by-play (when available)",
     "genre": "",
     "sxm_number": 92,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmpgatourradio-lg.png"
   },
   "siriusxm pro wrestling nation 24/7": {
     "name": "SiriusXM Pro Wrestling Nation 24/7",
     "description": "All-day and night pro wrestling discussion from the WWE , the AEW and many other pro leagues (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 156,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmprowrestlingnation247-lg.png"
   },
   "siriusxm fc": {
     "name": "SiriusXM FC",
     "description": "Soccer talks and play-by-play (when available)",
     "genre": "",
     "sxm_number": 157,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmfc-lg.png"
   },
   "vsin radio": {
     "name": "VSiN Radio",
     "description": "Sports betting talk from VSiN (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 158,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/vsinradio-lg.png"
   },
   "sportsgrid radio": {
     "name": "SportsGrid Radio",
     "description": "Sports betting talk from SportsGrid (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 159,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/sportsgridradio-lg.png"
   },
   "siriusxm indycar nation": {
     "name": "SiriusXM INDYCAR Nation",
     "description": "IndyCar Series live coverage",
     "genre": "",
     "sxm_number": 218,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmindycarnation-lg.png"
   },
   "espn podcasts": {
     "name": "ESPN Podcasts",
     "description": "Best of ESPN and 30 for 30 Podcast",
     "genre": "",
     "sxm_number": 370,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/espnpodcasts-lg.png"
   },
   "siriusxm acc radio": {
     "name": "SiriusXM ACC Radio",
     "description": "Atlantic Coast Conference talk and play-by-play (Platinum Plan only)",
     "genre": "",
     "sxm_number": 371,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmaccradio-lg.png"
   },
   "siriusxm big ten radio": {
     "name": "SiriusXM Big Ten Radio",
     "description": "Big Ten Conference talk and play-by-play (Platinum Plan only)",
     "genre": "",
     "sxm_number": 372,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmbigtenradio-lg.png"
   },
   "siriusxm sec radio": {
     "name": "SiriusXM SEC Radio",
     "description": "Southeastern Conference talk and play-by-play (Platinum Plan only)",
     "genre": "",
     "sxm_number": 374,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmsecradio-lg.png"
   },
   "westwood one sports": {
     "name": "Westwood One Sports (formerly CBS Sports Radio and Infinity Sports Network)",
     "description": "Sports talk (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 375,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/westwoodonesportsformerlycbssportsradioandinfinitysportsnetwork-lg.png"
   },
   "netflix is a joke radio": {
     "name": "Netflix is a Joke Radio [E]",
     "description": "Uncensored Netflix comedy specials",
     "genre": "",
     "sxm_number": 93,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/netflixisajokeradioe-lg.png"
   },
   "comedy greats": {
     "name": "Comedy Greats [E]",
     "description": "Uncensored comedy featuring \"the Greatest Comedians of All-Time\" (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 94,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/comedygreatse-lg.png"
   },
   "comedy central radio": {
     "name": "Comedy Central Radio [E]",
     "description": "Uncensored comedy from Comedy Central",
     "genre": "",
     "sxm_number": 95,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/comedycentralradioe-lg.png"
   },
   "kevin hart's laugh out loud radio": {
     "name": "Kevin Hart's Laugh Out Loud Radio [E]",
     "description": "Kevin Hart 's comedy and shows",
     "genre": "",
     "sxm_number": 96,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/kevinhartslaughoutloudradioe-lg.png"
   },
   "jeff & larry's comedy roundup": {
     "name": "Jeff & Larry's Comedy Roundup [E] (formerly Blue Collar Radio )",
     "description": "Uncensored comedy with Larry the Cable Guy and Jeff Foxworthy (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 97,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/jefflarryscomedyroundupeformerlybluecollarradio-lg.png"
   },
   "pure comedy": {
     "name": "Pure Comedy (formerly Laugh USA)",
     "description": "Family-friendly comedy (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 98,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/purecomedyformerlylaughusa-lg.png"
   },
   "raw comedy": {
     "name": "Raw Comedy [E] (formerly Raw Dog Comedy)",
     "description": "Uncensored comedy and shows (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 99,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/rawcomedyeformerlyrawdogcomedy-lg.png"
   },
   "she's so funny": {
     "name": "She's So Funny [E]",
     "description": "Hand-curated stand-up comedy from female comedians",
     "genre": "",
     "sxm_number": 771,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/shessofunnye-lg.png"
   },
   "comedy classics": {
     "name": "Comedy Classics [E]",
     "description": "Vintage stand-up comedy",
     "genre": "",
     "sxm_number": 772,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/comedyclassicse-lg.png"
   },
   "howard 100 and howard 101": {
     "name": "Howard 100 and Howard 101 [E]",
     "description": "Howard Stern 's uncensored channels of The Howard Stern Show and The World of Howard Stern (Platinum Plan only)",
     "genre": "",
     "sxm_number": 100,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/howard100andhoward101e-lg.png"
   },
   "radio andy": {
     "name": "Radio Andy [E]",
     "description": "Andy Cohen 's radio station for uncensored talk",
     "genre": "",
     "sxm_number": 102,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/radioandye-lg.png"
   },
   "faction talk": {
     "name": "Faction Talk [E]",
     "description": "Uncensored Talk with Jim Norton & Sam Roberts , Bennington , and The Bonfire hosted by Big Jay Oakerson and Dan Soder (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 103,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/factiontalke-lg.png"
   },
   "conan o'brien radio": {
     "name": "Conan O'Brien Radio [E] (formerly Team Coco Radio)",
     "description": "Home of Conan O'Brien and his Team Coco 's talks and comedies (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 104,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/conanobrienradioeformerlyteamcocoradio-lg.png"
   },
   "dateline 24/7": {
     "name": "Dateline 24/7",
     "description": "All the crimes and mysteries from Dateline NBC",
     "genre": "",
     "sxm_number": 107,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/dateline247-lg.png"
   },
   "today show radio": {
     "name": "TODAY Show Radio",
     "description": "Today – live broadcast and extended show content (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 108,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/todayshowradio-lg.png"
   },
   "stars": {
     "name": "Stars [E]",
     "description": "Hollywood lifestyle and conversation (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 109,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/starse-lg.png"
   },
   "doctor radio": {
     "name": "Doctor Radio",
     "description": "Health and medical information",
     "genre": "",
     "sxm_number": 110,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/doctorradio-lg.png"
   },
   "triumph": {
     "name": "Triumph",
     "description": "Advice, enlightenment, and inspiration from Megyn Kelly , Dr. Laura , Dave Ramsey , Glenn Beck , Nancy Grace , etc. (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 123,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/triumph-lg.png"
   },
   "business radio": {
     "name": "Business Radio",
     "description": "Financial news, operated by the Wharton School (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 132,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/businessradio-lg.png"
   },
   "road dog trucking": {
     "name": "Road Dog Trucking",
     "description": "Trucking talk (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 146,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/roaddogtrucking-lg.png"
   },
   "radio classics": {
     "name": "Radio Classics",
     "description": "Old-time radio (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 148,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/radioclassics-lg.png"
   },
   "siriusxm app originals": {
     "name": "SiriusXM App Originals",
     "description": "SiriusXM Original podcasts and live performances",
     "genre": "",
     "sxm_number": 781,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmapporiginals-lg.png"
   },
   "unwell on air": {
     "name": "Unwell On Air [E]",
     "description": "Unfiltered conversation, curated by Alex Cooper 's Unwell Network",
     "genre": "",
     "sxm_number": 786,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/unwellonaire-lg.png"
   },
   "smartless radio": {
     "name": "SmartLess Radio [E]",
     "description": "SmartLess podcast 24/7",
     "genre": "",
     "sxm_number": 787,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/smartlessradioe-lg.png"
   },
   "crime junkie radio": {
     "name": "Crime Junkie Radio",
     "description": "True crime podcast 24/7",
     "genre": "",
     "sxm_number": 788,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/crimejunkieradio-lg.png"
   },
   "the jeff lewis channel": {
     "name": "The Jeff Lewis Channel [E]",
     "description": "Loop of archived radio show episodes",
     "genre": "",
     "sxm_number": 789,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thejefflewischannele-lg.png"
   },
   "entertainment now": {
     "name": "Entertainment Now",
     "description": "Pop culture recaps and specials",
     "genre": "",
     "sxm_number": 790,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/entertainmentnow-lg.png"
   },
   "freakonomics radio network": {
     "name": "Freakonomics Radio Network",
     "description": "Socioeconomics podcast and others",
     "genre": "",
     "sxm_number": 791,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/freakonomicsradionetwork-lg.png"
   },
   "ramsey network": {
     "name": "Ramsey Network",
     "description": "Business talk from Dave Ramsey",
     "genre": "",
     "sxm_number": 792,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/ramseynetwork-lg.png"
   },
   "law&crime": {
     "name": "Law&Crime",
     "description": "Live trials (TV simulcast)",
     "genre": "",
     "sxm_number": 793,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/lawcrime-lg.png"
   },
   "the megyn kelly channel": {
     "name": "The Megyn Kelly Channel",
     "description": "Unfiltered political commentary and news",
     "genre": "",
     "sxm_number": 111,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/themegynkellychannel-lg.png"
   },
   "cnbc": {
     "name": "CNBC",
     "description": "Financial news (TV simulcast)",
     "genre": "",
     "sxm_number": 112,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/cnbc-lg.png"
   },
   "fox business": {
     "name": "Fox Business",
     "description": "Financial news (TV simulcast; may be preempted for games play-by-play)",
     "genre": "",
     "sxm_number": 113,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/foxbusiness-lg.png"
   },
   "fox news channel": {
     "name": "Fox News Channel",
     "description": "News and talks (TV simulcast)",
     "genre": "",
     "sxm_number": 114,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/foxnewschannel-lg.png"
   },
   "fox news headlines 24/7": {
     "name": "Fox News Headlines 24/7",
     "description": "Headlines from Fox News",
     "genre": "",
     "sxm_number": 115,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/foxnewsheadlines247-lg.png"
   },
   "cnn": {
     "name": "CNN",
     "description": "News and talks (TV simulcast)",
     "genre": "",
     "sxm_number": 116,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/cnn-lg.png"
   },
   "ms now": {
     "name": "MS NOW",
     "description": "News and talks (TV simulcast)",
     "genre": "",
     "sxm_number": 118,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/msnow-lg.png"
   },
   "prx remix": {
     "name": "PRX Remix",
     "description": "Public radio from PRX",
     "genre": "",
     "sxm_number": 119,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/prxremix-lg.png"
   },
   "bbc world service": {
     "name": "BBC World Service (English North American feed)",
     "description": "News and talks",
     "genre": "",
     "sxm_number": 120,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bbcworldserviceenglishnorthamericanfeed-lg.png"
   },
   "bloomberg radio": {
     "name": "Bloomberg Radio",
     "description": "Simulcast of WBBR in New York City (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 121,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/bloombergradio-lg.png"
   },
   "npr now": {
     "name": "NPR Now",
     "description": "NPR programs arranged specifically for SiriusXM",
     "genre": "",
     "sxm_number": 122,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/nprnow-lg.png"
   },
   "p.o.t.u.s.": {
     "name": "P.O.T.U.S.",
     "description": "Political talk",
     "genre": "",
     "sxm_number": 124,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/potus-lg.png"
   },
   "siriusxm patriot": {
     "name": "SiriusXM Patriot",
     "description": "Conservative talk radio (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 125,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmpatriot-lg.png"
   },
   "siriusxm urban view": {
     "name": "SiriusXM Urban View",
     "description": "African-American talk (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 126,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmurbanview-lg.png"
   },
   "siriusxm progress": {
     "name": "SiriusXM Progress",
     "description": "Progressive talk radio (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 127,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmprogress-lg.png"
   },
   "rural radio": {
     "name": "Rural Radio",
     "description": "Agricultural news & western lifestyle (may be preempted for games play-by-play)",
     "genre": "",
     "sxm_number": 147,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/ruralradio-lg.png"
   },
   "c-span radio": {
     "name": "C-SPAN Radio",
     "description": "U.S. Government Hearings and Public Affairs (WCSP-FM radio simulcast; may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 455,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/cspanradio-lg.png"
   },
   "nbc news now": {
     "name": "NBC News NOW",
     "description": "Live news reports",
     "genre": "",
     "sxm_number": 798,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/nbcnewsnow-lg.png"
   },
   "alerts from the weather channel": {
     "name": "Alerts from The Weather Channel",
     "description": "Weather news alert",
     "genre": "",
     "sxm_number": 799,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/alertsfromtheweatherchannel-lg.png"
   },
   "joel osteen radio": {
     "name": "Joel Osteen Radio",
     "description": "Messages of Hope",
     "genre": "",
     "sxm_number": 128,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/joelosteenradio-lg.png"
   },
   "the catholic channel": {
     "name": "The Catholic Channel",
     "description": "Talk For Saints and Sinners (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 129,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thecatholicchannel-lg.png"
   },
   "ewtn global catholic network": {
     "name": "EWTN Global Catholic Network",
     "description": "Solid Catholic Talk",
     "genre": "",
     "sxm_number": 130,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/ewtnglobalcatholicnetwork-lg.png"
   },
   "familytalk": {
     "name": "FamilyTalk",
     "description": "Christian Talk",
     "genre": "",
     "sxm_number": 131,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/familytalk-lg.png"
   },
   "the billy graham channel": {
     "name": "The Billy Graham Channel",
     "description": "Messages from Billy Graham (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 460,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thebillygrahamchannel-lg.png"
   },
   "holy culture radio": {
     "name": "Holy Culture Radio",
     "description": "Christian hip hop and talk",
     "genre": "",
     "sxm_number": 140,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/holycultureradio-lg.png"
   },
   "h.u.r. voices": {
     "name": "H.U.R. Voices",
     "description": "College Radio by Howard University ( WHUR-FM )",
     "genre": "",
     "sxm_number": 141,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hurvoices-lg.png"
   },
   "hbcu": {
     "name": "HBCU",
     "description": "College Radio from Howard University & HBCUs",
     "genre": "",
     "sxm_number": 142,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hbcu-lg.png"
   },
   "byu radio": {
     "name": "BYU Radio",
     "description": "Talk radio from Brigham Young University",
     "genre": "",
     "sxm_number": 143,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/byuradio-lg.png"
   },
   "slam! radio": {
     "name": "SLAM! Radio",
     "description": "Sports and entertainment talk from SLAM! Charter High School in Miami",
     "genre": "",
     "sxm_number": 145,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/slamradio-lg.png"
   },
   "hits uno": {
     "name": "Hits Uno [E]",
     "description": "Contemporary Latin hits",
     "genre": "",
     "sxm_number": 151,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/hitsunoe-lg.png"
   },
   "caliente": {
     "name": "Caliente",
     "description": "Current Tropical/ Latin Pop and Reggaeton",
     "genre": "",
     "sxm_number": 152,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/caliente-lg.png"
   },
   "águila": {
     "name": "Águila",
     "description": "Regional Mexican Ranchera music",
     "genre": "",
     "sxm_number": 153,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/aguila-lg.png"
   },
   "en vivo": {
     "name": "En Vivo",
     "description": "Live Latin music",
     "genre": "",
     "sxm_number": 154,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/envivo-lg.png"
   },
   "latin vault": {
     "name": "Latin Vault",
     "description": "Classic Latin music from the 50s to the early 80s",
     "genre": "",
     "sxm_number": 155,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/latinvault-lg.png"
   },
   "chucho valdes ' cuba & beyond": {
     "name": "Chucho Valdes ' Cuba & Beyond",
     "description": "Cuban music",
     "genre": "",
     "sxm_number": 760,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/chuchovaldescubabeyond-lg.png"
   },
   "celia cruz azúcar!": {
     "name": "Celia Cruz AZÚCAR!",
     "description": "Celebrating the legacy of Celia Cruz",
     "genre": "",
     "sxm_number": 761,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/celiacruzazucar-lg.png"
   },
   "caricia": {
     "name": "Caricia",
     "description": "Classic love ballads in both Spanish & English",
     "genre": "",
     "sxm_number": 762,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/caricia-lg.png"
   },
   "viva": {
     "name": "Viva",
     "description": "Today's Latin Pop hits",
     "genre": "",
     "sxm_number": 763,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/viva-lg.png"
   },
   "latidos": {
     "name": "Latidos",
     "description": "Latin Love songs",
     "genre": "",
     "sxm_number": 764,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/latidos-lg.png"
   },
   "flow nación": {
     "name": "Flow Nación",
     "description": "Latin Urban music",
     "genre": "",
     "sxm_number": 765,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/flownacion-lg.png"
   },
   "luna": {
     "name": "Luna",
     "description": "Latin Jazz",
     "genre": "",
     "sxm_number": 766,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/luna-lg.png"
   },
   "rumbón": {
     "name": "Rumbón",
     "description": "Classic Salsa music",
     "genre": "",
     "sxm_number": 767,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/rumbon-lg.png"
   },
   "la kueva": {
     "name": "La Kueva",
     "description": "Latin rock",
     "genre": "",
     "sxm_number": 768,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/lakueva-lg.png"
   },
   "korea today radio network": {
     "name": "Korea Today Radio Network",
     "description": "Korean music, news, & entertainment",
     "genre": "",
     "sxm_number": 144,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/koreatodayradionetwork-lg.png"
   },
   "attitude franco": {
     "name": "Attitude Franco",
     "description": "French Rock music",
     "genre": "",
     "sxm_number": 163,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/attitudefranco-lg.png"
   },
   "mixtape: north": {
     "name": "Mixtape: North [E]",
     "description": "Canadian Hip-hop and R&B",
     "genre": "",
     "sxm_number": 164,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/mixtapenorthe-lg.png"
   },
   "the indigiverse": {
     "name": "The Indigiverse",
     "description": "Native Canadian music and talks",
     "genre": "",
     "sxm_number": 165,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theindigiverse-lg.png"
   },
   "racines musicales": {
     "name": "Racines Musicales",
     "description": "Francophone & Canadian Country - Folk",
     "genre": "",
     "sxm_number": 166,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/racinesmusicales-lg.png"
   },
   "canada talks": {
     "name": "Canada Talks",
     "description": "Canadian current affairs & talk",
     "genre": "",
     "sxm_number": 167,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/canadatalks-lg.png"
   },
   "siriusxm comedy club": {
     "name": "SiriusXM Comedy Club [E]",
     "description": "Uncensored comedy from Canadian Comedians (may be preempted for sports play-by-play)",
     "genre": "",
     "sxm_number": 168,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmcomedyclube-lg.png"
   },
   "cbc radio one": {
     "name": "CBC Radio One (special national feed)",
     "description": "Canadian news and information",
     "genre": "",
     "sxm_number": 169,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/cbcradioonespecialnationalfeed-lg.png"
   },
   "ici radio-canada première": {
     "name": "Ici Radio-Canada Première",
     "description": "Canadian French news and information (simulcast of CBF-FM Montreal )",
     "genre": "",
     "sxm_number": 170,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/iciradiocanadapremiere-lg.png"
   },
   "top of the country radio": {
     "name": "Top of the Country Radio",
     "description": "New Canadian Country",
     "genre": "",
     "sxm_number": 171,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/topofthecountryradio-lg.png"
   },
   "siriusxm scoreboard": {
     "name": "SiriusXM Scoreboard",
     "description": "Final sports scores and sporting information for Canadian",
     "genre": "",
     "sxm_number": 172,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmscoreboard-lg.png"
   },
   "the verge": {
     "name": "The Verge",
     "description": "Brand new and emerging Canadian Indie / Alternative music",
     "genre": "",
     "sxm_number": 173,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/theverge-lg.png"
   },
   "influence franco": {
     "name": "Influence Franco",
     "description": "Indie pop alternative",
     "genre": "",
     "sxm_number": 174,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/influencefranco-lg.png"
   },
   "north americana": {
     "name": "North Americana",
     "description": "Americana music",
     "genre": "",
     "sxm_number": 359,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/northamericana-lg.png"
   },
   "poplandia": {
     "name": "Poplandia [E]",
     "description": "Canadian pop music & culture",
     "genre": "",
     "sxm_number": 754,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/poplandiae-lg.png"
   },
   "the tragically hip radio": {
     "name": "The Tragically Hip Radio",
     "description": "The Tragically Hip music, interview and their influences",
     "genre": "",
     "sxm_number": 757,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/thetragicallyhipradio-lg.png"
   },
   "iceberg radio": {
     "name": "Iceberg Radio",
     "description": "Canadian Adult Alternative",
     "genre": "",
     "sxm_number": 758,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/icebergradio-lg.png"
   },
   "les tubes franco": {
     "name": "Les Tubes Franco (formerly Attitude Franco as pre-Rock music channel)",
     "description": "French Chart Hits",
     "genre": "",
     "sxm_number": 759,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/lestubesfrancoformerlyattitudefrancoasprerockmusicchannel-lg.png"
   },
   "siriusxm dhamaka": {
     "name": "SiriusXM Dhamaka",
     "description": "South Asian music",
     "genre": "",
     "sxm_number": 796,
-    "seasonal": null
+    "seasonal": null,
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmdhamaka-lg.png"
   },
   "siriusxm holly": {
     "name": "SiriusXM Holly",
@@ -1729,7 +1975,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/siriusxmholly-lg.png"
   },
   "jimmy fallon holiday seasoning radio": {
     "name": "Jimmy Fallon Holiday Seasoning Radio",
@@ -1739,7 +1986,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/jimmyfallonholidayseasoningradio-lg.png"
   },
   "country christmas": {
     "name": "Country Christmas",
@@ -1749,7 +1997,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/countrychristmas-lg.png"
   },
   "christmas spirit": {
     "name": "Christmas Spirit",
@@ -1759,7 +2008,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/christmasspirit-lg.png"
   },
   "holiday traditions": {
     "name": "Holiday Traditions",
@@ -1769,7 +2019,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/holidaytraditions-lg.png"
   },
   "smokey's holiday soul town": {
     "name": "Smokey's Holiday Soul Town",
@@ -1779,7 +2030,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/smokeysholidaysoultown-lg.png"
   },
   "holiday pops": {
     "name": "Holiday Pops",
@@ -1789,7 +2041,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/holidaypops-lg.png"
   },
   "new year's nation": {
     "name": "New Year's Nation",
@@ -1799,7 +2052,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/newyearsnation-lg.png"
   },
   "hallmark channel radio": {
     "name": "Hallmark Channel Radio",
@@ -1809,7 +2063,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/hallmarkchannelradio-lg.png"
   },
   "jolly christmas": {
     "name": "Jolly Christmas",
@@ -1819,7 +2074,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/jollychristmas-lg.png"
   },
   "jingle jamz": {
     "name": "Jingle Jamz",
@@ -1829,7 +2085,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/jinglejamz-lg.png"
   },
   "real jazz holiday": {
     "name": "Real Jazz Holiday",
@@ -1839,7 +2096,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/realjazzholiday-lg.png"
   },
   "cool jazz christmas": {
     "name": "Cool Jazz Christmas",
@@ -1849,7 +2107,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/cooljazzchristmas-lg.png"
   },
   "mannheim steamroller channel": {
     "name": "Mannheim Steamroller Channel",
@@ -1859,7 +2118,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/mannheimsteamrollerchannel-lg.png"
   },
   "trans-siberian orchestra radio": {
     "name": "Trans-Siberian Orchestra Radio",
@@ -1869,7 +2129,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/transsiberianorchestraradio-lg.png"
   },
   "holiday instrumentals": {
     "name": "Holiday Instrumentals",
@@ -1879,7 +2140,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/holidayinstrumentals-lg.png"
   },
   "navidad": {
     "name": "Navidad",
@@ -1889,7 +2151,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/navidad-lg.png"
   },
   "rockin' xmas": {
     "name": "Rockin' Xmas",
@@ -1899,7 +2162,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/rockinxmas-lg.png"
   },
   "acoustic christmas": {
     "name": "Acoustic Christmas",
@@ -1909,7 +2173,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/acousticchristmas-lg.png"
   },
   "kids christmas": {
     "name": "Kids Christmas",
@@ -1919,7 +2184,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/kidschristmas-lg.png"
   },
   "sleep christmas": {
     "name": "Sleep Christmas",
@@ -1929,7 +2195,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/sleepchristmas-lg.png"
   },
   "radio hanukkah": {
     "name": "Radio Hanukkah",
@@ -1939,7 +2206,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/radiohanukkah-lg.png"
   },
   "holidays with anne murray & friends": {
     "name": "Holidays with Anne Murray & Friends",
@@ -1949,7 +2217,8 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/holidayswithannemurrayfriends-lg.png"
   },
   "noël incontournable": {
     "name": "Noël Incontournable",
@@ -1959,6 +2228,7 @@
     "seasonal": [
       11,
       1
-    ]
+    ],
+    "logo_url": "https://xmplaylist.com/img/station/noelincontournable-lg.png"
   }
 }
