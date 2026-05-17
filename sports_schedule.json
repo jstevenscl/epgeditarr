@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T17:01:04Z",
+  "generated_at": "2026-05-17T17:34:03Z",
   "events": [
     {
       "slug": "pga",
@@ -8,6 +8,7 @@
       "start_utc": "2026-05-17T14:00:00Z",
       "end_utc": "2026-05-17T19:00:00Z",
       "channels": [
+        "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
       ]
     },
@@ -157,7 +158,7 @@
         "Texas Rangers",
         "Houston Astros",
         "MLB Play-by-Play 184",
-        "SiriusXM Channel 870",
+        "MLB en Español 870",
         "MLB Network Radio"
       ]
     },
@@ -223,7 +224,7 @@
         "Los Angeles Dodgers",
         "Los Angeles Angels",
         "MLB Network Radio",
-        "SiriusXM Channel 871"
+        "MLB en Español 871"
       ]
     },
     {
@@ -235,7 +236,7 @@
       "channels": [
         "Portland Timbers",
         "Inter Miami CF",
-        "SiriusXM Channel 1999",
+        "Soccer en Español",
         "SiriusXM FC"
       ]
     },
@@ -275,7 +276,7 @@
       "channels": [
         "LAFC",
         "Nashville SC",
-        "SiriusXM Channel 1999",
+        "Soccer en Español",
         "SiriusXM FC"
       ]
     },
@@ -310,6 +311,7 @@
       "channels": [
         "Montreal Canadiens",
         "Buffalo Sabres",
+        "NHL Network Radio",
         "SiriusXM NHL Network Radio"
       ]
     },
@@ -322,7 +324,7 @@
       "channels": [
         "Manchester City",
         "Bournemouth",
-        "College Sports Play-by-Play 964",
+        "Sports 964",
         "SiriusXM FC"
       ]
     },
@@ -345,6 +347,7 @@
       "start_utc": "2026-05-21T17:00:00Z",
       "end_utc": "2026-05-21T22:00:00Z",
       "channels": [
+        "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
       ]
     },
@@ -365,6 +368,7 @@
       "start_utc": "2026-05-22T16:25:00Z",
       "end_utc": "2026-05-22T18:25:00Z",
       "channels": [
+        "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
       ]
     },
@@ -375,6 +379,7 @@
       "start_utc": "2026-05-22T17:00:00Z",
       "end_utc": "2026-05-22T22:00:00Z",
       "channels": [
+        "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
       ]
     },
@@ -385,6 +390,7 @@
       "start_utc": "2026-05-22T18:25:00Z",
       "end_utc": "2026-05-22T20:25:00Z",
       "channels": [
+        "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
       ]
     },
@@ -405,6 +411,7 @@
       "start_utc": "2026-05-23T15:55:00Z",
       "end_utc": "2026-05-23T17:55:00Z",
       "channels": [
+        "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
       ]
     },
@@ -415,6 +422,7 @@
       "start_utc": "2026-05-23T17:00:00Z",
       "end_utc": "2026-05-23T22:00:00Z",
       "channels": [
+        "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
       ]
     },
@@ -435,6 +443,7 @@
       "start_utc": "2026-05-23T19:55:00Z",
       "end_utc": "2026-05-23T21:55:00Z",
       "channels": [
+        "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
       ]
     },
@@ -465,6 +474,7 @@
       "start_utc": "2026-05-24T17:00:00Z",
       "end_utc": "2026-05-24T22:00:00Z",
       "channels": [
+        "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
       ]
     },
@@ -475,6 +485,7 @@
       "start_utc": "2026-05-24T20:00:00Z",
       "end_utc": "2026-05-24T22:00:00Z",
       "channels": [
+        "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
       ]
     },
