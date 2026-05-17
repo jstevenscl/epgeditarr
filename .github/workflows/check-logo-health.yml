@@ -23,7 +23,7 @@ jobs:
         id: health
         run: |
           python - << 'EOF'
-          import json, sys, urllib.request
+          import json, sys, urllib.request, urllib.error
           from pathlib import Path
 
           channels = json.loads(Path("channels.json").read_text(encoding="utf-8"))
@@ -37,8 +37,9 @@ jobs:
               try:
                   req = urllib.request.Request(url, headers={"User-Agent": UA}, method="HEAD")
                   with urllib.request.urlopen(req, timeout=15) as r:
-                      if r.status >= 400:
-                          broken.append((ch["name"], url, r.status))
+                      pass  # 2xx/3xx: URL is healthy
+              except urllib.error.HTTPError as e:
+                  broken.append((ch["name"], url, e.code))
               except Exception as e:
                   broken.append((ch["name"], url, str(e)))
 

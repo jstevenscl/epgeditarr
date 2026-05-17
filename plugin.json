@@ -110,7 +110,7 @@
       "id": "assign_logos",
       "label": "Assign SiriusXM Channel Logos",
       "button_label": "Assign Logos",
-      "description": "Assign channel logos to matched SiriusXM channels in your SiriusXM Channel Group using the xmplaylist.com logo library. Requires SiriusXM Enrichment to be enabled.",
+      "description": "Assign channel logos to matched SiriusXM channels in your SiriusXM Channel Group using the self-hosted GitHub Pages logo cache. Requires SiriusXM Enrichment to be enabled.",
       "button_variant": "filled",
       "button_color": "orange"
     },
