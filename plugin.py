@@ -20,7 +20,6 @@ FILL_CACHE_KEY = "fill_channel_cache"
 FILL_CACHE_UPDATED_KEY = "fill_channel_cache_updated"
 FILL_CACHE_TTL_DAYS = 7
 
-SPORTS_SOURCE_NAME = "EPGeditARR: Sports"
 SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.json"
 
 # Sport team → sort anchor (float places teams at end of their league's play-by-play block)
@@ -135,7 +134,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.00"
+    version = "0.2.01"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -1123,7 +1122,6 @@ class Plugin:
             "scan":                   self._action_scan,
             "fill_epg":               self._action_fill_epg,
             "sxm_fill_epg":           self._action_sxm_fill_epg,
-            "fill_sports_epg":        self._action_fill_sports_epg,
             "sort_epg":               self._action_sort_epg,
             "fill_and_sort":          self._action_fill_and_sort,
             "rename_channels":        self._action_rename_channels,
@@ -1599,6 +1597,9 @@ class Plugin:
         return {"success": True, "message": "\n".join(lines)}
 
     def _action_sxm_fill_epg(self, settings, logger):
+        import json
+        import urllib.request
+        from datetime import datetime, timedelta, timezone
         from apps.epg.models import EPGSource, EPGData, ProgramData
 
         if not settings.get('fill_sxm_enrich', False):
@@ -1609,8 +1610,10 @@ class Plugin:
             return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
 
         block_hours = int(settings.get('fill_block_hours') or 1)
-        days_ahead = int(settings.get('fill_days_ahead') or 14)
+        days_ahead  = int(settings.get('fill_days_ahead') or 14)
+        block_delta = timedelta(hours=block_hours)
 
+        # SXM enrichment cache (best-effort — continue without descriptions on failure)
         enrich_cache = {}
         enrich_msg = ''
         try:
@@ -1623,6 +1626,33 @@ class Plugin:
         except Exception as e:
             enrich_msg = f' — SiriusXM enrichment unavailable: {e}'
             LOGGER.warning(f"EPGeditARR: SiriusXM enrichment failed: {e}")
+
+        # Sports schedule (best-effort — fall back to pure fill if unavailable)
+        events = []
+        sports_msg = ''
+        try:
+            req = urllib.request.Request(SPORTS_SCHEDULE_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                schedule = json.loads(r.read().decode("utf-8"))
+            events = schedule.get("events", [])
+            sports_msg = f' — {len(events)} sports events'
+        except Exception as e:
+            sports_msg = f' — sports schedule unavailable ({e}), fill-only fallback'
+            LOGGER.warning(f"EPGeditARR: sports schedule fetch failed: {e}")
+
+        # Migrate any channels still pointing at the old EPGeditARR: Sports source
+        # so _get_sxm_channels picks them up (it only looks for fill source or no EPG)
+        try:
+            from apps.epg.models import EPGSource as _ES
+            old_sports_src = _ES.objects.filter(name="EPGeditARR: Sports").first()
+            if old_sports_src:
+                from apps.channels.models import Channel as _Ch
+                _Ch.objects.filter(
+                    channel_group__name__in=sxm_group_names,
+                    epg_data__epg_source=old_sports_src,
+                ).update(epg_data=None)
+        except Exception:
+            pass
 
         channels = self._get_sxm_channels(settings)
         if not channels:
@@ -1639,13 +1669,46 @@ class Plugin:
             defaults={"source_type": "dummy", "custom_properties": {"epgeditarr_fill": True}},
         )
 
+        # Build fuzzy lookup: schedule channel name → matched Channel object
+        ch_lookup = {}
+        for ch in channels:
+            for key in self._fuzzy_channel_keys(ch.name):
+                ch_lookup.setdefault(key, ch)
+
+        now          = datetime.now(timezone.utc)
+        window_start = now.replace(minute=0, second=0, microsecond=0)
+        window_end   = window_start + timedelta(days=days_ahead)
+
+        # Invert events: Channel PK → [(ev, start_dt, end_dt)]
+        channel_events = {}
+        for ev in events:
+            try:
+                s = datetime.strptime(ev["start_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                e = datetime.strptime(ev["end_utc"],   "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            except Exception:
+                continue
+            if e <= now:
+                continue
+            for ch_name in ev.get("channels", []):
+                for key in self._fuzzy_channel_keys(ch_name):
+                    if key in ch_lookup:
+                        pk = ch_lookup[key].pk
+                        channel_events.setdefault(pk, []).append((ev, s, e))
+                        break
+
         existing_epgdata = {e.tvg_id: e for e in EPGData.objects.filter(epg_source=fill_source)}
-        total_programs = 0
-        matched_enrich = 0
-        tvg_ids_to_fill = [self._channel_tvg_id(ch.name) for ch in channels]
+        tvg_ids_to_fill  = [self._channel_tvg_id(ch.name) for ch in channels]
+        total_programs   = 0
+        sports_ch_count  = 0
+        fill_ch_count    = 0
+        matched_enrich   = 0
 
         with transaction.atomic():
-            ProgramData.objects.filter(epg__epg_source=fill_source, epg__tvg_id__in=tvg_ids_to_fill).delete()
+            # Purge stale programs (>1 day old) and rebuild from window_start forward
+            purge_before = now - timedelta(days=1)
+            ProgramData.objects.filter(epg__epg_source=fill_source, end_time__lt=purge_before).delete()
+            ProgramData.objects.filter(epg__epg_source=fill_source, epg__tvg_id__in=tvg_ids_to_fill,
+                                       start_time__gte=now).delete()
 
             batch = []
             for ch in channels:
@@ -1663,14 +1726,29 @@ class Plugin:
                     ch.epg_data = epg_entry
                     ch.save(update_fields=['epg_data'])
 
-                enrich = self._lookup_enrich(enrich_cache, ch.name)
+                enrich      = self._lookup_enrich(enrich_cache, ch.name)
+                fill_desc   = enrich.get('description', '') if enrich else ''
                 if enrich:
                     matched_enrich += 1
-                description = enrich.get('description', '')
 
-                programs = self._generate_fill_blocks(epg_entry, ch.name, description, block_hours, days_ahead)
-                batch.extend(programs)
-                total_programs += len(programs)
+                ev_list = channel_events.get(ch.pk, [])
+                if ev_list:
+                    segments = self._build_sports_segments(
+                        ch.name, fill_desc, ev_list, window_start, window_end, block_delta,
+                    )
+                    for seg_start, seg_end, seg_title, seg_desc in segments:
+                        batch.append(ProgramData(
+                            epg=epg_entry, start_time=seg_start, end_time=seg_end,
+                            title=seg_title, sub_title=None, description=seg_desc,
+                            tvg_id=tvg_id, custom_properties={},
+                        ))
+                    total_programs  += len(segments)
+                    sports_ch_count += 1
+                else:
+                    fill_progs = self._generate_fill_blocks(epg_entry, ch.name, fill_desc, block_hours, days_ahead)
+                    batch.extend(fill_progs)
+                    total_programs += len(fill_progs)
+                    fill_ch_count  += 1
 
                 if len(batch) >= 2000:
                     ProgramData.objects.bulk_create(batch)
@@ -1679,18 +1757,20 @@ class Plugin:
             if batch:
                 ProgramData.objects.bulk_create(batch)
 
-        fill_source.status = "success"
-        fill_source.last_message = f"SiriusXM Fill EPG: {len(channels):,} channels, {total_programs:,} program blocks"
+        fill_source.status       = "success"
+        fill_source.last_message = (
+            f"SiriusXM Fill: {len(channels):,} channels, {total_programs:,} programs"
+        )
         fill_source.save(update_fields=["status", "last_message"])
 
         lines = [
-            f"SiriusXM Fill EPG complete{enrich_msg}\n",
-            f"  Channels filled : {len(channels):,}",
-            f"  Programs written: {total_programs:,}  ({block_hours}h blocks × {days_ahead} days)",
+            f"SiriusXM Fill EPG complete{enrich_msg}{sports_msg}\n",
+            f"  Sports channels : {sports_ch_count:,}  (Upcoming / LIVE / Post-game blocks)",
+            f"  Fill channels   : {fill_ch_count:,}  ({block_hours}h blocks × {days_ahead} days)",
+            f"  Programs written: {total_programs:,}",
             f"  Groups targeted : {', '.join(sxm_group_names)}",
             f"  SiriusXM matched: {matched_enrich:,} / {len(channels):,} channels",
         ]
-
         return {"success": True, "message": "\n".join(lines)}
 
     @staticmethod
@@ -1790,191 +1870,6 @@ class Plugin:
             current = slot_end
 
         return segments
-
-    def _action_fill_sports_epg(self, settings, logger):
-        import json
-        import urllib.request
-        from datetime import datetime, timedelta, timezone
-        from apps.epg.models import EPGSource, EPGData, ProgramData
-        from apps.channels.models import Channel
-
-        sxm_group_names = [g.strip() for g in (settings.get('sxm_groups') or '').split(',') if g.strip()]
-        if not sxm_group_names:
-            return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
-
-        block_hours = int(settings.get('fill_block_hours') or 1)
-        days_ahead = int(settings.get('fill_days_ahead') or 14)
-        block_delta = timedelta(hours=block_hours)
-
-        # SXM enrichment cache for channel descriptions (best-effort)
-        enrich_cache = {}
-        enrich_msg = ''
-        try:
-            enrich_cache, refreshed = self._load_sxm_cache(settings)
-            enrich_msg = (
-                f' — SiriusXM data refreshed ({len(enrich_cache):,} channels)'
-                if refreshed else
-                f' — SiriusXM cache: {len(enrich_cache):,} channels'
-            )
-        except Exception as e:
-            enrich_msg = f' — SiriusXM descriptions unavailable: {e}'
-
-        try:
-            req = urllib.request.Request(SPORTS_SCHEDULE_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                schedule = json.loads(r.read().decode("utf-8"))
-        except Exception as e:
-            return {"success": False, "message": f"Could not fetch sports schedule from GitHub Pages: {e}"}
-
-        events = schedule.get("events", [])
-        generated_at = schedule.get("generated_at", "unknown")
-
-        # Build channel lookup from SXM group
-        channels_qs = Channel.objects.filter(channel_group__name__in=sxm_group_names)
-        ch_lookup = {}
-        for ch in channels_qs:
-            for key in self._fuzzy_channel_keys(ch.name):
-                ch_lookup.setdefault(key, ch)
-
-        if not ch_lookup:
-            return {"success": False, "message": f"No channels found in SiriusXM Channel Group {sxm_group_names!r}."}
-
-        sports_source, _ = EPGSource.objects.get_or_create(
-            name=SPORTS_SOURCE_NAME,
-            defaults={"source_type": "dummy", "custom_properties": {"epgeditarr_sports": True}},
-        )
-        existing_epgdata = {e.tvg_id: e for e in EPGData.objects.filter(epg_source=sports_source)}
-
-        now = datetime.now(timezone.utc)
-        window_start = now.replace(minute=0, second=0, microsecond=0)
-        window_end = window_start + timedelta(days=days_ahead)
-
-        # Invert events: schedule channel name → [(event_dict, start_dt, end_dt)]
-        ch_name_to_events = {}
-        for ev in events:
-            try:
-                start_dt = datetime.strptime(ev["start_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-                end_dt = datetime.strptime(ev["end_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-            except Exception:
-                continue
-            if end_dt <= now:
-                continue
-            for ch_name in ev.get("channels", []):
-                ch_name_to_events.setdefault(ch_name, []).append((ev, start_dt, end_dt))
-
-        total_programs = 0
-        sports_ch_count = 0
-        fill_ch_count = 0
-        unmatched_schedule_names = set()
-        processed_ch_pks = set()  # Channel PKs already handled with sports segments
-
-        with transaction.atomic():
-            # Purge programs that ended more than 1 day ago
-            purge_before = now - timedelta(days=1)
-            ProgramData.objects.filter(epg__epg_source=sports_source, end_time__lt=purge_before).delete()
-
-            # ── Pass 1: sports channels — full segment treatment ──────────────
-            for ch_name, ev_list in ch_name_to_events.items():
-                matched_ch = None
-                for key in self._fuzzy_channel_keys(ch_name):
-                    if key in ch_lookup:
-                        matched_ch = ch_lookup[key]
-                        break
-
-                if not matched_ch:
-                    unmatched_schedule_names.add(ch_name)
-                    continue
-
-                processed_ch_pks.add(matched_ch.pk)
-                slug = re.sub(r'[^a-z0-9]+', '-', matched_ch.name.lower()).strip('-')
-                tvg_id = f"epgeditarr-sports-{slug}"
-
-                if tvg_id in existing_epgdata:
-                    epg_entry = existing_epgdata[tvg_id]
-                else:
-                    epg_entry = EPGData.objects.create(
-                        tvg_id=tvg_id, name=matched_ch.name, icon_url='', epg_source=sports_source,
-                    )
-                    existing_epgdata[tvg_id] = epg_entry
-
-                if matched_ch.epg_data_id != epg_entry.id:
-                    matched_ch.epg_data = epg_entry
-                    matched_ch.save(update_fields=['epg_data'])
-
-                ProgramData.objects.filter(epg=epg_entry, start_time__gte=now).delete()
-
-                enrich = self._lookup_enrich(enrich_cache, matched_ch.name)
-                fill_desc = enrich.get('description', '') if enrich else ''
-
-                segments = self._build_sports_segments(
-                    matched_ch.name, fill_desc, ev_list, window_start, window_end, block_delta,
-                )
-                batch = [
-                    ProgramData(
-                        epg=epg_entry,
-                        start_time=seg_start,
-                        end_time=seg_end,
-                        title=seg_title,
-                        sub_title=None,
-                        description=seg_desc,
-                        tvg_id=tvg_id,
-                        custom_properties={},
-                    )
-                    for seg_start, seg_end, seg_title, seg_desc in segments
-                ]
-                ProgramData.objects.bulk_create(batch)
-                total_programs += len(batch)
-                sports_ch_count += 1
-
-            # ── Pass 2: all remaining SXM channels — regular fill blocks ──────
-            for ch in channels_qs:
-                if ch.pk in processed_ch_pks:
-                    continue  # already handled with sports segments above
-
-                slug = re.sub(r'[^a-z0-9]+', '-', ch.name.lower()).strip('-')
-                tvg_id = f"epgeditarr-sports-{slug}"
-
-                if tvg_id in existing_epgdata:
-                    epg_entry = existing_epgdata[tvg_id]
-                else:
-                    epg_entry = EPGData.objects.create(
-                        tvg_id=tvg_id, name=ch.name, icon_url='', epg_source=sports_source,
-                    )
-                    existing_epgdata[tvg_id] = epg_entry
-
-                if ch.epg_data_id != epg_entry.id:
-                    ch.epg_data = epg_entry
-                    ch.save(update_fields=['epg_data'])
-
-                ProgramData.objects.filter(epg=epg_entry, start_time__gte=now).delete()
-
-                enrich = self._lookup_enrich(enrich_cache, ch.name)
-                fill_desc = enrich.get('description', '') if enrich else ''
-
-                fill_batch = self._generate_fill_blocks(epg_entry, ch.name, fill_desc, block_hours, days_ahead)
-                ProgramData.objects.bulk_create(fill_batch)
-                total_programs += len(fill_batch)
-                fill_ch_count += 1
-
-        sports_source.status = "success"
-        sports_source.last_message = (
-            f"Sports EPG: {sports_ch_count} sports + {fill_ch_count} fill channels, {total_programs} programs"
-        )
-        sports_source.save(update_fields=["status", "last_message"])
-
-        lines = [
-            f"Sports EPG complete — schedule generated {generated_at}{enrich_msg}\n",
-            f"  Events in schedule    : {len(events)}",
-            f"  Sports channels       : {sports_ch_count}  (Upcoming / LIVE / Post-game blocks)",
-            f"  Fill-only channels    : {fill_ch_count}  ({block_hours}h repeating blocks × {days_ahead} days)",
-            f"  Programs written      : {total_programs}",
-        ]
-        if unmatched_schedule_names:
-            lines.append(f"  Not in your lineup    : {len(unmatched_schedule_names)}")
-            sample = sorted(unmatched_schedule_names)[:5]
-            lines.append(f"  (sample: {', '.join(sample)})")
-
-        return {"success": True, "message": "\n".join(lines)}
 
     def _action_refresh_channel_data(self, settings, logger):
         try:
