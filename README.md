@@ -167,7 +167,7 @@ Click **Fill, Sort & Logos** to run all three steps at once:
 
 1. **Fill SiriusXM EPG** — Downloads the community XMLTV and assigns EPG with real SiriusXM channel descriptions to all matched channels in your SiriusXM Channel Group
 2. **Sort Channels** — Reorders channels to match SiriusXM's official lineup order and assigns sequential channel numbers
-3. **Assign Logos** — Assigns channel logos from the self-hosted GitHub Pages logo cache (~460 channels covered)
+3. **Assign Logos** — Assigns channel logos from the self-hosted GitHub Pages logo cache (714 channels, 100% coverage)
 
 Or run each step individually with the dedicated action buttons.
 
@@ -189,11 +189,11 @@ Seasonal channels (out of season — will sort correctly when active):
   ...
 ```
 
-**Seasonal channels** are placed at the end while out of season and automatically sort to their correct Wikipedia lineup positions when the season begins — no manual intervention needed.
+**Seasonal channels** are placed at the end while out of season and automatically sort to their correct lineup positions when the season begins — no manual intervention needed.
 
 **Sport play-by-play channels** (NFL, NBA, NHL, MLB team feeds) are grouped with their league's block using a built-in team roster.
 
-**Embedded channel numbers** (e.g. `Sports 963`, `ACC 955`) are used as a fallback sort key for channels not in the Wikipedia lineup.
+**Embedded channel numbers** (e.g. `Sports 963`, `ACC 955`) are used as a fallback sort key for channels not in the official SiriusXM lineup.
 
 ---
 
@@ -214,7 +214,7 @@ Seasonal channels (out of season — will sort correctly when active):
 | **Fill, Sort & Logos** | *(SiriusXM)* Run Fill SiriusXM EPG, Sort, and Assign Logos in one step — the full SiriusXM setup. |
 | **Rename Channels** | *(SiriusXM)* Rename channels in your SiriusXM Channel Group to their official SiriusXM names using the built-in alias library. |
 | **Assign Logos** | *(SiriusXM)* Assign channel logos from the self-hosted GitHub Pages logo cache to matched channels. |
-| **Refresh Channel Data** | *(SiriusXM)* Force an immediate refresh of the SiriusXM channel list from Wikipedia. |
+| **Refresh Channel Data** | *(SiriusXM)* Force an immediate refresh of the SiriusXM channel list from the official SiriusXM API cache. |
 | **Show Status** | Shows which sources are enabled, program counts, Fill EPG status, and configured rules. |
 | **Teardown** | Removes all virtual EPG sources (including Fill EPG) and reassigns channels back to their originals. |
 
@@ -371,7 +371,7 @@ The Fill output shows how many channels matched and lists any unmatched names. I
 **Rename Channels changed a name I didn't want changed.**
 The rename is based on a built-in alias library that maps known provider variants to official SiriusXM names. If a match is wrong, the channel can be manually renamed back in Dispatcharr. You can also run **Rename Channels** selectively — only matched channels are renamed, unmatched ones are left alone.
 
-**Why are my holiday channels at the end of the sort even though they have Wikipedia numbers?**
+**Why are my holiday channels at the end of the sort?**
 Channels in SiriusXM's seasonal holiday section (active early November – early January) are automatically placed at the end of the list when they're out of season. They'll sort to their correct positions — Holly at #4, Country Christmas at #58, etc. — as soon as the season begins. No action needed.
 
 **The unicode broadcast flags (`ᴺᵉʷ`, `ᴸᶦᵛᵉ`) show zero matches in Sample Data.**
