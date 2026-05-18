@@ -491,8 +491,13 @@ def xmltv_time(dt_str):
     return dt.strftime("%Y%m%d%H%M%S") + " +0000"
 
 
+# Characters invalid in XML 1.0: control chars except tab (x09), LF (x0a), CR (x0d)
+_INVALID_XML = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f\ud800-\udfff￾￿]')
+
+
 def xml_esc(s):
-    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+    s = _INVALID_XML.sub('', s or '')
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 
 def build_xmltv(all_events, ch_segments, ch_logos=None):

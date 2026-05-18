@@ -28,55 +28,55 @@ SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.j
 # refresh cycle — multiple sources refreshing in quick succession each fire the signal.
 SXM_FILL_COOLDOWN_SECS = 4 * 3600
 
-# Sport team → sort anchor (float places teams at end of their league's play-by-play block)
-# MLB 175-189, NBA 212-217, NHL 219-223, NFL 225-234
+# Sport team → sort key matching SiriusXM app-stream channel numbers.
+# Values only affect sort ORDER within the lineup — not the actual assigned channel numbers.
 _SPORT_TEAM_SORT = {
-    # NFL (anchor 234.5 — after slot 234, before next block)
-    "arizona cardinals": 234.5, "atlanta falcons": 234.5, "baltimore ravens": 234.5,
-    "buffalo bills": 234.5, "carolina panthers": 234.5, "chicago bears": 234.5,
-    "cincinnati bengals": 234.5, "cleveland browns": 234.5, "dallas cowboys": 234.5,
-    "denver broncos": 234.5, "detroit lions": 234.5, "green bay packers": 234.5,
-    "houston texans": 234.5, "indianapolis colts": 234.5, "jacksonville jaguars": 234.5,
-    "kansas city chiefs": 234.5, "las vegas raiders": 234.5, "los angeles chargers": 234.5,
-    "los angeles rams": 234.5, "miami dolphins": 234.5, "minnesota vikings": 234.5,
-    "new england patriots": 234.5, "new orleans saints": 234.5, "new york giants": 234.5,
-    "new york jets": 234.5, "philadelphia eagles": 234.5, "pittsburgh steelers": 234.5,
-    "san francisco 49ers": 234.5, "seattle seahawks": 234.5, "tampa bay buccaneers": 234.5,
-    "tennessee titans": 234.5, "washington commanders": 234.5,
-    # NBA (anchor 217.5 — after slot 217, before NHL at 219)
-    "atlanta hawks": 217.5, "boston celtics": 217.5, "brooklyn nets": 217.5,
-    "charlotte hornets": 217.5, "chicago bulls": 217.5, "cleveland cavaliers": 217.5,
-    "dallas mavericks": 217.5, "denver nuggets": 217.5, "detroit pistons": 217.5,
-    "golden state warriors": 217.5, "houston rockets": 217.5, "indiana pacers": 217.5,
-    "los angeles clippers": 217.5, "los angeles lakers": 217.5, "memphis grizzlies": 217.5,
-    "miami heat": 217.5, "milwaukee bucks": 217.5, "minnesota timberwolves": 217.5,
-    "new orleans pelicans": 217.5, "new york knicks": 217.5, "oklahoma city thunder": 217.5,
-    "orlando magic": 217.5, "philadelphia 76ers": 217.5, "phoenix suns": 217.5,
-    "portland trail blazers": 217.5, "sacramento kings": 217.5, "san antonio spurs": 217.5,
-    "toronto raptors": 217.5, "utah jazz": 217.5, "washington wizards": 217.5,
-    # NHL (anchor 223.5 — after slot 223, before NFL at 225)
-    "anaheim ducks": 223.5, "boston bruins": 223.5, "buffalo sabres": 223.5,
-    "calgary flames": 223.5, "carolina hurricanes": 223.5, "chicago blackhawks": 223.5,
-    "colorado avalanche": 223.5, "columbus blue jackets": 223.5, "dallas stars": 223.5,
-    "detroit red wings": 223.5, "edmonton oilers": 223.5, "florida panthers": 223.5,
-    "los angeles kings": 223.5, "minnesota wild": 223.5, "montreal canadiens": 223.5,
-    "nashville predators": 223.5, "new jersey devils": 223.5, "new york islanders": 223.5,
-    "new york rangers": 223.5, "ottawa senators": 223.5, "philadelphia flyers": 223.5,
-    "pittsburgh penguins": 223.5, "san jose sharks": 223.5, "seattle kraken": 223.5,
-    "st. louis blues": 223.5, "tampa bay lightning": 223.5, "toronto maple leafs": 223.5,
-    "utah mammoth": 223.5, "vancouver canucks": 223.5, "vegas golden knights": 223.5,
-    "washington capitals": 223.5, "winnipeg jets": 223.5,
-    # MLB (anchor 189.5 — after slot 189, before SEC at 190)
-    "arizona diamondbacks": 189.5, "atlanta braves": 189.5, "athletics": 189.5,
-    "baltimore orioles": 189.5, "boston red sox": 189.5, "chicago cubs": 189.5,
-    "chicago white sox": 189.5, "cincinnati reds": 189.5, "cleveland guardians": 189.5,
-    "colorado rockies": 189.5, "detroit tigers": 189.5, "houston astros": 189.5,
-    "kansas city royals": 189.5, "los angeles angels": 189.5, "los angeles dodgers": 189.5,
-    "miami marlins": 189.5, "milwaukee brewers": 189.5, "minnesota twins": 189.5,
-    "new york mets": 189.5, "new york yankees": 189.5, "philadelphia phillies": 189.5,
-    "pittsburgh pirates": 189.5, "san diego padres": 189.5, "san francisco giants": 189.5,
-    "seattle mariners": 189.5, "st. louis cardinals": 189.5, "tampa bay rays": 189.5,
-    "texas rangers": 189.5, "toronto blue jays": 189.5, "washington nationals": 189.5,
+    # NFL app streams (800-831) — official SiriusXM channel numbers from API
+    "arizona cardinals": 800, "atlanta falcons": 801, "baltimore ravens": 802,
+    "buffalo bills": 803, "carolina panthers": 804, "chicago bears": 805,
+    "cincinnati bengals": 806, "cleveland browns": 807, "dallas cowboys": 808,
+    "denver broncos": 809, "detroit lions": 810, "green bay packers": 811,
+    "houston texans": 812, "indianapolis colts": 813, "jacksonville jaguars": 814,
+    "kansas city chiefs": 815, "las vegas raiders": 816, "los angeles chargers": 817,
+    "los angeles rams": 818, "miami dolphins": 819, "minnesota vikings": 820,
+    "new england patriots": 821, "new orleans saints": 822, "new york giants": 823,
+    "new york jets": 824, "philadelphia eagles": 825, "pittsburgh steelers": 826,
+    "san francisco 49ers": 827, "seattle seahawks": 828, "tampa bay buccaneers": 829,
+    "tennessee titans": 830, "washington commanders": 831,
+    # MLB app streams (840-869)
+    "arizona diamondbacks": 840, "athletics": 841, "atlanta braves": 842,
+    "baltimore orioles": 843, "boston red sox": 844, "chicago cubs": 845,
+    "chicago white sox": 846, "cincinnati reds": 847, "cleveland guardians": 848,
+    "colorado rockies": 849, "detroit tigers": 850, "houston astros": 851,
+    "kansas city royals": 852, "los angeles angels": 853, "los angeles dodgers": 854,
+    "miami marlins": 855, "milwaukee brewers": 856, "minnesota twins": 857,
+    "new york mets": 858, "new york yankees": 859, "philadelphia phillies": 860,
+    "pittsburgh pirates": 861, "san diego padres": 862, "san francisco giants": 863,
+    "seattle mariners": 864, "st. louis cardinals": 865, "tampa bay rays": 866,
+    "texas rangers": 867, "toronto blue jays": 868, "washington nationals": 869,
+    # NBA app streams (880-909)
+    "atlanta hawks": 880, "boston celtics": 881, "brooklyn nets": 882,
+    "charlotte hornets": 883, "chicago bulls": 884, "cleveland cavaliers": 885,
+    "dallas mavericks": 886, "denver nuggets": 887, "detroit pistons": 888,
+    "golden state warriors": 889, "houston rockets": 890, "indiana pacers": 891,
+    "los angeles clippers": 892, "los angeles lakers": 893, "memphis grizzlies": 894,
+    "miami heat": 895, "milwaukee bucks": 896, "minnesota timberwolves": 897,
+    "new orleans pelicans": 898, "new york knicks": 899, "oklahoma city thunder": 900,
+    "orlando magic": 901, "philadelphia 76ers": 902, "phoenix suns": 903,
+    "portland trail blazers": 904, "sacramento kings": 905, "san antonio spurs": 906,
+    "toronto raptors": 907, "utah jazz": 908, "washington wizards": 909,
+    # NHL app streams (920-951)
+    "anaheim ducks": 920, "boston bruins": 921, "buffalo sabres": 922,
+    "calgary flames": 923, "carolina hurricanes": 924, "chicago blackhawks": 925,
+    "colorado avalanche": 926, "columbus blue jackets": 927, "dallas stars": 928,
+    "detroit red wings": 929, "edmonton oilers": 930, "florida panthers": 931,
+    "los angeles kings": 932, "minnesota wild": 933, "montreal canadiens": 934,
+    "nashville predators": 935, "new jersey devils": 936, "new york islanders": 937,
+    "new york rangers": 938, "ottawa senators": 939, "philadelphia flyers": 940,
+    "pittsburgh penguins": 941, "san jose sharks": 942, "seattle kraken": 943,
+    "st. louis blues": 944, "tampa bay lightning": 945, "toronto maple leafs": 946,
+    "utah hockey club": 947, "vancouver canucks": 948, "vegas golden knights": 949,
+    "washington capitals": 950, "winnipeg jets": 951,
 }
 
 # Display-name mismatches between user channel names and Wikipedia entries.
@@ -140,7 +140,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.04"
+    version = "0.2.05"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -1640,6 +1640,7 @@ class Plugin:
         import xml.etree.ElementTree as ET
         import urllib.request
         import io
+        import gc
         from datetime import datetime, timedelta, timezone
         from apps.epg.models import EPGSource, EPGData, ProgramData
 
@@ -1650,27 +1651,52 @@ class Plugin:
         if not sxm_group_names:
             return {"success": False, "message": "No SiriusXM Channel Group configured. Add your SiriusXM group name in Settings → SiriusXM."}
 
-        # Create the Standard XMLTV source record if it doesn't exist yet
-        sxm_src, _ = EPGSource.objects.get_or_create(
+        sxm_src, created = EPGSource.objects.get_or_create(
             name=SXM_SOURCE_NAME,
-            defaults={"source_type": "standard", "url": SXM_EPG_URL},
+            defaults={"source_type": "xmltv", "url": SXM_EPG_URL},
         )
+        if not created and sxm_src.source_type != "xmltv":
+            sxm_src.source_type = "xmltv"
+            sxm_src.save(update_fields=["source_type"])
 
-        # Download the community XMLTV.
-        try:
-            req = urllib.request.Request(
-                SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
-            )
-            with urllib.request.urlopen(req, timeout=60) as r:
-                xml_bytes = r.read()
-        except Exception as e:
-            return {"success": False, "message": f"Failed to download SiriusXM EPG data: {e}"}
+        # Download the community XMLTV (retry once for transient CDN/mid-write errors).
+        _INVALID_XML_BYTES = re.compile(rb'[\x00-\x08\x0b\x0c\x0e-\x1f]')
 
-        # Validate XML before touching the DB.
+        xml_bytes = None
+        last_dl_err = None
+        for _attempt in range(2):
+            try:
+                req = urllib.request.Request(
+                    SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
+                )
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    xml_bytes = r.read()
+                break
+            except Exception as e:
+                last_dl_err = e
+        if xml_bytes is None:
+            return {"success": False, "message": f"Failed to download SiriusXM EPG data: {last_dl_err}"}
+
+        # Strip control characters invalid in XML 1.0 — these can appear in SiriusXM
+        # API descriptions and are safe to strip from raw UTF-8 bytes.
+        xml_bytes = _INVALID_XML_BYTES.sub(b'', xml_bytes)
+
+        # Validate XML before touching the DB. Retry download once if still corrupt
+        # (catches CDN serving a partially-written file).
         try:
-            ET.fromstring(xml_bytes[:512])  # parse just the opening tag to catch corrupt files
-        except ET.ParseError as e:
-            return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
+            ET.fromstring(xml_bytes[:512])
+        except ET.ParseError:
+            try:
+                req = urllib.request.Request(
+                    SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
+                )
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    xml_bytes = _INVALID_XML_BYTES.sub(b'', r.read())
+                ET.fromstring(xml_bytes[:512])
+            except ET.ParseError as e:
+                return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
+            except Exception as e:
+                return {"success": False, "message": f"Failed to download SiriusXM EPG data on retry: {e}"}
 
         def _parse_xmltv_dt(s):
             s = s.strip()
@@ -1690,35 +1716,39 @@ class Plugin:
         channel_map = {}  # ch_id → EPGData
         total_programs = 0
 
-        # Phase 1: EPGData — stream <channel> elements one at a time, clear each
-        # after processing so the DOM never accumulates. io.BytesIO wraps xml_bytes
-        # without copying; xml_bytes stays alive for the second pass below.
+        # Phase 1: EPGData — stream <channel> elements. Clear each top-level element
+        # immediately after processing. Programme elements are also cleared here so
+        # their content (title, desc, ~246k items) doesn't accumulate in memory
+        # while we're only interested in channels. Channel child elements (display-name,
+        # icon) are left alone — they're freed when their parent channel is cleared.
+        # io.BytesIO wraps xml_bytes without copying; xml_bytes stays alive for phase 2.
         with transaction.atomic():
             for _event, elem in ET.iterparse(io.BytesIO(xml_bytes), events=('end',)):
-                if elem.tag != 'channel':
-                    continue
-                ch_id = elem.get('id', '').strip()
-                if ch_id:
-                    display = (elem.findtext('display-name') or ch_id).strip()
-                    icon_src = elem.find('icon')
-                    icon_url = (icon_src.get('src', '') if icon_src is not None else '').strip()
-                    if ch_id in existing_epg:
-                        entry = existing_epg[ch_id]
-                        changed = []
-                        if entry.name != display:
-                            entry.name = display
-                            changed.append('name')
-                        if entry.icon_url != icon_url:
-                            entry.icon_url = icon_url
-                            changed.append('icon_url')
-                        if changed:
-                            entry.save(update_fields=changed)
-                    else:
-                        entry = EPGData.objects.create(
-                            tvg_id=ch_id, name=display, icon_url=icon_url, epg_source=sxm_src,
-                        )
-                    channel_map[ch_id] = entry
-                elem.clear()  # free element content immediately
+                if elem.tag == 'channel':
+                    ch_id = elem.get('id', '').strip()
+                    if ch_id:
+                        display = (elem.findtext('display-name') or ch_id).strip()
+                        icon_src = elem.find('icon')
+                        icon_url = (icon_src.get('src', '') if icon_src is not None else '').strip()
+                        if ch_id in existing_epg:
+                            entry = existing_epg[ch_id]
+                            changed = []
+                            if entry.name != display:
+                                entry.name = display
+                                changed.append('name')
+                            if entry.icon_url != icon_url:
+                                entry.icon_url = icon_url
+                                changed.append('icon_url')
+                            if changed:
+                                entry.save(update_fields=changed)
+                        else:
+                            entry = EPGData.objects.create(
+                                tvg_id=ch_id, name=display, icon_url=icon_url, epg_source=sxm_src,
+                            )
+                        channel_map[ch_id] = entry
+                    elem.clear()
+                elif elem.tag == 'programme':
+                    elem.clear()  # free programme content — not needed in phase 1
 
         del existing_epg  # no longer needed
 
@@ -1786,7 +1816,6 @@ class Plugin:
 
         channels = self._get_sxm_channels(settings)
         if not channels:
-            import gc
             n_ch = len(channel_map)
             del channel_map
             gc.collect()
@@ -1823,10 +1852,6 @@ class Plugin:
                 else:
                     unmatched_names.append(ch.name)
 
-        # Explicitly release large objects so Python's allocator can reuse the
-        # heap sooner. Memory isn't returned to the OS (that's uWSGI's job via
-        # max-requests) but it reduces the high-water mark for subsequent requests.
-        import gc
         n_channels_loaded = len(channel_map)
         del channel_map, epg_lookup
         gc.collect()
