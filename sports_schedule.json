@@ -1,28 +1,6 @@
 {
-  "generated_at": "2026-05-18T18:03:29Z",
+  "generated_at": "2026-05-18T21:15:23Z",
   "events": [
-    {
-      "slug": "indycar",
-      "title": "Indy 500 Practice",
-      "description": "SiriusXM INDYCAR Nation · Indy 500 Practice · Indianapolis Motor Speedway",
-      "start_utc": "2026-05-18T17:00:00Z",
-      "end_utc": "2026-05-18T19:30:00Z",
-      "channels": [
-        "SiriusXM INDYCAR Nation"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Arsenal @ Burnley",
-      "description": "SOCCER · Arsenal @ Burnley",
-      "start_utc": "2026-05-18T19:00:00Z",
-      "end_utc": "2026-05-18T21:00:00Z",
-      "channels": [
-        "Burnley",
-        "Arsenal",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Miami Marlins @ Atlanta Braves",
