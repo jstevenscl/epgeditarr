@@ -62,6 +62,19 @@ def main() -> None:
             unmatched_added.remove(best_add)
             unmatched_removed.remove(rem)
 
+    # Second pass: match remaining unmatched pairs by channel number.
+    # Catches cases like "Sports 963" → "Sports Play-by-Play 963" where names
+    # differ too much for fuzzy matching but the number is identical.
+    num_to_added = {new[k].get("sxm_number"): k for k in unmatched_added
+                    if new[k].get("sxm_number") is not None}
+    for rem in list(unmatched_removed):
+        rem_num = old[rem].get("sxm_number")
+        if rem_num is not None and rem_num in num_to_added:
+            add = num_to_added.pop(rem_num)
+            renames.append((rem, add))
+            unmatched_added.remove(add)
+            unmatched_removed.remove(rem)
+
     # Build report
     lines = ["## SiriusXM Channel Lineup Changes\n"]
     significant = bool(added or removed or number_changed)
