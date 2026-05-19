@@ -138,14 +138,23 @@ def main():
     print(f"  With image:       {has_img}/{total}")
     print(f"  With description: {has_desc}/{total}")
 
-    print("\n  Sample (first 5):")
-    for ch in channels[:5]:
-        name   = ch.get("name", "?")
-        number = ch.get("channelNumber", "?")
-        raw_cats = ch.get("categories", [])
-        cats = raw_cats if (raw_cats and isinstance(raw_cats[0], str)) else [c.get("name","") for c in raw_cats]
-        imgs = ch.get("images", {}).get("images", [])
-        print(f"    ch#{str(number):>4}  {name:<35}  genre={cats}  img={'yes' if imgs else 'NO'}")
+    # What 800+ channels do we have?
+    high_chans = sorted([ch for ch in channels if ch.get("channelNumber") and int(ch["channelNumber"]) >= 800],
+                        key=lambda c: int(c["channelNumber"]))
+    print(f"\n  800+ channels ({len(high_chans)} total): first 10 and last 10")
+    for ch in high_chans[:10] + (["..."] if len(high_chans) > 20 else []) + high_chans[-10:]:
+        if ch == "...":
+            print("    ...")
+            continue
+        print(f"    ch#{ch['channelNumber']:>4}  {ch.get('name','?')}")
+
+    # Inspect superCategories for hints about additional channel sets
+    super_cats = listing.get("superCategories", [])
+    print(f"\n  superCategories count: {len(super_cats)}")
+    for sc in super_cats[:5]:
+        name = sc.get("name", "?") if isinstance(sc, dict) else sc
+        kids = sc.get("categories", []) if isinstance(sc, dict) else []
+        print(f"    {name}  ({len(kids)} sub-categories)")
 
     print("\n=== All steps passed — player API is usable ===")
 
