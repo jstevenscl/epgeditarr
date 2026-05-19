@@ -156,6 +156,64 @@ def main():
         kids = sc.get("categories", []) if isinstance(sc, dict) else []
         print(f"    {name}  ({len(kids)} sub-categories)")
 
+    # -------------------------------------------------------------------------
+    # Step 4: Try edge-gateway session exchange using player API cookies
+    # -------------------------------------------------------------------------
+    print("\nStep 4: Edge-gateway session exchange (using player API cookies/JWT)")
+    EG_BASE = "https://api.edge-gateway.siriusxm.com"
+
+    # The SXM_DATA_JWT_ATLAS cookie may serve as an identity token
+    jwt_cookie = session.cookies.get("SXM_DATA_JWT_ATLAS", "")
+    sxmdata    = session.cookies.get("SXMDATA", "")
+    print(f"  SXM_DATA_JWT_ATLAS present: {'yes' if jwt_cookie else 'NO'}")
+    print(f"  SXMDATA present:            {'yes' if sxmdata else 'NO'}")
+
+    # Attempt 1: session endpoint with identityToken = JWT cookie value
+    if jwt_cookie:
+        import uuid
+        device_id = str(uuid.uuid4())
+        try:
+            r = session.post(
+                f"{EG_BASE}/session/v1/sessions/authenticated",
+                json={"clientDeviceId": device_id, "platform": "web-desktop",
+                      "identityToken": jwt_cookie},
+                headers={"Accept": "application/json", "Content-Type": "application/json",
+                         "User-Agent": UA},
+                timeout=30,
+            )
+            print(f"  Session attempt (JWT as identityToken): HTTP {r.status_code}")
+            if r.status_code == 200:
+                data = r.json()
+                token = (data.get("token") or data.get("accessToken") or
+                         data.get("bearerToken") or
+                         (data.get("session") or {}).get("token"))
+                print(f"  Bearer token obtained: {'YES — edge-gateway channel fetch will work!' if token else 'NO (keys: ' + str(list(data.keys())) + ')'}")
+            else:
+                print(f"  Body: {r.text[:300]}")
+        except Exception as e:
+            print(f"  Error: {e}")
+
+    # Attempt 2: session endpoint with no identityToken (cookies only)
+    try:
+        r2 = session.post(
+            f"{EG_BASE}/session/v1/sessions/authenticated",
+            json={"clientDeviceId": str(uuid.uuid4()), "platform": "web-desktop"},
+            headers={"Accept": "application/json", "Content-Type": "application/json",
+                     "User-Agent": UA},
+            timeout=30,
+        )
+        print(f"  Session attempt (cookies only, no identityToken): HTTP {r2.status_code}")
+        if r2.status_code == 200:
+            data2 = r2.json()
+            token2 = (data2.get("token") or data2.get("accessToken") or
+                      data2.get("bearerToken") or
+                      (data2.get("session") or {}).get("token"))
+            print(f"  Bearer token obtained: {'YES — hybrid approach works!' if token2 else 'NO (keys: ' + str(list(data2.keys())) + ')'}")
+        else:
+            print(f"  Body: {r2.text[:300]}")
+    except Exception as e:
+        print(f"  Error: {e}")
+
     print("\n=== All steps passed — player API is usable ===")
 
 
