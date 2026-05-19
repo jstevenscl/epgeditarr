@@ -1700,7 +1700,11 @@ class Plugin:
                     )
                     with urllib.request.urlopen(req, timeout=60) as r:
                         xml_bytes = _INVALID_XML_BYTES.sub(b'', r.read())
-                    ET.fromstring(xml_bytes[:512])
+                    try:
+                        ET.fromstring(xml_bytes[:512])
+                    except ET.ParseError as _retry_err:
+                        if "unclosed token" not in str(_retry_err):
+                            return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {_retry_err}"}
                 except ET.ParseError as e:
                     return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
                 except Exception as e:
