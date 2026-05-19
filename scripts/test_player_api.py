@@ -84,8 +84,8 @@ def main():
     # -------------------------------------------------------------------------
     # Step 2: Authenticate session
     # -------------------------------------------------------------------------
-    print("\nStep 2: Authenticate session  (modules/authenticate)")
-    auth_data = _post("authenticate", {"moduleList": {"modules": [{"moduleRequest": {
+    print("\nStep 2: Authenticate session  (modules/resume?OAtrial=false)")
+    auth_data = _post("resume?OAtrial=false", {"moduleList": {"modules": [{"moduleRequest": {
         "resultTemplate": "web",
         "deviceInfo":     DEVICE,
     }}]}})
