@@ -110,7 +110,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.06"
+    version = "0.2.07"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -1686,22 +1686,25 @@ class Plugin:
         # API descriptions and are safe to strip from raw UTF-8 bytes.
         xml_bytes = _INVALID_XML_BYTES.sub(b'', xml_bytes)
 
-        # Validate XML before touching the DB. Retry download once if still corrupt
-        # (catches CDN serving a partially-written file).
+        # Sanity-check the first 512 bytes to catch garbage responses (HTML 404 etc.).
+        # "unclosed token" is expected — it just means the file is longer than 512 bytes
+        # and the slice cut mid-element, which is fine. Only retry on other parse errors
+        # (e.g. "not well-formed") that indicate a non-XML or corrupt response.
         try:
             ET.fromstring(xml_bytes[:512])
-        except ET.ParseError:
-            try:
-                req = urllib.request.Request(
-                    SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
-                )
-                with urllib.request.urlopen(req, timeout=60) as r:
-                    xml_bytes = _INVALID_XML_BYTES.sub(b'', r.read())
-                ET.fromstring(xml_bytes[:512])
-            except ET.ParseError as e:
-                return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
-            except Exception as e:
-                return {"success": False, "message": f"Failed to download SiriusXM EPG data on retry: {e}"}
+        except ET.ParseError as _peek_err:
+            if "unclosed token" not in str(_peek_err):
+                try:
+                    req = urllib.request.Request(
+                        SXM_EPG_URL, headers={"User-Agent": "EPGeditARR-Plugin/1.0"}
+                    )
+                    with urllib.request.urlopen(req, timeout=60) as r:
+                        xml_bytes = _INVALID_XML_BYTES.sub(b'', r.read())
+                    ET.fromstring(xml_bytes[:512])
+                except ET.ParseError as e:
+                    return {"success": False, "message": f"Failed to parse SiriusXM XMLTV: {e}"}
+                except Exception as e:
+                    return {"success": False, "message": f"Failed to download SiriusXM EPG data on retry: {e}"}
 
         def _parse_xmltv_dt(s):
             s = s.strip()
