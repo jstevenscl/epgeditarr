@@ -23,6 +23,9 @@ FILL_CACHE_UPDATED_KEY = "fill_channel_cache_updated"
 FILL_CACHE_TTL_DAYS = 7
 UNMATCHED_LOG_KEY = "sxm_unmatched_log"
 
+# Bytes that are invalid in XML 1.0 (excludes tab \x09, newline \x0a, CR \x0d).
+_INVALID_XML_BYTES = re.compile(rb'[\x00-\x08\x0b\x0c\x0e-\x1f]')
+
 SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.json"
 
 # Prevent running the heavy SXM fill (200MB download + 248k inserts) more than once per
@@ -80,47 +83,13 @@ _SPORT_TEAM_SORT = {
     "washington capitals": 950, "winnipeg jets": 951,
 }
 
-# Display-name mismatches between user channel names and Wikipedia entries.
+# Hard override for user channel names that fuzzy matching can't resolve.
 # Key: _normalize_channel_name(user_channel_name)
-# Value: exact key in channels.json
+# Value: exact lowercase key in channels.json
+# Only add entries when fuzzy matching genuinely fails (check unmatched log).
 _CHANNEL_ALIASES = {
-    "alt2k":                          "alt 2k",
-    "andy cohen's kiki lounge":       "andy cohen 's kiki lounge",
-    "bakersfield beat":               "dwight yoakam & the bakersfield beat",
-    "bb king's bluesville":           "b.b. king's bluesville",
-    "bill gaither's enlighten":       "bill gaither 's enlighten",
-    "byuradio":                       "byu radio",
-    "chucho's cuba & beyond":         "chucho valdes ' cuba & beyond",
-    "comedy roundup":                 "jeff & larry's comedy roundup",
-    "ewtn radio":                     "ewtn global catholic network",
-    "fallon holiday seasoning":       "jimmy fallon holiday seasoning radio",
-    "family talk":                    "familytalk",
-    "grown folk jamz":                "grown folks jamz",
-    "hallmark radio":                 "hallmark channel radio",
-    "holidays with annemurray":       "holidays with anne murray & friends",
-    "hur voices":                     "h.u.r. voices",
-    "ici première":                   "ici radio-canada première",
-    "kevin hart's lol radio":         "kevin hart's laugh out loud radio",
-    "korea today":                    "korea today radio network",
-    "marky ramone's punk rock":       "marky ramone's punk rock blitzkrieg",
-    "nbc sports radio":               "nbc sports audio",
-    "outsiders radio":                "eric church's outsiders radio",
-    "petty's buried treasure":        "tom petty's buried treasure",
-    "potus politics":                 "p.o.t.u.s.",
-    "pro wrestling nation24/7":       "siriusxm pro wrestling nation 24/7",
-    "red hot chili peppers":          "whole lotta red hot",
-    "red white & booze":              "red, white & booze",
-    "rockbar":                        "rock bar radio",
-    "rtb - mixdown":                  "rock the bells mixdown",
-    "savior sunday daily":            "savior sunday daily by carrie's country",
-    "shaggy boombastic radio":        "shaggy's boombastic radio",
-    "siriusxo":                       "sirius xo",
-    "slam radio":                     "slam! radio",
-    "smokey's holidaysoultown":       "smokey's holiday soul town",
-    "steve aoki's remix radio":       "steve aoki remix radio",
-    "stevie's coolest songs":         "little steven 's coolest songs in the world",
-    "the weather channel":            "alerts from the weather channel",
-    "trans-siberianorchradio":        "trans-siberian orchestra radio",
+    "pro wrestling nation24/7":   "pro wrestling nation 24/7",   # space before 24/7 varies
+    "smokey's holidaysoultown":   "smokey's soul town",           # channel was renamed
 }
 
 _RULE_FORMAT_HELP = (
@@ -141,7 +110,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.05"
+    version = "0.2.06"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -852,23 +821,26 @@ class Plugin:
         """Add channel names that failed SXM matching to a persistent log for alias review."""
         if not names:
             return
-        from apps.plugins.models import PluginConfig
-        cfg = PluginConfig.objects.filter(key=PLUGIN_KEY).first()
-        if not cfg:
-            return
-        s = dict(cfg.settings or {})
-        existing = list(s.get(UNMATCHED_LOG_KEY) or [])
-        seen = {n.lower() for n in existing}
-        added = False
-        for n in names:
-            if n.strip() and n.lower() not in seen:
-                existing.append(n)
-                seen.add(n.lower())
-                added = True
-        if added:
-            s[UNMATCHED_LOG_KEY] = sorted(existing, key=str.lower)
-            cfg.settings = s
-            cfg.save(update_fields=['settings'])
+        try:
+            from apps.plugins.models import PluginConfig
+            cfg = PluginConfig.objects.filter(key=PLUGIN_KEY).first()
+            if not cfg:
+                return
+            s = dict(cfg.settings or {})
+            existing = list(s.get(UNMATCHED_LOG_KEY) or [])
+            seen = {n.lower() for n in existing}
+            added = False
+            for n in names:
+                if n.strip() and n.lower() not in seen:
+                    existing.append(n)
+                    seen.add(n.lower())
+                    added = True
+            if added:
+                s[UNMATCHED_LOG_KEY] = sorted(existing, key=str.lower)
+                cfg.settings = s
+                cfg.save(update_fields=['settings'])
+        except Exception:
+            pass
 
     def _fetch_sxm_data(self):
         """Fetch SiriusXM channel data. Tries GitHub Pages pre-built cache first, falls back to Wikipedia."""
@@ -1695,8 +1667,6 @@ class Plugin:
             sxm_src.save(update_fields=["source_type"])
 
         # Download the community XMLTV (retry once for transient CDN/mid-write errors).
-        _INVALID_XML_BYTES = re.compile(rb'[\x00-\x08\x0b\x0c\x0e-\x1f]')
-
         xml_bytes = None
         last_dl_err = None
         for _attempt in range(2):
@@ -1756,7 +1726,7 @@ class Plugin:
         # their content (title, desc, ~246k items) doesn't accumulate in memory
         # while we're only interested in channels. Channel child elements (display-name,
         # icon) are left alone — they're freed when their parent channel is cleared.
-        # io.BytesIO wraps xml_bytes without copying; xml_bytes stays alive for phase 2.
+        # io.BytesIO copies xml_bytes into its internal buffer; xml_bytes stays alive for phase 2.
         with transaction.atomic():
             for _event, elem in ET.iterparse(io.BytesIO(xml_bytes), events=('end',)):
                 if elem.tag == 'channel':
