@@ -346,7 +346,7 @@
     "genre": "Family",
     "sxm_number": 136,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cocomelonfriends.png",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/cocomelonfriends.svg",
     "sxm_logo_src": "if/c6/c65233ad3f3739f693bb6b9140e3670d_1768497794.png",
     "sxm_entity_id": "9600",
     "lookaround_channel_id": "3f21599e-f0e6-54f9-dbf2-6122bef705ad"
@@ -951,7 +951,7 @@
     "genre": "Sports",
     "sxm_number": 375,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/westwoodonesports.png",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/westwoodonesports.svg",
     "sxm_logo_src": "if/fc/fc9976401cc032d6ae97965187f478c2_1765945527.png",
     "sxm_entity_id": "9473",
     "lookaround_channel_id": "7c987478-2f68-d267-acc6-56497c448256"
@@ -6902,7 +6902,7 @@
     "genre": "Country",
     "sxm_number": 64,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/morganwallenradio.png",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/morganwallenradio.svg",
     "sxm_logo_src": "if/86/865169cc01423836ae0c95bc200be0c3_1774273787.png",
     "sxm_entity_id": "9684",
     "lookaround_channel_id": "1430a1d6-68ba-edb7-acaf-c500b1c00354"
