@@ -24,9 +24,6 @@ jobs:
         run: cp channels.json channels_prev.json
 
       - name: Build channel cache
-        env:
-          SIRIUSXM_USERNAME: ${{ secrets.SIRIUSXM_USERNAME }}
-          SIRIUSXM_PASSWORD: ${{ secrets.SIRIUSXM_PASSWORD }}
         run: python scripts/build_channels_sxm.py
 
       - name: Detect lineup changes
@@ -45,6 +42,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           DATE=$(date +%Y-%m-%d)
+          echo "" >> channel_changes.md
+          echo "### Action needed" >> channel_changes.md
+          echo "- New channels have no logo until manually added to \`_workshop/sxm_logos_raw.json\` or \`cache_logos.py\` SPECIAL_LOGOS" >> channel_changes.md
+          echo "- Removed channels may leave orphaned logo files in \`logos/\` — delete if no longer needed" >> channel_changes.md
+          echo "- Source: [rebrowser/siriusxm-dataset](https://github.com/rebrowser/siriusxm-dataset) (updates daily)" >> channel_changes.md
           gh issue create \
             --title "SiriusXM lineup changed — $DATE" \
             --body "$(cat channel_changes.md)" \
