@@ -171,6 +171,8 @@ Click **Fill, Sort & Logos** to run all three steps at once:
 
 Or run each step individually with the dedicated action buttons.
 
+> **Note — timeout / gateway error on Fill:** The fill downloads ~200 MB of EPG data and can take over 60 seconds. If your reverse proxy (nginx, Traefik, Caddy, etc.) has a short timeout, the browser may show a **504 Gateway Timeout** or similar error before the response arrives. **This does not mean the fill failed** — the backend keeps running after the browser connection drops. Click **Show Status** after a minute to confirm. If it reports channel entries and programs, the fill completed successfully.
+
 #### Sorting output example
 
 ```
@@ -221,10 +223,10 @@ Copy and share these names if you want them added to the alias library in a futu
 | **Test Rule** | Test a single rule against live data from any source and field. Uses the Rule Tester settings. |
 | **Scan** | List all channels with no EPG data, grouped by channel group. Shows which groups are targeted by Fill EPG. |
 | **Fill** | Generate repeating placeholder EPG schedules for channels in your Fill Groups with no EPG data. |
-| **Fill SiriusXM EPG** | *(SiriusXM)* Download the community SiriusXM XMLTV and assign EPG to all channels in your SiriusXM Channel Group. Sports channels get smart Upcoming/LIVE/Post-game blocks; all other channels get repeating fill blocks with real SiriusXM descriptions. Creates the `EPGeditARR: SiriusXM` source automatically if it doesn't exist. |
+| **Fill SiriusXM EPG** | *(SiriusXM)* Download the community SiriusXM XMLTV and assign EPG to all channels in your SiriusXM Channel Group. Sports channels get smart Upcoming/LIVE/Post-game blocks; all other channels get repeating fill blocks with real SiriusXM descriptions. Creates the `EPGeditARR: SiriusXM` source automatically if it doesn't exist. ⚠️ Downloads ~200 MB — may take 60+ seconds. If a timeout/gateway error appears, run **Show Status** to verify the fill completed. |
 | **Sort** | *(SiriusXM)* Reorder channels in your SiriusXM Channel Group to match SiriusXM's official lineup order. |
-| **Fill & Sort** | *(SiriusXM)* Run Fill SiriusXM EPG and Sort together in one step. |
-| **Fill, Sort & Logos** | *(SiriusXM)* Run Fill SiriusXM EPG, Sort, and Assign Logos in one step — the full SiriusXM setup. |
+| **Fill & Sort** | *(SiriusXM)* Run Fill SiriusXM EPG and Sort together in one step. ⚠️ See Fill SiriusXM EPG note on timeouts. |
+| **Fill, Sort & Logos** | *(SiriusXM)* Run Fill SiriusXM EPG, Sort, and Assign Logos in one step — the full SiriusXM setup. ⚠️ See Fill SiriusXM EPG note on timeouts. |
 | **Rename Channels** | *(SiriusXM)* Rename channels in your SiriusXM Channel Group to their official SiriusXM names using the built-in alias library. |
 | **Assign Logos** | *(SiriusXM)* Assign channel logos from the self-hosted GitHub Pages logo cache to matched channels. |
 | **Refresh Channel Data** | *(SiriusXM)* Force an immediate refresh of the SiriusXM channel list from the GitHub Pages cache. |
@@ -398,6 +400,9 @@ SiriusXM channel logos are downloaded from the official SiriusXM player CDN and 
 
 **Some of my channels show as unmatched. What does that mean?**
 Channels that can't be matched to the official SiriusXM lineup are logged automatically. You can see them any time by clicking **Status**. Unmatched channels are usually provider-specific name variants, abbreviations, or recently added channels not yet in the alias library. If you share the names (copy from Status output), they can be added as aliases in a future update.
+
+**Fill SiriusXM EPG showed a 504 Gateway Timeout / gateway error — did it fail?**
+Almost certainly not. The fill downloads ~200 MB of EPG data and rewrites hundreds of channels, which can take 60–90+ seconds. Most reverse proxies (nginx, Traefik, Caddy) drop the browser connection after 60 seconds by default — but the Dispatcharr backend (Gunicorn) keeps running and finishes the job. The browser error is the proxy giving up, not the fill failing. Click **Show Status** after a minute or two: if it shows channel entries and program counts, the fill completed successfully. You don't need to run it again.
 
 ---
 
