@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T07:51:16Z",
+  "generated_at": "2026-05-19T11:22:52Z",
   "events": [
     {
       "slug": "soccer",
@@ -10,7 +10,7 @@
       "channels": [
         "Manchester City",
         "Bournemouth",
-        "Sports 964",
+        "Sports Play-by-Play 964",
         "SiriusXM FC"
       ]
     },
@@ -100,6 +100,7 @@
       "channels": [
         "Toronto Blue Jays",
         "New York Yankees",
+        "MLB Network Radio™",
         "MLB Network Radio"
       ]
     },
@@ -245,7 +246,7 @@
       "channels": [
         "Vegas Golden Knights",
         "Colorado Avalanche",
-        "NHL Network Radio",
+        "NHL Network Radio™",
         "NHL/NBA Play-by-Play 219",
         "NHL/NBA Play-by-Play 220",
         "SiriusXM NHL Network Radio"
