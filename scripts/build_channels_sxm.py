@@ -1,101 +1,84 @@
 #!/usr/bin/env python3
 """
-Fetch SiriusXM channel list and logos from the authenticated edge-gateway API.
+Build channels.json from the rebrowser/siriusxm-dataset public CSV.
 
-Writes channels.json with official names, numbers, descriptions, genres, and
-GitHub-Pages-hosted logo URLs.  Downloads new/changed logos to logos/.
-
-Logo cache invalidation: the SiriusXM player CDN embeds the image MD5 in the
-URL path (e.g. "if/03/<md5>_<ts>.png"), so a changed URL means a changed image.
-We store the source path in "sxm_logo_src" and only re-download on change.
-
-Credentials (never commit — store as GitHub Actions secrets):
-  SIRIUSXM_USERNAME  - SiriusXM account email
-  SIRIUSXM_PASSWORD  - SiriusXM account password
+The dataset is updated daily on GitHub and requires no SiriusXM credentials.
+Logos are preserved from the existing logos/ cache; new channels get no logo
+until cache_logos.py or manual intervention adds them (a GitHub issue is
+opened automatically by the workflow when new/removed channels are detected).
 
 Run locally:
-  $env:SIRIUSXM_USERNAME="you@email.com"; $env:SIRIUSXM_PASSWORD="yourpass"
   python scripts/build_channels_sxm.py
 
 Called by .github/workflows/update-channels.yml on a weekly schedule.
 """
 
-import base64
-import http.cookiejar
+import csv
+import io
 import json
-import os
 import re
-import sys
 import unicodedata
-import urllib.error
-import urllib.parse
 import urllib.request
-import uuid
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-API_BASE       = "https://api.edge-gateway.siriusxm.com"
-IMG_BASE       = "https://player.siriusxm.com/image/"
-# Stable content IDs for the "All channels" curated-grouping page
-PAGE_ID        = "403ab6a5-d3c9-4c2a-a722-a94a6a5fd056"
-CONTAINER_ID   = "3JoBfOCIwo6FmTpzM1S2H7"
-SET_ID         = "5mqCLZ21qAwnufKT8puUiM"
-PLATFORM       = "web-desktop"
-UA             = "EPGeditARR/1.0 (github.com/jstevenscl/epgeditarr)"
+REBROWSER_CSV_URL = (
+    "https://raw.githubusercontent.com/rebrowser/siriusxm-dataset/main/channels/data.csv"
+)
+UA = "EPGeditARR/1.0 (github.com/jstevenscl/epgeditarr)"
 
-ROOT             = Path(__file__).parent.parent
-OUT_PATH         = ROOT / "channels.json"
-LOGOS_DIR        = ROOT / "logos"
-GH_PAGES_BASE    = "https://jstevenscl.github.io/epgeditarr/logos"
+ROOT          = Path(__file__).parent.parent
+OUT_PATH      = ROOT / "channels.json"
+LOGOS_DIR     = ROOT / "logos"
+GH_PAGES_BASE = "https://jstevenscl.github.io/epgeditarr/logos"
 
-ENTITY_TYPES = [
-    "artist-station", "brand", "channel-linear", "channel-xtra",
-    "container", "curated-grouping", "episode-audio", "episode-linear",
-    "episode-podcast", "episode-video", "event", "experience", "genre",
-    "league", "show", "show-podcast", "station", "tag-topic",
-    "talent", "team", "user-signal",
-]
-
-# ---------------------------------------------------------------------------
-# HTTP helpers
-# ---------------------------------------------------------------------------
-
-_opener = urllib.request.build_opener(
-    urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar())
+# Dynamic game-day broadcast slots — named "NFL Play-by-Play 225" etc.
+# They have no permanent streaming channel number; exclude from static list.
+_DYNAMIC_RE = re.compile(
+    r"^(NFL|MLB|NBA|NHL|NCAA|ACC|Big\s+1[02]|Big\s+Ten|SEC|Sports|College)\s+Play.{0,20}\d+$",
+    re.IGNORECASE,
 )
 
+# Rebrowser sometimes has a generic "SiriusXM N" row alongside the real named
+# row for the same channel. Skip the generic one — the real row covers it.
+_SXM_GENERIC_RE = re.compile(r"^SiriusXM \d+$")
 
-def _api(url, data=None, headers=None):
-    h = {
-        "Accept":        "application/json",
-        "Content-Type":  "application/json",
-        "User-Agent":    UA,
-        "x-sxm-clock":  "[0,37]",
-    }
-    if headers:
-        h.update(headers)
-    body = json.dumps(data).encode() if data is not None else None
-    req  = urllib.request.Request(url, data=body, headers=h,
-                                  method="POST" if body else "GET")
+# ---------------------------------------------------------------------------
+# Name helpers
+# ---------------------------------------------------------------------------
+
+def _load_aliases() -> dict:
+    """Load channel_aliases.json → {lowercase_variant: canonical_name}."""
+    path = ROOT / "channel_aliases.json"
     try:
-        with _opener.open(req, timeout=30) as r:
-            raw = r.read()
-            return json.loads(raw) if raw else {}
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(
-            f"HTTP {e.code} from {url}: {e.read().decode('utf-8','replace')[:400]}"
-        ) from e
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        return {k.lower(): v for k, v in raw.get("aliases", {}).items()}
+    except Exception:
+        return {}
 
 
-def _download(url, dest: Path) -> int:
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        data = r.read()
-    dest.write_bytes(data)
-    return len(data)
+def _clean_name(name: str) -> str:
+    """Normalize encoding artifacts in Rebrowser channel names.
+
+    Rebrowser uses U+2019 RIGHT SINGLE QUOTATION MARK for apostrophes.
+    Normalizing to ASCII apostrophe lets alias lookups match consistently.
+    """
+    name = name.replace("’", "'").replace("‘", "'")
+    return unicodedata.normalize("NFC", name).strip()
+
+
+def _resolve_name(raw_name: str, aliases: dict) -> str:
+    """Return the canonical channel name for a Rebrowser row.
+
+    Resolution order:
+      1. Alias lookup — known variant → canonical mapping
+      2. Cleaned name — curly quotes normalized, used as-is
+    """
+    cleaned = _clean_name(raw_name)
+    return aliases.get(cleaned.lower()) or cleaned
 
 
 # ---------------------------------------------------------------------------
@@ -109,188 +92,76 @@ def logo_slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]", "", name.lower())
 
 
-def _sxm_img_path(entity: dict) -> str:
-    """Return the raw CDN path (e.g. 'if/03/<md5>_<ts>.png') or ''."""
-    images = entity.get("images", {})
-    for key in ("logo", "tile", "tile_background"):
-        img  = images.get(key, {})
-        data = (
-            img.get("aspect_1x1",  {}).get("default")
-            or img.get("aspect_16x9", {}).get("default")
-        )
-        if data and data.get("url"):
-            return data["url"]
+def find_cached_logo(name: str, existing_ch: dict) -> str:
+    """Return GitHub Pages logo URL if an existing cached file covers this channel."""
+    existing_url = existing_ch.get("logo_url", "")
+    if existing_url and existing_url.startswith(GH_PAGES_BASE):
+        return existing_url
+    slug = logo_slug(name)
+    for ext in ("png", "svg", "jpg"):
+        dest = LOGOS_DIR / f"{slug}.{ext}"
+        if dest.exists() and dest.stat().st_size > 500:
+            return f"{GH_PAGES_BASE}/{slug}.{ext}"
     return ""
 
 
-def cache_logo(name: str, img_path: str, existing_src: str) -> tuple[str, str]:
-    """Download logo if new/changed. Returns (gh_pages_url, img_path)."""
-    if not img_path:
-        return "", ""
-
-    slug     = logo_slug(name)
-    dest     = LOGOS_DIR / f"{slug}.png"
-    gh_url   = f"{GH_PAGES_BASE}/{slug}.png"
-    src_url  = IMG_BASE + img_path
-
-    # Skip if already cached with the same source image
-    if dest.exists() and dest.stat().st_size > 500 and img_path == existing_src:
-        return gh_url, img_path
-
-    try:
-        size = _download(src_url, dest)
-        if size < 500:
-            dest.unlink(missing_ok=True)
-            return "", ""
-        return gh_url, img_path
-    except Exception as e:
-        print(f"  WARN logo {name}: {e}")
-        # Keep existing file if it's good
-        if dest.exists() and dest.stat().st_size > 500:
-            return gh_url, existing_src
-        return "", ""
-
-
 # ---------------------------------------------------------------------------
-# Authentication
+# Fetch Rebrowser dataset
 # ---------------------------------------------------------------------------
 
-def authenticate(username: str, password: str) -> str:
-    device_id = str(uuid.uuid4())
-
-    print("  Step 1: password auth...")
-    auth_resp = _api(
-        f"{API_BASE}/identity/v1/identities/authenticate/password",
-        data={
-            "username":       username,
-            "password":       password,
-            "rememberMe":     False,
-            "clientDeviceId": device_id,
-            "platform":       PLATFORM,
-        },
-    )
-
-    identity_token = (
-        auth_resp.get("identityToken")
-        or auth_resp.get("token")
-        or auth_resp.get("accessToken")
-    )
-
-    print("  Step 2: create session...")
-    sess_payload: dict = {"clientDeviceId": device_id, "platform": PLATFORM}
-    if identity_token:
-        sess_payload["identityToken"] = identity_token
-
-    sess_resp = _api(
-        f"{API_BASE}/session/v1/sessions/authenticated",
-        data=sess_payload,
-    )
-
-    token = (
-        sess_resp.get("token")
-        or sess_resp.get("accessToken")
-        or sess_resp.get("bearerToken")
-        or sess_resp.get("jwt")
-        or (sess_resp.get("session") or {}).get("token")
-    )
-    if not token:
-        raise RuntimeError(
-            f"Bearer token not found in session response. "
-            f"Keys: {list(sess_resp.keys())}  Body: {json.dumps(sess_resp)[:400]}"
-        )
-    return token
-
-
-# ---------------------------------------------------------------------------
-# Channel fetch
-# ---------------------------------------------------------------------------
-
-def fetch_all_channels(token: str) -> list:
-    headers = {"Authorization": f"Bearer {token}"}
-    channels, offset, limit, total = [], 0, 100, None
-
-    while True:
-        q_obj = {
-            "filter": {"one": {"filterId": "all"}},
-            "sets": {
-                SET_ID: {
-                    "sort": {"sortId": "CHANNEL_NUMBER_ASC"},
-                    "pagination": {"offset": {
-                        "setItemsLimit":  limit,
-                        "setItemsOffset": offset,
-                    }},
-                }
-            },
-            "pagination": {"offset": {"setItemsLimit": limit}},
-            "constraints": {"supportedEntityTypes": ENTITY_TYPES},
-        }
-        q = "1." + base64.b64encode(
-            json.dumps(q_obj, separators=(",", ":")).encode()
-        ).decode().rstrip("=")
-        url = (
-            f"{API_BASE}/browse/v1/pages/curated-grouping"
-            f"/{PAGE_ID}/containers/{CONTAINER_ID}"
-            f"?q={urllib.parse.quote(q)}"
-        )
-
-        data     = _api(url, headers=headers)
-        set_data = data["container"]["sets"][0]
-        items    = set_data["items"]
-        pg       = set_data.get("pagination", {}).get("offset", {})
-
-        if total is None:
-            total = pg.get("size", 0)
-            print(f"  Total: {total}")
-
-        channels.extend(items)
-        offset += len(items)
-        print(f"  {offset}/{total} ...")
-
-        if len(items) < limit or offset >= total:
-            break
-
-    return channels
+def fetch_csv() -> list:
+    req = urllib.request.Request(REBROWSER_CSV_URL, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        raw = r.read().decode("utf-8")
+    return list(csv.DictReader(io.StringIO(raw)))
 
 
 # ---------------------------------------------------------------------------
 # Build channels.json
 # ---------------------------------------------------------------------------
 
-def build_channels_json(items: list, existing: dict) -> dict:
-    """Transform API items into channels.json format, downloading logos."""
-    LOGOS_DIR.mkdir(exist_ok=True)
-    channels = {}
-    downloaded = skipped = failed = 0
+def build_channels_json(rows: list, existing: dict) -> dict:
+    aliases      = _load_aliases()
+    channels     = {}
+    seen_numbers = set()   # deduplicate rows that share a streaming channel number
 
-    for item in items:
-        entity = item.get("entity", {})
-        deco   = item.get("decorations", {})
-
-        name = entity.get("texts", {}).get("title", {}).get("default", "").strip()
-        if not name:
+    for row in rows:
+        raw_name = row.get("name", "").strip()
+        if not raw_name:
             continue
 
-        desc      = (entity.get("texts", {}).get("description") or {}).get("default", "") or ""
-        genre_raw = deco.get("genre")
-        genre     = genre_raw if isinstance(genre_raw, str) else ""
-        ch        = deco.get("channelNumber")
-        key       = name.lower()
-        # Disambiguate if two channels share a name (e.g. same channel on satellite + app)
+        # Skip generic placeholder rows — real-named row for the same channel exists
+        if _SXM_GENERIC_RE.match(_clean_name(raw_name)):
+            continue
+
+        ch_str = row.get("streamingChannelNumber", "").strip()
+        ch = int(ch_str) if ch_str.isdigit() else None
+
+        # Skip dynamic game-day slots with no permanent channel number
+        if ch is None and _DYNAMIC_RE.match(_clean_name(raw_name)):
+            continue
+
+        name = _resolve_name(raw_name, aliases)
+
+        # Deduplicate: Rebrowser keeps old and new rows for renamed channels
+        if ch is not None:
+            if ch in seen_numbers:
+                continue
+            seen_numbers.add(ch)
+
+        desc      = (row.get("longDescription") or row.get("shortDescription") or "").strip()
+        genre     = row.get("genreName", "").strip()
+        entity_id = row.get("channelId", "").strip()
+
+        key = name.lower()
+        # Prefer existing entry keyed by canonical name; fall back to raw-name key
+        raw_key = _clean_name(raw_name).lower()
+        existing_ch = existing.get(key) or existing.get(raw_key) or {}
+
         if key in channels:
             key = f"{key}_{ch}"
 
-        img_path    = _sxm_img_path(entity)
-        existing_ch = existing.get(key, {})
-        existing_src = existing_ch.get("sxm_logo_src", "")
-
-        gh_url, cached_src = cache_logo(name, img_path, existing_src)
-        if gh_url:
-            if cached_src != existing_src:
-                downloaded += 1
-            else:
-                skipped += 1
-        elif img_path:
-            failed += 1
+        logo_url = find_cached_logo(name, existing_ch)
 
         channels[key] = {
             "name":                  name,
@@ -298,13 +169,12 @@ def build_channels_json(items: list, existing: dict) -> dict:
             "genre":                 genre,
             "sxm_number":            ch,
             "seasonal":              None,
-            "logo_url":              gh_url,
-            "sxm_logo_src":          cached_src,
-            "sxm_entity_id":         entity.get("id", ""),
-            "lookaround_channel_id": deco.get("lookaroundChannelId"),
+            "logo_url":              logo_url,
+            "sxm_logo_src":          existing_ch.get("sxm_logo_src", ""),
+            "sxm_entity_id":         entity_id,
+            "lookaround_channel_id": existing_ch.get("lookaround_channel_id"),
         }
 
-    print(f"  Logos: {downloaded} downloaded, {skipped} cached, {failed} failed")
     return channels
 
 
@@ -312,17 +182,7 @@ def build_channels_json(items: list, existing: dict) -> dict:
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
-    username = os.environ.get("SIRIUSXM_USERNAME", "").strip()
-    password = os.environ.get("SIRIUSXM_PASSWORD", "").strip()
-    if not username or not password:
-        sys.exit(
-            "Set SIRIUSXM_USERNAME and SIRIUSXM_PASSWORD environment variables.\n"
-            "  PowerShell: $env:SIRIUSXM_USERNAME='you@email.com'\n"
-            "  GitHub CI:  stored as repository secrets"
-        )
-
-    # Load existing channels.json to enable logo cache-hit detection
+def main() -> None:
     existing: dict = {}
     if OUT_PATH.exists():
         try:
@@ -330,15 +190,12 @@ def main():
         except Exception:
             pass
 
-    print("Authenticating with SiriusXM API...")
-    token = authenticate(username, password)
-    print("  OK")
+    print("Fetching Rebrowser SiriusXM dataset...")
+    rows = fetch_csv()
+    print(f"  {len(rows)} rows fetched")
 
-    print("Fetching channel list...")
-    items = fetch_all_channels(token)
-
-    print("Building channels.json + downloading logos...")
-    channels = build_channels_json(items, existing)
+    print("Building channels.json...")
+    channels = build_channels_json(rows, existing)
 
     with_nums = sum(1 for v in channels.values() if v.get("sxm_number") is not None)
     with_logo = sum(1 for v in channels.values() if v.get("logo_url"))
