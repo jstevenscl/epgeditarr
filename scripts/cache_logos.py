@@ -140,7 +140,13 @@ def main() -> None:
     LOGOS_DIR.mkdir(exist_ok=True)
 
     channels: dict = json.loads(CHANNELS_PATH.read_text(encoding="utf-8"))
-    sxm_logos: dict = json.loads(LOGOS_RAW_PATH.read_text(encoding="utf-8"))
+
+    try:
+        sxm_logos: dict = json.loads(LOGOS_RAW_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [warn] {LOGOS_RAW_PATH.name} not found — CDN logo download skipped (CI mode)")
+        sxm_logos = {}
+
     raw_aliases: dict = json.loads(ALIASES_PATH.read_text(encoding="utf-8")).get("aliases", {})
 
     # Build normalized alias lookup: variant_slug → official_name
