@@ -112,43 +112,40 @@ def main():
     # Parse and display sample data
     # -------------------------------------------------------------------------
     try:
-        modules  = chan_data["ModuleListResponse"]["moduleList"]["modules"]
-        channels = modules[0]["moduleResponse"]["contentData"]["channelListing"]["channels"]
+        mod_resp = chan_data["ModuleListResponse"]["moduleList"]["modules"][0]["moduleResponse"]
+        print(f"  moduleResponse keys: {list(mod_resp.keys())}")
+        content  = mod_resp.get("contentData", mod_resp)
+        print(f"  contentData keys:    {list(content.keys())}")
+        listing  = content.get("channelListing", {})
+        print(f"  channelListing keys: {list(listing.keys())}")
+        channels = listing.get("channels", [])
     except (KeyError, IndexError, TypeError) as e:
         print(f"  Could not parse channel list: {e}")
-        print("  Top-level keys:", list((chan_data or {}).get("ModuleListResponse", {}).keys()))
         sys.exit(1)
 
     total = len(channels)
     print(f"\n  Total channels: {total}")
 
-    # Verify key fields exist
-    has_number = sum(1 for ch in channels if ch.get("channelNumber"))
-    has_name   = sum(1 for ch in channels if ch.get("name"))
-    has_img    = sum(1 for ch in channels if ch.get("images", {}).get("images"))
-    has_desc   = sum(1 for ch in channels if ch.get("longDescription") or ch.get("shortDescription"))
-    print(f"  With channel number : {has_number}/{total}")
-    print(f"  With name           : {has_name}/{total}")
-    print(f"  With image          : {has_img}/{total}")
-    print(f"  With description    : {has_desc}/{total}")
+    nums = [int(ch["channelNumber"]) for ch in channels if ch.get("channelNumber")]
+    if nums:
+        print(f"  Number range: {min(nums)} - {max(nums)}")
+        print(f"  1-499:   {sum(1 for n in nums if n <= 499)}")
+        print(f"  500-799: {sum(1 for n in nums if 500 <= n <= 799)}")
+        print(f"  800+:    {sum(1 for n in nums if n >= 800)}")
 
-    print("\n  Sample (first 5 with a channel number):")
-    shown = 0
-    for ch in channels:
-        if not ch.get("channelNumber"):
-            continue
+    has_img  = sum(1 for ch in channels if ch.get("images", {}).get("images"))
+    has_desc = sum(1 for ch in channels if ch.get("longDescription") or ch.get("shortDescription"))
+    print(f"  With image:       {has_img}/{total}")
+    print(f"  With description: {has_desc}/{total}")
+
+    print("\n  Sample (first 5):")
+    for ch in channels[:5]:
         name   = ch.get("name", "?")
         number = ch.get("channelNumber", "?")
-        cats   = [c.get("name", "") for c in ch.get("categories", [])]
-        imgs   = ch.get("images", {}).get("images", [])
-        img_url = imgs[0].get("url", "") if imgs else ""
-        desc   = (ch.get("longDescription") or ch.get("shortDescription") or "")[:70]
-        print(f"    ch#{str(number):>4}  {name:<35}  genre={cats}  img={'yes' if img_url else 'NO'}")
-        if desc:
-            print(f"           {desc}")
-        shown += 1
-        if shown >= 5:
-            break
+        raw_cats = ch.get("categories", [])
+        cats = raw_cats if (raw_cats and isinstance(raw_cats[0], str)) else [c.get("name","") for c in raw_cats]
+        imgs = ch.get("images", {}).get("images", [])
+        print(f"    ch#{str(number):>4}  {name:<35}  genre={cats}  img={'yes' if imgs else 'NO'}")
 
     print("\n=== All steps passed — player API is usable ===")
 
