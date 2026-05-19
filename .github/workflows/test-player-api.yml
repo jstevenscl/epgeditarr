@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install requests
+        run: pip install requests
       - name: Run player API smoke test
         env:
           SIRIUSXM_USERNAME: ${{ secrets.SIRIUSXM_USERNAME }}
