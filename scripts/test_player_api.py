@@ -72,7 +72,7 @@ def main():
     print("=== SiriusXM player.siriusxm.com API smoke test ===\n")
 
     # Step 1: Login
-    print("Step 1: Login (player.siriusxm.com/rest/v2/experience/modules/login)")
+    print("Step 1: Login (player.siriusxm.com/rest/v2/experience/modules/modify/authentication)")
     login_payload = {
         "moduleList": {
             "modules": [{
@@ -98,7 +98,7 @@ def main():
             }]
         }
     }
-    login_data = _post("login", login_payload)
+    login_data = _post("modify/authentication", login_payload)
     if not check_status(login_data, "login"):
         sys.exit(1)
 
