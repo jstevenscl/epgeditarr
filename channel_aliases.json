@@ -3,13 +3,15 @@
     "Maps any known name variant to the official SiriusXM display name.",
     "Keys: normalized lowercase variant (from Wikipedia, Dispatcharr, providers, or old names).",
     "Values: exact official SiriusXM name as published by SiriusXM (xmplaylist.com / official PDF).",
-    "Used by: cache_logos.py at build time, plugin.py _action_rename_channels at runtime.",
+    "Used by: cache_logos.py at build time, build_channels_sxm.py at build time, plugin.py at runtime.",
     "Add new entries whenever a mismatch is discovered. Weekly GitHub Actions applies them automatically."
   ],
   "aliases": {
     "kelly's handpicked faves": "Kelly Clarkson Connection",
+    "kelly clarkson connection": "The Kelly Clarkson Connection",
 
     "green day's idiot nation": "FACTION PUNK",
+    "green days idiot nation": "FACTION PUNK",
     "idiot nation": "FACTION PUNK",
     "green day x punk": "FACTION PUNK",
     "green day radio": "FACTION PUNK",
@@ -18,6 +20,7 @@
     "whole lotta rhcp on siriusxm": "Red Hot Chili Peppers",
     "whole lotta rhcp": "Red Hot Chili Peppers",
 
+    "grateful dead channel": "Grateful Dead",
     "the grateful dead channel": "Grateful Dead",
     "grateful dead radio": "Grateful Dead",
 
@@ -47,8 +50,10 @@
 
     "country top 1000 countdown": "Country Top 1000",
     "dwight yoakam & the bakersfield beat": "Bakersfield Beat",
+    "dwight yoakam and the bakersfield beat": "Bakersfield Beat",
     "dwight yoakam's music channel": "Bakersfield Beat",
     "eric church's outsiders radio": "Outsiders Radio",
+    "eric church outsiders radio": "Outsiders Radio",
     "savior sunday daily by carrie's country": "Savior Sunday Daily",
 
     "steve aoki remix radio": "Steve Aoki's Remix Radio",
@@ -61,6 +66,7 @@
     "p.o.t.u.s.": "POTUS Politics",
     "potus": "POTUS Politics",
     "freakonomics radio network": "Freakonomics Radio",
+    "little steven's coolest songs": "Stevie's Coolest Songs",
     "little steven's coolest songs in the world": "Stevie's Coolest Songs",
 
     "message worship": "The Message",
@@ -70,6 +76,8 @@
     "siriusxm college sports radio": "College Sports Radio",
     "siriusxm fantasy sports radio": "Fantasy Sports Radio",
     "siriusxm nhl network radio": "NHL Network Radio",
+    "siriusxm limited edition 2": "Limited Edition 2",
+    "siriusxm southern rock hosted by the black crowes": "SiriusXM Southern Rock",
     "siriusxm pro wrestling nation 24/7": "Pro Wrestling Nation24/7",
     "vsin radio": "VSiN",
     "sportsgrid radio": "VSiN",
@@ -81,6 +89,7 @@
     "ici radio-canada première": "ICI Première",
     "korea today radio network": "Korea Today",
 
+    "chucho valdes' cuba & beyond": "Chucho's Cuba & Beyond",
     "chucho valdes ' cuba & beyond": "Chucho's Cuba & Beyond",
     "chucho valdes cuba beyond": "Chucho's Cuba & Beyond",
 
@@ -90,6 +99,28 @@
     "holidays with anne murray & friends": "Holidays with AnneMurray",
     "mannheim steamroller channel": "Mannheim Steamroller",
 
-    "sirius xm 107": "Dateline 24/7"
+    "sirius xm 107": "Dateline 24/7",
+
+    "billboard top 500 summer hits": "Billboard Top 500",
+    "soccer play-by-play en español": "Soccer en Español",
+    "alt nation advanced placement": "Alt Nation Adv Placement",
+    "acoustic guitar instmntl": "Acoustic Guitar Instrumentals",
+
+    "tom morello's heavy metal happy hour radio": "Heavy Metal Happy Hour",
+    "tom morello's riffs, rhymes & rebellion radio": "Riffs Rhymes & Rebellion",
+    "tom morello's battle hymns radio": "Battle Hymns Radio",
+
+    "ll cool j's rock the bells - mixdown": "RTB - Mixdown",
+    "ll cool j's rock the bells - b-sides": "RTB - B-Sides",
+    "ll cool j's rock the bells - clean versions": "RTB - Clean Versions",
+
+    "carr-dio by carrie's country": "Carr-dio by Carrie",
+    "kirk franklin's revive & rhyme": "Revive & Rhyme",
+    "kirk franklin's vintage praise": "Vintage Praise",
+    "siriusly sinatra presents the chairman's lounge": "The Chairman's Lounge",
+
+    "carrie's country": "Carrie's Country",
+
+    "bangers": "Alt Workout"
   }
 }

@@ -21,6 +21,7 @@ SXM_EPG_URL      = "https://jstevenscl.github.io/epgeditarr/siriusxm_epg.xml"
 FILL_CACHE_KEY = "fill_channel_cache"
 FILL_CACHE_UPDATED_KEY = "fill_channel_cache_updated"
 FILL_CACHE_TTL_DAYS = 7
+UNMATCHED_LOG_KEY = "sxm_unmatched_log"
 
 SPORTS_SCHEDULE_URL = "https://jstevenscl.github.io/epgeditarr/sports_schedule.json"
 
@@ -847,6 +848,28 @@ class Plugin:
         cfg.settings = s
         cfg.save(update_fields=['settings'])
 
+    def _append_unmatched_log(self, names):
+        """Add channel names that failed SXM matching to a persistent log for alias review."""
+        if not names:
+            return
+        from apps.plugins.models import PluginConfig
+        cfg = PluginConfig.objects.filter(key=PLUGIN_KEY).first()
+        if not cfg:
+            return
+        s = dict(cfg.settings or {})
+        existing = list(s.get(UNMATCHED_LOG_KEY) or [])
+        seen = {n.lower() for n in existing}
+        added = False
+        for n in names:
+            if n.strip() and n.lower() not in seen:
+                existing.append(n)
+                seen.add(n.lower())
+                added = True
+        if added:
+            s[UNMATCHED_LOG_KEY] = sorted(existing, key=str.lower)
+            cfg.settings = s
+            cfg.save(update_fields=['settings'])
+
     def _fetch_sxm_data(self):
         """Fetch SiriusXM channel data. Tries GitHub Pages pre-built cache first, falls back to Wikipedia."""
         import urllib.request
@@ -1373,6 +1396,18 @@ class Plugin:
         except EPGSource.DoesNotExist:
             lines.append(f"SiriusXM EPG: not created — run Fill SiriusXM EPG")
 
+        # Unmatched channel name log — grows each time Fill/Sort/Rename finds a miss
+        try:
+            from apps.plugins.models import PluginConfig
+            cfg = PluginConfig.objects.filter(key=PLUGIN_KEY).first()
+            unmatched_log = (cfg.settings or {}).get(UNMATCHED_LOG_KEY, []) if cfg else []
+        except Exception:
+            unmatched_log = []
+        if unmatched_log:
+            lines.append(f"\nUnmatched channel names ({len(unmatched_log)}) — copy and share to grow alias list:")
+            for name in unmatched_log:
+                lines.append(f"  {name}")
+
         return {"success": True, "message": "\n".join(lines)}
 
     def _action_test_rule(self, settings, logger):
@@ -1863,12 +1898,10 @@ class Plugin:
             f"  Groups targeted   : {', '.join(sxm_group_names)}",
         ]
         if unmatched_names:
-            sample = unmatched_names[:8]
-            more = len(unmatched_names) - len(sample)
-            lines.append(
-                f"  Unmatched ({len(unmatched_names)}): {', '.join(sample)}"
-                + (f" (+{more} more)" if more else "")
-            )
+            lines.append(f"  Unmatched ({len(unmatched_names)}) — logged for alias review:")
+            for n in unmatched_names:
+                lines.append(f"    {n}")
+            self._append_unmatched_log(unmatched_names)
         return {"success": True, "message": "\n".join(lines)}
 
     @staticmethod
@@ -2122,13 +2155,14 @@ class Plugin:
                 if ch.name in seasonal_names:
                     lines.append(f"  {ch.name}")
         if unmatched_channels:
-            lines.append(f"\nChannels with no lineup match (placed at end):")
+            lines.append(f"\nChannels with no lineup match (placed at end) — logged for alias review:")
             for ch in unmatched_channels:
                 lines.append(f"  {ch.name}")
             lines.append(
                 "\nTip: Check these names against SiriusXM's lineup for abbreviations "
                 "or alternate names. Run 'Refresh Channel Data' to pull the latest list."
             )
+            self._append_unmatched_log([ch.name for ch in unmatched_channels])
 
         return {"success": True, "message": "\n".join(lines)}
 
@@ -2152,21 +2186,24 @@ class Plugin:
 
         channels = Channel.objects.filter(channel_group__name__in=sxm_groups).order_by("name")
         renamed = []
-        skipped = 0
+        skipped_names = []
 
         for ch in channels:
             enrich = self._lookup_enrich(enrich_cache, ch.name)
             if not enrich:
-                skipped += 1
+                skipped_names.append(ch.name)
                 continue
             official = self._official_channel_name(enrich)
             if official and official != ch.name:
                 renamed.append((ch.name, official, ch))
 
+        if skipped_names:
+            self._append_unmatched_log(skipped_names)
+
         if not renamed:
             msg = "All matched channels already use their official SiriusXM names."
-            if skipped:
-                msg += f" ({skipped} channels had no SiriusXM API match and were left unchanged.)"
+            if skipped_names:
+                msg += f" ({len(skipped_names)} channels had no SiriusXM API match and were logged for alias review.)"
             return {"success": True, "message": msg}
 
         lines = [f"Renamed {len(renamed)} channels to official SiriusXM names:\n"]
@@ -2175,8 +2212,8 @@ class Plugin:
             ch.save(update_fields=["name"])
             lines.append(f"  {old_name!r}  →  {new_name!r}")
 
-        if skipped:
-            lines.append(f"\n{skipped} channels had no SiriusXM API match and were left unchanged.")
+        if skipped_names:
+            lines.append(f"\n{len(skipped_names)} channels had no SiriusXM API match and were logged for alias review.")
 
         return {"success": True, "message": "\n".join(lines)}
 
