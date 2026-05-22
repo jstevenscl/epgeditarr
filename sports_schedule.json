@@ -1,268 +1,6 @@
 {
-  "generated_at": "2026-05-19T16:15:30Z",
+  "generated_at": "2026-05-22T07:51:18Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Bournemouth @ Manchester City",
-      "description": "SOCCER · Bournemouth @ Manchester City",
-      "start_utc": "2026-05-19T18:30:00Z",
-      "end_utc": "2026-05-19T20:30:00Z",
-      "channels": [
-        "Manchester City",
-        "Bournemouth",
-        "Sports Play-by-Play 964",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Chelsea @ Tottenham",
-      "description": "SOCCER · Chelsea @ Tottenham",
-      "start_utc": "2026-05-19T19:15:00Z",
-      "end_utc": "2026-05-19T21:15:00Z",
-      "channels": [
-        "Tottenham",
-        "Chelsea",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Miami Marlins @ Atlanta Braves",
-      "description": "MLB · Miami Marlins @ Atlanta Braves",
-      "start_utc": "2026-05-19T20:10:00Z",
-      "end_utc": "2026-05-19T23:10:00Z",
-      "channels": [
-        "Atlanta Braves",
-        "Miami Marlins",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Tampa Bay Rays @ Baltimore Orioles",
-      "description": "MLB · Tampa Bay Rays @ Baltimore Orioles",
-      "start_utc": "2026-05-19T22:40:00Z",
-      "end_utc": "2026-05-20T01:40:00Z",
-      "channels": [
-        "Baltimore Orioles",
-        "Tampa Bay Rays",
-        "MLB Play-by-Play 176",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Detroit Tigers @ Cleveland Guardians",
-      "description": "MLB · Detroit Tigers @ Cleveland Guardians",
-      "start_utc": "2026-05-19T22:40:00Z",
-      "end_utc": "2026-05-20T01:40:00Z",
-      "channels": [
-        "Cleveland Guardians",
-        "Detroit Tigers",
-        "MLB Play-by-Play 178",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Philadelphia Phillies @ Cincinnati Reds",
-      "description": "MLB · Philadelphia Phillies @ Cincinnati Reds",
-      "start_utc": "2026-05-19T22:40:00Z",
-      "end_utc": "2026-05-20T01:40:00Z",
-      "channels": [
-        "Cincinnati Reds",
-        "Philadelphia Phillies",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Washington Nationals @ New York Mets",
-      "description": "MLB · Washington Nationals @ New York Mets",
-      "start_utc": "2026-05-19T22:45:00Z",
-      "end_utc": "2026-05-20T01:45:00Z",
-      "channels": [
-        "New York Mets",
-        "Washington Nationals",
-        "MLB Play-by-Play 179",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Yankees @ Toronto Blue Jays",
-      "description": "MLB · New York Yankees @ Toronto Blue Jays",
-      "start_utc": "2026-05-19T23:05:00Z",
-      "end_utc": "2026-05-20T02:05:00Z",
-      "channels": [
-        "Toronto Blue Jays",
-        "New York Yankees",
-        "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Kansas City Royals @ Boston Red Sox",
-      "description": "MLB · Kansas City Royals @ Boston Red Sox",
-      "start_utc": "2026-05-19T23:40:00Z",
-      "end_utc": "2026-05-20T02:40:00Z",
-      "channels": [
-        "Boston Red Sox",
-        "Kansas City Royals",
-        "MLB Play-by-Play 181",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Chicago Cubs @ Milwaukee Brewers",
-      "description": "MLB · Chicago Cubs @ Milwaukee Brewers",
-      "start_utc": "2026-05-19T23:40:00Z",
-      "end_utc": "2026-05-20T02:40:00Z",
-      "channels": [
-        "Milwaukee Brewers",
-        "Chicago Cubs",
-        "MLB Play-by-Play 183",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Minnesota Twins @ Houston Astros",
-      "description": "MLB · Minnesota Twins @ Houston Astros",
-      "start_utc": "2026-05-19T23:40:00Z",
-      "end_utc": "2026-05-20T02:40:00Z",
-      "channels": [
-        "Houston Astros",
-        "Minnesota Twins",
-        "MLB Play-by-Play 182",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "description": "MLB · St. Louis Cardinals @ Pittsburgh Pirates",
-      "start_utc": "2026-05-19T23:45:00Z",
-      "end_utc": "2026-05-20T02:45:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "St. Louis Cardinals",
-        "MLB Play-by-Play 180",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "New York Knicks @ Cleveland Cavaliers",
-      "description": "NBA · New York Knicks @ Cleveland Cavaliers",
-      "start_utc": "2026-05-20T00:00:00Z",
-      "end_utc": "2026-05-20T02:30:00Z",
-      "channels": [
-        "Cleveland Cavaliers",
-        "New York Knicks",
-        "ESPN Radio",
-        "ESPN Xtra",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Colorado Rockies @ Texas Rangers",
-      "description": "MLB · Colorado Rockies @ Texas Rangers",
-      "start_utc": "2026-05-20T00:40:00Z",
-      "end_utc": "2026-05-20T03:40:00Z",
-      "channels": [
-        "Texas Rangers",
-        "Colorado Rockies",
-        "MLB Play-by-Play 184",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Los Angeles Angels @ Athletics",
-      "description": "MLB · Los Angeles Angels @ Athletics",
-      "start_utc": "2026-05-20T01:38:00Z",
-      "end_utc": "2026-05-20T04:38:00Z",
-      "channels": [
-        "Athletics",
-        "Los Angeles Angels",
-        "MLB Play-by-Play 186",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Arizona Diamondbacks @ San Francisco Giants",
-      "description": "MLB · Arizona Diamondbacks @ San Francisco Giants",
-      "start_utc": "2026-05-20T01:40:00Z",
-      "end_utc": "2026-05-20T04:40:00Z",
-      "channels": [
-        "San Francisco Giants",
-        "Arizona Diamondbacks",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Diego Padres @ Los Angeles Dodgers",
-      "description": "MLB · San Diego Padres @ Los Angeles Dodgers",
-      "start_utc": "2026-05-20T01:40:00Z",
-      "end_utc": "2026-05-20T04:40:00Z",
-      "channels": [
-        "Los Angeles Dodgers",
-        "San Diego Padres",
-        "MLB Play-by-Play 188",
-        "MLB en Español 871",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Seattle Mariners @ Chicago White Sox",
-      "description": "MLB · Seattle Mariners @ Chicago White Sox",
-      "start_utc": "2026-05-20T01:40:00Z",
-      "end_utc": "2026-05-20T04:40:00Z",
-      "channels": [
-        "Chicago White Sox",
-        "Seattle Mariners",
-        "MLB Play-by-Play 187",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Colorado Avalanche @ Vegas Golden Knights",
-      "description": "NHL · Colorado Avalanche @ Vegas Golden Knights",
-      "start_utc": "2026-05-21T00:00:00Z",
-      "end_utc": "2026-05-21T02:30:00Z",
-      "channels": [
-        "Vegas Golden Knights",
-        "Colorado Avalanche",
-        "NHL Network Radio™",
-        "NHL/NBA Play-by-Play 219",
-        "NHL/NBA Play-by-Play 220",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "pga",
-      "title": "The CJ Cup Byron Nelson",
-      "description": "SiriusXM PGA Tour Radio · The CJ Cup Byron Nelson · TPC Craig Ranch",
-      "start_utc": "2026-05-21T17:00:00Z",
-      "end_utc": "2026-05-21T22:00:00Z",
-      "channels": [
-        "SiriusXM PGA TOUR Radio",
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
     {
       "slug": "indycar",
       "title": "Indy 500 Carb Day",
@@ -296,6 +34,19 @@
       ]
     },
     {
+      "slug": "mlb",
+      "title": "Chicago Cubs @ Houston Astros",
+      "description": "MLB · Chicago Cubs @ Houston Astros",
+      "start_utc": "2026-05-22T18:20:00Z",
+      "end_utc": "2026-05-22T21:20:00Z",
+      "channels": [
+        "Houston Astros",
+        "Chicago Cubs",
+        "MLB Play-by-Play 175",
+        "MLB Network Radio"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "F-1 Sprint Qualifying",
       "description": "Formula 1 Racing and Analysis · F-1 Sprint Qualifying · Circuit Gilles Villeneuve",
@@ -307,6 +58,32 @@
       ]
     },
     {
+      "slug": "mlb",
+      "title": "Cincinnati Reds @ St. Louis Cardinals",
+      "description": "MLB · Cincinnati Reds @ St. Louis Cardinals",
+      "start_utc": "2026-05-22T22:40:00Z",
+      "end_utc": "2026-05-23T01:40:00Z",
+      "channels": [
+        "St. Louis Cardinals",
+        "Cincinnati Reds",
+        "MLB Play-by-Play 177",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Philadelphia Phillies @ Cleveland Guardians",
+      "description": "MLB · Philadelphia Phillies @ Cleveland Guardians",
+      "start_utc": "2026-05-22T22:40:00Z",
+      "end_utc": "2026-05-23T01:40:00Z",
+      "channels": [
+        "Cleveland Guardians",
+        "Philadelphia Phillies",
+        "MLB Play-by-Play 176",
+        "MLB Network Radio"
+      ]
+    },
+    {
       "slug": "nascar",
       "title": "North Carolina Education Lottery 200",
       "description": "SiriusXM NASCAR Radio · North Carolina Education Lottery 200 · Charlotte Motor Speedway",
@@ -314,6 +91,193 @@
       "end_utc": "2026-05-23T02:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "New York Yankees @ Tampa Bay Rays",
+      "description": "MLB · New York Yankees @ Tampa Bay Rays",
+      "start_utc": "2026-05-22T23:05:00Z",
+      "end_utc": "2026-05-23T02:05:00Z",
+      "channels": [
+        "Tampa Bay Rays",
+        "New York Yankees",
+        "MLB Play-by-Play 179",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Toronto Blue Jays @ Pittsburgh Pirates",
+      "description": "MLB · Toronto Blue Jays @ Pittsburgh Pirates",
+      "start_utc": "2026-05-22T23:07:00Z",
+      "end_utc": "2026-05-23T02:07:00Z",
+      "channels": [
+        "Pittsburgh Pirates",
+        "Toronto Blue Jays",
+        "MLB Play-by-Play 180",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Boston Red Sox @ Minnesota Twins",
+      "description": "MLB · Boston Red Sox @ Minnesota Twins",
+      "start_utc": "2026-05-22T23:10:00Z",
+      "end_utc": "2026-05-23T02:10:00Z",
+      "channels": [
+        "Minnesota Twins",
+        "Boston Red Sox",
+        "MLB Play-by-Play 181",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Miami Marlins @ New York Mets",
+      "description": "MLB · Miami Marlins @ New York Mets",
+      "start_utc": "2026-05-22T23:10:00Z",
+      "end_utc": "2026-05-23T02:10:00Z",
+      "channels": [
+        "New York Mets",
+        "Miami Marlins",
+        "MLB Play-by-Play 182",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Atlanta Braves @ Washington Nationals",
+      "description": "MLB · Atlanta Braves @ Washington Nationals",
+      "start_utc": "2026-05-22T23:15:00Z",
+      "end_utc": "2026-05-23T02:15:00Z",
+      "channels": [
+        "Washington Nationals",
+        "Atlanta Braves",
+        "MLB Play-by-Play 183",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Baltimore Orioles @ Detroit Tigers",
+      "description": "MLB · Baltimore Orioles @ Detroit Tigers",
+      "start_utc": "2026-05-22T23:15:00Z",
+      "end_utc": "2026-05-23T02:15:00Z",
+      "channels": [
+        "Detroit Tigers",
+        "Baltimore Orioles",
+        "MLB Play-by-Play 178",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Milwaukee Brewers @ Los Angeles Dodgers",
+      "description": "MLB · Milwaukee Brewers @ Los Angeles Dodgers",
+      "start_utc": "2026-05-22T23:40:00Z",
+      "end_utc": "2026-05-23T02:40:00Z",
+      "channels": [
+        "Los Angeles Dodgers",
+        "Milwaukee Brewers",
+        "MLB Network Radio™",
+        "MLB en Español 870",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Kansas City Royals @ Seattle Mariners",
+      "description": "MLB · Kansas City Royals @ Seattle Mariners",
+      "start_utc": "2026-05-22T23:40:00Z",
+      "end_utc": "2026-05-23T02:40:00Z",
+      "channels": [
+        "Seattle Mariners",
+        "Kansas City Royals",
+        "MLB Play-by-Play 184",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Colorado Avalanche @ Vegas Golden Knights",
+      "description": "NHL · Colorado Avalanche @ Vegas Golden Knights",
+      "start_utc": "2026-05-23T00:00:00Z",
+      "end_utc": "2026-05-23T02:30:00Z",
+      "channels": [
+        "Vegas Golden Knights",
+        "Colorado Avalanche",
+        "NHL Network Radio™",
+        "NHL/NBA Play-by-Play 219",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "San Antonio Spurs @ Oklahoma City Thunder",
+      "description": "NBA · San Antonio Spurs @ Oklahoma City Thunder",
+      "start_utc": "2026-05-23T00:30:00Z",
+      "end_utc": "2026-05-23T03:00:00Z",
+      "channels": [
+        "Oklahoma City Thunder",
+        "San Antonio Spurs",
+        "ESPN Radio",
+        "NBC Sports Radio",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Los Angeles Angels @ Texas Rangers",
+      "description": "MLB · Los Angeles Angels @ Texas Rangers",
+      "start_utc": "2026-05-23T01:38:00Z",
+      "end_utc": "2026-05-23T04:38:00Z",
+      "channels": [
+        "Texas Rangers",
+        "Los Angeles Angels",
+        "MLB Play-by-Play 186",
+        "MLB en Español 871",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Diego Padres @ Athletics",
+      "description": "MLB · San Diego Padres @ Athletics",
+      "start_utc": "2026-05-23T01:40:00Z",
+      "end_utc": "2026-05-23T04:40:00Z",
+      "channels": [
+        "Athletics",
+        "San Diego Padres",
+        "MLB Play-by-Play 185",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Arizona Diamondbacks @ Colorado Rockies",
+      "description": "MLB · Arizona Diamondbacks @ Colorado Rockies",
+      "start_utc": "2026-05-23T01:40:00Z",
+      "end_utc": "2026-05-23T04:40:00Z",
+      "channels": [
+        "Colorado Rockies",
+        "Arizona Diamondbacks",
+        "MLB Play-by-Play 175",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Francisco Giants @ Chicago White Sox",
+      "description": "MLB · San Francisco Giants @ Chicago White Sox",
+      "start_utc": "2026-05-23T02:15:00Z",
+      "end_utc": "2026-05-23T05:15:00Z",
+      "channels": [
+        "Chicago White Sox",
+        "San Francisco Giants",
+        "MLB Play-by-Play 188",
+        "MLB Network Radio"
       ]
     },
     {
@@ -469,6 +433,1009 @@
       "end_utc": "2026-06-01T01:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Mexico @ South Africa",
+      "description": "SOCCER · Mexico @ South Africa",
+      "start_utc": "2026-06-11T19:00:00Z",
+      "end_utc": "2026-06-11T21:00:00Z",
+      "channels": [
+        "South Africa",
+        "Mexico",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "South Korea @ Czechia",
+      "description": "SOCCER · South Korea @ Czechia",
+      "start_utc": "2026-06-12T02:00:00Z",
+      "end_utc": "2026-06-12T04:00:00Z",
+      "channels": [
+        "Czechia",
+        "South Korea",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Canada @ Bosnia and Herzegovina",
+      "description": "SOCCER · Canada @ Bosnia and Herzegovina",
+      "start_utc": "2026-06-12T19:00:00Z",
+      "end_utc": "2026-06-12T21:00:00Z",
+      "channels": [
+        "Bosnia and Herzegovina",
+        "Canada",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "USA @ Paraguay",
+      "description": "SOCCER · USA @ Paraguay",
+      "start_utc": "2026-06-13T01:00:00Z",
+      "end_utc": "2026-06-13T03:00:00Z",
+      "channels": [
+        "Paraguay",
+        "USA",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Qatar @ Switzerland",
+      "description": "SOCCER · Qatar @ Switzerland",
+      "start_utc": "2026-06-13T19:00:00Z",
+      "end_utc": "2026-06-13T21:00:00Z",
+      "channels": [
+        "Switzerland",
+        "Qatar",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Brazil @ Morocco",
+      "description": "SOCCER · Brazil @ Morocco",
+      "start_utc": "2026-06-13T22:00:00Z",
+      "end_utc": "2026-06-14T00:00:00Z",
+      "channels": [
+        "Morocco",
+        "Brazil",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Haiti @ Scotland",
+      "description": "SOCCER · Haiti @ Scotland",
+      "start_utc": "2026-06-14T01:00:00Z",
+      "end_utc": "2026-06-14T03:00:00Z",
+      "channels": [
+        "Scotland",
+        "Haiti",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Australia @ Türkiye",
+      "description": "SOCCER · Australia @ Türkiye",
+      "start_utc": "2026-06-14T04:00:00Z",
+      "end_utc": "2026-06-14T06:00:00Z",
+      "channels": [
+        "Türkiye",
+        "Australia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Germany @ Curaçao",
+      "description": "SOCCER · Germany @ Curaçao",
+      "start_utc": "2026-06-14T17:00:00Z",
+      "end_utc": "2026-06-14T19:00:00Z",
+      "channels": [
+        "Curaçao",
+        "Germany",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Netherlands @ Japan",
+      "description": "SOCCER · Netherlands @ Japan",
+      "start_utc": "2026-06-14T20:00:00Z",
+      "end_utc": "2026-06-14T22:00:00Z",
+      "channels": [
+        "Japan",
+        "Netherlands",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Ivory Coast @ Ecuador",
+      "description": "SOCCER · Ivory Coast @ Ecuador",
+      "start_utc": "2026-06-14T23:00:00Z",
+      "end_utc": "2026-06-15T01:00:00Z",
+      "channels": [
+        "Ecuador",
+        "Ivory Coast",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Sweden @ Tunisia",
+      "description": "SOCCER · Sweden @ Tunisia",
+      "start_utc": "2026-06-15T02:00:00Z",
+      "end_utc": "2026-06-15T04:00:00Z",
+      "channels": [
+        "Tunisia",
+        "Sweden",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Spain @ Cape Verde",
+      "description": "SOCCER · Spain @ Cape Verde",
+      "start_utc": "2026-06-15T16:00:00Z",
+      "end_utc": "2026-06-15T18:00:00Z",
+      "channels": [
+        "Cape Verde",
+        "Spain",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Belgium @ Egypt",
+      "description": "SOCCER · Belgium @ Egypt",
+      "start_utc": "2026-06-15T19:00:00Z",
+      "end_utc": "2026-06-15T21:00:00Z",
+      "channels": [
+        "Egypt",
+        "Belgium",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Saudi Arabia @ Uruguay",
+      "description": "SOCCER · Saudi Arabia @ Uruguay",
+      "start_utc": "2026-06-15T22:00:00Z",
+      "end_utc": "2026-06-16T00:00:00Z",
+      "channels": [
+        "Uruguay",
+        "Saudi Arabia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Iran @ New Zealand",
+      "description": "SOCCER · Iran @ New Zealand",
+      "start_utc": "2026-06-16T01:00:00Z",
+      "end_utc": "2026-06-16T03:00:00Z",
+      "channels": [
+        "New Zealand",
+        "Iran",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "France @ Senegal",
+      "description": "SOCCER · France @ Senegal",
+      "start_utc": "2026-06-16T19:00:00Z",
+      "end_utc": "2026-06-16T21:00:00Z",
+      "channels": [
+        "Senegal",
+        "France",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Iraq @ Norway",
+      "description": "SOCCER · Iraq @ Norway",
+      "start_utc": "2026-06-16T22:00:00Z",
+      "end_utc": "2026-06-17T00:00:00Z",
+      "channels": [
+        "Norway",
+        "Iraq",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Argentina @ Algeria",
+      "description": "SOCCER · Argentina @ Algeria",
+      "start_utc": "2026-06-17T01:00:00Z",
+      "end_utc": "2026-06-17T03:00:00Z",
+      "channels": [
+        "Algeria",
+        "Argentina",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Austria @ Jordan",
+      "description": "SOCCER · Austria @ Jordan",
+      "start_utc": "2026-06-17T04:00:00Z",
+      "end_utc": "2026-06-17T06:00:00Z",
+      "channels": [
+        "Jordan",
+        "Austria",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Portugal @ Congo DR",
+      "description": "SOCCER · Portugal @ Congo DR",
+      "start_utc": "2026-06-17T17:00:00Z",
+      "end_utc": "2026-06-17T19:00:00Z",
+      "channels": [
+        "Congo DR",
+        "Portugal",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "England @ Croatia",
+      "description": "SOCCER · England @ Croatia",
+      "start_utc": "2026-06-17T20:00:00Z",
+      "end_utc": "2026-06-17T22:00:00Z",
+      "channels": [
+        "Croatia",
+        "England",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Ghana @ Panama",
+      "description": "SOCCER · Ghana @ Panama",
+      "start_utc": "2026-06-17T23:00:00Z",
+      "end_utc": "2026-06-18T01:00:00Z",
+      "channels": [
+        "Panama",
+        "Ghana",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Uzbekistan @ Colombia",
+      "description": "SOCCER · Uzbekistan @ Colombia",
+      "start_utc": "2026-06-18T02:00:00Z",
+      "end_utc": "2026-06-18T04:00:00Z",
+      "channels": [
+        "Colombia",
+        "Uzbekistan",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Czechia @ South Africa",
+      "description": "SOCCER · Czechia @ South Africa",
+      "start_utc": "2026-06-18T16:00:00Z",
+      "end_utc": "2026-06-18T18:00:00Z",
+      "channels": [
+        "South Africa",
+        "Czechia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Switzerland @ Bosnia and Herzegovina",
+      "description": "SOCCER · Switzerland @ Bosnia and Herzegovina",
+      "start_utc": "2026-06-18T19:00:00Z",
+      "end_utc": "2026-06-18T21:00:00Z",
+      "channels": [
+        "Bosnia and Herzegovina",
+        "Switzerland",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Canada @ Qatar",
+      "description": "SOCCER · Canada @ Qatar",
+      "start_utc": "2026-06-18T22:00:00Z",
+      "end_utc": "2026-06-19T00:00:00Z",
+      "channels": [
+        "Qatar",
+        "Canada",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Mexico @ South Korea",
+      "description": "SOCCER · Mexico @ South Korea",
+      "start_utc": "2026-06-19T01:00:00Z",
+      "end_utc": "2026-06-19T03:00:00Z",
+      "channels": [
+        "South Korea",
+        "Mexico",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "USA @ Australia",
+      "description": "SOCCER · USA @ Australia",
+      "start_utc": "2026-06-19T19:00:00Z",
+      "end_utc": "2026-06-19T21:00:00Z",
+      "channels": [
+        "Australia",
+        "USA",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Scotland @ Morocco",
+      "description": "SOCCER · Scotland @ Morocco",
+      "start_utc": "2026-06-19T22:00:00Z",
+      "end_utc": "2026-06-20T00:00:00Z",
+      "channels": [
+        "Morocco",
+        "Scotland",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Brazil @ Haiti",
+      "description": "SOCCER · Brazil @ Haiti",
+      "start_utc": "2026-06-20T00:30:00Z",
+      "end_utc": "2026-06-20T02:30:00Z",
+      "channels": [
+        "Haiti",
+        "Brazil",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Türkiye @ Paraguay",
+      "description": "SOCCER · Türkiye @ Paraguay",
+      "start_utc": "2026-06-20T03:00:00Z",
+      "end_utc": "2026-06-20T05:00:00Z",
+      "channels": [
+        "Paraguay",
+        "Türkiye",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Netherlands @ Sweden",
+      "description": "SOCCER · Netherlands @ Sweden",
+      "start_utc": "2026-06-20T17:00:00Z",
+      "end_utc": "2026-06-20T19:00:00Z",
+      "channels": [
+        "Sweden",
+        "Netherlands",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Germany @ Ivory Coast",
+      "description": "SOCCER · Germany @ Ivory Coast",
+      "start_utc": "2026-06-20T20:00:00Z",
+      "end_utc": "2026-06-20T22:00:00Z",
+      "channels": [
+        "Ivory Coast",
+        "Germany",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Ecuador @ Curaçao",
+      "description": "SOCCER · Ecuador @ Curaçao",
+      "start_utc": "2026-06-21T00:00:00Z",
+      "end_utc": "2026-06-21T02:00:00Z",
+      "channels": [
+        "Curaçao",
+        "Ecuador",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tunisia @ Japan",
+      "description": "SOCCER · Tunisia @ Japan",
+      "start_utc": "2026-06-21T04:00:00Z",
+      "end_utc": "2026-06-21T06:00:00Z",
+      "channels": [
+        "Japan",
+        "Tunisia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Spain @ Saudi Arabia",
+      "description": "SOCCER · Spain @ Saudi Arabia",
+      "start_utc": "2026-06-21T16:00:00Z",
+      "end_utc": "2026-06-21T18:00:00Z",
+      "channels": [
+        "Saudi Arabia",
+        "Spain",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Belgium @ Iran",
+      "description": "SOCCER · Belgium @ Iran",
+      "start_utc": "2026-06-21T19:00:00Z",
+      "end_utc": "2026-06-21T21:00:00Z",
+      "channels": [
+        "Iran",
+        "Belgium",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Uruguay @ Cape Verde",
+      "description": "SOCCER · Uruguay @ Cape Verde",
+      "start_utc": "2026-06-21T22:00:00Z",
+      "end_utc": "2026-06-22T00:00:00Z",
+      "channels": [
+        "Cape Verde",
+        "Uruguay",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "New Zealand @ Egypt",
+      "description": "SOCCER · New Zealand @ Egypt",
+      "start_utc": "2026-06-22T01:00:00Z",
+      "end_utc": "2026-06-22T03:00:00Z",
+      "channels": [
+        "Egypt",
+        "New Zealand",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Argentina @ Austria",
+      "description": "SOCCER · Argentina @ Austria",
+      "start_utc": "2026-06-22T17:00:00Z",
+      "end_utc": "2026-06-22T19:00:00Z",
+      "channels": [
+        "Austria",
+        "Argentina",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "France @ Iraq",
+      "description": "SOCCER · France @ Iraq",
+      "start_utc": "2026-06-22T21:00:00Z",
+      "end_utc": "2026-06-22T23:00:00Z",
+      "channels": [
+        "Iraq",
+        "France",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Norway @ Senegal",
+      "description": "SOCCER · Norway @ Senegal",
+      "start_utc": "2026-06-23T00:00:00Z",
+      "end_utc": "2026-06-23T02:00:00Z",
+      "channels": [
+        "Senegal",
+        "Norway",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Jordan @ Algeria",
+      "description": "SOCCER · Jordan @ Algeria",
+      "start_utc": "2026-06-23T03:00:00Z",
+      "end_utc": "2026-06-23T05:00:00Z",
+      "channels": [
+        "Algeria",
+        "Jordan",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Portugal @ Uzbekistan",
+      "description": "SOCCER · Portugal @ Uzbekistan",
+      "start_utc": "2026-06-23T17:00:00Z",
+      "end_utc": "2026-06-23T19:00:00Z",
+      "channels": [
+        "Uzbekistan",
+        "Portugal",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "England @ Ghana",
+      "description": "SOCCER · England @ Ghana",
+      "start_utc": "2026-06-23T20:00:00Z",
+      "end_utc": "2026-06-23T22:00:00Z",
+      "channels": [
+        "Ghana",
+        "England",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Panama @ Croatia",
+      "description": "SOCCER · Panama @ Croatia",
+      "start_utc": "2026-06-23T23:00:00Z",
+      "end_utc": "2026-06-24T01:00:00Z",
+      "channels": [
+        "Croatia",
+        "Panama",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Colombia @ Congo DR",
+      "description": "SOCCER · Colombia @ Congo DR",
+      "start_utc": "2026-06-24T02:00:00Z",
+      "end_utc": "2026-06-24T04:00:00Z",
+      "channels": [
+        "Congo DR",
+        "Colombia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Bosnia and Herzegovina @ Qatar",
+      "description": "SOCCER · Bosnia and Herzegovina @ Qatar",
+      "start_utc": "2026-06-24T19:00:00Z",
+      "end_utc": "2026-06-24T21:00:00Z",
+      "channels": [
+        "Qatar",
+        "Bosnia and Herzegovina",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Switzerland @ Canada",
+      "description": "SOCCER · Switzerland @ Canada",
+      "start_utc": "2026-06-24T19:00:00Z",
+      "end_utc": "2026-06-24T21:00:00Z",
+      "channels": [
+        "Canada",
+        "Switzerland",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Scotland @ Brazil",
+      "description": "SOCCER · Scotland @ Brazil",
+      "start_utc": "2026-06-24T22:00:00Z",
+      "end_utc": "2026-06-25T00:00:00Z",
+      "channels": [
+        "Brazil",
+        "Scotland",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Morocco @ Haiti",
+      "description": "SOCCER · Morocco @ Haiti",
+      "start_utc": "2026-06-24T22:00:00Z",
+      "end_utc": "2026-06-25T00:00:00Z",
+      "channels": [
+        "Haiti",
+        "Morocco",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "South Africa @ South Korea",
+      "description": "SOCCER · South Africa @ South Korea",
+      "start_utc": "2026-06-25T01:00:00Z",
+      "end_utc": "2026-06-25T03:00:00Z",
+      "channels": [
+        "South Korea",
+        "South Africa",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Czechia @ Mexico",
+      "description": "SOCCER · Czechia @ Mexico",
+      "start_utc": "2026-06-25T01:00:00Z",
+      "end_utc": "2026-06-25T03:00:00Z",
+      "channels": [
+        "Mexico",
+        "Czechia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Ecuador @ Germany",
+      "description": "SOCCER · Ecuador @ Germany",
+      "start_utc": "2026-06-25T20:00:00Z",
+      "end_utc": "2026-06-25T22:00:00Z",
+      "channels": [
+        "Germany",
+        "Ecuador",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Japan @ Sweden",
+      "description": "SOCCER · Japan @ Sweden",
+      "start_utc": "2026-06-25T23:00:00Z",
+      "end_utc": "2026-06-26T01:00:00Z",
+      "channels": [
+        "Sweden",
+        "Japan",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tunisia @ Netherlands",
+      "description": "SOCCER · Tunisia @ Netherlands",
+      "start_utc": "2026-06-25T23:00:00Z",
+      "end_utc": "2026-06-26T01:00:00Z",
+      "channels": [
+        "Netherlands",
+        "Tunisia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Paraguay @ Australia",
+      "description": "SOCCER · Paraguay @ Australia",
+      "start_utc": "2026-06-26T02:00:00Z",
+      "end_utc": "2026-06-26T04:00:00Z",
+      "channels": [
+        "Australia",
+        "Paraguay",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Türkiye @ USA",
+      "description": "SOCCER · Türkiye @ USA",
+      "start_utc": "2026-06-26T02:00:00Z",
+      "end_utc": "2026-06-26T04:00:00Z",
+      "channels": [
+        "USA",
+        "Türkiye",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Senegal @ Iraq",
+      "description": "SOCCER · Senegal @ Iraq",
+      "start_utc": "2026-06-26T19:00:00Z",
+      "end_utc": "2026-06-26T21:00:00Z",
+      "channels": [
+        "Iraq",
+        "Senegal",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Norway @ France",
+      "description": "SOCCER · Norway @ France",
+      "start_utc": "2026-06-26T19:00:00Z",
+      "end_utc": "2026-06-26T21:00:00Z",
+      "channels": [
+        "France",
+        "Norway",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Uruguay @ Spain",
+      "description": "SOCCER · Uruguay @ Spain",
+      "start_utc": "2026-06-27T00:00:00Z",
+      "end_utc": "2026-06-27T02:00:00Z",
+      "channels": [
+        "Spain",
+        "Uruguay",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Cape Verde @ Saudi Arabia",
+      "description": "SOCCER · Cape Verde @ Saudi Arabia",
+      "start_utc": "2026-06-27T00:00:00Z",
+      "end_utc": "2026-06-27T02:00:00Z",
+      "channels": [
+        "Saudi Arabia",
+        "Cape Verde",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "New Zealand @ Belgium",
+      "description": "SOCCER · New Zealand @ Belgium",
+      "start_utc": "2026-06-27T03:00:00Z",
+      "end_utc": "2026-06-27T05:00:00Z",
+      "channels": [
+        "Belgium",
+        "New Zealand",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Egypt @ Iran",
+      "description": "SOCCER · Egypt @ Iran",
+      "start_utc": "2026-06-27T03:00:00Z",
+      "end_utc": "2026-06-27T05:00:00Z",
+      "channels": [
+        "Iran",
+        "Egypt",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Panama @ England",
+      "description": "SOCCER · Panama @ England",
+      "start_utc": "2026-06-27T21:00:00Z",
+      "end_utc": "2026-06-27T23:00:00Z",
+      "channels": [
+        "England",
+        "Panama",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Croatia @ Ghana",
+      "description": "SOCCER · Croatia @ Ghana",
+      "start_utc": "2026-06-27T21:00:00Z",
+      "end_utc": "2026-06-27T23:00:00Z",
+      "channels": [
+        "Ghana",
+        "Croatia",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Congo DR @ Uzbekistan",
+      "description": "SOCCER · Congo DR @ Uzbekistan",
+      "start_utc": "2026-06-27T23:30:00Z",
+      "end_utc": "2026-06-28T01:30:00Z",
+      "channels": [
+        "Uzbekistan",
+        "Congo DR",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Colombia @ Portugal",
+      "description": "SOCCER · Colombia @ Portugal",
+      "start_utc": "2026-06-27T23:30:00Z",
+      "end_utc": "2026-06-28T01:30:00Z",
+      "channels": [
+        "Portugal",
+        "Colombia",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Jordan @ Argentina",
+      "description": "SOCCER · Jordan @ Argentina",
+      "start_utc": "2026-06-28T02:00:00Z",
+      "end_utc": "2026-06-28T04:00:00Z",
+      "channels": [
+        "Argentina",
+        "Jordan",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Algeria @ Austria",
+      "description": "SOCCER · Algeria @ Austria",
+      "start_utc": "2026-06-28T02:00:00Z",
+      "end_utc": "2026-06-28T04:00:00Z",
+      "channels": [
+        "Austria",
+        "Algeria",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-28T19:00:00Z",
+      "end_utc": "2026-06-28T21:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-29T17:00:00Z",
+      "end_utc": "2026-06-29T19:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-29T20:30:00Z",
+      "end_utc": "2026-06-29T22:30:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-30T01:00:00Z",
+      "end_utc": "2026-06-30T03:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-30T17:00:00Z",
+      "end_utc": "2026-06-30T19:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-06-30T21:00:00Z",
+      "end_utc": "2026-06-30T23:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "To Be Determined @ To Be Determined",
+      "description": "SOCCER · To Be Determined @ To Be Determined",
+      "start_utc": "2026-07-01T01:00:00Z",
+      "end_utc": "2026-07-01T03:00:00Z",
+      "channels": [
+        "To Be Determined",
+        "To Be Determined",
+        "FOX Sports on SiriusXM",
+        "SiriusXM FC"
       ]
     }
   ]
