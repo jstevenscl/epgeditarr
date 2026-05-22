@@ -46,7 +46,7 @@ EPGeditARR publishes a ready-to-use XMLTV EPG file covering all SiriusXM channel
 https://jstevenscl.github.io/epgeditarr/siriusxm_epg.xml
 ```
 
-- **737 channels** — all SiriusXM channels from the official lineup plus sport play-by-play feeds
+- **771 channels** — all SiriusXM channels from the official lineup plus sport play-by-play feeds
 - **Sports channels** get smart blocks: Upcoming → LIVE → Post-game
 - **All other channels** get repeating fill blocks with real SiriusXM descriptions
 - **14 days** of schedule generated, refreshed every 4 hours
@@ -403,6 +403,9 @@ Channels that can't be matched to the official SiriusXM lineup are logged automa
 
 **Fill SiriusXM EPG showed a 504 Gateway Timeout / gateway error — did it fail?**
 Almost certainly not. The fill downloads ~200 MB of EPG data and rewrites hundreds of channels, which can take 60–90+ seconds. Most reverse proxies (nginx, Traefik, Caddy) drop the browser connection after 60 seconds by default — but the Dispatcharr backend (Gunicorn) keeps running and finishes the job. The browser error is the proxy giving up, not the fill failing. Click **Show Status** after a minute or two: if it shows channel entries and program counts, the fill completed successfully. You don't need to run it again.
+
+**I updated Dispatcharr and now plugin action buttons don't show any output.**
+This is a known display-only regression in Dispatcharr v0.25.0. When you click an action button (Status, Fill, Sort, etc.) the action runs correctly on the backend and all data is written — the result text just doesn't render in the modal UI. To confirm an action completed, click **Show Status** which will show current program counts and source state. All functionality (EPG transform, Fill EPG, SiriusXM Fill, Sort, Logos) continues to work normally. No change to EPGeditARR is needed.
 
 ---
 
