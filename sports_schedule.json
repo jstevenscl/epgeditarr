@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-05-22T17:55:24Z",
+  "generated_at": "2026-05-22T21:14:41Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "F-1 Practice",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit Gilles Villeneuve",
-      "start_utc": "2026-05-22T16:25:00Z",
-      "end_utc": "2026-05-22T18:25:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "pga",
       "title": "The CJ Cup Byron Nelson",
