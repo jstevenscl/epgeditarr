@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-05-23T17:03:19Z",
+  "generated_at": "2026-05-23T20:57:09Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "F-1 Sprint Race",
-      "description": "Formula 1 Racing and Analysis · F-1 Sprint Race · Circuit Gilles Villeneuve",
-      "start_utc": "2026-05-23T15:55:00Z",
-      "end_utc": "2026-05-23T17:55:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "pga",
       "title": "The CJ Cup Byron Nelson",
