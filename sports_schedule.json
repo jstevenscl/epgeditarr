@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T09:56:50Z",
+  "generated_at": "2026-05-23T13:42:24Z",
   "events": [
     {
       "slug": "f1",
@@ -31,19 +31,6 @@
       "end_utc": "2026-05-23T21:00:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Yankees @ Tampa Bay Rays",
-      "description": "MLB · New York Yankees @ Tampa Bay Rays",
-      "start_utc": "2026-05-23T17:35:00Z",
-      "end_utc": "2026-05-23T20:35:00Z",
-      "channels": [
-        "Tampa Bay Rays",
-        "New York Yankees",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
       ]
     },
     {
@@ -87,19 +74,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Philadelphia Phillies @ Cleveland Guardians",
-      "description": "MLB · Philadelphia Phillies @ Cleveland Guardians",
-      "start_utc": "2026-05-23T20:05:00Z",
-      "end_utc": "2026-05-23T23:05:00Z",
-      "channels": [
-        "Cleveland Guardians",
-        "Philadelphia Phillies",
-        "MLB Play-by-Play 180",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "Baltimore Orioles @ Detroit Tigers",
       "description": "MLB · Baltimore Orioles @ Detroit Tigers",
       "start_utc": "2026-05-23T20:05:00Z",
@@ -126,27 +100,14 @@
     },
     {
       "slug": "mlb",
-      "title": "Kansas City Royals @ Seattle Mariners",
-      "description": "MLB · Kansas City Royals @ Seattle Mariners",
-      "start_utc": "2026-05-23T20:10:00Z",
-      "end_utc": "2026-05-23T23:10:00Z",
+      "title": "Philadelphia Phillies @ Cleveland Guardians",
+      "description": "MLB · Philadelphia Phillies @ Cleveland Guardians",
+      "start_utc": "2026-05-23T20:05:00Z",
+      "end_utc": "2026-05-23T23:05:00Z",
       "channels": [
-        "Seattle Mariners",
-        "Kansas City Royals",
-        "MLB Play-by-Play 184",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Miami Marlins @ New York Mets",
-      "description": "MLB · Miami Marlins @ New York Mets",
-      "start_utc": "2026-05-23T20:10:00Z",
-      "end_utc": "2026-05-23T23:10:00Z",
-      "channels": [
-        "New York Mets",
-        "Miami Marlins",
-        "MLB Network Radio™",
+        "Cleveland Guardians",
+        "Philadelphia Phillies",
+        "MLB Play-by-Play 180",
         "MLB Network Radio"
       ]
     },
@@ -165,6 +126,19 @@
     },
     {
       "slug": "mlb",
+      "title": "Kansas City Royals @ Seattle Mariners",
+      "description": "MLB · Kansas City Royals @ Seattle Mariners",
+      "start_utc": "2026-05-23T20:10:00Z",
+      "end_utc": "2026-05-23T23:10:00Z",
+      "channels": [
+        "Seattle Mariners",
+        "Kansas City Royals",
+        "MLB Play-by-Play 184",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Boston Red Sox @ Minnesota Twins",
       "description": "MLB · Boston Red Sox @ Minnesota Twins",
       "start_utc": "2026-05-23T20:10:00Z",
@@ -173,6 +147,19 @@
         "Minnesota Twins",
         "Boston Red Sox",
         "MLB Play-by-Play 182",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Miami Marlins @ New York Mets",
+      "description": "MLB · Miami Marlins @ New York Mets",
+      "start_utc": "2026-05-23T20:10:00Z",
+      "end_utc": "2026-05-23T23:10:00Z",
+      "channels": [
+        "New York Mets",
+        "Miami Marlins",
+        "MLB Network Radio™",
         "MLB Network Radio"
       ]
     },
@@ -203,6 +190,19 @@
     },
     {
       "slug": "mlb",
+      "title": "Cincinnati Reds @ St. Louis Cardinals",
+      "description": "MLB · Cincinnati Reds @ St. Louis Cardinals",
+      "start_utc": "2026-05-23T23:15:00Z",
+      "end_utc": "2026-05-24T02:15:00Z",
+      "channels": [
+        "St. Louis Cardinals",
+        "Cincinnati Reds",
+        "MLB Play-by-Play 185",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Milwaukee Brewers @ Los Angeles Dodgers",
       "description": "MLB · Milwaukee Brewers @ Los Angeles Dodgers",
       "start_utc": "2026-05-23T23:15:00Z",
@@ -212,19 +212,6 @@
         "Milwaukee Brewers",
         "MLB Play-by-Play 186",
         "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cincinnati Reds @ St. Louis Cardinals",
-      "description": "MLB · Cincinnati Reds @ St. Louis Cardinals",
-      "start_utc": "2026-05-23T23:15:00Z",
-      "end_utc": "2026-05-24T02:15:00Z",
-      "channels": [
-        "St. Louis Cardinals",
-        "Cincinnati Reds",
-        "MLB Play-by-Play 185",
         "MLB Network Radio"
       ]
     },
