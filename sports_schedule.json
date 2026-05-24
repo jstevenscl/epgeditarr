@@ -1,6 +1,16 @@
 {
-  "generated_at": "2026-05-24T09:58:11Z",
+  "generated_at": "2026-05-24T13:42:03Z",
   "events": [
+    {
+      "slug": "nascar",
+      "title": "North Carolina Education Lottery 200",
+      "description": "SiriusXM NASCAR Radio · North Carolina Education Lottery 200 · Charlotte Motor Speedway",
+      "start_utc": "2026-05-24T14:00:00Z",
+      "end_utc": "2026-05-24T17:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
     {
       "slug": "soccer",
       "title": "West Ham @ Leeds",
@@ -384,6 +394,28 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "Charles Schwab Challenge",
+      "description": "SiriusXM PGA Tour Radio · Charles Schwab Challenge · Colonial Country Club",
+      "start_utc": "2026-05-28T17:00:00Z",
+      "end_utc": "2026-05-28T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Charles Schwab Challenge",
+      "description": "SiriusXM PGA Tour Radio · Charles Schwab Challenge · Colonial Country Club",
+      "start_utc": "2026-05-29T17:00:00Z",
+      "end_utc": "2026-05-29T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "nascar",
       "title": "Flote 200",
       "description": "SiriusXM NASCAR Radio · Flote 200 · Nashville Superspeedway",
@@ -403,6 +435,17 @@
         "Arsenal",
         "Paris Saint-Germain",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Charles Schwab Challenge",
+      "description": "SiriusXM PGA Tour Radio · Charles Schwab Challenge · Colonial Country Club",
+      "start_utc": "2026-05-30T17:00:00Z",
+      "end_utc": "2026-05-30T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -443,6 +486,17 @@
       "end_utc": "2026-05-31T19:00:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Charles Schwab Challenge",
+      "description": "SiriusXM PGA Tour Radio · Charles Schwab Challenge · Colonial Country Club",
+      "start_utc": "2026-05-31T17:00:00Z",
+      "end_utc": "2026-05-31T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
