@@ -6896,17 +6896,6 @@
     "sxm_entity_id": "9680",
     "lookaround_channel_id": "50b0c84a-9fa5-0f67-2e7b-85802d9f8a3a"
   },
-  "morgan wallen radio": {
-    "name": "Morgan Wallen Radio",
-    "description": "Setting the pace in, and beyond, country music, Morgan Wallen takes you inside his world. Hear personal stories from inside the studio, on the road and more. Music from his friends, collaborators, and influences live alongside Morgan’s chart-toppers - all handpicked by Morgan Wallen. Plus, drop-ins from the people that make up his life on and off the stadium stage.",
-    "genre": "Country",
-    "sxm_number": 64,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/morganwallenradio.svg",
-    "sxm_logo_src": "if/86/865169cc01423836ae0c95bc200be0c3_1774273787.png",
-    "sxm_entity_id": "9684",
-    "lookaround_channel_id": "1430a1d6-68ba-edb7-acaf-c500b1c00354"
-  },
   "esperanza": {
     "name": "Esperanza",
     "description": "Contemporary Latin Christian",
@@ -6939,6 +6928,17 @@
     "sxm_logo_src": "if/3b/3b8d98b87b8f3aad93e6653fd0180b0b_1778171035.png",
     "sxm_entity_id": "9681",
     "lookaround_channel_id": "d4971239-4b12-40d3-d25b-06877ad5d792"
+  },
+  "morgan wallen radio": {
+    "name": "Morgan Wallen Radio",
+    "description": "Setting the pace in, and beyond, country music, Morgan Wallen takes you inside his world. Hear personal stories from inside the studio, on the road and more. Music from his friends, collaborators, and influences live alongside Morgan’s chart-toppers - all handpicked by Morgan Wallen. Plus, drop-ins from the people that make up his life on and off the stadium stage.",
+    "genre": "Country",
+    "sxm_number": 64,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/morganwallenradio.svg",
+    "sxm_logo_src": "if/86/865169cc01423836ae0c95bc200be0c3_1774273787.png",
+    "sxm_entity_id": "9684",
+    "lookaround_channel_id": "1430a1d6-68ba-edb7-acaf-c500b1c00354"
   },
   "abc news live": {
     "name": "ABC News Live",
@@ -7831,17 +7831,6 @@
     "sxm_entity_id": "9470",
     "lookaround_channel_id": null
   },
-  "comedy classics": {
-    "name": "Comedy Classics",
-    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
-    "genre": "Comedy",
-    "sxm_number": 772,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyclassics.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9542",
-    "lookaround_channel_id": null
-  },
   "she's so funny": {
     "name": "She's So Funny",
     "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
@@ -7851,6 +7840,17 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shessofunny.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9503",
+    "lookaround_channel_id": null
+  },
+  "comedy classics": {
+    "name": "Comedy Classics",
+    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
+    "genre": "Comedy",
+    "sxm_number": 772,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyclassics.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9542",
     "lookaround_channel_id": null
   },
   "the message_1258": {
@@ -7864,17 +7864,6 @@
     "sxm_entity_id": "4270",
     "lookaround_channel_id": "c2e3e686-93a6-5d22-c818-6d8ea63bcc7c"
   },
-  "navidad": {
-    "name": "Navidad",
-    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
-    "genre": "Holiday",
-    "sxm_number": 626,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9348",
-    "lookaround_channel_id": null
-  },
   "holly": {
     "name": "Holly",
     "description": "Merry and bright holiday hits featuring songs by Mariah Carey, Michael Bublé, Dean Martin, Kelly Clarkson, Pentatonix, Josh Groban, John Legend, Brenda Lee, Train, Gwen Stefani and more.",
@@ -7884,6 +7873,17 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holly.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9343",
+    "lookaround_channel_id": null
+  },
+  "navidad": {
+    "name": "Navidad",
+    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
+    "genre": "Holiday",
+    "sxm_number": 626,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9348",
     "lookaround_channel_id": null
   }
 }
