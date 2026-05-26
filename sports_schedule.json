@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T07:53:44Z",
+  "generated_at": "2026-05-26T15:41:18Z",
   "events": [
     {
       "slug": "mlb",
@@ -318,8 +318,8 @@
       "slug": "indycar",
       "title": "INDY NXT Race",
       "description": "SiriusXM INDYCAR Nation · INDY NXT Race · Streets of Detroit",
-      "start_utc": "2026-05-31T14:30:00Z",
-      "end_utc": "2026-05-31T17:00:00Z",
+      "start_utc": "2026-05-31T14:25:00Z",
+      "end_utc": "2026-05-31T16:55:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
       ]
@@ -328,8 +328,8 @@
       "slug": "indycar",
       "title": "Chevrolet Detroit Grand Prix",
       "description": "SiriusXM INDYCAR Nation · Chevrolet Detroit Grand Prix · Streets of Detroit",
-      "start_utc": "2026-05-31T16:30:00Z",
-      "end_utc": "2026-05-31T19:00:00Z",
+      "start_utc": "2026-05-31T16:00:00Z",
+      "end_utc": "2026-05-31T18:30:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
       ]
