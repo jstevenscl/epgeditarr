@@ -1,127 +1,6 @@
 {
-  "generated_at": "2026-05-25T21:12:26Z",
+  "generated_at": "2026-05-26T03:53:08Z",
   "events": [
-    {
-      "slug": "mlb",
-      "title": "Kansas City Royals @ New York Yankees",
-      "description": "MLB · Kansas City Royals @ New York Yankees",
-      "start_utc": "2026-05-25T19:40:00Z",
-      "end_utc": "2026-05-25T22:40:00Z",
-      "channels": [
-        "New York Yankees",
-        "Kansas City Royals",
-        "MLB Play-by-Play 179",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Mets @ Cincinnati Reds",
-      "description": "MLB · New York Mets @ Cincinnati Reds",
-      "start_utc": "2026-05-25T20:10:00Z",
-      "end_utc": "2026-05-25T23:10:00Z",
-      "channels": [
-        "Cincinnati Reds",
-        "New York Mets",
-        "MLB Play-by-Play 180",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Francisco Giants @ Arizona Diamondbacks",
-      "description": "MLB · San Francisco Giants @ Arizona Diamondbacks",
-      "start_utc": "2026-05-25T21:05:00Z",
-      "end_utc": "2026-05-26T00:05:00Z",
-      "channels": [
-        "Arizona Diamondbacks",
-        "San Francisco Giants",
-        "MLB Play-by-Play 181",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cleveland Guardians @ Washington Nationals",
-      "description": "MLB · Cleveland Guardians @ Washington Nationals",
-      "start_utc": "2026-05-25T22:10:00Z",
-      "end_utc": "2026-05-26T01:10:00Z",
-      "channels": [
-        "Washington Nationals",
-        "Cleveland Guardians",
-        "MLB Play-by-Play 182",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Diego Padres @ Philadelphia Phillies",
-      "description": "MLB · San Diego Padres @ Philadelphia Phillies",
-      "start_utc": "2026-05-25T22:40:00Z",
-      "end_utc": "2026-05-26T01:40:00Z",
-      "channels": [
-        "Philadelphia Phillies",
-        "San Diego Padres",
-        "MLB Play-by-Play 183",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Texas Rangers @ Houston Astros",
-      "description": "MLB · Texas Rangers @ Houston Astros",
-      "start_utc": "2026-05-25T23:05:00Z",
-      "end_utc": "2026-05-26T02:05:00Z",
-      "channels": [
-        "Houston Astros",
-        "Texas Rangers",
-        "MLB Play-by-Play 184",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Toronto Blue Jays @ Miami Marlins",
-      "description": "MLB · Toronto Blue Jays @ Miami Marlins",
-      "start_utc": "2026-05-25T23:07:00Z",
-      "end_utc": "2026-05-26T02:07:00Z",
-      "channels": [
-        "Miami Marlins",
-        "Toronto Blue Jays",
-        "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Cleveland Cavaliers @ New York Knicks",
-      "description": "NBA · Cleveland Cavaliers @ New York Knicks",
-      "start_utc": "2026-05-26T00:00:00Z",
-      "end_utc": "2026-05-26T02:30:00Z",
-      "channels": [
-        "New York Knicks",
-        "Cleveland Cavaliers",
-        "ESPN Radio",
-        "ESPN Xtra",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Montreal Canadiens @ Carolina Hurricanes",
-      "description": "NHL · Montreal Canadiens @ Carolina Hurricanes",
-      "start_utc": "2026-05-26T00:00:00Z",
-      "end_utc": "2026-05-26T02:30:00Z",
-      "channels": [
-        "Carolina Hurricanes",
-        "Montreal Canadiens",
-        "NHL Network Radio™",
-        "Canada Talks",
-        "NHL/NBA Play-by-Play 219",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Los Angeles Dodgers @ Colorado Rockies",
@@ -147,6 +26,35 @@
         "Athletics",
         "MLB Play-by-Play 177",
         "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Oklahoma City Thunder @ San Antonio Spurs",
+      "description": "NBA · Oklahoma City Thunder @ San Antonio Spurs",
+      "start_utc": "2026-05-27T00:30:00Z",
+      "end_utc": "2026-05-27T03:00:00Z",
+      "channels": [
+        "San Antonio Spurs",
+        "Oklahoma City Thunder",
+        "ESPN Radio",
+        "NBC Sports Radio",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Vegas Golden Knights @ Colorado Avalanche",
+      "description": "NHL · Vegas Golden Knights @ Colorado Avalanche",
+      "start_utc": "2026-05-27T01:00:00Z",
+      "end_utc": "2026-05-27T03:30:00Z",
+      "channels": [
+        "Colorado Avalanche",
+        "Vegas Golden Knights",
+        "NHL Network Radio™",
+        "NHL/NBA Play-by-Play 219",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NHL Network Radio"
       ]
     },
     {
