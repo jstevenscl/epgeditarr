@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-05-31T13:50:36Z",
+  "generated_at": "2026-05-31T17:09:41Z",
   "events": [
-    {
-      "slug": "indycar",
-      "title": "INDY NXT Race",
-      "description": "SiriusXM INDYCAR Nation · INDY NXT Race · Streets of Detroit",
-      "start_utc": "2026-05-31T14:25:00Z",
-      "end_utc": "2026-05-31T16:55:00Z",
-      "channels": [
-        "SiriusXM INDYCAR Nation"
-      ]
-    },
     {
       "slug": "indycar",
       "title": "Chevrolet Detroit Grand Prix",
