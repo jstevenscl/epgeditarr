@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T13:40:46Z",
+  "generated_at": "2026-06-01T20:19:34Z",
   "events": [
     {
       "slug": "mlb",
@@ -151,6 +151,20 @@
       ]
     },
     {
+      "slug": "nba",
+      "title": "San Antonio Spurs @ New York Knicks",
+      "description": "NBA · San Antonio Spurs @ New York Knicks",
+      "start_utc": "2026-06-04T00:30:00Z",
+      "end_utc": "2026-06-04T03:00:00Z",
+      "channels": [
+        "New York Knicks",
+        "San Antonio Spurs",
+        "ESPN Radio",
+        "ESPN Xtra",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "F-1 Practice",
       "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit de Monaco",
@@ -191,6 +205,18 @@
       "end_utc": "2026-06-06T20:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "USA @ Germany",
+      "description": "SOCCER · USA @ Germany",
+      "start_utc": "2026-06-06T18:30:00Z",
+      "end_utc": "2026-06-06T20:30:00Z",
+      "channels": [
+        "Germany",
+        "USA",
+        "SiriusXM FC"
       ]
     },
     {
