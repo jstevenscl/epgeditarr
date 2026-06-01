@@ -1,143 +1,149 @@
 {
-  "generated_at": "2026-05-31T21:02:42Z",
+  "generated_at": "2026-06-01T04:22:39Z",
   "events": [
     {
-      "slug": "pga",
-      "title": "Charles Schwab Challenge",
-      "description": "SiriusXM PGA Tour Radio · Charles Schwab Challenge · Colonial Country Club",
-      "start_utc": "2026-05-31T17:00:00Z",
-      "end_utc": "2026-05-31T22:00:00Z",
-      "channels": [
-        "SiriusXM PGA TOUR Radio",
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
       "slug": "mlb",
-      "title": "Chicago White Sox @ Detroit Tigers",
-      "description": "MLB · Chicago White Sox @ Detroit Tigers",
-      "start_utc": "2026-05-31T18:10:00Z",
-      "end_utc": "2026-05-31T21:10:00Z",
+      "title": "Tampa Bay Rays @ Detroit Tigers",
+      "description": "MLB · Tampa Bay Rays @ Detroit Tigers",
+      "start_utc": "2026-06-01T22:40:00Z",
+      "end_utc": "2026-06-02T01:40:00Z",
       "channels": [
         "Detroit Tigers",
-        "Chicago White Sox",
-        "MLB Play-by-Play 182",
+        "Tampa Bay Rays",
+        "MLB Play-by-Play 175",
         "MLB Network Radio"
       ]
     },
     {
       "slug": "mlb",
-      "title": "Houston Astros @ Milwaukee Brewers",
-      "description": "MLB · Houston Astros @ Milwaukee Brewers",
-      "start_utc": "2026-05-31T18:10:00Z",
-      "end_utc": "2026-05-31T21:10:00Z",
+      "title": "Washington Nationals @ Miami Marlins",
+      "description": "MLB · Washington Nationals @ Miami Marlins",
+      "start_utc": "2026-06-01T22:45:00Z",
+      "end_utc": "2026-06-02T01:45:00Z",
       "channels": [
-        "Milwaukee Brewers",
-        "Houston Astros",
-        "MLB Play-by-Play 183",
+        "Miami Marlins",
+        "Washington Nationals",
+        "MLB Play-by-Play 176",
         "MLB Network Radio"
       ]
     },
     {
       "slug": "mlb",
-      "title": "Texas Rangers @ Kansas City Royals",
-      "description": "MLB · Texas Rangers @ Kansas City Royals",
-      "start_utc": "2026-05-31T18:35:00Z",
-      "end_utc": "2026-05-31T21:35:00Z",
+      "title": "Cincinnati Reds @ Kansas City Royals",
+      "description": "MLB · Cincinnati Reds @ Kansas City Royals",
+      "start_utc": "2026-06-01T23:10:00Z",
+      "end_utc": "2026-06-02T02:10:00Z",
       "channels": [
         "Kansas City Royals",
+        "Cincinnati Reds",
+        "MLB Network Radio™",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Minnesota Twins @ Chicago White Sox",
+      "description": "MLB · Minnesota Twins @ Chicago White Sox",
+      "start_utc": "2026-06-01T23:40:00Z",
+      "end_utc": "2026-06-02T02:40:00Z",
+      "channels": [
+        "Chicago White Sox",
+        "Minnesota Twins",
+        "MLB Play-by-Play 178",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Milwaukee Brewers @ San Francisco Giants",
+      "description": "MLB · Milwaukee Brewers @ San Francisco Giants",
+      "start_utc": "2026-06-01T23:40:00Z",
+      "end_utc": "2026-06-02T02:40:00Z",
+      "channels": [
+        "San Francisco Giants",
+        "Milwaukee Brewers",
+        "MLB Play-by-Play 179",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "St. Louis Cardinals @ Texas Rangers",
+      "description": "MLB · St. Louis Cardinals @ Texas Rangers",
+      "start_utc": "2026-06-01T23:45:00Z",
+      "end_utc": "2026-06-02T02:45:00Z",
+      "channels": [
         "Texas Rangers",
-        "MLB Play-by-Play 184",
+        "St. Louis Cardinals",
+        "MLB Play-by-Play 177",
         "MLB en Español 870",
         "MLB Network Radio"
       ]
     },
     {
       "slug": "mlb",
-      "title": "Colorado Rockies @ San Francisco Giants",
-      "description": "MLB · Colorado Rockies @ San Francisco Giants",
-      "start_utc": "2026-05-31T19:10:00Z",
-      "end_utc": "2026-05-31T22:10:00Z",
+      "title": "Los Angeles Angels @ Colorado Rockies",
+      "description": "MLB · Los Angeles Angels @ Colorado Rockies",
+      "start_utc": "2026-06-02T01:38:00Z",
+      "end_utc": "2026-06-02T04:38:00Z",
       "channels": [
-        "San Francisco Giants",
         "Colorado Rockies",
-        "MLB Play-by-Play 185",
+        "Los Angeles Angels",
+        "MLB Play-by-Play 181",
         "MLB Network Radio"
       ]
     },
     {
       "slug": "mlb",
-      "title": "Athletics @ New York Yankees",
-      "description": "MLB · Athletics @ New York Yankees",
-      "start_utc": "2026-05-31T20:05:00Z",
-      "end_utc": "2026-05-31T23:05:00Z",
+      "title": "Arizona Diamondbacks @ Los Angeles Dodgers",
+      "description": "MLB · Arizona Diamondbacks @ Los Angeles Dodgers",
+      "start_utc": "2026-06-02T01:40:00Z",
+      "end_utc": "2026-06-02T04:40:00Z",
       "channels": [
-        "New York Yankees",
-        "Athletics",
-        "MLB Play-by-Play 186",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Seattle Mariners @ Arizona Diamondbacks",
-      "description": "MLB · Seattle Mariners @ Arizona Diamondbacks",
-      "start_utc": "2026-05-31T20:10:00Z",
-      "end_utc": "2026-05-31T23:10:00Z",
-      "channels": [
-        "Arizona Diamondbacks",
-        "Seattle Mariners",
-        "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Los Angeles Dodgers @ Philadelphia Phillies",
-      "description": "MLB · Los Angeles Dodgers @ Philadelphia Phillies",
-      "start_utc": "2026-05-31T20:10:00Z",
-      "end_utc": "2026-05-31T23:10:00Z",
-      "channels": [
-        "Philadelphia Phillies",
         "Los Angeles Dodgers",
-        "MLB Play-by-Play 188",
+        "Arizona Diamondbacks",
+        "MLB Play-by-Play 182",
         "MLB en Español 871",
         "MLB Network Radio"
       ]
     },
     {
-      "slug": "nascar",
-      "title": "Cracker Barrel 400",
-      "description": "SiriusXM NASCAR Radio · Cracker Barrel 400 · Nashville Superspeedway",
-      "start_utc": "2026-05-31T22:00:00Z",
-      "end_utc": "2026-06-01T01:30:00Z",
-      "channels": [
-        "SiriusXM NASCAR Radio"
-      ]
-    },
-    {
       "slug": "mlb",
-      "title": "St. Louis Cardinals @ Chicago Cubs",
-      "description": "MLB · St. Louis Cardinals @ Chicago Cubs",
-      "start_utc": "2026-05-31T23:20:00Z",
-      "end_utc": "2026-06-01T02:20:00Z",
+      "title": "Seattle Mariners @ New York Mets",
+      "description": "MLB · Seattle Mariners @ New York Mets",
+      "start_utc": "2026-06-02T01:40:00Z",
+      "end_utc": "2026-06-02T04:40:00Z",
       "channels": [
-        "Chicago Cubs",
-        "St. Louis Cardinals",
-        "MLB Network Radio™",
-        "MLB Play-by-Play 175",
+        "New York Mets",
+        "Seattle Mariners",
+        "MLB Play-by-Play 180",
         "MLB Network Radio"
       ]
     },
     {
       "slug": "nhl",
-      "title": "Montreal Canadiens @ Carolina Hurricanes",
-      "description": "NHL · Montreal Canadiens @ Carolina Hurricanes",
-      "start_utc": "2026-05-31T23:30:00Z",
-      "end_utc": "2026-06-01T02:00:00Z",
+      "title": "Carolina Hurricanes @ Vegas Golden Knights",
+      "description": "NHL · Carolina Hurricanes @ Vegas Golden Knights",
+      "start_utc": "2026-06-03T00:00:00Z",
+      "end_utc": "2026-06-03T02:30:00Z",
       "channels": [
+        "Vegas Golden Knights",
         "Carolina Hurricanes",
+        "NHL Network Radio™",
+        "NHL/NBA Play-by-Play 219",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Carolina Hurricanes @ Montreal Canadiens",
+      "description": "NHL · Carolina Hurricanes @ Montreal Canadiens",
+      "start_utc": "2026-06-03T00:00:00Z",
+      "end_utc": "2026-06-03T02:30:00Z",
+      "channels": [
         "Montreal Canadiens",
+        "Carolina Hurricanes",
         "NHL Network Radio™",
         "Canada Talks",
         "NHL/NBA Play-by-Play 219",
@@ -178,6 +184,26 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "DQS Solutions & Staffing 250",
+      "description": "SiriusXM NASCAR Radio · DQS Solutions & Staffing 250 · Michigan International Speedway",
+      "start_utc": "2026-06-06T17:00:00Z",
+      "end_utc": "2026-06-06T20:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Michigan International Speedway",
+      "start_utc": "2026-06-06T21:00:00Z",
+      "end_utc": "2026-06-07T00:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "Grand Prix of Monaco",
       "description": "Formula 1 Racing and Analysis · Grand Prix of Monaco · Circuit de Monaco",
@@ -186,6 +212,16 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "FireKeepers Casino 400",
+      "description": "SiriusXM NASCAR Radio · FireKeepers Casino 400 · Michigan International Speedway",
+      "start_utc": "2026-06-07T18:00:00Z",
+      "end_utc": "2026-06-07T21:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -294,6 +330,16 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Pocono Raceway",
+      "start_utc": "2026-06-13T17:00:00Z",
+      "end_utc": "2026-06-13T20:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Qatar @ Switzerland",
       "description": "SOCCER · Qatar @ Switzerland",
@@ -304,6 +350,16 @@
         "Qatar",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "MillerTech Battery 250 presented by KOA",
+      "description": "SiriusXM NASCAR Radio · MillerTech Battery 250 presented by KOA · Pocono Raceway",
+      "start_utc": "2026-06-13T19:30:00Z",
+      "end_utc": "2026-06-13T23:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -367,6 +423,16 @@
         "Germany",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NASCAR Cup Series Race at Pocono",
+      "description": "SiriusXM NASCAR Radio · NASCAR Cup Series Race at Pocono · Pocono Raceway",
+      "start_utc": "2026-06-14T18:00:00Z",
+      "end_utc": "2026-06-14T21:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -643,6 +709,16 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "NASCAR CRAFTSMAN Truck Series Race at San Diego",
+      "description": "SiriusXM NASCAR Radio · NASCAR CRAFTSMAN Truck Series Race at San Diego · Naval Base Coronado",
+      "start_utc": "2026-06-19T22:30:00Z",
+      "end_utc": "2026-06-20T02:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Brazil @ Haiti",
       "description": "SOCCER · Brazil @ Haiti",
@@ -702,6 +778,16 @@
         "Germany",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NASCAR O&#x27;Reilly Auto Parts Series Race at San Diego",
+      "description": "SiriusXM NASCAR Radio · NASCAR O&#x27;Reilly Auto Parts Series Race at San Diego · Naval Base Coronado",
+      "start_utc": "2026-06-20T20:30:00Z",
+      "end_utc": "2026-06-21T00:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -774,6 +860,16 @@
         "Belgium",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Anduril 250",
+      "description": "SiriusXM NASCAR Radio · Anduril 250 · Naval Base Coronado",
+      "start_utc": "2026-06-21T19:00:00Z",
+      "end_utc": "2026-06-21T22:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -1153,6 +1249,16 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Sonoma Raceway",
+      "start_utc": "2026-06-27T18:30:00Z",
+      "end_utc": "2026-06-27T22:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Panama @ England",
       "description": "SOCCER · Panama @ England",
@@ -1175,6 +1281,16 @@
         "Ghana",
         "Croatia",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NASCAR O&#x27;Reilly Auto Parts Series Race at Sonoma",
+      "description": "SiriusXM NASCAR Radio · NASCAR O&#x27;Reilly Auto Parts Series Race at Sonoma · Sonoma Raceway",
+      "start_utc": "2026-06-27T21:00:00Z",
+      "end_utc": "2026-06-28T00:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
@@ -1236,6 +1352,16 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Toyota / Save Mart 350",
+      "description": "SiriusXM NASCAR Radio · Toyota / Save Mart 350 · Sonoma Raceway",
+      "start_utc": "2026-06-28T18:30:00Z",
+      "end_utc": "2026-06-28T22:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
       ]
     },
     {
