@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T12:07:05Z",
+  "generated_at": "2026-06-02T19:43:09Z",
   "events": [
     {
       "slug": "mlb",
@@ -243,6 +243,28 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "the Memorial Tournament presented by Workday",
+      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
+      "start_utc": "2026-06-04T16:00:00Z",
+      "end_utc": "2026-06-04T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "U.S. Women&#x27;s Open",
+      "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
+      "start_utc": "2026-06-04T23:00:00Z",
+      "end_utc": "2026-06-05T04:00:00Z",
+      "channels": [
+        "NBC Sports Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "F-1 Practice",
       "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit de Monaco",
@@ -251,6 +273,28 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "the Memorial Tournament presented by Workday",
+      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
+      "start_utc": "2026-06-05T16:00:00Z",
+      "end_utc": "2026-06-05T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "U.S. Women&#x27;s Open",
+      "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
+      "start_utc": "2026-06-05T23:00:00Z",
+      "end_utc": "2026-06-06T04:00:00Z",
+      "channels": [
+        "NBC Sports Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -286,6 +330,17 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "the Memorial Tournament presented by Workday",
+      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
+      "start_utc": "2026-06-06T17:00:00Z",
+      "end_utc": "2026-06-06T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "USA @ Germany",
       "description": "SOCCER · USA @ Germany",
@@ -308,6 +363,17 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "U.S. Women&#x27;s Open",
+      "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
+      "start_utc": "2026-06-07T00:00:00Z",
+      "end_utc": "2026-06-07T05:00:00Z",
+      "channels": [
+        "NBC Sports Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "Grand Prix of Monaco",
       "description": "Formula 1 Racing and Analysis · Grand Prix of Monaco · Circuit de Monaco",
@@ -319,6 +385,17 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "the Memorial Tournament presented by Workday",
+      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
+      "start_utc": "2026-06-07T17:00:00Z",
+      "end_utc": "2026-06-07T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "nascar",
       "title": "FireKeepers Casino 400",
       "description": "SiriusXM NASCAR Radio · FireKeepers Casino 400 · Michigan International Speedway",
@@ -326,6 +403,28 @@
       "end_utc": "2026-06-07T21:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "U.S. Women&#x27;s Open",
+      "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
+      "start_utc": "2026-06-07T19:00:00Z",
+      "end_utc": "2026-06-08T00:00:00Z",
+      "channels": [
+        "NBC Sports Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "U.S. Women&#x27;s Open",
+      "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
+      "start_utc": "2026-06-07T21:00:00Z",
+      "end_utc": "2026-06-08T02:00:00Z",
+      "channels": [
+        "NBC Sports Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -531,8 +630,8 @@
     },
     {
       "slug": "nascar",
-      "title": "NASCAR Cup Series Race at Pocono",
-      "description": "SiriusXM NASCAR Radio · NASCAR Cup Series Race at Pocono · Pocono Raceway",
+      "title": "Great American Getaway 400",
+      "description": "SiriusXM NASCAR Radio · Great American Getaway 400 · Pocono Raceway",
       "start_utc": "2026-06-14T18:00:00Z",
       "end_utc": "2026-06-14T21:30:00Z",
       "channels": [
