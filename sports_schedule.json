@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T17:57:50Z",
+  "generated_at": "2026-06-05T21:27:34Z",
   "events": [
     {
       "slug": "pga",
@@ -10,19 +10,6 @@
       "channels": [
         "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Chicago Cubs @ San Francisco Giants",
-      "description": "MLB · Chicago Cubs @ San Francisco Giants",
-      "start_utc": "2026-06-05T18:20:00Z",
-      "end_utc": "2026-06-05T21:20:00Z",
-      "channels": [
-        "San Francisco Giants",
-        "Chicago Cubs",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
       ]
     },
     {
