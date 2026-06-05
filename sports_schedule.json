@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-06-04T21:43:17Z",
+  "generated_at": "2026-06-05T04:04:18Z",
   "events": [
-    {
-      "slug": "pga",
-      "title": "the Memorial Tournament presented by Workday",
-      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
-      "start_utc": "2026-06-04T16:00:00Z",
-      "end_utc": "2026-06-04T21:00:00Z",
-      "channels": [
-        "SiriusXM PGA TOUR Radio",
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
     {
       "slug": "pga",
       "title": "U.S. Women&#x27;s Open",
@@ -21,73 +10,6 @@
       "channels": [
         "NBC Sports Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Atlanta Braves @ Toronto Blue Jays",
-      "description": "MLB · Atlanta Braves @ Toronto Blue Jays",
-      "start_utc": "2026-06-04T23:15:00Z",
-      "end_utc": "2026-06-05T02:15:00Z",
-      "channels": [
-        "Toronto Blue Jays",
-        "Atlanta Braves",
-        "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Minnesota Twins @ Kansas City Royals",
-      "description": "MLB · Minnesota Twins @ Kansas City Royals",
-      "start_utc": "2026-06-04T23:40:00Z",
-      "end_utc": "2026-06-05T02:40:00Z",
-      "channels": [
-        "Kansas City Royals",
-        "Minnesota Twins",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Carolina Hurricanes @ Vegas Golden Knights",
-      "description": "NHL · Carolina Hurricanes @ Vegas Golden Knights",
-      "start_utc": "2026-06-05T00:00:00Z",
-      "end_utc": "2026-06-05T02:30:00Z",
-      "channels": [
-        "Vegas Golden Knights",
-        "Carolina Hurricanes",
-        "NHL Network Radio™",
-        "NHL/NBA Play-by-Play 219",
-        "NHL/NBA Play-by-Play 220",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Chicago Cubs @ Athletics",
-      "description": "MLB · Chicago Cubs @ Athletics",
-      "start_utc": "2026-06-05T00:05:00Z",
-      "end_utc": "2026-06-05T03:05:00Z",
-      "channels": [
-        "Athletics",
-        "Chicago Cubs",
-        "MLB Play-by-Play 176",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Pittsburgh Pirates",
-      "description": "MLB · Houston Astros @ Pittsburgh Pirates",
-      "start_utc": "2026-06-05T00:10:00Z",
-      "end_utc": "2026-06-05T03:10:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "Houston Astros",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
       ]
     },
     {
@@ -217,6 +139,21 @@
       ]
     },
     {
+      "slug": "nhl",
+      "title": "Vegas Golden Knights @ Carolina Hurricanes",
+      "description": "NHL · Vegas Golden Knights @ Carolina Hurricanes",
+      "start_utc": "2026-06-07T00:00:00Z",
+      "end_utc": "2026-06-07T02:30:00Z",
+      "channels": [
+        "Carolina Hurricanes",
+        "Vegas Golden Knights",
+        "NHL Network Radio™",
+        "NHL/NBA Play-by-Play 219",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
       "slug": "pga",
       "title": "U.S. Women&#x27;s Open",
       "description": "SiriusXM PGA Tour Radio · U.S. Women&#x27;s Open · Riviera Golf Course",
@@ -256,7 +193,10 @@
       "start_utc": "2026-06-07T18:00:00Z",
       "end_utc": "2026-06-07T21:30:00Z",
       "channels": [
-        "SiriusXM NASCAR Radio"
+        "SiriusXM NASCAR Radio",
+        "Sports Play-by-Play 997",
+        "Sports Play-by-Play 998",
+        "Sports Play-by-Play 999"
       ]
     },
     {
