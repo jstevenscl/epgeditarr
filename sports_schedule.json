@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-06-06T17:18:00Z",
+  "generated_at": "2026-06-06T21:07:50Z",
   "events": [
-    {
-      "slug": "nascar",
-      "title": "DQS Solutions & Staffing 250",
-      "description": "SiriusXM NASCAR Radio · DQS Solutions & Staffing 250 · Michigan International Speedway",
-      "start_utc": "2026-06-06T17:00:00Z",
-      "end_utc": "2026-06-06T20:30:00Z",
-      "channels": [
-        "SiriusXM NASCAR Radio"
-      ]
-    },
     {
       "slug": "pga",
       "title": "the Memorial Tournament presented by Workday",
@@ -20,19 +10,6 @@
       "channels": [
         "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Detroit Tigers @ Seattle Mariners",
-      "description": "MLB · Detroit Tigers @ Seattle Mariners",
-      "start_utc": "2026-06-06T17:10:00Z",
-      "end_utc": "2026-06-06T20:10:00Z",
-      "channels": [
-        "Seattle Mariners",
-        "Detroit Tigers",
-        "MLB Network Radio™",
-        "MLB Network Radio"
       ]
     },
     {
@@ -77,18 +54,6 @@
       ]
     },
     {
-      "slug": "soccer",
-      "title": "USA @ Germany",
-      "description": "SOCCER · USA @ Germany",
-      "start_utc": "2026-06-06T18:30:00Z",
-      "end_utc": "2026-06-06T20:30:00Z",
-      "channels": [
-        "Germany",
-        "USA",
-        "SiriusXM FC"
-      ]
-    },
-    {
       "slug": "mlb",
       "title": "Toronto Blue Jays @ Baltimore Orioles",
       "description": "MLB · Toronto Blue Jays @ Baltimore Orioles",
@@ -116,32 +81,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Atlanta Braves @ Pittsburgh Pirates",
-      "description": "MLB · Atlanta Braves @ Pittsburgh Pirates",
-      "start_utc": "2026-06-06T20:10:00Z",
-      "end_utc": "2026-06-06T23:10:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "Atlanta Braves",
-        "MLB Play-by-Play 183",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Athletics",
-      "description": "MLB · Houston Astros @ Athletics",
-      "start_utc": "2026-06-06T20:10:00Z",
-      "end_utc": "2026-06-06T23:10:00Z",
-      "channels": [
-        "Athletics",
-        "Houston Astros",
-        "MLB Play-by-Play 182",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "Miami Marlins @ Tampa Bay Rays",
       "description": "MLB · Miami Marlins @ Tampa Bay Rays",
       "start_utc": "2026-06-06T20:10:00Z",
@@ -150,6 +89,19 @@
         "Tampa Bay Rays",
         "Miami Marlins",
         "MLB Play-by-Play 184",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Atlanta Braves @ Pittsburgh Pirates",
+      "description": "MLB · Atlanta Braves @ Pittsburgh Pirates",
+      "start_utc": "2026-06-06T20:10:00Z",
+      "end_utc": "2026-06-06T23:10:00Z",
+      "channels": [
+        "Pittsburgh Pirates",
+        "Atlanta Braves",
+        "MLB Play-by-Play 183",
         "MLB Network Radio"
       ]
     },
@@ -167,6 +119,19 @@
       ]
     },
     {
+      "slug": "mlb",
+      "title": "Houston Astros @ Athletics",
+      "description": "MLB · Houston Astros @ Athletics",
+      "start_utc": "2026-06-06T20:10:00Z",
+      "end_utc": "2026-06-06T23:10:00Z",
+      "channels": [
+        "Athletics",
+        "Houston Astros",
+        "MLB Play-by-Play 182",
+        "MLB Network Radio"
+      ]
+    },
+    {
       "slug": "nascar",
       "title": "NCS Pole Qualifying",
       "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Michigan International Speedway",
@@ -174,6 +139,19 @@
       "end_utc": "2026-06-07T00:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "New York Yankees @ Boston Red Sox",
+      "description": "MLB · New York Yankees @ Boston Red Sox",
+      "start_utc": "2026-06-06T23:35:00Z",
+      "end_utc": "2026-06-07T02:35:00Z",
+      "channels": [
+        "Boston Red Sox",
+        "New York Yankees",
+        "MLB Play-by-Play 186",
+        "MLB Network Radio"
       ]
     },
     {
@@ -187,19 +165,6 @@
         "Texas Rangers",
         "MLB Play-by-Play 185",
         "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Yankees @ Boston Red Sox",
-      "description": "MLB · New York Yankees @ Boston Red Sox",
-      "start_utc": "2026-06-06T23:35:00Z",
-      "end_utc": "2026-06-07T02:35:00Z",
-      "channels": [
-        "Boston Red Sox",
-        "New York Yankees",
-        "MLB Play-by-Play 186",
         "MLB Network Radio"
       ]
     },
@@ -244,6 +209,19 @@
     },
     {
       "slug": "mlb",
+      "title": "San Diego Padres @ New York Mets",
+      "description": "MLB · San Diego Padres @ New York Mets",
+      "start_utc": "2026-06-07T02:10:00Z",
+      "end_utc": "2026-06-07T05:10:00Z",
+      "channels": [
+        "New York Mets",
+        "San Diego Padres",
+        "MLB Play-by-Play 177",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Los Angeles Dodgers @ Los Angeles Angels",
       "description": "MLB · Los Angeles Dodgers @ Los Angeles Angels",
       "start_utc": "2026-06-07T02:10:00Z",
@@ -253,19 +231,6 @@
         "Los Angeles Dodgers",
         "MLB Play-by-Play 176",
         "MLB en Español 871",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Diego Padres @ New York Mets",
-      "description": "MLB · San Diego Padres @ New York Mets",
-      "start_utc": "2026-06-07T02:10:00Z",
-      "end_utc": "2026-06-07T05:10:00Z",
-      "channels": [
-        "New York Mets",
-        "San Diego Padres",
-        "MLB Play-by-Play 177",
         "MLB Network Radio"
       ]
     },
