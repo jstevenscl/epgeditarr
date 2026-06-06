@@ -1,43 +1,6 @@
 {
-  "generated_at": "2026-06-05T21:27:34Z",
+  "generated_at": "2026-06-06T03:47:45Z",
   "events": [
-    {
-      "slug": "pga",
-      "title": "the Memorial Tournament presented by Workday",
-      "description": "SiriusXM PGA Tour Radio · the Memorial Tournament presented by Workday · Muirfield Village Golf Club",
-      "start_utc": "2026-06-05T16:00:00Z",
-      "end_utc": "2026-06-05T21:00:00Z",
-      "channels": [
-        "SiriusXM PGA TOUR Radio",
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Philadelphia Phillies @ Chicago White Sox",
-      "description": "MLB · Philadelphia Phillies @ Chicago White Sox",
-      "start_utc": "2026-06-05T22:40:00Z",
-      "end_utc": "2026-06-06T01:40:00Z",
-      "channels": [
-        "Chicago White Sox",
-        "Philadelphia Phillies",
-        "MLB Play-by-Play 176",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Detroit Tigers @ Seattle Mariners",
-      "description": "MLB · Detroit Tigers @ Seattle Mariners",
-      "start_utc": "2026-06-05T22:40:00Z",
-      "end_utc": "2026-06-06T01:40:00Z",
-      "channels": [
-        "Seattle Mariners",
-        "Detroit Tigers",
-        "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
     {
       "slug": "pga",
       "title": "U.S. Women&#x27;s Open",
@@ -51,133 +14,14 @@
     },
     {
       "slug": "mlb",
-      "title": "New York Yankees @ Boston Red Sox",
-      "description": "MLB · New York Yankees @ Boston Red Sox",
-      "start_utc": "2026-06-05T23:05:00Z",
-      "end_utc": "2026-06-06T02:05:00Z",
+      "title": "Arizona Diamondbacks @ Washington Nationals",
+      "description": "MLB · Arizona Diamondbacks @ Washington Nationals",
+      "start_utc": "2026-06-06T01:40:00Z",
+      "end_utc": "2026-06-06T04:40:00Z",
       "channels": [
-        "Boston Red Sox",
-        "New York Yankees",
-        "MLB Play-by-Play 178",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Toronto Blue Jays @ Baltimore Orioles",
-      "description": "MLB · Toronto Blue Jays @ Baltimore Orioles",
-      "start_utc": "2026-06-05T23:07:00Z",
-      "end_utc": "2026-06-06T02:07:00Z",
-      "channels": [
-        "Baltimore Orioles",
-        "Toronto Blue Jays",
-        "MLB Play-by-Play 179",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Miami Marlins @ Tampa Bay Rays",
-      "description": "MLB · Miami Marlins @ Tampa Bay Rays",
-      "start_utc": "2026-06-05T23:10:00Z",
-      "end_utc": "2026-06-06T02:10:00Z",
-      "channels": [
-        "Tampa Bay Rays",
-        "Miami Marlins",
-        "MLB Play-by-Play 180",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Atlanta Braves @ Pittsburgh Pirates",
-      "description": "MLB · Atlanta Braves @ Pittsburgh Pirates",
-      "start_utc": "2026-06-05T23:15:00Z",
-      "end_utc": "2026-06-06T02:15:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "Atlanta Braves",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Athletics",
-      "description": "MLB · Houston Astros @ Athletics",
-      "start_utc": "2026-06-06T00:10:00Z",
-      "end_utc": "2026-06-06T03:10:00Z",
-      "channels": [
-        "Athletics",
-        "Houston Astros",
-        "MLB Play-by-Play 183",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Minnesota Twins @ Kansas City Royals",
-      "description": "MLB · Minnesota Twins @ Kansas City Royals",
-      "start_utc": "2026-06-06T00:15:00Z",
-      "end_utc": "2026-06-06T03:15:00Z",
-      "channels": [
-        "Kansas City Royals",
-        "Minnesota Twins",
-        "MLB Play-by-Play 184",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "St. Louis Cardinals @ Cincinnati Reds",
-      "description": "MLB · St. Louis Cardinals @ Cincinnati Reds",
-      "start_utc": "2026-06-06T00:15:00Z",
-      "end_utc": "2026-06-06T03:15:00Z",
-      "channels": [
-        "Cincinnati Reds",
-        "St. Louis Cardinals",
-        "MLB Play-by-Play 181",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Texas Rangers @ Cleveland Guardians",
-      "description": "MLB · Texas Rangers @ Cleveland Guardians",
-      "start_utc": "2026-06-06T00:15:00Z",
-      "end_utc": "2026-06-06T03:15:00Z",
-      "channels": [
-        "Cleveland Guardians",
-        "Texas Rangers",
-        "MLB Play-by-Play 182",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "San Antonio Spurs @ New York Knicks",
-      "description": "NBA · San Antonio Spurs @ New York Knicks",
-      "start_utc": "2026-06-06T00:30:00Z",
-      "end_utc": "2026-06-06T03:00:00Z",
-      "channels": [
-        "New York Knicks",
-        "San Antonio Spurs",
-        "ESPN Radio",
-        "ESPN Xtra",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Colorado Rockies @ Milwaukee Brewers",
-      "description": "MLB · Colorado Rockies @ Milwaukee Brewers",
-      "start_utc": "2026-06-06T00:40:00Z",
-      "end_utc": "2026-06-06T03:40:00Z",
-      "channels": [
-        "Milwaukee Brewers",
-        "Colorado Rockies",
-        "MLB Play-by-Play 185",
+        "Washington Nationals",
+        "Arizona Diamondbacks",
+        "MLB Play-by-Play 186",
         "MLB Network Radio"
       ]
     },
@@ -191,19 +35,6 @@
         "New York Mets",
         "San Diego Padres",
         "MLB Network Radio™",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Arizona Diamondbacks @ Washington Nationals",
-      "description": "MLB · Arizona Diamondbacks @ Washington Nationals",
-      "start_utc": "2026-06-06T01:40:00Z",
-      "end_utc": "2026-06-06T04:40:00Z",
-      "channels": [
-        "Washington Nationals",
-        "Arizona Diamondbacks",
-        "MLB Play-by-Play 186",
         "MLB Network Radio"
       ]
     },
@@ -387,6 +218,20 @@
       "end_utc": "2026-06-08T03:00:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "New York Knicks @ San Antonio Spurs",
+      "description": "NBA · New York Knicks @ San Antonio Spurs",
+      "start_utc": "2026-06-09T00:30:00Z",
+      "end_utc": "2026-06-09T03:00:00Z",
+      "channels": [
+        "San Antonio Spurs",
+        "New York Knicks",
+        "ESPN Radio",
+        "ESPN Xtra",
+        "SiriusXM NBA Radio"
       ]
     },
     {
