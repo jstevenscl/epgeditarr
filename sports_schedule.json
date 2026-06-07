@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-06-07T14:00:18Z",
+  "generated_at": "2026-06-07T17:21:37Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "Grand Prix of Monaco",
-      "description": "Formula 1 Racing and Analysis · Grand Prix of Monaco · Circuit de Monaco",
-      "start_utc": "2026-06-07T13:00:00Z",
-      "end_utc": "2026-06-07T15:00:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "pga",
       "title": "the Memorial Tournament presented by Workday",
