@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T04:18:53Z",
+  "generated_at": "2026-06-08T12:36:36Z",
   "events": [
     {
       "slug": "mlb",
@@ -49,7 +49,6 @@
       "channels": [
         "Philadelphia Phillies",
         "Toronto Blue Jays",
-        "MLB Network Radio™",
         "MLB Network Radio"
       ]
     },
@@ -115,7 +114,6 @@
       "channels": [
         "Milwaukee Brewers",
         "Athletics",
-        "MLB Network Radio™",
         "MLB Network Radio"
       ]
     },
@@ -128,7 +126,7 @@
       "channels": [
         "Carolina Hurricanes",
         "Vegas Golden Knights",
-        "NHL Network Radio™",
+        "NHL Network Radio",
         "NHL/NBA Play-by-Play 219",
         "NHL/NBA Play-by-Play 220",
         "SiriusXM NHL Network Radio"
