@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T12:36:36Z",
+  "generated_at": "2026-06-08T18:27:36Z",
   "events": [
     {
       "slug": "mlb",
@@ -133,6 +133,17 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "RBC Canadian Open",
+      "description": "SiriusXM PGA Tour Radio · RBC Canadian Open · TPC Toronto",
+      "start_utc": "2026-06-11T16:00:00Z",
+      "end_utc": "2026-06-11T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Mexico @ South Africa",
       "description": "SOCCER · Mexico @ South Africa",
@@ -160,13 +171,35 @@
     },
     {
       "slug": "f1",
-      "title": "F-1 Practice",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit de Barcelona-Catalunya",
-      "start_utc": "2026-06-12T15:00:00Z",
-      "end_utc": "2026-06-12T17:00:00Z",
+      "title": "F-1 Practice 1",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 1 · Circuit de Barcelona-Catalunya",
+      "start_utc": "2026-06-12T11:25:00Z",
+      "end_utc": "2026-06-12T13:25:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 2",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 2 · Circuit de Barcelona-Catalunya",
+      "start_utc": "2026-06-12T14:55:00Z",
+      "end_utc": "2026-06-12T16:55:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "RBC Canadian Open",
+      "description": "SiriusXM PGA Tour Radio · RBC Canadian Open · TPC Toronto",
+      "start_utc": "2026-06-12T16:00:00Z",
+      "end_utc": "2026-06-12T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -197,10 +230,10 @@
     },
     {
       "slug": "f1",
-      "title": "F-1 Practice",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice · Circuit de Barcelona-Catalunya",
-      "start_utc": "2026-06-13T10:30:00Z",
-      "end_utc": "2026-06-13T12:30:00Z",
+      "title": "F-1 Practice 3",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Circuit de Barcelona-Catalunya",
+      "start_utc": "2026-06-13T10:25:00Z",
+      "end_utc": "2026-06-13T12:25:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
@@ -210,8 +243,8 @@
       "slug": "f1",
       "title": "F-1 Qualifying",
       "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Circuit de Barcelona-Catalunya",
-      "start_utc": "2026-06-13T14:00:00Z",
-      "end_utc": "2026-06-13T16:00:00Z",
+      "start_utc": "2026-06-13T13:55:00Z",
+      "end_utc": "2026-06-13T15:55:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
@@ -225,6 +258,17 @@
       "end_utc": "2026-06-13T20:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "RBC Canadian Open",
+      "description": "SiriusXM PGA Tour Radio · RBC Canadian Open · TPC Toronto",
+      "start_utc": "2026-06-13T17:00:00Z",
+      "end_utc": "2026-06-13T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -242,8 +286,8 @@
     },
     {
       "slug": "nascar",
-      "title": "MillerTech Battery 250 presented by KOA",
-      "description": "SiriusXM NASCAR Radio · MillerTech Battery 250 presented by KOA · Pocono Raceway",
+      "title": "MillerTech Battery 250",
+      "description": "SiriusXM NASCAR Radio · MillerTech Battery 250 · Pocono Raceway",
       "start_utc": "2026-06-13T19:30:00Z",
       "end_utc": "2026-06-13T23:00:00Z",
       "channels": [
@@ -311,6 +355,17 @@
         "Germany",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "RBC Canadian Open",
+      "description": "SiriusXM PGA Tour Radio · RBC Canadian Open · TPC Toronto",
+      "start_utc": "2026-06-14T17:00:00Z",
+      "end_utc": "2026-06-14T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -584,6 +639,16 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "NASCAR Cup Practice",
+      "description": "SiriusXM NASCAR Radio · NASCAR Cup Practice · Naval Base Coronado",
+      "start_utc": "2026-06-19T21:00:00Z",
+      "end_utc": "2026-06-20T00:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Scotland @ Morocco",
       "description": "SOCCER · Scotland @ Morocco",
@@ -598,8 +663,8 @@
     },
     {
       "slug": "nascar",
-      "title": "NASCAR CRAFTSMAN Truck Series Race at San Diego",
-      "description": "SiriusXM NASCAR Radio · NASCAR CRAFTSMAN Truck Series Race at San Diego · Naval Base Coronado",
+      "title": "NASCAR Craftsman Truck Series Race",
+      "description": "SiriusXM NASCAR Radio · NASCAR Craftsman Truck Series Race · Naval Base Coronado",
       "start_utc": "2026-06-19T22:30:00Z",
       "end_utc": "2026-06-20T02:00:00Z",
       "channels": [
@@ -656,6 +721,16 @@
       ]
     },
     {
+      "slug": "nascar",
+      "title": "NASCAR Cup Qualifying",
+      "description": "SiriusXM NASCAR Radio · NASCAR Cup Qualifying · Naval Base Coronado",
+      "start_utc": "2026-06-20T18:30:00Z",
+      "end_utc": "2026-06-20T22:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Germany @ Ivory Coast",
       "description": "SOCCER · Germany @ Ivory Coast",
@@ -670,8 +745,8 @@
     },
     {
       "slug": "nascar",
-      "title": "NASCAR O&#x27;Reilly Auto Parts Series Race at San Diego",
-      "description": "SiriusXM NASCAR Radio · NASCAR O&#x27;Reilly Auto Parts Series Race at San Diego · Naval Base Coronado",
+      "title": "NASCAR O&#x27;Reilly Series Race",
+      "description": "SiriusXM NASCAR Radio · NASCAR O&#x27;Reilly Series Race · Naval Base Coronado",
       "start_utc": "2026-06-20T20:30:00Z",
       "end_utc": "2026-06-21T00:00:00Z",
       "channels": [
