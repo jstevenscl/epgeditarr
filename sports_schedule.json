@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T15:42:46Z",
+  "generated_at": "2026-06-10T18:32:25Z",
   "events": [
     {
       "slug": "mlb",
@@ -1202,10 +1202,21 @@
     },
     {
       "slug": "f1",
-      "title": "F-1 Practice",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice · Red Bull Ring",
-      "start_utc": "2026-06-26T15:00:00Z",
-      "end_utc": "2026-06-26T17:00:00Z",
+      "title": "F-1 Practice 1",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 1 · Red Bull Ring",
+      "start_utc": "2026-06-26T11:25:00Z",
+      "end_utc": "2026-06-26T13:25:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 2",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 2 · Red Bull Ring",
+      "start_utc": "2026-06-26T14:55:00Z",
+      "end_utc": "2026-06-26T16:55:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
@@ -1290,8 +1301,8 @@
       "slug": "f1",
       "title": "F-1 Practice",
       "description": "Formula 1 Racing and Analysis · F-1 Practice · Red Bull Ring",
-      "start_utc": "2026-06-27T10:30:00Z",
-      "end_utc": "2026-06-27T12:30:00Z",
+      "start_utc": "2026-06-27T10:25:00Z",
+      "end_utc": "2026-06-27T12:25:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
@@ -1301,8 +1312,8 @@
       "slug": "f1",
       "title": "F-1 Qualifying",
       "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Red Bull Ring",
-      "start_utc": "2026-06-27T14:00:00Z",
-      "end_utc": "2026-06-27T16:00:00Z",
+      "start_utc": "2026-06-27T13:55:00Z",
+      "end_utc": "2026-06-27T15:55:00Z",
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
