@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T18:09:39Z",
+  "generated_at": "2026-06-12T21:49:39Z",
   "events": [
     {
       "slug": "pga",
@@ -10,19 +10,6 @@
       "channels": [
         "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Canada @ Bosnia and Herzegovina",
-      "description": "SOCCER · Canada @ Bosnia and Herzegovina",
-      "start_utc": "2026-06-12T19:00:00Z",
-      "end_utc": "2026-06-12T21:00:00Z",
-      "channels": [
-        "Bosnia and Herzegovina",
-        "Canada",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
       ]
     },
     {
