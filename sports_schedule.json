@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-06-13T10:32:20Z",
+  "generated_at": "2026-06-13T14:05:58Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "F-1 Practice 3",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Circuit de Barcelona-Catalunya",
-      "start_utc": "2026-06-13T10:25:00Z",
-      "end_utc": "2026-06-13T12:25:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "f1",
       "title": "F-1 Qualifying",
