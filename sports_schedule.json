@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-06-14T14:09:53Z",
+  "generated_at": "2026-06-14T17:22:34Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "Grand Prix of Barcelona",
-      "description": "Formula 1 Racing and Analysis · Grand Prix of Barcelona · Circuit de Barcelona-Catalunya",
-      "start_utc": "2026-06-14T13:00:00Z",
-      "end_utc": "2026-06-14T15:00:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Pittsburgh Pirates @ Miami Marlins",
