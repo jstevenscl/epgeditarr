@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-06-15T14:26:02Z",
+  "generated_at": "2026-06-15T19:50:23Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Spain @ Cape Verde",
-      "description": "SOCCER · Spain @ Cape Verde",
-      "start_utc": "2026-06-15T16:00:00Z",
-      "end_utc": "2026-06-15T18:00:00Z",
-      "channels": [
-        "Cape Verde",
-        "Spain",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Belgium @ Egypt",
@@ -272,21 +259,6 @@
         "Ghana",
         "FOX Sports on SiriusXM",
         "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Carolina Hurricanes @ Vegas Golden Knights",
-      "description": "NHL · Carolina Hurricanes @ Vegas Golden Knights",
-      "start_utc": "2026-06-18T00:00:00Z",
-      "end_utc": "2026-06-18T02:30:00Z",
-      "channels": [
-        "Vegas Golden Knights",
-        "Carolina Hurricanes",
-        "NHL Network Radio",
-        "NHL/NBA Play-by-Play 219",
-        "NHL/NBA Play-by-Play 220",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
