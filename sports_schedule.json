@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-06-16T19:39:22Z",
+  "generated_at": "2026-06-16T22:14:56Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "France @ Senegal",
-      "description": "SOCCER · France @ Senegal",
-      "start_utc": "2026-06-16T19:00:00Z",
-      "end_utc": "2026-06-16T21:00:00Z",
-      "channels": [
-        "Senegal",
-        "France",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Iraq @ Norway",
