@@ -1,188 +1,6 @@
 {
-  "generated_at": "2026-06-16T22:14:56Z",
+  "generated_at": "2026-06-17T04:23:48Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Iraq @ Norway",
-      "description": "SOCCER · Iraq @ Norway",
-      "start_utc": "2026-06-16T22:00:00Z",
-      "end_utc": "2026-06-17T00:00:00Z",
-      "channels": [
-        "Norway",
-        "Iraq",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Philadelphia Phillies @ Miami Marlins",
-      "description": "MLB · Philadelphia Phillies @ Miami Marlins",
-      "start_utc": "2026-06-16T22:40:00Z",
-      "end_utc": "2026-06-17T01:40:00Z",
-      "channels": [
-        "Miami Marlins",
-        "Philadelphia Phillies",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Boston Red Sox @ Toronto Blue Jays",
-      "description": "MLB · Boston Red Sox @ Toronto Blue Jays",
-      "start_utc": "2026-06-16T22:45:00Z",
-      "end_utc": "2026-06-17T01:45:00Z",
-      "channels": [
-        "Toronto Blue Jays",
-        "Boston Red Sox",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Washington Nationals @ Kansas City Royals",
-      "description": "MLB · Washington Nationals @ Kansas City Royals",
-      "start_utc": "2026-06-16T22:45:00Z",
-      "end_utc": "2026-06-17T01:45:00Z",
-      "channels": [
-        "Kansas City Royals",
-        "Washington Nationals",
-        "MLB Play-by-Play 176",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Yankees @ Chicago White Sox",
-      "description": "MLB · New York Yankees @ Chicago White Sox",
-      "start_utc": "2026-06-16T23:05:00Z",
-      "end_utc": "2026-06-17T02:05:00Z",
-      "channels": [
-        "Chicago White Sox",
-        "New York Yankees",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cincinnati Reds @ New York Mets",
-      "description": "MLB · Cincinnati Reds @ New York Mets",
-      "start_utc": "2026-06-16T23:10:00Z",
-      "end_utc": "2026-06-17T02:10:00Z",
-      "channels": [
-        "New York Mets",
-        "Cincinnati Reds",
-        "MLB Play-by-Play 179",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Atlanta Braves @ San Francisco Giants",
-      "description": "MLB · Atlanta Braves @ San Francisco Giants",
-      "start_utc": "2026-06-16T23:15:00Z",
-      "end_utc": "2026-06-17T02:15:00Z",
-      "channels": [
-        "San Francisco Giants",
-        "Atlanta Braves",
-        "MLB Play-by-Play 178",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Milwaukee Brewers @ Cleveland Guardians",
-      "description": "MLB · Milwaukee Brewers @ Cleveland Guardians",
-      "start_utc": "2026-06-16T23:40:00Z",
-      "end_utc": "2026-06-17T02:40:00Z",
-      "channels": [
-        "Cleveland Guardians",
-        "Milwaukee Brewers",
-        "MLB Play-by-Play 181",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "St. Louis Cardinals @ San Diego Padres",
-      "description": "MLB · St. Louis Cardinals @ San Diego Padres",
-      "start_utc": "2026-06-16T23:45:00Z",
-      "end_utc": "2026-06-17T02:45:00Z",
-      "channels": [
-        "San Diego Padres",
-        "St. Louis Cardinals",
-        "MLB Play-by-Play 180",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Chicago Cubs @ Colorado Rockies",
-      "description": "MLB · Chicago Cubs @ Colorado Rockies",
-      "start_utc": "2026-06-17T00:05:00Z",
-      "end_utc": "2026-06-17T03:05:00Z",
-      "channels": [
-        "Colorado Rockies",
-        "Chicago Cubs",
-        "MLB Play-by-Play 183",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Texas Rangers @ Minnesota Twins",
-      "description": "MLB · Texas Rangers @ Minnesota Twins",
-      "start_utc": "2026-06-17T00:05:00Z",
-      "end_utc": "2026-06-17T03:05:00Z",
-      "channels": [
-        "Minnesota Twins",
-        "Texas Rangers",
-        "MLB Play-by-Play 184",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Detroit Tigers",
-      "description": "MLB · Houston Astros @ Detroit Tigers",
-      "start_utc": "2026-06-17T00:10:00Z",
-      "end_utc": "2026-06-17T03:10:00Z",
-      "channels": [
-        "Detroit Tigers",
-        "Houston Astros",
-        "MLB Play-by-Play 182",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Argentina @ Algeria",
-      "description": "SOCCER · Argentina @ Algeria",
-      "start_utc": "2026-06-17T01:00:00Z",
-      "end_utc": "2026-06-17T03:00:00Z",
-      "channels": [
-        "Algeria",
-        "Argentina",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Seattle Mariners @ Baltimore Orioles",
-      "description": "MLB · Seattle Mariners @ Baltimore Orioles",
-      "start_utc": "2026-06-17T01:40:00Z",
-      "end_utc": "2026-06-17T04:40:00Z",
-      "channels": [
-        "Baltimore Orioles",
-        "Seattle Mariners",
-        "MLB Play-by-Play 186",
-        "MLB Network Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Athletics @ Pittsburgh Pirates",
@@ -206,6 +24,19 @@
         "Los Angeles Angels",
         "Arizona Diamondbacks",
         "MLB Play-by-Play 187",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Seattle Mariners @ Baltimore Orioles",
+      "description": "MLB · Seattle Mariners @ Baltimore Orioles",
+      "start_utc": "2026-06-17T01:40:00Z",
+      "end_utc": "2026-06-17T04:40:00Z",
+      "channels": [
+        "Baltimore Orioles",
+        "Seattle Mariners",
+        "MLB Play-by-Play 186",
         "MLB Network Radio"
       ]
     },
