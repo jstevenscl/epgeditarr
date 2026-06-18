@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T15:32:15Z",
+  "generated_at": "2026-06-18T18:27:20Z",
   "events": [
     {
       "slug": "pga",
@@ -10,19 +10,6 @@
       "channels": [
         "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Czechia @ South Africa",
-      "description": "SOCCER · Czechia @ South Africa",
-      "start_utc": "2026-06-18T16:00:00Z",
-      "end_utc": "2026-06-18T18:00:00Z",
-      "channels": [
-        "South Africa",
-        "Czechia",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
       ]
     },
     {
