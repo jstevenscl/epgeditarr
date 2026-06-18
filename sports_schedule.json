@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T11:52:35Z",
+  "generated_at": "2026-06-18T15:32:15Z",
   "events": [
     {
       "slug": "pga",
@@ -631,6 +631,17 @@
       ]
     },
     {
+      "slug": "pga",
+      "title": "Travelers Championship",
+      "description": "SiriusXM PGA Tour Radio · Travelers Championship · TPC River Highlands",
+      "start_utc": "2026-06-25T16:00:00Z",
+      "end_utc": "2026-06-25T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
+      ]
+    },
+    {
       "slug": "soccer",
       "title": "Ecuador @ Germany",
       "description": "SOCCER · Ecuador @ Germany",
@@ -713,6 +724,17 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Travelers Championship",
+      "description": "SiriusXM PGA Tour Radio · Travelers Championship · TPC River Highlands",
+      "start_utc": "2026-06-26T16:00:00Z",
+      "end_utc": "2026-06-26T21:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -810,6 +832,17 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Travelers Championship",
+      "description": "SiriusXM PGA Tour Radio · Travelers Championship · TPC River Highlands",
+      "start_utc": "2026-06-27T17:00:00Z",
+      "end_utc": "2026-06-27T22:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
@@ -916,6 +949,17 @@
       "channels": [
         "F1 on SiriusXM",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "pga",
+      "title": "Travelers Championship",
+      "description": "SiriusXM PGA Tour Radio · Travelers Championship · TPC River Highlands",
+      "start_utc": "2026-06-28T18:00:00Z",
+      "end_utc": "2026-06-28T23:00:00Z",
+      "channels": [
+        "SiriusXM PGA TOUR Radio",
+        "SiriusXM PGA Tour Radio"
       ]
     },
     {
