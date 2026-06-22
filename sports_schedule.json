@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-06-22T13:37:26Z",
+  "generated_at": "2026-06-22T19:32:28Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Argentina @ Austria",
-      "description": "SOCCER · Argentina @ Austria",
-      "start_utc": "2026-06-22T17:00:00Z",
-      "end_utc": "2026-06-22T19:00:00Z",
-      "channels": [
-        "Austria",
-        "Argentina",
-        "FOX Sports on SiriusXM",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "France @ Iraq",
@@ -382,6 +369,7 @@
       "channels": [
         "Sweden",
         "Japan",
+        "FOX Sports on SiriusXM",
         "SiriusXM FC"
       ]
     },
@@ -394,7 +382,6 @@
       "channels": [
         "Netherlands",
         "Tunisia",
-        "FOX Sports on SiriusXM",
         "SiriusXM FC"
       ]
     },
@@ -568,8 +555,8 @@
       "slug": "nascar",
       "title": "NCS Pole Qualifying",
       "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Sonoma Raceway",
-      "start_utc": "2026-06-27T18:30:00Z",
-      "end_utc": "2026-06-27T22:00:00Z",
+      "start_utc": "2026-06-27T18:00:00Z",
+      "end_utc": "2026-06-27T21:30:00Z",
       "channels": [
         "SiriusXM NASCAR Radio"
       ]
@@ -601,8 +588,8 @@
     },
     {
       "slug": "nascar",
-      "title": "NASCAR O&#x27;Reilly Auto Parts Series Race at Sonoma",
-      "description": "SiriusXM NASCAR Radio · NASCAR O&#x27;Reilly Auto Parts Series Race at Sonoma · Sonoma Raceway",
+      "title": "Pit Boss/FoodMaxx 250",
+      "description": "SiriusXM NASCAR Radio · Pit Boss/FoodMaxx 250 · Sonoma Raceway",
       "start_utc": "2026-06-27T21:00:00Z",
       "end_utc": "2026-06-28T00:30:00Z",
       "channels": [
@@ -786,8 +773,8 @@
       "slug": "indycar",
       "title": "INDY NXT Race",
       "description": "SiriusXM INDYCAR Nation · INDY NXT Race · Mid-Ohio Sports Car Course",
-      "start_utc": "2026-07-04T17:00:00Z",
-      "end_utc": "2026-07-04T19:30:00Z",
+      "start_utc": "2026-07-04T16:55:00Z",
+      "end_utc": "2026-07-04T19:25:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
       ]
@@ -796,8 +783,8 @@
       "slug": "indycar",
       "title": "INDY NXT Race",
       "description": "SiriusXM INDYCAR Nation · INDY NXT Race · Mid-Ohio Sports Car Course",
-      "start_utc": "2026-07-05T14:00:00Z",
-      "end_utc": "2026-07-05T16:30:00Z",
+      "start_utc": "2026-07-05T13:55:00Z",
+      "end_utc": "2026-07-05T16:25:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
       ]
@@ -806,8 +793,8 @@
       "slug": "indycar",
       "title": "Honda INDY 200 at Mid-Ohio",
       "description": "SiriusXM INDYCAR Nation · Honda INDY 200 at Mid-Ohio · Mid-Ohio Sports Car Course",
-      "start_utc": "2026-07-05T16:30:00Z",
-      "end_utc": "2026-07-05T19:00:00Z",
+      "start_utc": "2026-07-05T16:00:00Z",
+      "end_utc": "2026-07-05T18:30:00Z",
       "channels": [
         "SiriusXM INDYCAR Nation"
       ]
