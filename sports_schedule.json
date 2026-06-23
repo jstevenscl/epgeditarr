@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T14:55:13Z",
+  "generated_at": "2026-06-23T17:59:54Z",
   "events": [
     {
       "slug": "soccer",
@@ -662,7 +662,10 @@
       "start_utc": "2026-06-28T18:30:00Z",
       "end_utc": "2026-06-28T22:00:00Z",
       "channels": [
-        "SiriusXM NASCAR Radio"
+        "SiriusXM NASCAR Radio",
+        "Sports 997",
+        "Sports 998",
+        "Sports 992"
       ]
     },
     {
