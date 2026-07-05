@@ -1,42 +1,6 @@
 {
-  "generated_at": "2026-07-05T17:14:41Z",
+  "generated_at": "2026-07-05T21:04:30Z",
   "events": [
-    {
-      "slug": "indycar",
-      "title": "Honda INDY 200 at Mid-Ohio",
-      "description": "SiriusXM INDYCAR Nation · Honda INDY 200 at Mid-Ohio · Mid-Ohio Sports Car Course",
-      "start_utc": "2026-07-05T16:00:00Z",
-      "end_utc": "2026-07-05T18:30:00Z",
-      "channels": [
-        "SiriusXM INDYCAR Nation"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Atlanta Braves @ New York Mets",
-      "description": "MLB · Atlanta Braves @ New York Mets",
-      "start_utc": "2026-07-05T16:30:00Z",
-      "end_utc": "2026-07-05T19:30:00Z",
-      "channels": [
-        "New York Mets",
-        "Atlanta Braves",
-        "MLB Play-by-Play 175",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Washington Nationals @ Pittsburgh Pirates",
-      "description": "MLB · Washington Nationals @ Pittsburgh Pirates",
-      "start_utc": "2026-07-05T17:00:00Z",
-      "end_utc": "2026-07-05T20:00:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "Washington Nationals",
-        "MLB Play-by-Play 184",
-        "MLB Network Radio"
-      ]
-    },
     {
       "slug": "pga",
       "title": "John Deere Classic",
@@ -46,45 +10,6 @@
       "channels": [
         "SiriusXM PGA TOUR Radio",
         "SiriusXM PGA Tour Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cincinnati Reds @ Baltimore Orioles",
-      "description": "MLB · Cincinnati Reds @ Baltimore Orioles",
-      "start_utc": "2026-07-05T17:05:00Z",
-      "end_utc": "2026-07-05T20:05:00Z",
-      "channels": [
-        "Baltimore Orioles",
-        "Cincinnati Reds",
-        "MLB Play-by-Play 176",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Yankees @ Minnesota Twins",
-      "description": "MLB · New York Yankees @ Minnesota Twins",
-      "start_utc": "2026-07-05T17:35:00Z",
-      "end_utc": "2026-07-05T20:35:00Z",
-      "channels": [
-        "Minnesota Twins",
-        "New York Yankees",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cleveland Guardians @ Chicago White Sox",
-      "description": "MLB · Cleveland Guardians @ Chicago White Sox",
-      "start_utc": "2026-07-05T18:00:00Z",
-      "end_utc": "2026-07-05T21:00:00Z",
-      "channels": [
-        "Chicago White Sox",
-        "Cleveland Guardians",
-        "MLB Play-by-Play 178",
-        "MLB Network Radio"
       ]
     },
     {
