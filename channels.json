@@ -419,7 +419,7 @@
   },
   "siriusxm hits 1": {
     "name": "SiriusXM Hits 1",
-    "description": "Today’s hits from pop, hip-hop, rock, rhythm, country and R&B. Featuring The Morning Mash Up with Ryan & Nicole, Mack & Jen middays, Gaby Symon afternoons, Mikey Piff evenings, plus Spyder Harrison and the HITS 1 Weekend Countdown.",
+    "description": "Today's hits from pop, hip-hop, rock, rhythm, country and R&B. Featuring The Morning Mash Up with Ryan & Nicole, Mack & Jen middays, Gaby Symon afternoons, Mikey Piff evenings, plus Spyder Harrison and the HITS 1 Weekend Countdown.",
     "genre": "Pop",
     "sxm_number": 2,
     "seasonal": null,
@@ -1032,17 +1032,6 @@
     "sxm_logo_src": "aem/97/97bfbc3f33fd14411f2429ebbdba77a2_1732039939.jpeg",
     "sxm_entity_id": "altnation",
     "lookaround_channel_id": "fd5740ec-7f11-0ecf-f676-46f9dc056d2c"
-  },
-  "hotel california": {
-    "name": "Hotel California",
-    "description": "Get ready for stadium tour dates on The Long Goodbye, Act III with the Eagles' exclusive SiriusXM channel. Rediscover music from the band's extensive career and stories behind the making of their biggest hits. Hear their solo records, influences, and Eagles Family Tree artists. Plus hosted Shows and bonus tracks from the Deluxe Edition of One Of These Nights including the 1975 concert at Anaheim Stadium.",
-    "genre": "Rock",
-    "sxm_number": 105,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/hotelcalifornia.png",
-    "sxm_logo_src": "if/bd/bd9c0f782fba3bd69dd3cf751e9243a2_1778170893.png",
-    "sxm_entity_id": "9674",
-    "lookaround_channel_id": "ab0e4302-503b-e1ff-c786-8307a3d36fe0"
   },
   "the megyn kelly channel": {
     "name": "The Megyn Kelly Channel",
@@ -1704,13 +1693,13 @@
     "sxm_entity_id": "9549",
     "lookaround_channel_id": "ecb0f19c-ea10-d4ce-0326-4e7477d16d5c"
   },
-  "miles davis radio": {
-    "name": "Miles Davis Radio",
-    "description": "The music of Miles Davis 24/7, from bebop-to cool- to modal to fusion all hosted by former band members including Lenny White and Marcus Miller.",
-    "genre": "Jazz/Standards/Classical",
+  "limited edition 10": {
+    "name": "Limited Edition 10",
+    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
+    "genre": "Country",
     "sxm_number": 510,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition10.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9548",
     "lookaround_channel_id": null
@@ -1737,13 +1726,13 @@
     "sxm_entity_id": "9546",
     "lookaround_channel_id": "8fcd47c1-c56f-a906-871d-f8a6ca8d928d"
   },
-  "limited edition 2": {
-    "name": "Limited Edition 2",
-    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
+  "the beach boys channel": {
+    "name": "The Beach Boys Channel",
+    "description": "Playing sun-drenched songs from every phase of the group's decades-spanning career! It's all on Good Vibrations: The Beach Boys Channel! From their early songs about sand, surf, girls and cars into the psychedelic period filled with rich experimentation, The Beach Boys have grown up with American pop music and have brought California's coastline to the world. Their biggest hits plus hard-to-find rarities combine for a trip to the beach, without leaving home!",
     "genre": "Pop",
     "sxm_number": 502,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition2.png",
+    "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9545",
     "lookaround_channel_id": null
@@ -1846,17 +1835,6 @@
     "sxm_logo_src": "if/4a/4aad386984753d228e8b64dd609a1044_1756126376.png",
     "sxm_entity_id": "9513",
     "lookaround_channel_id": "fb5fcfc1-bbd9-6cf1-578c-87c47aabce00"
-  },
-  "poplandia": {
-    "name": "Poplandia",
-    "description": "Poplandia is the soundtrack for pop culture junkies. Hear the hottest hits and exclusive interviews from your favorite artists. Movies, music, celebrity gossip, current events and more, Poplandia has you covered.",
-    "genre": "Canadian",
-    "sxm_number": 754,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/poplandia.png",
-    "sxm_logo_src": "if/d9/d9cc2fd60c833fb7960e0f7fc1afb381_1756126386.png",
-    "sxm_entity_id": "9511",
-    "lookaround_channel_id": "5721af4f-a1df-65fa-e127-01efe4a92eaa"
   },
   "u2 x-radio": {
     "name": "U2 X-Radio",
@@ -2562,16 +2540,16 @@
     "sxm_entity_id": "9399",
     "lookaround_channel_id": "4a121e6f-9d04-d2bb-763f-2b9119a5d281"
   },
-  "siriusxm southern rock": {
-    "name": "SiriusXM Southern Rock",
-    "description": "Where early southern rock pioneers and contemporary trailblazers come together, hosted by Chris and Rich Robinson of The Black Crowes. Hear all your southern favorites along with the band's acclaimed new album 'A Pound of Feathers', plus an intimate concert they'll perform for SiriusXM listeners just before they begin their Southern Hospitality Tour. Enjoy a unique genre of classic and contemporary rock influenced by country and blues, with an extra helping of southern pride.",
+  "limited edition 4": {
+    "name": "Limited Edition 4",
+    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
     "genre": "Rock",
     "sxm_number": 504,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/siriusxmsouthernrock.png",
-    "sxm_logo_src": "if/63/63368e832e2432b69f087bc31346de5f_1778779068.png",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition4.png",
+    "sxm_logo_src": "",
     "sxm_entity_id": "9398",
-    "lookaround_channel_id": "d1320015-4873-9375-d7ea-6c0f325479c7"
+    "lookaround_channel_id": null
   },
   "sway's universe": {
     "name": "Sway's Universe",
@@ -5567,7 +5545,7 @@
   },
   "90s on 9": {
     "name": "90s on 9",
-    "description": "If it was 'all that' in the 90s, it's on 90s on 9. Get jiggy with the hottest 90s music from boy bands to pop queens, grunge rock, hip-hop and R&B with artists like Mariah Carey, Backstreet Boys, TLC, Green Day, Alanis Morissette, Boyz II Men, Aerosmith, Britney Spears and more. Hosted by legendary personalities Downtown Julie Brown & Spyder Harrison, singer/songwriter Lisa Loeb and Sugar Ray's Mark McGrath.",
+    "description": "If it was 'all that' in the 90s, it's on 90s on 9. Get jiggy with the hottest 90s music from boy bands to pop queens, grunge rock, hip-hop and R&B with artists like Mariah Carey, Backstreet Boys, TLC, Green Day, Alanis Morissette, Boyz II Men, Aerosmith, Britney Spears and more. Hosted by legendary personalities Downtown Julie Brown, singer/songwriter Lisa Loeb and Sugar Ray's Mark McGrath.",
     "genre": "Pop",
     "sxm_number": 9,
     "seasonal": null,
@@ -5884,7 +5862,7 @@
     "sxm_entity_id": "4298",
     "lookaround_channel_id": "b817fd55-92ac-71ae-9784-e1d8d990de30"
   },
-  "siriusxm southern rock_1285": {
+  "siriusxm southern rock": {
     "name": "SiriusXM Southern Rock",
     "description": "Rock sounds of the south",
     "genre": "Places",
@@ -8634,6 +8612,17 @@
     "sxm_entity_id": "4000",
     "lookaround_channel_id": "09a91fb6-2ec7-f8fb-e562-4f869ff011ef"
   },
+  "poplandia": {
+    "name": "Poplandia",
+    "description": "Poplandia is the soundtrack for pop culture junkies. Hear the hottest hits and exclusive interviews from your favorite artists. Movies, music, celebrity gossip, current events and more, Poplandia has you covered.",
+    "genre": "Canadian",
+    "sxm_number": 754,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/poplandia.png",
+    "sxm_logo_src": "if/d9/d9cc2fd60c833fb7960e0f7fc1afb381_1756126386.png",
+    "sxm_entity_id": "9511",
+    "lookaround_channel_id": "5721af4f-a1df-65fa-e127-01efe4a92eaa"
+  },
   "marky ramone's punk rock": {
     "name": "Marky Ramone's Punk Rock",
     "description": "Marky Ramone's Punk Rock Blitzkrieg is Classic Punk 24/7 hosted by long-time Ramones drummer Marky Ramone! You'll hear Sex Pistols, Black Flag, Social Distortion, The Clash and of course, The Ramones! All this plus- Songs from Marky's personal music collection, rare recordings, live performances & more! Whether it is Ska-influenced, surf guitar-oriented, Cowpunk, Proto-Punk, Hardcore, or Pop Punk, if it's Classic Punk it's on Marky Ramone’s Punk Rock Blitzkrieg!",
@@ -8643,17 +8632,6 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/markyramonespunkrock.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9470",
-    "lookaround_channel_id": null
-  },
-  "she's so funny": {
-    "name": "She's So Funny",
-    "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
-    "genre": "Comedy",
-    "sxm_number": 771,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shessofunny.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9503",
     "lookaround_channel_id": null
   },
   "comedy classics": {
@@ -8667,6 +8645,17 @@
     "sxm_entity_id": "9542",
     "lookaround_channel_id": null
   },
+  "she's so funny": {
+    "name": "She's So Funny",
+    "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
+    "genre": "Comedy",
+    "sxm_number": 771,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shessofunny.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9503",
+    "lookaround_channel_id": null
+  },
   "the message_1258": {
     "name": "The Message",
     "description": "Praise and worship music",
@@ -8678,17 +8667,6 @@
     "sxm_entity_id": "4270",
     "lookaround_channel_id": "c2e3e686-93a6-5d22-c818-6d8ea63bcc7c"
   },
-  "holly": {
-    "name": "Holly",
-    "description": "Merry and bright holiday hits featuring songs by Mariah Carey, Michael Bublé, Dean Martin, Kelly Clarkson, Pentatonix, Josh Groban, John Legend, Brenda Lee, Train, Gwen Stefani and more.",
-    "genre": "Holiday",
-    "sxm_number": 600,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holly.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9343",
-    "lookaround_channel_id": null
-  },
   "navidad": {
     "name": "Navidad",
     "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
@@ -8698,6 +8676,17 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9348",
+    "lookaround_channel_id": null
+  },
+  "holly": {
+    "name": "Holly",
+    "description": "Merry and bright holiday hits featuring songs by Mariah Carey, Michael Bublé, Dean Martin, Kelly Clarkson, Pentatonix, Josh Groban, John Legend, Brenda Lee, Train, Gwen Stefani and more.",
+    "genre": "Holiday",
+    "sxm_number": 600,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holly.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9343",
     "lookaround_channel_id": null
   }
 }
