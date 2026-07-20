@@ -1033,6 +1033,17 @@
     "sxm_entity_id": "altnation",
     "lookaround_channel_id": "fd5740ec-7f11-0ecf-f676-46f9dc056d2c"
   },
+  "little miss twain radio": {
+    "name": "Little Miss Twain Radio",
+    "description": "Celebrate the trailblazing career of Shania Twain & the release of her 7th studio album, with Little Miss Twain Radio. Hear the songs that made her a global legend, from country classics to crossover pop hits, along with memorable collaborations, music from artists she admires, and stories behind them all. Let's go girls!",
+    "genre": "Rock",
+    "sxm_number": 105,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9674",
+    "lookaround_channel_id": null
+  },
   "the megyn kelly channel": {
     "name": "The Megyn Kelly Channel",
     "description": "The Megyn Kelly Channel is your home for bold, no B.S. news. We don't suffer fools, but we love mocking them! All facts, no apologies. Hear open, honest, and provocative conversations with Megyn, plus other contributors.",
@@ -1693,13 +1704,13 @@
     "sxm_entity_id": "9549",
     "lookaround_channel_id": "ecb0f19c-ea10-d4ce-0326-4e7477d16d5c"
   },
-  "limited edition 10": {
-    "name": "Limited Edition 10",
-    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
+  "little miss twain radio_510": {
+    "name": "Little Miss Twain Radio",
+    "description": "Celebrate the trailblazing career of Shania Twain & the release of her 7th studio album, with Little Miss Twain Radio. Hear the songs that made her a global legend, from country classics to crossover pop hits, along with memorable collaborations, music from artists she admires, and stories behind them all. Let's go girls!",
     "genre": "Country",
     "sxm_number": 510,
     "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition10.png",
+    "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9548",
     "lookaround_channel_id": null
@@ -2485,24 +2496,24 @@
     "sxm_entity_id": "9405",
     "lookaround_channel_id": "899bf4b1-b4b6-55e6-cee8-7c83d7d227eb"
   },
-  "usher radio": {
-    "name": "Usher Radio",
-    "description": "Celebrate every era of one of R&B's greatest performers. Hear hits from across Usher's catalog, his inspirations, and songs still shaping the culture as he heads out on The R&B Tour.",
+  "limited edition 9": {
+    "name": "Limited Edition 9",
+    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
     "genre": "Hip-Hop/R&B",
     "sxm_number": 509,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition9.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9403",
     "lookaround_channel_id": null
   },
-  "the 2pac channel": {
-    "name": "The 2Pac Channel",
-    "description": "Rock The Bells Radio presents The 2Pac Channel, celebrating the music, message, and lasting influence of Tupac Shakur. Hear iconic hits, deep album cuts, live recordings, rare collaborations, and exclusive stories reflecting on Pac's life and impact on hip-hop culture.",
+  "limited edition 8": {
+    "name": "Limited Edition 8",
+    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
     "genre": "Hip-Hop/R&B",
     "sxm_number": 508,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/limitededition8.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9402",
     "lookaround_channel_id": null
@@ -8634,17 +8645,6 @@
     "sxm_entity_id": "9470",
     "lookaround_channel_id": null
   },
-  "comedy classics": {
-    "name": "Comedy Classics",
-    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
-    "genre": "Comedy",
-    "sxm_number": 772,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyclassics.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9542",
-    "lookaround_channel_id": null
-  },
   "she's so funny": {
     "name": "She's So Funny",
     "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
@@ -8654,6 +8654,17 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/shessofunny.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9503",
+    "lookaround_channel_id": null
+  },
+  "comedy classics": {
+    "name": "Comedy Classics",
+    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
+    "genre": "Comedy",
+    "sxm_number": 772,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/comedyclassics.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9542",
     "lookaround_channel_id": null
   },
   "the message_1258": {
@@ -8667,17 +8678,6 @@
     "sxm_entity_id": "4270",
     "lookaround_channel_id": "c2e3e686-93a6-5d22-c818-6d8ea63bcc7c"
   },
-  "navidad": {
-    "name": "Navidad",
-    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
-    "genre": "Holiday",
-    "sxm_number": 626,
-    "seasonal": null,
-    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9348",
-    "lookaround_channel_id": null
-  },
   "holly": {
     "name": "Holly",
     "description": "Merry and bright holiday hits featuring songs by Mariah Carey, Michael Bublé, Dean Martin, Kelly Clarkson, Pentatonix, Josh Groban, John Legend, Brenda Lee, Train, Gwen Stefani and more.",
@@ -8687,6 +8687,17 @@
     "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/holly.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9343",
+    "lookaround_channel_id": null
+  },
+  "navidad": {
+    "name": "Navidad",
+    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
+    "genre": "Holiday",
+    "sxm_number": 626,
+    "seasonal": null,
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/navidad.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9348",
     "lookaround_channel_id": null
   }
 }
