@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-07-20T03:26:24Z",
+  "generated_at": "2026-07-20T06:49:37Z",
   "events": [
-    {
-      "slug": "nba",
-      "title": "Golden State Warriors @ Memphis Grizzlies",
-      "description": "NBA · Golden State Warriors @ Memphis Grizzlies",
-      "start_utc": "2026-07-20T01:00:00Z",
-      "end_utc": "2026-07-20T03:30:00Z",
-      "channels": [
-        "Memphis Grizzlies",
-        "Golden State Warriors",
-        "SiriusXM NBA Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Cleveland Guardians @ Minnesota Twins",
