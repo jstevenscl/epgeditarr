@@ -5,7 +5,7 @@
   "nhl": 0,
   "soccer": 1,
   "nascar": 4,
-  "pga": 0,
-  "indycar": 7,
+  "pga": 4,
+  "indycar": 1,
   "f1": 5
 }
