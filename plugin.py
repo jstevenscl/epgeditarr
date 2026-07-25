@@ -89,8 +89,15 @@ _SPORT_TEAM_SORT = {
 # Only add entries when fuzzy matching genuinely fails (check unmatched log).
 _CHANNEL_ALIASES = {
     "pro wrestling nation24/7":   "pro wrestling nation 24/7",   # space before 24/7 varies
-    "smokey's holidaysoultown":   "smokey's soul town",           # channel was renamed
 }
+# Removed: "smokey's holidaysoultown" -> "smokey's soul town". That alias's own
+# comment claimed the holiday channel had been renamed to the regular one — a
+# real user confirmed via their own provider that these are genuinely distinct
+# channels (Smokey's Soul Town station 74 vs. the separate Holiday variant, not
+# currently a distinct entry in the dataset). Forcing the match caused a real
+# duplicate-collision with the actual station-74 channel. Leave unmatched
+# instead of a wrong confident match — it'll pick up a real match automatically
+# if/when the dataset ever carries the Holiday variant as its own entry.
 
 _RULE_FORMAT_HELP = (
     "One rule per line. Lines starting with # are comments.\n"
@@ -2266,10 +2273,14 @@ class Plugin:
                     tail.append(ch)
 
             # Unmatched/sport-block/name-guessed channels (plus any duplicate-match
-            # losers above) fill free slots inside the reserved block first — never
-            # past it just because one matched channel's real station number (e.g. a
-            # rare 1999-style outlier) falls outside it.
-            free_slots = [n for n in range(start_number, start_number + block_size) if n not in used]
+            # losers above) fill free slots starting right after the highest real
+            # match, not from the bottom of the block — low absolute numbers are
+            # exactly where more real SXM stations are most likely to exist (SXM's
+            # own numbering starts at 2 and is densest in the low range), so
+            # backfilling gaps like start+0/start+1 with unrelated placeholder
+            # content put them ahead of genuinely-numbered channels in the list.
+            floor = max(used) + 1 if used else start_number
+            free_slots = [n for n in range(floor, start_number + block_size) if n not in used]
             for i, ch in enumerate(tail):
                 if i < len(free_slots):
                     assignments.append((ch, free_slots[i], None))

@@ -1039,7 +1039,7 @@
     "genre": "Rock",
     "sxm_number": 105,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/littlemisstwainradio.svg",
     "sxm_logo_src": "",
     "sxm_entity_id": "9674",
     "lookaround_channel_id": null
@@ -1710,7 +1710,7 @@
     "genre": "Country",
     "sxm_number": 510,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/littlemisstwainradio510.svg",
     "sxm_logo_src": "",
     "sxm_entity_id": "9548",
     "lookaround_channel_id": null
@@ -1743,7 +1743,7 @@
     "genre": "Pop",
     "sxm_number": 502,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://jstevenscl.github.io/epgeditarr/logos/thebeachboyschannel.svg",
     "sxm_logo_src": "",
     "sxm_entity_id": "9545",
     "lookaround_channel_id": null

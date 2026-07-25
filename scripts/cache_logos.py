@@ -108,6 +108,19 @@ SPECIAL_LOGOS = {
         "url": "https://www.siriusxm.com/content/dam/sxm-com/channel-logos/preview/sxm_preview/SXM_Preview-color.svg",
         "ext": "svg",
     },
+    "little miss twain radio": {
+        "url": "https://www.siriusxm.com/content/dam/sxm-com/channel-logos/Music/x-Country/little-miss-twain/LittleMissTwainRadio-126-500x400-P.svg",
+        "ext": "svg",
+    },
+    # Same channel appears twice in the dataset (Ch. 105 and Ch. 510) — cover both keys.
+    "little miss twain radio_510": {
+        "url": "https://www.siriusxm.com/content/dam/sxm-com/channel-logos/Music/x-Country/little-miss-twain/LittleMissTwainRadio-126-500x400-P.svg",
+        "ext": "svg",
+    },
+    "the beach boys channel": {
+        "url": "https://www.siriusxm.com/content/dam/sxm-com/channel-logos/Music/x-Pop/the-beach-boys-channels/GoodVibrations21-126-500x400-P2.svg",
+        "ext": "svg",
+    },
 }
 
 
