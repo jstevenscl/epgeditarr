@@ -110,7 +110,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.07"
+    version = "0.2.08"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -285,6 +285,64 @@ class Plugin:
                 "Leave blank to automatically use the lowest channel number in your SiriusXM Channel Group."
             ),
         },
+        {
+            "id": "sort_numbering_mode",
+            "label": "Numbering Mode",
+            "type": "select",
+            "default": "sequential",
+            "options": [
+                {"value": "sequential", "label": "Sequential (default) — channels packed with no gaps, e.g. start 15000 -> 15000, 15001, 15002..."},
+                {"value": "absolute",   "label": "Absolute — channel number = Sort Start Number + SXM station number, e.g. start 15000 + station 36 -> 15036 (preserves gaps from stations you don't carry)"},
+            ],
+            "help_text": (
+                "Absolute mode only offsets channels with a confirmed SiriusXM API station number — "
+                "sport-block and name-guessed matches are placed sequentially afterward since their "
+                "position isn't a real station number. Set Sort Start Number explicitly every run "
+                "when using Absolute — auto-detect reads the current minimum channel number, which "
+                "drifts once channels carry gapped numbers."
+            ),
+        },
+        {
+            "id": "sort_block_size",
+            "label": "Numbering Block Size (required for Absolute mode)",
+            "type": "text",
+            "default": "",
+            "placeholder": "e.g. 1000",
+            "help_text": (
+                "Reserves Sort Start Number through Start+BlockSize-1 for this group, so unmatched "
+                "channels never drift into whatever you numbered next. Required when Numbering Mode "
+                "is Absolute — Sort refuses to run without it, since a silent default risks "
+                "overlapping a neighboring channel group. SiriusXM's full catalog runs up to station "
+                "1999, but a real 431-channel provider lineup we checked had 99.8% of channels at or "
+                "below 999 (one rare event-channel outlier near 1999) — 1000 comfortably covers a "
+                "typical lineup with no overflow. A matched channel whose real station number falls "
+                "outside the block (like that outlier) still gets its correct absolute number and is "
+                "called out in the result message, never silently renumbered."
+            ),
+        },
+        {
+            "id": "sort_station_prefix",
+            "label": "Prefix Channel Name With Station Number",
+            "type": "boolean",
+            "default": False,
+            "help_text": (
+                "When on, Sort Channels renames each channel with its SiriusXM station number as a "
+                "prefix, in the format chosen below. Only applied to channels with a confirmed "
+                "SiriusXM API station number. Safe to re-run — an existing prefix is replaced, not "
+                "stacked."
+            ),
+        },
+        {
+            "id": "sort_station_prefix_format",
+            "label": "Station Number Prefix Format",
+            "type": "select",
+            "default": "zero_padded",
+            "options": [
+                {"value": "zero_padded", "label": "Zero-Padded (036 Alt Nation) — minimum 3 digits, never truncated for 4+ digit stations (e.g. 1285 Southern Rock)"},
+                {"value": "no_padding",  "label": "No Leading Zeros (36 Alt Nation)"},
+            ],
+            "help_text": "Only used when Prefix Channel Name With Station Number is on.",
+        },
     ]
 
     # Regex patterns used by _action_sample — one section per category shown
@@ -367,6 +425,32 @@ class Plugin:
                         "default": "",
                         "placeholder": "regex::^\\[.*?\\]\\s*::",
                         "help_text": "Rules applied to the program description. One per line.",
+                    },
+                    {
+                        "id": f"src_{sid}_force_category",
+                        "label": "Force Category (Series Mode)",
+                        "type": "text",
+                        "default": "",
+                        "placeholder": "Series",
+                        "help_text": (
+                            "Adds an XMLTV <category> tag to every program on this source's virtual "
+                            "copy. Setting this to 'Series' tells Plex to treat repeating programs "
+                            "that share a title as episodes of a show instead of duplicate movies, "
+                            "so DVR can record more than one. Comma-separated for multiple "
+                            "categories. Leave blank to disable."
+                        ),
+                    },
+                    {
+                        "id": f"src_{sid}_synth_episode_num",
+                        "label": "Synthesize Episode Numbers From Air Date",
+                        "type": "boolean",
+                        "default": False,
+                        "help_text": (
+                            "Adds a unique <episode-num system=\"xmltv_ns\"> tag per program, derived "
+                            "from its air date (year + day-of-year), so Plex sees each airing as a "
+                            "distinct episode instead of collapsing same-titled programs into one "
+                            "recordable movie. Pair with Force Category above."
+                        ),
                     },
                 ]
         else:
@@ -592,6 +676,11 @@ class Plugin:
                     else:
                         descs.append(f"replace({r['find']!r} → {r['replacement']!r})")
                 lines.append(f"    {label}: " + ", ".join(descs))
+        force_category = (settings.get(f"src_{source_id}_force_category", "") or "").strip()
+        if force_category:
+            lines.append(f"    Force Category: {force_category}")
+        if settings.get(f"src_{source_id}_synth_episode_num", False):
+            lines.append("    Synthesized Episode Numbers: on")
         return "\n".join(lines) if lines else "    (no rules configured)"
 
     # ── EPG helpers ───────────────────────────────────────────────────────
@@ -1052,6 +1141,10 @@ class Plugin:
         virtual, _ = self._get_or_create_virtual(source)
         virtual_map = self._sync_epgdata(source, virtual)
         field_rules = self._get_source_field_rules(source.id, settings)
+        series_categories = [
+            c.strip() for c in (settings.get(f"src_{source.id}_force_category", "") or "").split(",") if c.strip()
+        ]
+        synth_episode_num = bool(settings.get(f"src_{source.id}_synth_episode_num", False))
 
         # Channels may be on the original source (pre-setup) or virtual (post-setup).
         # Checking both ensures we always find the right set regardless of state.
@@ -1077,6 +1170,13 @@ class Plugin:
                 if not ve:
                     continue
                 for prog in ProgramData.objects.filter(epg=se).iterator(chunk_size=500):
+                    custom_props = dict(prog.custom_properties or {})
+                    if series_categories:
+                        existing_cats = custom_props.get("categories") or []
+                        custom_props["categories"] = list(dict.fromkeys([*existing_cats, *series_categories]))
+                    if synth_episode_num:
+                        custom_props["season"] = prog.start_time.year
+                        custom_props["episode"] = prog.start_time.timetuple().tm_yday
                     batch.append(ProgramData(
                         epg=ve,
                         start_time=prog.start_time,
@@ -1091,7 +1191,7 @@ class Plugin:
                             if prog.description is not None else None
                         ),
                         tvg_id=prog.tvg_id,
-                        custom_properties=prog.custom_properties,
+                        custom_properties=custom_props,
                     ))
                     if len(batch) >= 1000:
                         ProgramData.objects.bulk_create(batch)
@@ -1660,11 +1760,16 @@ class Plugin:
 
         sxm_src, created = EPGSource.objects.get_or_create(
             name=SXM_SOURCE_NAME,
-            defaults={"source_type": "xmltv", "url": SXM_EPG_URL},
+            defaults={"source_type": "xmltv", "url": SXM_EPG_URL, "refresh_interval": 24},
         )
         if not created and sxm_src.source_type != "xmltv":
             sxm_src.source_type = "xmltv"
             sxm_src.save(update_fields=["source_type"])
+        # Backfill: sources created before this field was set default to 0 (disabled),
+        # which leaves Dispatcharr's periodic refresh task permanently off.
+        if sxm_src.refresh_interval != 24:
+            sxm_src.refresh_interval = 24
+            sxm_src.save(update_fields=["refresh_interval"])
 
         # Download the community XMLTV (retry once for transient CDN/mid-write errors).
         xml_bytes = None
@@ -2063,7 +2168,29 @@ class Plugin:
                 return sm <= m <= em
             return m >= sm or m <= em  # wraps around year-end (e.g. Nov–Jan)
 
-        numbered = []    # (sort_key, ch) — Wikipedia match, sport block, or embedded number
+        numbering_mode = (settings.get('sort_numbering_mode') or 'sequential').strip()
+        station_prefix = bool(settings.get('sort_station_prefix'))
+        station_prefix_format = (settings.get('sort_station_prefix_format') or 'zero_padded').strip()
+
+        block_size = None
+        if numbering_mode == 'absolute':
+            block_raw = (settings.get('sort_block_size') or '').strip()
+            if not block_raw:
+                return {"success": False, "message": (
+                    "Numbering Block Size is required when Numbering Mode is Absolute — set the range "
+                    "you want to reserve for this group (e.g. 1000) so unmatched channels can't drift "
+                    "into whatever you numbered next."
+                )}
+            try:
+                block_size = int(block_raw)
+                if block_size <= 0:
+                    raise ValueError
+            except (ValueError, TypeError):
+                return {"success": False, "message": f"Invalid Numbering Block Size: {block_raw!r} — enter a positive whole number."}
+
+        numbered = []    # (sort_key, ch, confirmed_num) — confirmed_num is set only for a real
+                          # SiriusXM API station number; sport-block/name-guessed carry None since
+                          # they aren't real station numbers and must never drive Absolute offsets.
         no_number = []   # no number source at all → placed after numbered
         wiki_matched = 0
         seasonal_deferred = 0
@@ -2071,24 +2198,29 @@ class Plugin:
         name_matched = 0
 
         for ch in all_channels:
-            enrich = self._lookup_enrich(enrich_cache, ch.name)
+            # Strip any station-number prefix a previous Sort run may have added
+            # before matching — otherwise a channel prefixed as "036 Alt Nation"
+            # fails to match "Alt Nation" in the dataset next time and drifts to
+            # the unmatched tail instead of staying stable across re-runs.
+            match_name = re.sub(r'^\d+\s+', '', ch.name)
+            enrich = self._lookup_enrich(enrich_cache, match_name)
             sxm_num = enrich.get('sxm_number')
             if sxm_num is not None:
                 if not _in_season(enrich.get('seasonal')):
                     no_number.append(ch)
                     seasonal_deferred += 1
                 else:
-                    numbered.append((sxm_num, ch))
+                    numbered.append((sxm_num, ch, sxm_num))
                     wiki_matched += 1
             else:
-                sport_anchor = _SPORT_TEAM_SORT.get(self._normalize_channel_name(ch.name))
+                sport_anchor = _SPORT_TEAM_SORT.get(self._normalize_channel_name(match_name))
                 if sport_anchor is not None:
-                    numbered.append((sport_anchor, ch))
+                    numbered.append((sport_anchor, ch, None))
                     sport_matched += 1
                 else:
-                    embedded = _name_number(ch.name)
+                    embedded = _name_number(match_name)
                     if embedded is not None:
-                        numbered.append((embedded, ch))
+                        numbered.append((embedded, ch, None))
                         name_matched += 1
                     else:
                         no_number.append(ch)
@@ -2096,29 +2228,84 @@ class Plugin:
         numbered.sort(key=lambda x: x[0])
         # Sort truly-unmatched by current channel_number then name for stability
         no_number.sort(key=lambda ch: (ch.channel_number if ch.channel_number is not None else float('inf'), ch.name))
-        ordered = [ch for _, ch in numbered] + no_number
+        ordered = [(ch, confirmed_num) for _, ch, confirmed_num in numbered] + [(ch, None) for ch in no_number]
 
         # Track which no_number channels are seasonal-deferred vs genuinely unmatched
         seasonal_names = set()
         unmatched_channels = []
         for ch in no_number:
-            enrich = self._lookup_enrich(enrich_cache, ch.name)
+            enrich = self._lookup_enrich(enrich_cache, re.sub(r'^\d+\s+', '', ch.name))
             if enrich.get('sxm_number') is not None:
                 seasonal_names.add(ch.name)
             else:
                 unmatched_channels.append(ch)
 
+        # Assign target numbers. Sequential keeps today's behavior (position-based,
+        # no gaps). Absolute offsets only channels with a confirmed API station
+        # number — everything else is placed sequentially after the highest
+        # absolute number used, preserving its relative sort order.
+        assignments = []  # (ch, new_number, confirmed_num-or-None)
+        out_of_block, overflowed, duplicate_matches = [], [], []
+        if numbering_mode == 'absolute':
+            used = set()
+            tail = []
+            seen_numbers = {}
+            for ch, confirmed_num in ordered:
+                if confirmed_num is not None:
+                    if confirmed_num in seen_numbers:
+                        duplicate_matches.append((ch.name, confirmed_num, seen_numbers[confirmed_num]))
+                        tail.append(ch)
+                        continue
+                    seen_numbers[confirmed_num] = ch.name
+                    new_num = start_number + confirmed_num
+                    assignments.append((ch, new_num, confirmed_num))
+                    used.add(new_num)
+                    if confirmed_num >= block_size:
+                        out_of_block.append((ch.name, confirmed_num))
+                else:
+                    tail.append(ch)
+
+            # Unmatched/sport-block/name-guessed channels (plus any duplicate-match
+            # losers above) fill free slots inside the reserved block first — never
+            # past it just because one matched channel's real station number (e.g. a
+            # rare 1999-style outlier) falls outside it.
+            free_slots = [n for n in range(start_number, start_number + block_size) if n not in used]
+            for i, ch in enumerate(tail):
+                if i < len(free_slots):
+                    assignments.append((ch, free_slots[i], None))
+                    used.add(free_slots[i])
+                else:
+                    overflowed.append(ch)
+            next_num = start_number + block_size
+            for ch in overflowed:
+                while next_num in used:
+                    next_num += 1
+                assignments.append((ch, next_num, None))
+                used.add(next_num)
+        else:
+            assignments = [(ch, start_number + i, confirmed_num) for i, (ch, confirmed_num) in enumerate(ordered)]
+
         updated = 0
-        for i, ch in enumerate(ordered):
-            new_num = start_number + i
+        for ch, new_num, confirmed_num in assignments:
+            update_fields = []
             if getattr(ch, 'channel_number', None) != new_num:
                 ch.channel_number = new_num
-                ch.save(update_fields=['channel_number'])
+                update_fields.append('channel_number')
+            if station_prefix and confirmed_num:
+                base_name = re.sub(r'^\d+\s+', '', ch.name)
+                number_str = f"{confirmed_num:03d}" if station_prefix_format == "zero_padded" else str(confirmed_num)
+                new_name = f"{number_str} {base_name}"
+                if new_name != ch.name:
+                    ch.name = new_name
+                    update_fields.append('name')
+            if update_fields:
+                ch.save(update_fields=update_fields)
                 updated += 1
 
         start_note = " (auto-detected)" if auto_detected else ""
+        mode_note = f" [absolute, block size {block_size}]" if numbering_mode == 'absolute' else ""
         lines = [
-            f"Sort complete — {len(ordered):,} channels renumbered from {start_number}{start_note}\n",
+            f"Sort complete — {len(ordered):,} channels renumbered from {start_number}{start_note}{mode_note}\n",
             f"  Matched via SiriusXM API   : {wiki_matched:,}",
             f"  Seasonal (out of season)   : {seasonal_deferred:,}",
             f"  Matched via sport block    : {sport_matched:,}",
@@ -2126,6 +2313,26 @@ class Plugin:
             f"  No match (placed at end)   : {len(no_number) - seasonal_deferred:,}",
             f"  Channel numbers updated    : {updated:,}",
         ]
+        if duplicate_matches:
+            lines.append(
+                "\nDuplicate channels matched the same station — only the first kept the real "
+                "absolute number, the rest were placed in the fill pool instead of colliding:"
+            )
+            for name, num, first in duplicate_matches[:10]:
+                lines.append(f"  {name} (station {num}, same as {first})")
+        if out_of_block:
+            lines.append(
+                "\nReal station number outside the block (still given its correct absolute number, not moved):"
+            )
+            for name, num in out_of_block[:10]:
+                lines.append(f"  {name} (station {num})")
+        if overflowed:
+            lines.append(
+                f"\n{len(overflowed)} unmatched channel(s) didn't fit inside the block and were placed past it — "
+                f"increase Numbering Block Size to bring them back in range:"
+            )
+            for ch in overflowed[:10]:
+                lines.append(f"  {ch.name}")
         if seasonal_names:
             lines.append(f"\nSeasonal channels (out of season — will sort correctly when active):")
             for ch in no_number:
@@ -2166,7 +2373,10 @@ class Plugin:
         skipped_names = []
 
         for ch in channels:
-            enrich = self._lookup_enrich(enrich_cache, ch.name)
+            # Strip any station-number prefix Sort may have already added — otherwise
+            # a channel named "036 Alt Nation" fails to match "Alt Nation" here.
+            match_name = re.sub(r'^\d+\s+', '', ch.name)
+            enrich = self._lookup_enrich(enrich_cache, match_name)
             if not enrich:
                 skipped_names.append(ch.name)
                 continue
@@ -2234,7 +2444,10 @@ class Plugin:
         errors = 0
 
         for ch in channels:
-            enrich = self._lookup_enrich(enrich_cache, ch.name)
+            # Strip any station-number prefix Sort may have already added — otherwise
+            # a channel named "036 Alt Nation" fails to match "Alt Nation" here.
+            match_name = re.sub(r'^\d+\s+', '', ch.name)
+            enrich = self._lookup_enrich(enrich_cache, match_name)
             if not enrich:
                 skipped_no_match += 1
                 continue

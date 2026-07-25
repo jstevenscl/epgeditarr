@@ -21,6 +21,8 @@ Many EPG sources contain noise in program titles and descriptions: broadcast fla
 
 EPGeditARR creates a virtual copy of your EPG source and writes the transformed programs there. Your channels are reassigned automatically. The original EPG is left untouched.
 
+Per-source, you can also **Force Category (Series Mode)** and **Synthesize Episode Numbers From Air Date** — useful when an EPG's bare-bones programs (title/description only, no episode data) get treated as duplicate movies by Plex instead of recordable series episodes. See Settings Reference below.
+
 ### Fill EPG
 
 For channels that have no EPG data at all, EPGeditARR can generate a repeating placeholder schedule. This gives every channel at least a title block in your TV guide instead of a blank entry.
@@ -30,7 +32,7 @@ For channels that have no EPG data at all, EPGeditARR can generate a repeating p
 For SiriusXM channel groups specifically, EPGeditARR provides a complete channel management toolkit:
 
 - **Fill EPG** — Downloads the community SiriusXM XMLTV directly and assigns real EPG to every channel in your SiriusXM group in one step — no separate EPG refresh needed. Sports channels (NFL, NBA, MLB, NHL, Soccer, NASCAR, PGA Tour, IndyCar, F1) get smart schedule blocks: Upcoming announcements before each game, a LIVE block during the game, and a Post-game block after. All other channels get repeating fill blocks with real SiriusXM descriptions.
-- **Sort** — Reorder your SiriusXM channels into SiriusXM's official lineup order, assigning sequential channel numbers starting from wherever your current range begins
+- **Sort** — Reorder your SiriusXM channels into SiriusXM's official lineup order. Sequential mode (default) assigns numbers starting from wherever your current range begins, packed with no gaps; Absolute mode sets each channel's trailing digits to its real SXM station number (e.g. start 15000 + station 36 -> 15036), optionally prefixed onto the channel name too — see Settings Reference for the required Numbering Block Size and other details
 - **Rename Channels** — Rename channels in your group to their official SiriusXM names, correcting provider name variants automatically using a built-in alias library
 - **Assign Logos** — Assign channel logos to every matched SiriusXM channel from a self-hosted logo cache (667 logos, served via GitHub Pages — no third-party CDN dependency)
 - **Defer seasonal channels** — Holiday channels (e.g. Holly, Country Christmas) are placed at the end of the list when out of season, and sort to their correct lineup positions when active
@@ -315,6 +317,8 @@ Each EPG source in Dispatcharr gets its own section. Per-source settings:
 | **Title Rules** | Rules applied to program titles |
 | **Sub-Title Rules** | Rules applied to episode sub-titles |
 | **Description Rules** | Rules applied to program descriptions |
+| **Force Category (Series Mode)** | Adds an XMLTV `<category>` tag to every program on this source's virtual copy. Setting this to `Series` tells Plex to treat repeating programs that share a title as episodes of a show instead of duplicate movies, so DVR can record more than one. Comma-separated for multiple categories. Leave blank to disable. |
+| **Synthesize Episode Numbers From Air Date** | Adds a unique `<episode-num system="xmltv_ns">` tag per program, derived from its air date (year + day-of-year), so Plex sees each airing as a distinct episode instead of collapsing same-titled programs into one recordable movie. Pair with Force Category above. |
 | **Auto-Reassign Channels on Setup** | Toggle channel reassignment on/off for this source |
 | **Include Channel Groups** | Comma-separated group names — only these groups are reassigned |
 | **Exclude Channel Groups** | Comma-separated group names — these groups are skipped |
@@ -335,6 +339,10 @@ Each EPG source in Dispatcharr gets its own section. Per-source settings:
 | **Enable SiriusXM Enrichment** | Match channel names against the SiriusXM channel database and add real descriptions to generated EPG entries. Required for Sort, Rename, and Assign Logos to function. |
 | **SiriusXM Channel Group** | The Dispatcharr channel group containing your SiriusXM channels. All SiriusXM actions operate on this group exclusively. |
 | **Sort Start Number** | Channel number for the first sorted channel. Leave blank to auto-detect from the lowest number currently in your SiriusXM Channel Group. |
+| **Numbering Mode** | Sequential (default, no gaps) or Absolute (channel number = Sort Start Number + real SiriusXM station number, e.g. 15000 + station 36 -> 15036). Absolute mode only offsets channels with a confirmed SiriusXM API station number — sport-block and name-guessed matches are placed sequentially instead, since their position isn't a real station number. Set Sort Start Number explicitly every run when using Absolute. |
+| **Numbering Block Size** | **Required when Numbering Mode is Absolute.** Reserves Sort Start Number through Start+BlockSize-1 for this channel group, so channels with no station match never drift into whatever you numbered next. SiriusXM's full catalog runs up to station 1999, but real-world provider lineups are almost entirely ≤999 — confirmed against a live 431-channel provider feed, where 99.8% of matched channels fell at or below 999, with a single rare outlier near 1999. A block size of 1000 comfortably covers a typical lineup with zero overflow. A matched channel whose real station number falls outside your block still gets its correct absolute number (never silently moved) and is called out in the result message; unmatched channels that don't fit inside the block are placed just past it and flagged the same way. |
+| **Prefix Channel Name With Station Number** | When on, Sort renames each channel with its SiriusXM station number as a prefix, in the format chosen below. Only applied to channels with a confirmed SiriusXM API station number. Safe to re-run — an existing prefix is replaced, not stacked. |
+| **Station Number Prefix Format** | Zero-Padded (`036 Alt Nation`, minimum 3 digits, never truncated for 4+ digit stations) or No Leading Zeros (`36 Alt Nation`). Only used when the prefix setting above is on. |
 
 ---
 
@@ -388,6 +396,15 @@ The rename is based on a built-in alias library that maps known provider variant
 
 **Why are my holiday channels at the end of the sort?**
 Channels in SiriusXM's seasonal holiday section (active early November – early January) are automatically placed at the end of the list when they're out of season. They'll sort to their correct positions — Holly at #4, Country Christmas at #58, etc. — as soon as the season begins. No action needed.
+
+**Why does Absolute numbering mode require a Numbering Block Size?**
+Absolute mode sets each channel's trailing digits to its real SXM station number — but SiriusXM's full catalog runs up to station 1999, and unmatched channels need a reserved range to fill into that won't drift into whatever you numbered next. Rather than guess a default, EPGeditARR requires you to set it explicitly (1000 comfortably covers a typical lineup — real provider data shows ~99.8% of channels at or below 999). A matched channel whose real station number falls outside your block still gets its correct absolute number and is called out in the result message, never silently moved.
+
+**Is it safe to run Sort multiple times with Prefix Channel Name enabled?**
+Yes. Matching strips any existing station-number prefix before comparing against the SiriusXM dataset, so a channel already renamed to "036 Alt Nation" still matches "Alt Nation" and stays correctly positioned on every subsequent run — including Rename Channels and Assign Logos, which use the same matching.
+
+**Two of my channels both matched the same station number. What happens?**
+Only the first one keeps that station's real absolute number; the other is placed in the fill pool instead of colliding on the same channel number, and both are named explicitly in the result message so you can investigate (usually a duplicate SD/HD channel from your provider, or two channels that are genuinely the same station).
 
 **The unicode broadcast flags (`ᴺᵉʷ`, `ᴸᶦᵛᵉ`) show zero matches in Sample Data.**
 These are provider-specific — not all EPG sources include them. Use Sample Data with each enabled source individually to find which one has them. They're typically found in Gracenote-sourced or aggregator feeds.
