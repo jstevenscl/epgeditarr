@@ -88,7 +88,71 @@ _SPORT_TEAM_SORT = {
 # Value: exact lowercase key in channels.json
 # Only add entries when fuzzy matching genuinely fails (check unmatched log).
 _CHANNEL_ALIASES = {
-    "pro wrestling nation24/7":   "pro wrestling nation 24/7",   # space before 24/7 varies
+    # Verified against the live dataset (2026-07-25) before adding — each key's
+    # old form is confirmed absent and each value's new form confirmed present,
+    # not added speculatively from a stale lineup-change issue.
+    "pro wrestling nation 24/7":  "pro wrestling nation24/7",    # dataset dropped the space (previous entry pointed the wrong direction)
+    "classic rewind just music":  "classic rewnd just music",   # dataset typo
+    "mlb network radio™":         "mlb network radio",          # trademark symbol dropped
+    "nhl network radio™":         "nhl network radio",          # trademark symbol dropped
+    "ozzy's boneyard deep cuts":  "ozzy's boneyrd deep cuts",   # dataset typo
+    "sebastian maniscalco's comedy radio": "sebastianmaniscalco cmdy",  # dataset abbreviation
+    "xm preview":                 "siriusxm preview",
+    "the weather channel":        "fox weather",                # real rebrand, not a typo
+    "acc play-by-play 955":       "acc 955",
+    "acc play-by-play 956":       "acc 956",
+    "big 12 play-by-play 952":    "big 12 952",
+    "big 12 play-by-play 953":    "big 12 953",
+    "big 12 play-by-play 954":    "big 12 954",
+    "big ten play-by-play 957":   "big ten 957",
+    "big ten play-by-play 958":   "big ten 958",
+    "big ten play-by-play 959":   "big ten 959",
+    "sec play-by-play 960":       "sec 960",
+    "sec play-by-play 961":       "sec 961",
+    "sec play-by-play 962":       "sec 962",
+    "sports play-by-play 963":     "sports 963",
+    "sports play-by-play 964":     "sports 964",
+    "sports play-by-play 965":     "sports 965",
+    "sports play-by-play 966":     "sports 966",
+    "sports play-by-play 967":     "sports 967",
+    "sports play-by-play 968":     "sports 968",
+    "sports play-by-play 969":     "sports 969",
+    "sports play-by-play 970":     "sports 970",
+    "sports play-by-play 971":     "sports 971",
+    "sports play-by-play 972":     "sports 972",
+    "sports play-by-play 973":     "sports 973",
+    "sports play-by-play 974":     "sports 974",
+    "sports play-by-play 975":     "sports 975",
+    "sports play-by-play 976":     "sports 976",
+    "sports play-by-play 977":     "sports 977",
+    "sports play-by-play 978":     "sports 978",
+    "sports play-by-play 979":     "sports 979",
+    "sports play-by-play 980":     "sports 980",
+    "sports play-by-play 981":     "sports 981",
+    "sports play-by-play 982":     "sports 982",
+    "sports play-by-play 983":     "sports 983",
+    "sports play-by-play 984":     "sports 984",
+    "sports play-by-play 985":     "sports 985",
+    "sports play-by-play 986":     "sports 986",
+    "sports play-by-play 987":     "sports 987",
+    "sports play-by-play 988":     "sports 988",
+    "sports play-by-play 989":     "sports 989",
+    "sports play-by-play 990":     "sports 990",
+    "sports play-by-play 991":     "sports 991",
+    "sports play-by-play 992":     "sports 992",
+    "sports play-by-play 993":     "sports 993",
+    "sports play-by-play 994":     "sports 994",
+    "sports play-by-play 995":     "sports 995",
+    "sports play-by-play 996":     "sports 996",
+    "sports play-by-play 997":     "sports 997",
+    "sports play-by-play 998":     "sports 998",
+    "sports play-by-play 999":     "sports 999",
+    # NOT aliased: "Limited Edition 10"->"Limited Edition 6", "Limited Edition
+    # 8"->"The 2Pac Channel", "Limited Edition 9"->"Usher Radio". These are
+    # SXM's rotating guest-content slots, not stable channel identities — two
+    # of the three target names have already rotated away again since the
+    # rename was first flagged. Aliasing a rotating slot number would just go
+    # stale again on the next rotation.
 }
 # Removed: "smokey's holidaysoultown" -> "smokey's soul town". That alias's own
 # comment claimed the holiday channel had been renamed to the regular one — a
@@ -117,7 +181,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.2.09"
+    version = "0.2.10"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
