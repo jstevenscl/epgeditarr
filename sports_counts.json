@@ -1,11 +1,11 @@
 {
   "nfl": 0,
   "nba": 0,
-  "mlb": 7,
+  "mlb": 12,
   "nhl": 0,
   "soccer": 2,
-  "nascar": 1,
-  "pga": 1,
+  "nascar": 12,
+  "pga": 0,
   "indycar": 7,
   "f1": 5
 }
