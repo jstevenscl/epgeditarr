@@ -1,67 +1,16 @@
 {
-  "generated_at": "2026-07-29T20:58:48Z",
+  "generated_at": "2026-07-30T02:35:17Z",
   "events": [
     {
       "slug": "mlb",
-      "title": "San Francisco Giants @ Milwaukee Brewers",
-      "description": "MLB · San Francisco Giants @ Milwaukee Brewers",
-      "start_utc": "2026-07-29T19:45:00Z",
-      "end_utc": "2026-07-29T22:45:00Z",
+      "title": "Chicago White Sox @ New York Yankees",
+      "description": "MLB · Chicago White Sox @ New York Yankees",
+      "start_utc": "2026-07-29T23:40:00Z",
+      "end_utc": "2026-07-30T02:40:00Z",
       "channels": [
-        "Milwaukee Brewers",
-        "San Francisco Giants",
-        "MLB Play-by-Play 179",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Diego Padres @ Colorado Rockies",
-      "description": "MLB · San Diego Padres @ Colorado Rockies",
-      "start_utc": "2026-07-29T20:10:00Z",
-      "end_utc": "2026-07-29T23:10:00Z",
-      "channels": [
-        "Colorado Rockies",
-        "San Diego Padres",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Tampa Bay Rays @ Texas Rangers",
-      "description": "MLB · Tampa Bay Rays @ Texas Rangers",
-      "start_utc": "2026-07-29T22:40:00Z",
-      "end_utc": "2026-07-30T01:40:00Z",
-      "channels": [
-        "Texas Rangers",
-        "Tampa Bay Rays",
-        "MLB Play-by-Play 175",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Mets @ Atlanta Braves",
-      "description": "MLB · New York Mets @ Atlanta Braves",
-      "start_utc": "2026-07-29T23:10:00Z",
-      "end_utc": "2026-07-30T02:10:00Z",
-      "channels": [
-        "Atlanta Braves",
-        "New York Mets",
-        "MLB Play-by-Play 182",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cincinnati Reds @ Cleveland Guardians",
-      "description": "MLB · Cincinnati Reds @ Cleveland Guardians",
-      "start_utc": "2026-07-29T23:10:00Z",
-      "end_utc": "2026-07-30T02:10:00Z",
-      "channels": [
-        "Cleveland Guardians",
-        "Cincinnati Reds",
+        "New York Yankees",
+        "Chicago White Sox",
+        "MLB Play-by-Play 177",
         "MLB Network Radio"
       ]
     },
@@ -80,19 +29,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Chicago White Sox @ New York Yankees",
-      "description": "MLB · Chicago White Sox @ New York Yankees",
-      "start_utc": "2026-07-29T23:40:00Z",
-      "end_utc": "2026-07-30T02:40:00Z",
-      "channels": [
-        "New York Yankees",
-        "Chicago White Sox",
-        "MLB Play-by-Play 177",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "St. Louis Cardinals @ Chicago Cubs",
       "description": "MLB · St. Louis Cardinals @ Chicago Cubs",
       "start_utc": "2026-07-29T23:45:00Z",
@@ -102,18 +38,6 @@
         "St. Louis Cardinals",
         "MLB Play-by-Play 178",
         "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "MLS All-Stars @ Liga MX All-Stars",
-      "description": "SOCCER · MLS All-Stars @ Liga MX All-Stars",
-      "start_utc": "2026-07-30T00:00:00Z",
-      "end_utc": "2026-07-30T02:00:00Z",
-      "channels": [
-        "Liga MX All-Stars",
-        "MLS All-Stars",
-        "SiriusXM FC"
       ]
     },
     {
