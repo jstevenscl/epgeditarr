@@ -1,6 +1,8 @@
 # EPGeditARR
 
-A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that creates clean, transformed copies of your EPG sources, fills in missing EPG data, and provides a full SiriusXM channel management toolkit.
+A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that creates clean, transformed copies of your EPG sources, fills in missing EPG data, and includes a Sports Editor for auto-synced sports channel groups.
+
+> **SiriusXM channel management has moved.** As of this version, EPGeditARR no longer includes SiriusXM channel Fill/Sort/Rename/Logo tooling — that functionality is now maintained in the [Tickarr](https://github.com/jstevenscl/tickarr) plugin, which has a more advanced EPG and up-to-date logos. See the release notes for details.
 
 > **Think of it as a filter layer between your raw EPG feed and what your players see.** Original sources are never touched.
 
@@ -27,18 +29,23 @@ Per-source, you can also **Force Category (Series Mode)** and **Synthesize Episo
 
 For channels that have no EPG data at all, EPGeditARR can generate a repeating placeholder schedule. This gives every channel at least a title block in your TV guide instead of a blank entry.
 
-### SiriusXM Tools
+### Sports Editor
 
-For SiriusXM channel groups specifically, EPGeditARR provides a complete channel management toolkit:
+For channel groups that Dispatcharr's Auto Channel Sync populates automatically (e.g. an NFL Game Pass stream group), EPGeditARR can rename the auto-created channels using a dedicated rule set — configured per channel group, separate from the EPG Sources rules above. It runs automatically right after each successful M3U refresh, and only ever touches auto-created channels, never manually-added ones.
 
-- **Fill EPG** — Downloads the community SiriusXM XMLTV directly and assigns real EPG to every channel in your SiriusXM group in one step — no separate EPG refresh needed. Sports channels (NFL, NBA, MLB, NHL, Soccer, NASCAR, PGA Tour, IndyCar, F1) get smart schedule blocks: Upcoming announcements before each game, a LIVE block during the game, and a Post-game block after. All other channels get repeating fill blocks with real SiriusXM descriptions.
-- **Sort** — Reorder your SiriusXM channels into SiriusXM's official lineup order. Sequential mode (default) assigns numbers starting from wherever your current range begins, packed with no gaps; Absolute mode sets each channel's trailing digits to its real SXM station number (e.g. start 15000 + station 36 -> 15036), optionally prefixed onto the channel name too — see Settings Reference for the required Numbering Block Size and other details
-- **Rename Channels** — Rename channels in your group to their official SiriusXM names, correcting provider name variants automatically using a built-in alias library
-- **Assign Logos** — Assign channel logos to every matched SiriusXM channel from a self-hosted logo cache (667 logos, served via GitHub Pages — no third-party CDN dependency)
-- **Defer seasonal channels** — Holiday channels (e.g. Holly, Country Christmas) are placed at the end of the list when out of season, and sort to their correct lineup positions when active
-- **Fill, Sort & Logos** — Run all three SiriusXM setup steps in one click
+Each channel group can also opt into **Sport Templates** (below) instead of, or alongside, plain rename rules — matching auto-created channels against a live public sports schedule and generating real channel names, logos, and a Pregame/Live/Postgame EPG from actual game data.
 
-The SiriusXM channel list is sourced from the [rebrowser/siriusxm-dataset](https://github.com/rebrowser/siriusxm-dataset) public CSV (updated daily, no credentials required) and rebuilt weekly by a GitHub Actions workflow, served from GitHub Pages — no load on your Dispatcharr server.
+### Sport Templates
+
+For groups with a Sport Template selected, EPGeditARR fetches live schedule data from [sports-data-platform](https://api.tickarr.com) (a public feed shared across several sports-IPTV tools), matches each auto-created channel's parsed matchup (e.g. "Denver Broncos at Atlanta Falcons") against a real game in that sport, and — on a match — automatically:
+
+- **Renames the channel** using a `{variable}`-driven template (e.g. `Denver Broncos @ Atlanta Falcons`)
+- **Assigns a logo** via a matchup thumbnail/logo API ([sethwv/game-thumbs](https://github.com/sethwv/game-thumbs) — self-hostable, or use the public default instance)
+- **Generates three EPG program blocks** around the real game time: Pregame (midnight UTC through kickoff), Live (game start through an estimated end based on the sport), and Postgame (1 hour after) — each with its own title/description template
+
+All scheduling is UTC-anchored, matching Dispatcharr's own timezone-neutral convention — every variable is also available in a US Eastern/Central-formatted flavor (`{start_time_et_ct}`, etc., matching broadcast-standard convention for these leagues) and a plain UTC flavor (`{start_time_utc}`, etc.) side by side, so templates read correctly for viewers anywhere.
+
+If a channel can't be confidently matched to a real game, the group's regular Rename Rules still apply as a fallback (or run standalone if no Sport Template is selected). See **Sport Templates Guide** below for the full setup walkthrough, variable reference, and starter templates per league.
 
 ### Community SiriusXM EPG
 
@@ -149,68 +156,25 @@ Click **Fill** to generate the schedules. Channels in your Fill Groups that have
 
 ---
 
-## Quick Start — SiriusXM Channels
+## Quick Start — Sports Editor
 
-> All SiriusXM features operate on the **SiriusXM Channel Group** configured in **Settings → SiriusXM Channels Only** — completely separate from the general Fill Groups setting.
+> The Sports Editor operates per channel group — each channel group you enable gets its own Rename Rules, independent of every other group's rules.
 
-![SiriusXM settings section](docs/screenshots/06_settings_siriusxm.png)
+### Step 1 — Set up Auto Channel Sync in Dispatcharr
 
-### Step 1 — Enable Enrichment
+In Dispatcharr's M3U account settings, enable Auto Channel Sync for the stream group you want (e.g. an NFL Game Pass group), and optionally target a dedicated channel group via the override option so auto-created channels land somewhere isolated from your production lineup.
 
-In **Settings → SiriusXM Channels Only**, enable **Enable SiriusXM Enrichment** and set your **SiriusXM Channel Group** name. This loads the official SiriusXM channel data needed for all SiriusXM actions.
+### Step 2 — Enable the channel group in EPGeditARR
 
-### Step 2 — Rename Channels (optional but recommended)
+In Settings, find the section for that channel group and toggle it on, then add Rename Rules (same `regex::`/`replace::` format as EPG Sources rules — see Rule Format below).
 
-Click **Rename Channels** to correct any provider name variants. EPGeditARR uses a built-in alias library that maps known mislabeled or old channel names (e.g. "Green Day's Idiot Nation" → "FACTION PUNK", "VSiN Radio" → "VSiN") to their official SiriusXM names. Only matched channels are renamed.
+### Step 3 — Let it run automatically, or trigger it manually
 
-### Step 3 — Fill, Sort & Assign Logos
+After Dispatcharr's Auto Channel Sync creates channels on the next M3U refresh, EPGeditARR renames them automatically — no manual step needed. To apply rule changes to already-existing auto-created channels without waiting for the next refresh, click **Rename Sports Channels Now**.
 
-Click **Fill, Sort & Logos** to run all three steps at once:
+### Step 4 — (Optional) Turn on Sport Templates for real game data
 
-1. **Fill SiriusXM EPG** — Downloads the community XMLTV and assigns EPG with real SiriusXM channel descriptions to all matched channels in your SiriusXM Channel Group
-2. **Sort Channels** — Reorders channels to match SiriusXM's official lineup order and assigns sequential channel numbers
-3. **Assign Logos** — Assigns channel logos from the self-hosted GitHub Pages logo cache
-
-Or run each step individually with the dedicated action buttons.
-
-> **Note — timeout / gateway error on Fill:** The fill downloads ~200 MB of EPG data and can take over 60 seconds. If your reverse proxy (nginx, Traefik, Caddy, etc.) has a short timeout, the browser may show a **504 Gateway Timeout** or similar error before the response arrives. **This does not mean the fill failed** — the backend keeps running after the browser connection drops. Click **Show Status** after a minute to confirm. If it reports channel entries and programs, the fill completed successfully.
-
-#### Sorting output example
-
-```
-Sort complete — 312 channels renumbered from 1001 (auto-detected)
-
-  Matched via SiriusXM API   : 148
-  Seasonal (out of season)   :  11
-  Matched via sport block    :  96
-  Matched via name number    :  38
-  No match (placed at end)   :  19
-
-Seasonal channels (out of season — will sort correctly when active):
-  Holly
-  Country Christmas
-  Hallmark Radio
-  ...
-```
-
-**Seasonal channels** are placed at the end while out of season and automatically sort to their correct lineup positions when the season begins — no manual intervention needed.
-
-**Sport play-by-play channels** (NFL, NBA, NHL, MLB team feeds) are grouped with their league's block using a built-in team roster.
-
-**Embedded channel numbers** (e.g. `Sports 963`, `ACC 955`) are used as a fallback sort key for channels not in the official SiriusXM lineup.
-
-#### Unmatched channel log
-
-Any channel name that couldn't be matched to the SiriusXM lineup is automatically logged to plugin settings and shown in the **Status** action output:
-
-```
-Unmatched channel names (3) — copy and share to grow alias list:
-  Infinity Sports Network
-  My Custom Station
-  Sports Extra
-```
-
-Copy and share these names if you want them added to the alias library in a future update.
+Want real channel names, logos, and a Pregame/Live/Postgame EPG instead of just cleaned-up names? Pick a **Sport Template** from that same group's section in Settings. See the **[Sport Templates Guide](docs/SPORT_TEMPLATES.md)** for the full walkthrough — matching, variables, and starter templates per league.
 
 ---
 
@@ -225,14 +189,9 @@ Copy and share these names if you want them added to the alias library in a futu
 | **Test Rule** | Test a single rule against live data from any source and field. Uses the Rule Tester settings. |
 | **Scan** | List all channels with no EPG data, grouped by channel group. Shows which groups are targeted by Fill EPG. |
 | **Fill** | Generate repeating placeholder EPG schedules for channels in your Fill Groups with no EPG data. |
-| **Fill SiriusXM EPG** | *(SiriusXM)* Download the community SiriusXM XMLTV and assign EPG to all channels in your SiriusXM Channel Group. Sports channels get smart Upcoming/LIVE/Post-game blocks; all other channels get repeating fill blocks with real SiriusXM descriptions. Creates the `EPGeditARR: SiriusXM` source automatically if it doesn't exist. ⚠️ Downloads ~200 MB — may take 60+ seconds. If a timeout/gateway error appears, run **Show Status** to verify the fill completed. |
-| **Sort** | *(SiriusXM)* Reorder channels in your SiriusXM Channel Group to match SiriusXM's official lineup order. |
-| **Fill & Sort** | *(SiriusXM)* Run Fill SiriusXM EPG and Sort together in one step. ⚠️ See Fill SiriusXM EPG note on timeouts. |
-| **Fill, Sort & Logos** | *(SiriusXM)* Run Fill SiriusXM EPG, Sort, and Assign Logos in one step — the full SiriusXM setup. ⚠️ See Fill SiriusXM EPG note on timeouts. |
-| **Rename Channels** | *(SiriusXM)* Rename channels in your SiriusXM Channel Group to their official SiriusXM names using the built-in alias library. |
-| **Assign Logos** | *(SiriusXM)* Assign channel logos from the self-hosted GitHub Pages logo cache to matched channels. |
-| **Refresh Channel Data** | *(SiriusXM)* Force an immediate refresh of the SiriusXM channel list from the GitHub Pages cache. |
-| **Show Status** | Shows which sources are enabled, program counts, Fill EPG status, configured rules, and any unmatched channel names accumulated since last review. |
+| **Rename Sports Channels Now** | Apply each enabled channel group's Sports Channel Rename Rules to its auto-created channels right now, without waiting for the next M3U refresh. |
+| **Run Sport Templates Now** | Match each Sport-Template-enabled group's auto-created channels against the live schedule right now — renames matches, assigns logos, and generates Pregame/Live/Postgame EPG data. |
+| **Show Status** | Shows which sources are enabled, program counts, Fill EPG status, and configured rules. |
 | **Teardown** | Removes all virtual EPG sources (including Fill EPG) and reassigns channels back to their originals. |
 
 ---
@@ -332,17 +291,31 @@ Each EPG source in Dispatcharr gets its own section. Per-source settings:
 | **Block Duration** | Duration of each generated program block (1–24 hours). |
 | **Days Ahead** | How many days of schedule to generate ahead (7, 14, or 30). |
 
-### SiriusXM Channels Only
+### Sports Editor
+
+One section appears per Dispatcharr channel group. Per-group settings:
 
 | Setting | Description |
 |---|---|
-| **Enable SiriusXM Enrichment** | Match channel names against the SiriusXM channel database and add real descriptions to generated EPG entries. Required for Sort, Rename, and Assign Logos to function. |
-| **SiriusXM Channel Group** | The Dispatcharr channel group containing your SiriusXM channels. All SiriusXM actions operate on this group exclusively. |
-| **Sort Start Number** | Channel number for the first sorted channel. Leave blank to auto-detect from the lowest number currently in your SiriusXM Channel Group. |
-| **Numbering Mode** | Sequential (default, no gaps) or Absolute (channel number = Sort Start Number + real SiriusXM station number, e.g. 15000 + station 36 -> 15036). Absolute mode only offsets channels with a confirmed SiriusXM API station number — sport-block and name-guessed matches are placed sequentially instead, since their position isn't a real station number. Set Sort Start Number explicitly every run when using Absolute. |
-| **Numbering Block Size** | **Required when Numbering Mode is Absolute.** Reserves Sort Start Number through Start+BlockSize-1 for this channel group, so channels with no station match never drift into whatever you numbered next. SiriusXM's full catalog runs up to station 1999, but real-world provider lineups are almost entirely ≤999 — confirmed against a live 431-channel provider feed, where 99.8% of matched channels fell at or below 999, with a single rare outlier near 1999. A block size of 1000 comfortably covers a typical lineup with zero overflow. A matched channel whose real station number falls outside your block still gets its correct absolute number (never silently moved) and is called out in the result message; unmatched channels that don't fit inside the block are placed just past it and flagged the same way. Channels with no station match (including the losing side of a duplicate-name match) are always placed starting right after your highest real matched station, never in the low numbers below it — SXM's own numbering starts at station 2, so those low slots are reserved for real stations, not backfilled with placeholder content. |
-| **Prefix Channel Name With Station Number** | When on, Sort renames each channel with its SiriusXM station number as a prefix, in the format chosen below. Only applied to channels with a confirmed SiriusXM API station number. Safe to re-run — an existing prefix is replaced, not stacked. |
-| **Station Number Prefix Format** | Zero-Padded (`036 Alt Nation`, minimum 3 digits, never truncated for 4+ digit stations) or No Leading Zeros (`36 Alt Nation`). Only used when the prefix setting above is on. |
+| **Enable Sports Editor for this group** | Toggle the Sports Editor on/off for this channel group |
+| **Sport Template** | Pick a sport (NFL, NBA, MLB, NHL, NCAA Football, MLS, or none) to match this group's auto-created channels against live game data instead of/alongside rename rules. See the **[Sport Templates Guide](docs/SPORT_TEMPLATES.md)**. |
+| **Sports Channel Rename Rules** | Rules applied to auto-created channel names in this group. Same format as EPG Sources rules above, but a separate rule set per group. Used as a fallback when no Sport Template match is found (or always, if no Sport Template is selected). |
+
+### Sport Templates
+
+One section appears per sport. Each defines the templates used when a channel group with that sport selected matches a live game. Full variable reference and starter templates: **[Sport Templates Guide](docs/SPORT_TEMPLATES.md)**.
+
+| Setting | Description |
+|---|---|
+| **Channel Name** | Renames the matched auto-created channel |
+| **Logo URL** | Assigned as the channel's logo |
+| **Pregame Title / Description** | EPG block covering midnight UTC through kickoff on game day |
+| **Live Title / Description** | EPG block covering the estimated game window |
+| **Postgame Title / Description** | EPG block covering 1 hour after the estimated end |
+
+| Setting | Description |
+|---|---|
+| **Game Thumbs Base URL** | Base URL of a [sethwv/game-thumbs](https://github.com/sethwv/game-thumbs) instance used by Logo URL templates via `{gamethumbs_base}`. Defaults to a publicly hosted instance — point this at your own self-hosted instance if you run one. |
 
 ---
 
@@ -388,46 +361,25 @@ No — click **Apply Now**. Setup is only needed when adding a new source for th
 **Something looks wrong. How do I undo everything?**
 Click **Teardown**. This deletes all virtual EPG sources (including Fill EPG) and reassigns your channels back to their original sources.
 
-**My SiriusXM channel didn't get a description even though enrichment is on.**
-The Fill output shows how many channels matched and lists any unmatched names. If a channel missed, the most common cause is a name difference between your Dispatcharr channel and the official SiriusXM channel name. Run **Refresh Channel Data** to pull the latest data, or use **Rename Channels** to correct provider name variants first. Unmatched names are also saved and shown in the **Status** output so you can review them anytime.
-
-**Rename Channels changed a name I didn't want changed.**
-The rename is based on a built-in alias library that maps known provider variants to official SiriusXM names. If a match is wrong, the channel can be manually renamed back in Dispatcharr. You can also run **Rename Channels** selectively — only matched channels are renamed, unmatched ones are left alone.
-
-**Why are my holiday channels at the end of the sort?**
-Channels in SiriusXM's seasonal holiday section (active early November – early January) are automatically placed at the end of the list when they're out of season. They'll sort to their correct positions — Holly at #4, Country Christmas at #58, etc. — as soon as the season begins. No action needed.
-
-**Why does Absolute numbering mode require a Numbering Block Size?**
-Absolute mode sets each channel's trailing digits to its real SXM station number — but SiriusXM's full catalog runs up to station 1999, and unmatched channels need a reserved range to fill into that won't drift into whatever you numbered next. Rather than guess a default, EPGeditARR requires you to set it explicitly (1000 comfortably covers a typical lineup — real provider data shows ~99.8% of channels at or below 999). A matched channel whose real station number falls outside your block still gets its correct absolute number and is called out in the result message, never silently moved.
-
-**Is it safe to run Sort multiple times with Prefix Channel Name enabled?**
-Yes. Matching strips any existing station-number prefix before comparing against the SiriusXM dataset, so a channel already renamed to "036 Alt Nation" still matches "Alt Nation" and stays correctly positioned on every subsequent run — including Rename Channels and Assign Logos, which use the same matching.
-
-**Two of my channels both matched the same station number. What happens?**
-Only the first one keeps that station's real absolute number; the other is placed in the fill pool instead of colliding on the same channel number, and both are named explicitly in the result message so you can investigate (usually a duplicate SD/HD channel from your provider, or two channels that are genuinely the same station).
-
-**Where do channels with no station match end up?**
-Right after your highest real matched station — never in the low numbers below it. SXM's own numbering starts at station 2, so those low slots are reserved for real stations and are never backfilled with unmatched or duplicate-loser content, even if they're technically free. This also applies to the losing side of a duplicate-name match above.
+**Clicking Dispatcharr's own refresh icon (⟳) on an "EPGeditARR: ..." row in M3U & EPG Manager gives an error about the source URL.**
+Expected — EPGeditARR's virtual/generated EPG sources (transform virtuals, Fill EPG, Sports Editor) intentionally have no URL, since EPGeditARR writes their program data directly instead of Dispatcharr fetching it. Dispatcharr's native per-source refresh only knows how to fetch a URL, so it always fails on these with something like "Failed to download EPG data, cannot parse programs." This only flips that source's Status column to "Error" — it never touches your actual EPG data. Always use the plugin's own Actions tab buttons (**Apply Now**, **Fill**, **Run Sport Templates Now**) to refresh EPGeditARR-managed data; running any of them restores the Status column to "Success."
 
 **The unicode broadcast flags (`ᴺᵉʷ`, `ᴸᶦᵛᵉ`) show zero matches in Sample Data.**
 These are provider-specific — not all EPG sources include them. Use Sample Data with each enabled source individually to find which one has them. They're typically found in Gracenote-sourced or aggregator feeds.
 
-**How does the SiriusXM channel list stay up to date?**
-A GitHub Actions workflow pulls the latest channel list from the [rebrowser/siriusxm-dataset](https://github.com/rebrowser/siriusxm-dataset) public CSV (updated daily, no credentials required) every week and commits it to the repo. It's served via GitHub Pages so your Dispatcharr server never hits any external API directly. You can also force a refresh any time with **Refresh Channel Data**.
-
-**Where do the channel logos come from?**
-SiriusXM channel logos are downloaded from the official SiriusXM player CDN and cached in this repository, served via GitHub Pages. Currently 667 channels have logos cached. There is no dependency on any third-party logo service.
-
-**Some of my channels show as unmatched. What does that mean?**
-Channels that can't be matched to the official SiriusXM lineup are logged automatically. You can see them any time by clicking **Status**. Unmatched channels are usually provider-specific name variants, abbreviations, or recently added channels not yet in the alias library. If you share the names (copy from Status output), they can be added as aliases in a future update.
-
-**Fill SiriusXM EPG showed a 504 Gateway Timeout / gateway error — did it fail?**
-Almost certainly not. The fill downloads ~200 MB of EPG data and rewrites hundreds of channels, which can take 60–90+ seconds. Most reverse proxies (nginx, Traefik, Caddy) drop the browser connection after 60 seconds by default — but the Dispatcharr backend (Gunicorn) keeps running and finishes the job. The browser error is the proxy giving up, not the fill failing. Click **Show Status** after a minute or two: if it shows channel entries and program counts, the fill completed successfully. You don't need to run it again.
-
 **I updated Dispatcharr and now plugin action buttons don't show any output.**
-This is a known display-only regression in Dispatcharr v0.25.0. When you click an action button (Status, Fill, Sort, etc.) the action runs correctly on the backend and all data is written — the result text just doesn't render in the modal UI. To confirm an action completed, click **Show Status** which will show current program counts and source state. All functionality (EPG transform, Fill EPG, SiriusXM Fill, Sort, Logos) continues to work normally. No change to EPGeditARR is needed.
+This is a known display-only regression, present since Dispatcharr v0.25.0 and still occurring as of v0.29.0. When you click an action button (Status, Fill, Run Sport Templates, etc.) the action runs correctly on the backend and all data is written — the result text just doesn't render in the modal UI. To confirm an action completed, click **Show Status** which will show current program counts and source state. All functionality continues to work normally. No change to EPGeditARR is needed.
+
+**Where did SiriusXM channel management go?**
+It's been removed from EPGeditARR as of this version — see the note at the top of this README and the release notes. Active SiriusXM development (Now Playing overlays, logos, and a more advanced EPG) is now in the [Tickarr](https://github.com/jstevenscl/tickarr) plugin.
 
 ---
+
+## Credits & Attribution
+
+- **Sport Templates UX** — the per-sport Channel Name / Logo URL / Pregame / Live / Postgame template design was inspired by [Pharaoh-Labs' Teamarr](https://github.com/Pharaoh-Labs/teamarr), used with their permission.
+- **Matchup logos & thumbnails** — powered by [sethwv/game-thumbs](https://github.com/sethwv/game-thumbs) (MIT), used with the author's permission. Self-host your own instance or use the public default — see the [Sport Templates Guide](docs/SPORT_TEMPLATES.md).
+- **Game schedule data** — [sports-data-platform](https://api.tickarr.com), a public schedule feed.
 
 ## License
 

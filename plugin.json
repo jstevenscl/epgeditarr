@@ -1,9 +1,9 @@
 {
   "name": "EPGeditARR",
-  "version": "0.2.10",
+  "version": "0.3.00",
   "logo": "logo.png",
   "icon": "logo.png",
-  "description": "EPGeditARR cleans, transforms, and organizes your EPG data.\n\nEPG TRANSFORMATION: Strip episode codes, broadcast flags, quality tags, and other noise from program titles and descriptions using regex or find/replace rules. Virtual copies of your sources are kept in sync automatically after every refresh — originals are never touched.\n\nFILL EPG: Generate repeating placeholder schedules for channels with no EPG data so every channel shows something in your TV guide.\n\nSIRIUSXM TOOLS: Match channels to the official SiriusXM API channel database for real descriptions, sort your entire channel group into official lineup order, and automatically defer seasonal holiday channels to the end of the list until they go active. All SiriusXM actions use the dedicated SiriusXM Channel Group setting — completely separate from Fill Groups.\n\nRULE DESIGNER: Build and test rules visually at https://jstevenscl.github.io/epgeditarr/designer.html — pick from preset libraries or write your own, with live before/after preview.",
+  "description": "EPGeditARR cleans, transforms, and organizes your EPG data, and includes a Sports Editor with live-schedule matching for auto-synced sports channels.\n\nEPG TRANSFORMATION: Strip episode codes, broadcast flags, quality tags, and other noise from program titles and descriptions using regex or find/replace rules. Virtual copies of your sources are kept in sync automatically after every refresh — originals are never touched.\n\nFILL EPG: Generate repeating placeholder schedules for channels with no EPG data so every channel shows something in your TV guide.\n\nSPORTS EDITOR: Automatically rename channels that Dispatcharr's Auto Channel Sync creates, per channel group, right after each M3U refresh — no manual step needed.\n\nSPORT TEMPLATES (new in 0.3.0): Match auto-created channels against a live public sports schedule (NFL, NBA, MLB, NHL, NCAA Football, MLS) and automatically rename them, assign a matchup logo, and generate real Pregame/Live/Postgame EPG data from the actual game — fully UTC-anchored and customizable via {variable} templates per sport.\n\nRULE DESIGNER: Build and test rules visually at https://jstevenscl.github.io/epgeditarr/designer.html — pick from preset libraries or write your own, with live before/after preview.\n\nNOTE: SiriusXM channel management (Fill/Sort/Rename/Logos) has been removed as of this version — see release notes. Active SiriusXM development has moved to the Tickarr plugin.",
   "author": "jstevenscl",
   "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html",
   "actions": [
@@ -51,7 +51,7 @@
       "id": "scan",
       "label": "Scan for Channels Without EPG",
       "button_label": "Scan",
-      "description": "List all channels that have no EPG data assigned, grouped by channel group. Shows which groups are targeted by Fill EPG and SiriusXM actions.",
+      "description": "List all channels that have no EPG data assigned, grouped by channel group. Shows which groups are targeted by Fill EPG.",
       "button_variant": "outline",
       "button_color": "cyan"
     },
@@ -64,63 +64,20 @@
       "button_color": "violet"
     },
     {
-      "id": "sxm_fill_epg",
-      "label": "Fill SiriusXM EPG",
-      "button_label": "SiriusXM Fill",
-      "description": "Assign EPG to all channels in the SiriusXM Channel Group from the community SiriusXM XMLTV source (EPGeditARR: SiriusXM). Sports channels get smart Upcoming / LIVE / Post-game blocks; all other channels get repeating fill blocks with real SiriusXM descriptions. Creates the EPG source automatically if it does not exist. Requires SiriusXM Enrichment to be enabled. ⚠️ Downloads ~200MB of EPG data and may take over 60 seconds — if your browser shows a timeout or gateway error, the fill likely completed anyway. Run 'Show Status' to confirm.",
-      "button_variant": "filled",
-      "button_color": "violet"
-    },
-    {
-      "id": "sort_epg",
-      "label": "Sort Channels",
-      "button_label": "Sort",
-      "description": "Reorder all channels in your SiriusXM Channel Group to match the SiriusXM official lineup. Assigns sequential channel numbers starting from Sort Start Number. Unmatched channels are placed at the end. Requires SiriusXM Enrichment data.",
-      "button_variant": "filled",
-      "button_color": "indigo"
-    },
-    {
-      "id": "fill_and_sort",
-      "label": "Fill EPG & Sort Channels",
-      "button_label": "Fill & Sort",
-      "description": "Run SiriusXM Fill EPG and Sort in sequence — generates schedules with real descriptions then reorders all channels in your SiriusXM Channel Group to match SiriusXM's lineup.",
-      "button_variant": "filled",
-      "button_color": "grape"
-    },
-    {
-      "id": "fill_sort_logos",
-      "label": "Fill EPG, Sort & Assign Logos",
-      "button_label": "Fill, Sort & Logos",
-      "description": "Run SiriusXM Fill EPG, Sort Channels, and Assign Logos in sequence — the full SiriusXM channel setup in one step. Operates on the SiriusXM Channel Group.",
-      "button_variant": "filled",
-      "button_color": "pink"
-    },
-    {
-      "id": "rename_channels",
-      "label": "Rename Channels to Official SiriusXM Names",
-      "button_label": "Rename Channels",
-      "description": "Rename channels in your SiriusXM Channel Group to their official SiriusXM names from the SiriusXM API channel database. Only matched channels are renamed — unmatched channels are left unchanged. Requires SiriusXM Enrichment to be enabled.",
-      "button_variant": "filled",
-      "button_color": "teal",
-      "confirm": {
-        "message": "This will rename matched channels in your SiriusXM Channel Group to their official SiriusXM names. Channel names will change in your TV guide. Continue?"
-      }
-    },
-    {
-      "id": "assign_logos",
-      "label": "Assign SiriusXM Channel Logos",
-      "button_label": "Assign Logos",
-      "description": "Assign channel logos to matched SiriusXM channels in your SiriusXM Channel Group using the self-hosted GitHub Pages logo cache. Requires SiriusXM Enrichment to be enabled.",
-      "button_variant": "filled",
-      "button_color": "orange"
-    },
-    {
-      "id": "refresh_channel_data",
-      "label": "Refresh Channel Data",
-      "button_label": "Refresh Channel Data",
-      "description": "Force an immediate refresh of the SiriusXM channel list from the official API cache, overwriting the local cache.",
+      "id": "sports_editor_rename_now",
+      "label": "Rename Sports Channels Now",
+      "button_label": "Rename Sports Channels",
+      "description": "Apply each configured channel group's Sports Channel Rename Rules to its auto-created channels right now, without waiting for the next M3U refresh.",
       "button_variant": "outline",
-      "button_color": "violet"
+      "button_color": "teal"
+    },
+    {
+      "id": "sports_editor_epg_now",
+      "label": "Run Sport Templates Now",
+      "button_label": "Run Sport Templates",
+      "description": "Match each Sport-Template-enabled channel group's auto-created channels against the live sports-data-platform schedule right now — renames matched channels, assigns logos, and generates Pregame/Live/Postgame EPG data.",
+      "button_variant": "filled",
+      "button_color": "teal"
     },
     {
       "id": "status",
