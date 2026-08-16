@@ -28,7 +28,11 @@ In EPGeditARR's Settings tab, scroll to the **SPORTS EDITOR** section. Find your
 
 ## Step 2 — Pick a Sport Template
 
-In that same group's section, set **Sport Template** to the sport this group carries (NFL, NBA, MLB, NHL, NCAA Football, or MLS). Leave it at **(none — regex rules only)** if you just want the plain Rename Rules behavior with no live-schedule matching.
+In that same group's section, set **Sport Template** to the sport this group carries. Leave it at **(none — regex rules only)** if you just want the plain Rename Rules behavior with no live-schedule matching.
+
+EPGeditARR wires up every league sports-data-platform exposes with real event history (confirmed against SDP's own league registry as of 2026-08-16) — see [Full League List](#full-league-list) below for the complete set of 93 leagues across soccer, baseball, softball, volleyball, basketball, football, tennis, golf, motorsports, MMA, boxing, darts, and more.
+
+> **Two different matching engines run under the hood, per sport.** Most sports are "matchup" sports — the channel name is split into two competitors (`Team A @ Team B`, `Player A vs Player B` for tennis/UFC) and each side is matched independently. Golf (PGA TOUR/LPGA), NASCAR, Formula 1, World Surf League, and Sport Fishing Championship are "single-title" sports — there's no two-sided split; SDP has one descriptive broadcast-feed title per event (e.g. `FedEx St. Jude Championship: McIlroy Group (Third Round)`), and matching is fuzzy title scoring instead. You don't need to configure this — it's automatic per sport — but it explains why single-title templates use `{event_title}` instead of `{away_team_pascal}`/`{home_team_pascal}`, and why that matching is inherently more heuristic (see [Golf & NASCAR matching caveats](#golf--nascar-matching-caveats) below — the same caveats apply to F1/WSL/fishing).
 
 > **Sport Templates and Rename Rules are not mutually exclusive.** If a channel can't be confidently matched to a real game (wrong team names, no game currently in the schedule window, etc.), your group's Rename Rules still run as a fallback. If a Sport Template match *is* found, the Sport Template's Channel Name always wins over the regex rules for that channel.
 
@@ -83,6 +87,83 @@ You don't need to understand this to use the feature, but it helps when a channe
 5. **Dead-game guard.** If the matched game's entire window — including its 1-hour Postgame block — has already fully elapsed, it's treated as *no match*. This prevents writing EPG data that's already 100% in the past by the time anyone looks at the guide; your Rename Rules fallback applies instead.
 6. **No match found?** The channel is left as-is (after Rename Rules, if configured) and simply isn't touched by the Sport Template step. It'll be re-evaluated on the next run — most commonly, this resolves itself once your M3U provider updates the stream to reflect an upcoming game.
 
+**Tennis (ATP/WTA) specifics:** parsing works the same way (`Player A vs Player B`), but two extra things happen automatically: provider "Last, First" name order (e.g. `Djokovic, Novak`) is tried against SDP's "First Last" player names, and common provider noise — numbered feed prefixes (`(CA) (CBC 01) |`), trailing `@ <date/time> - <tournament> :Tennis NN` suffixes — is stripped before matching. **Doubles matches are not supported in this release**: a doubles pairing like `Arevalo M, Pavic M vs Arribage T, Olivetti A` is deliberately left unmatched rather than guessed at, since there's no reliable way to tell which two names belong to the same team without a player-pairing lookup EPGeditARR doesn't have. It'll simply fall through to your Rename Rules, same as any other unmatched channel.
+
+### Golf & NASCAR matching caveats
+
+PGA TOUR and NASCAR use a different matcher entirely, because there's no two-sided "team A vs team B" structure — SDP has one descriptive title per broadcast feed, and providers word the *same* underlying feed wildly differently across ESPN+, Kayo, TSN+, and other providers' naming conventions.
+
+**PGA TOUR uses SDP's `pga` league slug, not `pga-tour`.** This isn't a naming quirk — `pga-tour` is a superseded, no-longer-updating slug (still using an older ESPN-based ingest); `pga` is the one actively fed by SDP's dedicated PGA TOUR broadcast-coverage integration (`pgatour_coverage`), with real round-by-round, group-by-group data including actual player pairings (e.g. `"Featured Groups - R. Fox, S. Theegala & N. Højgaard, C. Morikawa"`). Confirmed directly against live data before wiring this up — an earlier pass had built and validated everything against `pga-tour`, which was already going stale.
+
+**Tournament name lives on a separate row and gets inherited.** Under the `pga` slug, SDP puts the tournament name on one standalone marker row per tournament (e.g. a `"BMW Championship"` row with no round), and every actual round/feed row under that tournament has a blank tournament name of its own. EPGeditARR backfills it forward chronologically (`_inherit_tournament_names`) so every row can be matched and rendered as if it carried its own tournament name. One real limitation from this: if a tournament's marker row has already aged out of SDP's rolling ~2-week feed window while its round/feed rows are still active (happens for a tournament that started before the window began), there's nothing to inherit from and tournament name stays blank for that tournament's rows — matching still works off round + time + feed-type text, just without tournament-name disambiguation for that specific tournament.
+
+This was built and tuned against real examples from ESPN+/Kayo/TSN+, plus real ATP/WTA tennis listings, but it's genuinely heuristic — some things worth knowing:
+
+- **Tournament identity is judged on "distinctive" words only** (sponsor/place names ≥3 characters, hole numbers) — generic words like "Championship", "Round", "Main Feed", and "Tour" (PGA TOUR's own branding, present in nearly every broadcast) are deliberately ignored for this check, since two *different* tournaments sharing that vocabulary was an actual false-positive found during testing (a "Wyndham Championship" stream was matching "FedEx St. Jude Championship" SDP data before this was fixed). A provider stream naming a different tournament/player than what's currently airing will correctly **not** match, rather than risk matching the wrong event.
+- **Known residual edge case:** a handful of real PGA TOUR events have names that reduce to *zero* distinctive words once generic vocabulary is stripped — "TOUR Championship" is the clearest example, since its only content word ("Tour") is itself deliberately excluded as generic. For these, the identity check can't help at all, and the time window becomes the sole safeguard against a same-named-round collision with a different tournament. In practice this is low-risk since PGA TOUR events run consecutively with days between them (comfortably outside the ~30h matching window), but it's a real gap, not a solved case, if two events' windows were ever close together.
+- **Same-day renaming is assumed.** The time window for golf/NASCAR matching is tight (roughly ±30 hours of right now, wider for tournament-level-only sports), on the premise — confirmed against real Dispatcharr behavior — that these auto-sync stream names get refreshed by the provider the same day the event airs. A stale, not-yet-refreshed channel name for a game/round from several days ago will correctly fail to match rather than attach to today's unrelated event.
+- **Generic group names may pick an arbitrary specific feed.** If a provider's channel name just says "Featured Groups" with no player name (some do), and SDP has several distinctly-named "Featured Groups" entries for that round, EPGeditARR will match to *one* of them — right tournament and round, but the specific players named in your EPG description may not be the exact group that stream actually shows. This is a real limitation, not a bug: there's no way to know which specific group a generic-named stream is without the provider naming it.
+- **NASCAR has no real Dispatcharr channel-name examples validated yet** at time of writing — the matcher itself was built and tested against SDP's NASCAR schedule shape (one race per broadcast, e.g. `Cook Out 400`, with real network/radio/streaming fields), but real provider auto-sync channel names for NASCAR streams haven't been checked against it the way golf/tennis were. If NASCAR matches don't behave as expected, that's the most likely reason — treat it as less battle-tested than golf/tennis until confirmed against real examples.
+
+**LPGA is supported, but tournament-level only — no round or group data.** LPGA.com's own schedule/leaderboard data is server-side rendered with no underlying API call to hook into (confirmed by direct investigation), so unlike PGA TOUR, SDP's `lpga` league slug does **not** have PGA TOUR's per-round, per-group broadcast-feed granularity ("Main Feed (Round 2)", "Featured Groups", named player pairings, etc.) — it has exactly one schedule row per tournament, with a tournament name and a single start time covering the whole multi-day event. Practically, that means:
+- A provider stream naming the right tournament (`CPKC Women's Open`, in any of the naming variations seen for PGA TOUR — sponsor-prefix-dropped, provider feed-numbered, etc.) will correctly match and get renamed/logo'd.
+- It **cannot** distinguish which round or which specific group/hole a stream is showing, since SDP doesn't have that data for LPGA — every stream for a given tournament resolves to the same one event, regardless of what round or group the provider's own name says.
+- The Live EPG block is sized to span the whole ~4-day tournament (96 hours) rather than a single round, since there's no per-round timing data to size a shorter window against — a deliberate tradeoff given the coarser data, not a bug. Revisit if/when SDP adds round-level LPGA data matching PGA TOUR's.
+
+**Several sports were wired up with zero live events to verify against.** Boxing (Most Valuable Promotions), PFL, Legacy Alliance (MMA), PDC (Darts), College Women's Tennis, College Women's Golf, and World Amateur Golf Council all had zero events in SDP's rolling feed window when added — the matching mode was assigned based on the sport's inherent structure (boxing/MMA/darts are always exactly 2 individual competitors, same shape as tennis; the two golf variants are individual-field tournaments, same shape as PGA TOUR/LPGA), not verified against real data. This should work correctly given how consistently those sport structures hold, but hasn't been confirmed the way golf/tennis/NASCAR/UFC were. **Cornhole (ACL) and Gymnastics (College) were deliberately left out entirely** — cornhole's doubles/singles format and gymnastics' often-more-than-2-teams meet format don't cleanly fit the away/home binary matcher, and there was no live data available to check which shape SDP actually uses for them.
+
+**World Table Tennis (WTT) is a different sport from ATP/WTA tennis and isn't covered by this release.** Real examples in provider feeds (`World Table Tennis · Europe Smash: Day 1 Afternoon`, `Table Tennis WTT Series Yokohama Semi-Finals`) are day/session-based like golf's round structure, not player-vs-player like ATP/WTA — it would need its own single-title-style matcher, not an extension of the tennis one. Not built in this release; the ATP/WTA matcher correctly ignores these (no `vs`/`@` two-sided split to find).
+
+---
+
+## Full League List
+
+Every `league_slug` sports-data-platform exposes with real event history, cross-referenced against SDP's own league registry as of 2026-08-16 — 93 leagues wired into the Sport Template dropdown. "Matchup" sports split the channel name into two competitors; "single-title" sports match one descriptive event title instead (see above). "Person-vs-person" is a matchup sub-type for individual (not team) competitors — tennis, boxing, MMA, darts — that also gets the "Last, First" name-order handling.
+
+**American football:** NFL, NCAA Football, NCAAF *(a separate live SDP slug from NCAA Football — not a duplicate, confirmed distinct)*, NFL FLAG, UFL — all matchup
+
+**Basketball:** NBA, WNBA, NCAAM Basketball, NCAAW Basketball, NZNBL — all matchup
+
+**Baseball:** MLB, NCAA Baseball, ALB, WPBL, JLB, INTERLB, Little League Baseball, NECB, SLBASE — all matchup
+
+**Softball:** AUSL, HSSOFT, JLSOFT, Little League Softball, NCAA Softball, SLSOFT — all matchup (zero live events when added — off-season for the college/adult leagues, added on the strength of softball's unambiguous team-vs-team structure, not verified against real data)
+
+**Volleyball:** NCAA Volleyball, NCAA Women's Volleyball, Big Ten Volleyball (W) — all matchup
+
+**Ice hockey:** NHL — matchup
+
+**Field hockey:** Big Ten Field Hockey — matchup
+
+**Australian football:** AFL — matchup
+
+**Lacrosse:** PLL, BHSLAX, GHSLAX, WLL — all matchup
+
+**MMA:** UFC, PFL, Legacy Alliance — matchup, person-vs-person
+
+**Boxing:** Most Valuable Promotions — matchup, person-vs-person
+
+**Darts:** PDC — matchup, person-vs-person
+
+**Tennis:** ATP, WTA, CWTEN (College Women's Tennis) — matchup, person-vs-person
+
+**Golf:** PGA TOUR (`pga` slug — see caveat above, not `pga-tour`), LPGA, CWGOL (College Women's Golf), WAGC (World Amateur Golf Council) — all single-title (LPGA/CWGOL/WAGC are tournament-level only)
+
+**Motorsports:** NASCAR Cup Series, NASCAR Xfinity Series, NASCAR Craftsman Truck Series, Formula 1 — all single-title
+
+**Surfing:** World Surf League — single-title
+
+**Fishing:** Sport Fishing Championship — single-title
+
+**Soccer** (all matchup): MLS, Premier League, EFL Championship, EFL League One, EFL League Two, Carabao Cup, Community Shield, La Liga, LALIGA, LALIGA 2, Bundesliga, 3. Liga, Ligue 1, Serie A, Liga Portugal, Eredivisie, Süper Lig, Scottish Premiership, Liga MX, USL Championship, USL League One, USL Cup, Leagues Cup, NWSL, Northern Super League, J1 League, Brasileirão Série A, Copa Libertadores, Copa Sudamericana, Argentine Primera División, NCAAW Soccer, NCAAM Soccer, Big Ten Soccer (W), Big Ten Soccer (M), FIFA World Cup, UEFA Champions League, UCL Qualifying, UECL Qualifying, UEL Qualifying, Men's International Friendly
+
+> **"La Liga" vs "LALIGA" vs "LALIGA 2" — this isn't a naming mistake, it's two different SDP ingest sources that haven't been merged.** `la-liga` and `laliga` both claim to be the same Spanish top flight, just via different underlying feeds — both are included as-is rather than guessed at. If one of a pair sits empty for your provider's channel names, just don't enable Sports Editor for a group against that one.
+
+**Not included:**
+- **World Table Tennis (WTT)** — different sport from ATP/WTA, needs its own matcher, not built (see above).
+- **Mecum Auctions** — SDP files this under its `motor-sports` category, but it's a car auction livestream, not a sport. Deliberately excluded.
+- **Cornhole (ACL) and Gymnastics (College)** — deliberately held back; their real-world formats (doubles/singles cornhole, multi-team gymnastics meets) don't obviously fit the away/home binary matcher, and there was no live data to check which shape SDP actually uses (see caveat above).
+- **`pga-tour` (the old golf slug)** — superseded by `pga`, no longer updating. Not wired in on purpose (see PGA TOUR caveat above).
+
 ---
 
 ## Full Variable Reference
@@ -115,6 +196,13 @@ All of these are available in every template field (Channel Name, Logo URL, and 
 | `{league_slug}` | `nfl` | Short slug — matches the game-thumbs league path |
 | `{gamethumbs_base}` | `https://game-thumbs.tickarr.com` | Your configured Game Thumbs Base URL, trailing slash stripped |
 | `{phase}` | `pregame` / `live` / `postgame` | Which of the three blocks is being rendered — mostly useful if you want one shared template across phases |
+| `{event_title}` | `FedEx St. Jude Championship: McIlroy Group (Third Round)` | **Golf/NASCAR only.** The one descriptive broadcast-feed title — use this instead of `{away_team_pascal}`/`{home_team_pascal}`, which don't apply (no away/home split for these sports) |
+| `{tournament_name}` | `Cincinnati Open` | **Tennis only.** Blank for every other sport |
+| `{round_name}` | `Round 2` | **Tennis only.** Blank for every other sport |
+| `{court}` | `P&G Stadium Court` | **Tennis only.** Populated on roughly 30% of matches (not every court is reported) — blank otherwise |
+| `{court_line}` | ` on P&G Stadium Court` | Pre-formatted with leading " on ", blank (not just empty) when court is unknown |
+| `{result}` | `Novak Djokovic bt Thiago Agustin Tirante 6-2 6-4` | **Tennis only.** Free-text final result — tennis doesn't use the numeric `{score_line}` team sports do, since SDP reports it as text |
+| `{result_line}` | ` — Novak Djokovic bt Thiago Agustin Tirante 6-2 6-4` | Pre-formatted with a leading " — ", blank until the match has a result |
 
 **Tip:** `{broadcast_line}` and `{venue_line}` already include their own leading space and connector word — just append them directly to a sentence, don't add your own " on " / " at " in front of them.
 
@@ -157,7 +245,7 @@ Reasons to self-host: you want guaranteed uptime independent of a third party, y
 
 ## Starter Templates Per League
 
-These are the built-in defaults — a good base to start from and adjust. All six leagues share the same Channel Name and Logo URL pattern; only the assumed game duration (used to size the Live block) differs under the hood.
+These are the built-in defaults — a good base to start from and adjust. The six original team sports share the same Channel Name and Logo URL pattern; only the assumed game duration (used to size the Live block) differs under the hood. Tennis and golf/NASCAR use their own starting points, since they don't have an away/home matchup shape.
 
 ### NFL / NBA / MLB / NHL / NCAA Football / MLS (shared starting point)
 
@@ -172,7 +260,33 @@ These are the built-in defaults — a good base to start from and adjust. All si
 | Postgame Title | `{away_team_pascal} @ {home_team_pascal} - Final` |
 | Postgame Description | `{score_line}{venue_line}` |
 
-### Estimated game duration (sizes the Live block only — not user-editable, informational)
+### ATP / WTA (tennis)
+
+| Field | Default template |
+|---|---|
+| Channel Name | `{away_team_pascal} vs {home_team_pascal}` |
+| Logo URL | *(blank — game-thumbs doesn't have player crests; set your own if you have a source)* |
+| Pregame Title | `{away_team_pascal} vs {home_team_pascal} - {round_name}` |
+| Pregame Description | `{tournament_name}{court_line}, {start_day} {start_date} at {start_time_et_ct}{broadcast_line}` |
+| Live Title | `{away_team_pascal} vs {home_team_pascal}` |
+| Live Description | `Live: {tournament_name} {round_name}{court_line}{broadcast_line}` |
+| Postgame Title | `{away_team_pascal} vs {home_team_pascal} - Final` |
+| Postgame Description | `{result}{court_line}` |
+
+### PGA TOUR / LPGA / NASCAR (single-title sports — no away/home split)
+
+| Field | Default template |
+|---|---|
+| Channel Name | `{event_title}` |
+| Logo URL | *(blank — game-thumbs doesn't cover golf/NASCAR)* |
+| Pregame Title | `{event_title} - Pregame` |
+| Pregame Description | `{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}` |
+| Live Title | `{event_title}` |
+| Live Description | `Live: {event_title}{broadcast_line}{venue_line}` |
+| Postgame Title | `{event_title} - Final` |
+| Postgame Description | `{score_line}{venue_line}` |
+
+### Estimated game/match duration (sizes the Live block only — not user-editable, informational)
 
 | League | Assumed duration |
 |---|---|
@@ -182,6 +296,17 @@ These are the built-in defaults — a good base to start from and adjust. All si
 | NHL | 2.75 hours |
 | NCAA Football | 3.5 hours |
 | MLS | 2.25 hours |
+| ATP | 2.5 hours |
+| WTA | 2.0 hours |
+| PGA TOUR | 5.5 hours |
+| LPGA | 96 hours (~4 days — tournament-level data only, see caveat above) |
+| NASCAR Cup Series | 3.5 hours |
+| NASCAR Xfinity Series | 3.0 hours |
+| NASCAR Craftsman Truck Series | 2.5 hours |
+
+Tennis match length varies enormously in reality (a straight-sets match can finish in under an hour, a five-setter can run well past three) — the 2.0–2.5 hour estimate is a rough middle ground, not a real prediction; expect the Live block to sometimes run short or long relative to the actual match.
+
+The remaining ~80 leagues (soccer, softball, basketball, lacrosse, boxing/MMA/darts, and the smaller golf/motorsport variants) aren't listed individually here — each uses a reasonable estimate for its sport category (soccer/most team sports ≈2.25h, baseball/softball ≈2.5–3.25h, boxing/MMA/darts ≈1h broadcast-slot, tournament-level golf variants ≈96h same as LPGA) rather than a researched per-league figure. None of these are load-bearing for correctness — they only affect how long the Live EPG block runs, not whether a channel matches.
 
 Every game gets a Pregame block running from midnight **UTC** on game day through kickoff (so a game-dedicated channel shows as "pregame" for the whole day, not just the hour before) and a 1-hour Postgame block after the estimated end, regardless of league. The boundary is anchored to UTC rather than a US timezone deliberately — Dispatcharr itself is timezone-neutral, and EPGeditARR is used by viewers worldwide, not just in the US.
 

@@ -29,9 +29,16 @@ SDP_CACHE_TTL_SECS = 30 * 60
 
 _MATCHUP_SEP_RE = re.compile(r"\s+(?:@|vs\.?|v\.?|at)\s+", re.IGNORECASE)
 
-# Curated starter set. Key = sports-data-platform's own league_slug (api.tickarr.com),
-# reused directly as the game-thumbs league slug too — they match for every league
-# confirmed live against both APIs (nfl, mlb). Add more by adding entries here.
+# Key = sports-data-platform's own league_slug (api.tickarr.com), reused directly
+# as the game-thumbs league slug too for team sports. Covers every league_slug SDP
+# exposes as of 2026-08-16 except: table tennis/WTT (different sport, day/session-
+# based, needs its own matcher — not built yet) and "mecum-auctions" (a car auction
+# livestream SDP files under motor-sports, not an actual sport — deliberately
+# excluded). Two near-duplicate slugs worth knowing about, both included as-is
+# rather than guessed at: "la-liga" (25 events) and "laliga" (8 events) both claim
+# to be Spanish La Liga — likely two different ingest sources SDP hasn't merged;
+# same for "laliga-2"/LALIGA 2. If one of a pair is consistently empty for you,
+# just don't enable it for any group.
 _SPORT_TEMPLATES = {
     "nfl":           "NFL",
     "nba":           "NBA",
@@ -39,6 +46,106 @@ _SPORT_TEMPLATES = {
     "nhl":           "NHL",
     "ncaa-football": "NCAA Football",
     "mls":           "MLS",
+    "atp":           "ATP (Men's Tennis)",
+    "wta":           "WTA (Women's Tennis)",
+    "pga":           "PGA TOUR (Golf)",
+    "lpga":          "LPGA (Golf)",
+    "nascar-cup-series":       "NASCAR Cup Series",
+    "nascar-xfinity-series":   "NASCAR Xfinity Series",
+    "nascar-craftsman-trucks": "NASCAR Craftsman Truck Series",
+    # Soccer
+    "premier-league":       "Premier League",
+    "championship":         "EFL Championship",
+    "efl-league-one":       "EFL League One",
+    "efl-league-two":       "EFL League Two",
+    "carabao-cup":          "Carabao Cup",
+    "community-shield":     "Community Shield",
+    "la-liga":              "La Liga",
+    "laliga":               "LALIGA",
+    "laliga-2":             "LALIGA 2",
+    "bundesliga":           "Bundesliga",
+    "3-liga":               "3. Liga",
+    "ligue-1":              "Ligue 1",
+    "serie-a":              "Serie A",
+    "liga-portugal":        "Liga Portugal",
+    "eredivisie":           "Eredivisie",
+    "super-lig":            "Süper Lig",
+    "scottish-premiership": "Scottish Premiership",
+    "liga-mx":              "Liga MX",
+    "usl-championship":     "USL Championship",
+    "usl-league-one":       "USL League One",
+    "leagues-cup":          "Leagues Cup",
+    "nwsl":                 "NWSL",
+    "northern-super-league": "Northern Super League",
+    "j1-league":            "J1 League",
+    "brasileirao":          "Brasileirão Série A",
+    "copa-libertadores":    "Copa Libertadores",
+    "copa-sudamericana":    "Copa Sudamericana",
+    "arg-primera":          "Argentine Primera División",
+    "ncaaw-soccer":         "NCAAW Soccer",
+    "ncaam-soccer":         "NCAAM Soccer",
+    "big-ten-soccer-w":     "Big Ten Soccer (W)",
+    "big-ten-soccer-m":     "Big Ten Soccer (M)",
+    "world-cup":                 "FIFA World Cup",
+    "champions-league":          "UEFA Champions League",
+    "ucl-qualifying":            "UCL Qualifying",
+    "uecl-qualifying":           "UECL Qualifying",
+    "uel-qualifying":            "UEL Qualifying",
+    "mens-international-friendly": "Men's International Friendly",
+    "usl-cup":                   "USL Cup",
+    # Baseball
+    "ncaa-baseball": "NCAA Baseball",
+    "alb":           "ALB",
+    "wpbl":          "WPBL",
+    "jlb":           "JLB",
+    "interlb":               "INTERLB",
+    "little-league-baseball": "Little League Baseball",
+    "necb":                  "NECB",
+    "slbase":                "SLBASE",
+    # Softball (all standard team-vs-team, same as baseball — no live events in the
+    # rolling feed window when this was added since it's spring/summer sport
+    # off-season, but a real team sport not requiring data-shape verification)
+    "ausl":                   "AUSL",
+    "hssoft":                 "HSSOFT",
+    "jlsoft":                 "JLSOFT",
+    "little-league-softball": "Little League Softball",
+    "ncaa-softball":          "NCAA Softball",
+    "slsoft":                 "SLSOFT",
+    # Volleyball
+    "ncaa-volleyball":        "NCAA Volleyball",
+    "ncaa-womens-volleyball": "NCAA Women's Volleyball",
+    "big-ten-volleyball-w":   "Big Ten Volleyball (W)",
+    # Basketball
+    "ncaam":           "NCAAM Basketball",
+    "ncaaw-basketball": "NCAAW Basketball",
+    "nznbl":           "NZNBL",
+    # Other team sports
+    "wnba":                 "WNBA",
+    "afl":                  "AFL",
+    "pll":                  "PLL (Lacrosse)",
+    "bhslax":               "BHSLAX (Lacrosse)",
+    "ghslax":               "GHSLAX (Lacrosse)",
+    "wll":                  "WLL (Lacrosse)",
+    "big-ten-field-hockey": "Big Ten Field Hockey",
+    "ncaaf":                "NCAAF",  # separate live slug from ncaa-football, confirmed distinct in feed
+    "nfl-flag":             "NFL FLAG",
+    "ufl":                  "UFL",
+    "ufc":                  "UFC",
+    # Person-vs-person sports (boxing/MMA/darts/college tennis) — same matchup
+    # shape as tennis/UFC by the nature of the sport (always exactly 2
+    # competitors), used with _person_name_score. No live events to verify field
+    # population against at the time these were added (see docs caveat).
+    "most-valuable-promotions": "Boxing (Most Valuable Promotions)",
+    "pfl":                      "PFL (MMA)",
+    "legacy-alliance":          "Legacy Alliance (MMA)",
+    "pdc":                      "PDC (Darts)",
+    "cwten":                    "College Women's Tennis",
+    # Single-title sports (no away/home split — see _SPORT_MATCH_MODE below)
+    "f1":                          "Formula 1",
+    "world-surf-league":           "World Surf League",
+    "sport-fishing-championship":  "Sport Fishing Championship",
+    "cwgol": "College Women's Golf",
+    "wagc":  "World Amateur Golf Council",
 }
 
 # Estimated game length used to size the "Live" EPG block. Approximate on purpose —
@@ -51,6 +158,195 @@ _LEAGUE_DURATION_HOURS = {
     "nhl":           2.75,
     "ncaa-football": 3.5,
     "mls":           2.25,
+    "atp":           2.5,
+    "wta":           2.0,
+    "pga":           5.5,
+    # LPGA's SDP ingest is tournament-level only (no round/group breakdown like
+    # PGA TOUR has) — one row per multi-day tournament, so there's no sensible
+    # single-round duration to estimate. Sized to span a whole 4-day event instead
+    # of one round, so the Live block covers the tournament rather than reading as
+    # "Postgame" by the second day. Revisit once/if SDP adds round-level LPGA data.
+    "lpga":          96.0,
+    "nascar-cup-series":       3.5,
+    "nascar-xfinity-series":   3.0,
+    "nascar-craftsman-trucks": 2.5,
+    # Soccer — standard ~2 hour broadcast (90 min + halftime + stoppage) across
+    # every league here; no per-league variation known, same estimate as MLS.
+    "premier-league": 2.25, "championship": 2.25, "efl-league-one": 2.25,
+    "efl-league-two": 2.25, "carabao-cup": 2.25, "community-shield": 2.25,
+    "la-liga": 2.25, "laliga": 2.25, "laliga-2": 2.25, "bundesliga": 2.25,
+    "3-liga": 2.25, "ligue-1": 2.25, "serie-a": 2.25, "liga-portugal": 2.25,
+    "eredivisie": 2.25, "super-lig": 2.25, "scottish-premiership": 2.25,
+    "liga-mx": 2.25, "usl-championship": 2.25, "usl-league-one": 2.25,
+    "leagues-cup": 2.25, "nwsl": 2.25, "northern-super-league": 2.25,
+    "j1-league": 2.25, "brasileirao": 2.25, "copa-libertadores": 2.25,
+    "copa-sudamericana": 2.25, "arg-primera": 2.25, "ncaaw-soccer": 2.25,
+    "ncaam-soccer": 2.25, "big-ten-soccer-w": 2.25, "big-ten-soccer-m": 2.25,
+    "world-cup": 2.25, "champions-league": 2.25, "ucl-qualifying": 2.25,
+    "uecl-qualifying": 2.25, "uel-qualifying": 2.25,
+    "mens-international-friendly": 2.25, "usl-cup": 2.25,
+    # Baseball — same estimate as MLB.
+    "ncaa-baseball": 3.25, "alb": 3.25, "wpbl": 3.25, "jlb": 3.25,
+    "interlb": 3.25, "little-league-baseball": 2.0, "necb": 3.25, "slbase": 3.25,
+    # Softball — shorter than baseball (7 innings standard vs 9, no fixed real
+    # figure researched, this is a reasonable estimate not a confirmed one).
+    "ausl": 2.5, "hssoft": 2.0, "jlsoft": 2.5, "little-league-softball": 2.0,
+    "ncaa-softball": 2.5, "slsoft": 2.5,
+    # Volleyball
+    "ncaa-volleyball": 2.0, "ncaa-womens-volleyball": 2.0, "big-ten-volleyball-w": 2.0,
+    "ncaam": 2.5, "ncaaw-basketball": 2.5, "nznbl": 2.5,
+    "wnba": 2.5,
+    "afl": 2.5,
+    "pll": 2.0, "bhslax": 2.0, "ghslax": 2.0, "wll": 2.0,
+    "big-ten-field-hockey": 2.0,
+    "ncaaf": 3.5,
+    "nfl-flag": 1.5,
+    "ufl": 3.5,
+    # UFC/boxing/MMA/darts: SDP has both whole-card summary rows (empty away
+    # side, ignored by the matchup matcher) and individual-bout rows (real
+    # competitor names). This is a rough single-bout broadcast-slot estimate, not
+    # a researched figure — actual bout length varies enormously, so this is
+    # sized for the surrounding broadcast window, not the bout itself.
+    "ufc": 1.0, "most-valuable-promotions": 1.0, "pfl": 1.0, "legacy-alliance": 1.0,
+    "pdc": 1.0,
+    "cwten": 2.0,
+    # F1 and World Surf League are single rows per race weekend / contest window,
+    # not per-session — same tournament-level shape as LPGA, sized the same way
+    # (span the whole weekend/window rather than one session). World Surf League's
+    # duration is a rough guess given only ever seeing 1 event in the feed.
+    "f1": 72.0,
+    "world-surf-league": 120.0,
+    # Sport Fishing Championship already has day-level granularity in its own
+    # title ("Texas Billfish Open (Day 1)"), unlike LPGA/F1/WSL — treat like a
+    # normal single-day broadcast block, not a multi-day span.
+    "sport-fishing-championship": 8.0,
+    # College golf — no live data to size against; assumed similar shape to LPGA
+    # (tournament-level, not per-round) since these are lower-volume niche feeds.
+    "cwgol": 96.0, "wagc": 96.0,
+}
+
+# "matchup" = existing away/home two-sided parsing (team sports + tennis singles/
+# doubles). "single_title" = one descriptive broadcast-feed title with no fixed
+# two-sided structure at all (golf, NASCAR, F1, surfing, fishing) — SDP puts the
+# whole thing in home_team_name and leaves away_team_name empty. Any slug not
+# listed here is assumed "matchup" (keeps the original 6 team sports behaving
+# exactly as before).
+_SPORT_MATCH_MODE = {
+    "pga":                     "single_title",
+    "lpga":                    "single_title",
+    "nascar-cup-series":       "single_title",
+    "nascar-xfinity-series":   "single_title",
+    "nascar-craftsman-trucks": "single_title",
+    "f1":                          "single_title",
+    "world-surf-league":           "single_title",
+    "sport-fishing-championship":  "single_title",
+    "cwgol": "single_title",
+    "wagc":  "single_title",
+}
+
+# Sports where each side of a "matchup" is one person, not a team — gets
+# _person_name_score (tries the "Last, First" -> "First Last" flip) instead of
+# the plain team-name matcher. Same treatment as tennis for the same reason:
+# boxing/MMA/darts are always exactly 2 individual competitors, never 2 teams.
+_PERSON_VS_PERSON_SPORTS = {"atp", "wta", "ufc", "most-valuable-promotions",
+                            "pfl", "legacy-alliance", "pdc", "cwten"}
+
+# Sports whose raw auto-created channel names carry provider-specific noise
+# (numbered feed prefixes, trailing date/time suffixes, channel-number tags) that
+# needs stripping before matchup/title parsing. Scoped to every sport added after
+# the original 6 team sports — those 6 keep their exact original behavior (their
+# Rename Rules step already handles this for them, and there's no reason to risk
+# any regression on an already-shipped path); everything added since is new/
+# unproven anyway, so there's no downside to stripping consistently.
+_NOISE_STRIP_SPORTS = set(_SPORT_TEMPLATES) - {"nfl", "nba", "mlb", "nhl", "ncaa-football", "mls"}
+
+# ── Provider-noise stripping (golf/NASCAR/tennis auto-sync channel names) ──
+# Heuristic on purpose — real provider channel-naming conventions are wildly
+# inconsistent (see docs/SPORT_TEMPLATES.md for real examples this was built and
+# tested against). This strips the common shapes seen in practice; new provider
+# formats may need new patterns added here over time.
+_LEADING_FEED_TAG_RE = re.compile(
+    r'^(?:\(?[A-Z]{2,3}\)?\s+)?'                       # optional country code: "US ", "(CA) "
+    r'(?:'
+    r'\([A-Za-z0-9+.\s]{2,24}\d{1,3}\)\s*[|:]\s*'      # "(ESPN+ 001) |"
+    r'|[A-Za-z0-9+.\s]{2,24}\d{1,3}\s*[|:]\s*'         # "ESPN+ 04:", "Kayo AU 01:", "TSN+ 01:"
+    r')+',
+    re.IGNORECASE,
+)
+_MONTHS_RE_FRAG = r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+_TRAILING_AT_DATE_RE = re.compile(
+    rf'\s+@\s+(?:\d{{1,2}}\s+)?{_MONTHS_RE_FRAG}\s+\d{{1,2}}\b.*$', re.IGNORECASE,
+)
+_TRAILING_ISO_DT_RE = re.compile(r'\s*\(\d{4}-\d{2}-\d{2}[^)]*\)\s*$')
+_TRAILING_CHANNEL_TAG_RE = re.compile(r'\s*:\s*[A-Za-z][A-Za-z ]{1,20}\d{1,4}\s*$')
+# "TSN+ | Event 1 | 7:45AM PGA TOUR Live: ..." -- no digit before the first "|" so
+# _LEADING_FEED_TAG_RE doesn't catch it; handled as its own pipe-delimited shape.
+_LEADING_PIPE_EVENT_RE = re.compile(
+    r'^[A-Za-z0-9+]{2,10}\s*\|\s*Event\s*\d+\s*\|\s*\d{1,2}(?::\d{2})?(?:AM|PM)\s+', re.IGNORECASE,
+)
+
+# Golf/NASCAR single-title scoring: words too generic to identify *which event
+# this is* (shared across nearly every broadcast in the sport) — excluded from
+# the identity-overlap gate so they can't paper over a genuinely different event.
+_SINGLE_TITLE_STOPWORDS = {
+    "the", "a", "an", "of", "and", "live", "main", "feed", "tour", "tv", "plus",
+    "presented", "by", "pga", "on", "at", "featured", "feat",
+}
+_IDENTITY_EXTRA_STOPWORDS = {
+    "championship", "open", "classic", "invitational", "tournament", "round",
+    "first", "second", "third", "fourth", "final", "group", "groups",
+    "marquee", "hole", "holes",
+    "golf", "lpga", "uspga", "uslpga", "elpga",
+}
+_ROUND_WORDS = {
+    "first": 1, "1st": 1, "second": 2, "2nd": 2, "third": 3, "3rd": 3,
+    "fourth": 4, "4th": 4, "final": 99,
+}
+_ROUND_NUM_RE = re.compile(r'\bround\s*(\d)\b', re.IGNORECASE)
+_ROUND_DIGIT_RE = re.compile(r'\bround\s*\d\b', re.IGNORECASE)
+
+# Per-mode starter templates. Team sports (and tennis, which reuses the same
+# away/home matching path) get away/home-shaped defaults; golf/NASCAR have no
+# away/home split at all, so their defaults are built around {event_title}.
+_MATCHUP_DEFAULTS = {
+    "channel_name": "{away_team_pascal} @ {home_team_pascal}",
+    "logo_url": "{gamethumbs_base}/{league_slug}/{away_team}/{home_team}/logo?style=1",
+    "pre_title": "{away_team_pascal} @ {home_team_pascal} - Pregame",
+    "pre_desc": "{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}",
+    "live_title": "{away_team_pascal} @ {home_team_pascal}",
+    "live_desc": "Live: {away_team_pascal} at {home_team_pascal}{broadcast_line}{venue_line}",
+    "post_title": "{away_team_pascal} @ {home_team_pascal} - Final",
+    "post_desc": "{score_line}{venue_line}",
+}
+_PERSON_VS_DEFAULTS = {
+    "channel_name": "{away_team_pascal} vs {home_team_pascal}",
+    "logo_url": "{gamethumbs_base}/{league_slug}/{away_team}/{home_team}/logo?style=1",
+    "pre_title": "{away_team_pascal} vs {home_team_pascal} - Pregame",
+    "pre_desc": "{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}",
+    "live_title": "{away_team_pascal} vs {home_team_pascal}",
+    "live_desc": "Live: {away_team_pascal} vs {home_team_pascal}{broadcast_line}{venue_line}",
+    "post_title": "{away_team_pascal} vs {home_team_pascal} - Final",
+    "post_desc": "{score_line}{venue_line}",
+}
+_TENNIS_DEFAULTS = {
+    "channel_name": "{away_team_pascal} vs {home_team_pascal}",
+    "logo_url": "",
+    "pre_title": "{away_team_pascal} vs {home_team_pascal} - {round_name}",
+    "pre_desc": "{tournament_name}{court_line}, {start_day} {start_date} at {start_time_et_ct}{broadcast_line}",
+    "live_title": "{away_team_pascal} vs {home_team_pascal}",
+    "live_desc": "Live: {tournament_name} {round_name}{court_line}{broadcast_line}",
+    "post_title": "{away_team_pascal} vs {home_team_pascal} - Final",
+    "post_desc": "{result}{court_line}",
+}
+_SINGLE_TITLE_DEFAULTS = {
+    "channel_name": "{event_title}",
+    "logo_url": "",
+    "pre_title": "{event_title} - Pregame",
+    "pre_desc": "{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}",
+    "live_title": "{event_title}",
+    "live_desc": "Live: {event_title}{broadcast_line}{venue_line}",
+    "post_title": "{event_title} - Final",
+    "post_desc": "{score_line}{venue_line}",
 }
 
 _RULE_FORMAT_HELP = (
@@ -71,7 +367,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.3.00"
+    version = "0.3.00.08162026.1346"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -315,8 +611,22 @@ class Plugin:
         "{start_short} {start_day} {start_date} {start_time_et_ct} "
         "{start_short_utc} {start_day_utc} {start_date_utc} {start_time_utc} {game_number_suffix} "
         "{broadcast} {broadcast_line} {venue} {venue_line} {winner} {loser} {score_line} "
-        "{league} {league_slug} {gamethumbs_base} {phase}"
+        "{league} {league_slug} {gamethumbs_base} {phase}\n"
+        "Tennis (ATP/WTA) also has: {tournament_name} {round_name} {court} {court_line} "
+        "{result} {result_line} (away/home vars above are the two players).\n"
+        "Golf/NASCAR (single-broadcast sports with no away/home split) use "
+        "{event_title} instead of away/home team vars, plus {tournament_name} where available."
     )
+
+    @staticmethod
+    def _sport_default_templates(slug):
+        if slug in ("atp", "wta"):
+            return _TENNIS_DEFAULTS
+        if slug in _PERSON_VS_PERSON_SPORTS:
+            return _PERSON_VS_DEFAULTS
+        if _SPORT_MATCH_MODE.get(slug) == "single_title":
+            return _SINGLE_TITLE_DEFAULTS
+        return _MATCHUP_DEFAULTS
 
     def _build_sport_template_fields(self):
         """One section per sport in _SPORT_TEMPLATES, each defining the Channel Name /
@@ -340,18 +650,8 @@ class Plugin:
             },
         ]
 
-        defaults = {
-            "channel_name": "{away_team_pascal} @ {home_team_pascal}",
-            "logo_url": "{gamethumbs_base}/{league_slug}/{away_team}/{home_team}/logo?style=1",
-            "pre_title": "{away_team_pascal} @ {home_team_pascal} - Pregame",
-            "pre_desc": "{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}",
-            "live_title": "{away_team_pascal} @ {home_team_pascal}",
-            "live_desc": "Live: {away_team_pascal} at {home_team_pascal}{broadcast_line}{venue_line}",
-            "post_title": "{away_team_pascal} @ {home_team_pascal} - Final",
-            "post_desc": "{score_line}{venue_line}",
-        }
-
         for slug, label in _SPORT_TEMPLATES.items():
+            defaults = self._sport_default_templates(slug)
             fields += [
                 {
                     "id": f"_section_sport_template_{slug}",
@@ -895,7 +1195,7 @@ class Plugin:
         updated = cfg_settings.get(SDP_CACHE_UPDATED_KEY, 0) or 0
         now = time.time()
         if cached and (now - updated) < SDP_CACHE_TTL_SECS:
-            return cached
+            return self._inherit_tournament_names(cached)
 
         try:
             import requests
@@ -904,16 +1204,64 @@ class Plugin:
             events = resp.json().get("events", [])
         except Exception as e:
             LOGGER.warning(f"EPGeditARR: SDP schedule fetch failed, using cache if available: {e}")
-            return cached or []
+            return self._inherit_tournament_names(cached or [])
 
         self._save_plugin_setting(SDP_CACHE_KEY, events)
         self._save_plugin_setting(SDP_CACHE_UPDATED_KEY, now)
+        return self._inherit_tournament_names(events)
+
+    @staticmethod
+    def _inherit_tournament_names(events):
+        """SDP's PGA TOUR ingest (the 'pga' league_slug) puts tournament_name on a
+        standalone marker row per tournament (e.g. a 'BMW Championship' row with
+        round_name=null) and leaves every actual round/feed row under that
+        tournament with tournament_name=null — confirmed directly against the live
+        feed. Backfill it forward chronologically per league so every row can be
+        matched/rendered as if it carried its own tournament name. Idempotent and
+        safe to run on every call: rows that already have tournament_name (every
+        other sport) are left untouched."""
+        from datetime import datetime, timezone
+
+        def _sort_key(ev):
+            try:
+                return datetime.fromisoformat((ev.get("start_time_utc") or "").replace("Z", "+00:00"))
+            except ValueError:
+                return datetime.min.replace(tzinfo=timezone.utc)
+
+        by_league = {}
+        for ev in events:
+            by_league.setdefault(ev.get("league_slug"), []).append(ev)
+        for league_events in by_league.values():
+            current = None
+            for ev in sorted(league_events, key=_sort_key):
+                if ev.get("tournament_name"):
+                    current = ev["tournament_name"]
+                elif current:
+                    ev["tournament_name"] = current
         return events
 
-    def _extract_matchup_teams(self, channel_name):
+    @staticmethod
+    def _strip_provider_noise(name):
+        """Clean provider-specific noise (numbered feed prefixes, trailing date/
+        time suffixes, channel-number tags) off a raw auto-sync channel name before
+        matchup/title parsing. Only called for the sports in _NOISE_STRIP_SPORTS —
+        see docs/SPORT_TEMPLATES.md for the real provider formats this was built
+        and tested against."""
+        s = (name or "").strip()
+        s = _LEADING_PIPE_EVENT_RE.sub("", s).strip()
+        s = _LEADING_FEED_TAG_RE.sub("", s).strip()
+        s = _TRAILING_AT_DATE_RE.sub("", s).strip()
+        s = _TRAILING_ISO_DT_RE.sub("", s).strip()
+        s = _TRAILING_CHANNEL_TAG_RE.sub("", s).strip()
+        return s
+
+    def _extract_matchup_teams(self, channel_name, strip_noise=False):
         """Split a channel name like 'Kansas City Chiefs @ Buffalo Bills' (already
         renamed by the group's regex rules, if any) into (away, home) text."""
-        parts = _MATCHUP_SEP_RE.split((channel_name or "").strip(), maxsplit=1)
+        text = channel_name or ""
+        if strip_noise:
+            text = self._strip_provider_noise(text)
+        parts = _MATCHUP_SEP_RE.split(text.strip(), maxsplit=1)
         if len(parts) != 2:
             return None
         away, home = parts[0].strip(), parts[1].strip()
@@ -939,12 +1287,28 @@ class Plugin:
             best = max(best, difflib.SequenceMatcher(None, text_l, cand_l).ratio())
         return best
 
-    def _find_sdp_event(self, away_text, home_text, league_slug, events):
+    @classmethod
+    def _person_name_score(cls, text, *candidates):
+        """Like _team_match_score, but also tries the 'Last, First' -> 'First
+        Last' flip that tennis providers use (SDP's player names are 'First
+        Last'). Doubles pairs ('Arevalo M, Pavic M') don't cleanly flip into a
+        single name either way, so they'll score low on both variants and
+        correctly fail to match a singles row rather than false-positive —
+        doubles disambiguation isn't supported."""
+        variants = {text or ""}
+        if text and ',' in text:
+            parts = [p.strip() for p in text.split(',', 1)]
+            if len(parts) == 2 and parts[0] and parts[1]:
+                variants.add(f"{parts[1]} {parts[0]}")
+        return max(cls._team_match_score(v, *candidates) for v in variants)
+
+    def _find_sdp_event(self, away_text, home_text, league_slug, events, score_fn=None):
         """Best-match a channel's parsed away/home team text against cached SDP
         events for the given league, within a sensible time window. Returns the
         event dict, or None if nothing scores well enough to be confident."""
         from datetime import datetime, timezone, timedelta
 
+        score_fn = score_fn or self._team_match_score
         now = datetime.now(timezone.utc)
         # Past bound is generous — a game that aired earlier today should still
         # resolve so its Postgame template/recap can show. Duration-aware trimming
@@ -966,20 +1330,153 @@ class Plugin:
             if start < window_start or start > window_end:
                 continue
 
-            away_score = self._team_match_score(
-                away_text, ev.get("away_team_name"), ev.get("away_team_abbr"), ev.get("away_team_short_name")
-            )
-            home_score = self._team_match_score(
-                home_text, ev.get("home_team_name"), ev.get("home_team_abbr"), ev.get("home_team_short_name")
-            )
+            ev_away = (ev.get("away_team_name"), ev.get("away_team_abbr"), ev.get("away_team_short_name"))
+            ev_home = (ev.get("home_team_name"), ev.get("home_team_abbr"), ev.get("home_team_short_name"))
+            # Try both side alignments. Team sports have a real home/away, but
+            # SDP's home/away assignment for individual sports (tennis) has no
+            # relationship to the order a provider lists "Player1 vs Player2" in —
+            # direct-only comparison silently missed every correct match in
+            # testing whenever SDP happened to list the two players the other way.
+            direct = min(score_fn(away_text, *ev_away), score_fn(home_text, *ev_home))
+            swapped = min(score_fn(away_text, *ev_home), score_fn(home_text, *ev_away))
+            combined = max(direct, swapped)
             # Require BOTH sides to independently match well — averaging let one
             # strong match mask a completely wrong other team, so use the weaker
             # of the two rather than the mean.
-            combined = min(away_score, home_score)
             if combined > best_score:
                 best_score, best_event = combined, ev
 
         return best_event if best_score >= 0.6 else None
+
+    # ── Single-title matching (golf, NASCAR) ────────────────────────────────
+    # No away/home split exists for these — SDP puts one descriptive broadcast-
+    # feed title in home_team_name and leaves away_team_name empty. Matching is
+    # token-overlap + fuzzy-ratio scoring, gated by an "identity" check so generic
+    # broadcast vocabulary ("Championship", "Round", "Main Feed") shared by every
+    # event in the sport can't paper over a genuinely different tournament/player/
+    # round — see docs/SPORT_TEMPLATES.md for the false-positive cases this gate
+    # was built to catch during testing.
+
+    @staticmethod
+    def _normalize_title_tokens(text):
+        text = re.sub(r'[^a-z0-9]+', ' ', (text or '').lower())
+        return [t for t in text.split() if t and t not in _SINGLE_TITLE_STOPWORDS]
+
+    @classmethod
+    def _identity_tokens(cls, text):
+        """Tokens specific enough to identify *which event this is* (sponsor/
+        place/player names, hole numbers, distinctive product names like
+        BetCast) — as opposed to generic broadcast vocabulary shared by every
+        event in the sport."""
+        # Length floor lowered from 4 to 3 after real testing against SDP's PGA
+        # TOUR data caught a live regression: "BMW Championship" and "TOUR
+        # Championship" both reduce to a single 3-letter distinguishing word once
+        # generic vocabulary is stripped ("tour" itself is a hardcoded generic
+        # stopword) — a 4-char floor silently dropped "BMW" from identity
+        # entirely, reopening the exact cross-tournament false-positive class
+        # this gate exists to catch.
+        text = _ROUND_DIGIT_RE.sub('round', text or '')
+        result = set()
+        for t in cls._normalize_title_tokens(text):
+            if t.isdigit():
+                result.add(t)
+            elif len(t) >= 3 and t not in _IDENTITY_EXTRA_STOPWORDS:
+                result.add(t)
+        return result
+
+    @staticmethod
+    def _extract_round(text):
+        t = (text or "").lower()
+        m = _ROUND_NUM_RE.search(t)
+        if m:
+            return int(m.group(1))
+        for word, num in _ROUND_WORDS.items():
+            if re.search(rf'\b{word}\b', t):
+                return num
+        return None
+
+    @classmethod
+    def _title_match_score(cls, text, candidate, candidate_round_name=None):
+        import difflib
+        t_tokens = set(cls._normalize_title_tokens(text))
+        c_tokens = set(cls._normalize_title_tokens(candidate))
+        if not t_tokens or not c_tokens:
+            return 0.0
+        # Asymmetric on purpose: a provider that drops the sponsor prefix
+        # ("USPGA St Jude Championship" for SDP's "FedEx St. Jude Championship")
+        # shouldn't be punished for having FEWER identity words than SDP's title,
+        # only for having DIFFERENT ones — score against the shorter side's
+        # coverage, not the union.
+        t_id, c_id = cls._identity_tokens(text), cls._identity_tokens(candidate)
+        identity_score = (len(t_id & c_id) / min(len(t_id), len(c_id))) if (t_id and c_id) else 1.0
+        # Jaccard (intersection/union), NOT min-based, for the general token
+        # overlap — min-based asymmetry belongs on identity_score only (where a
+        # provider legitimately dropping a sponsor prefix shouldn't be punished).
+        # Applying it here too let a short, mostly-generic SDP candidate (e.g.
+        # "Main Feed" -> just {bmw, championship} once stopwords are stripped)
+        # trivially score 1.0 against ANY text sharing those two words, found in
+        # testing — a 6-word provider title and a 2-word candidate title are not
+        # equally specific just because the shorter one is a subset.
+        overlap = len(t_tokens & c_tokens) / len(t_tokens | c_tokens)
+        ratio = difflib.SequenceMatcher(None, text.lower(), (candidate or '').lower()).ratio()
+        base = max(overlap, ratio)
+        r1 = cls._extract_round(text)
+        # Prefer SDP's own structured round_name field over parsing it back out of
+        # candidate text — PGA TOUR's 'pga' slug rows (e.g. "Marquee Group - R.
+        # McIlroy, K. Reitan") often don't have the round written into the title
+        # text at all anymore, only in round_name, so text-only parsing would miss
+        # it and silently disable this check.
+        r2 = cls._extract_round(candidate_round_name) if candidate_round_name else cls._extract_round(candidate)
+        round_penalty = 0.3 if (r1 is not None and r2 is not None and r1 != r2) else 1.0
+        return base * identity_score * round_penalty
+
+    def _find_sdp_event_single_title(self, title_text, league_slug, events):
+        """Best-match a golf/NASCAR channel's cleaned title text against cached
+        SDP events for the given league. Providers rename these streams same-day
+        (confirmed against real Dispatcharr auto-sync behavior), so the window is
+        anchored to *now* and kept tight — unlike the away/home matcher's wide
+        multi-day window, a loose window here just invites two similarly-worded
+        same-tournament events from different weeks to collide.
+
+        Window width scales with the sport's estimated event duration: PGA TOUR/
+        NASCAR (single-round/single-race rows) keep the tight 30h default, but
+        LPGA's SDP data is tournament-level only (one row spanning a whole 4-day
+        event, not per-round) — a fixed 30h window would lose the match by the
+        second day, since the row's start_time is the tournament's start, not a
+        same-day marker."""
+        from datetime import datetime, timezone, timedelta
+
+        window_hrs = max(30, _LEAGUE_DURATION_HOURS.get(league_slug, 3.0) + 24)
+        now = datetime.now(timezone.utc)
+        window_start = now - timedelta(hours=window_hrs)
+        window_end = now + timedelta(hours=window_hrs)
+
+        best_event, best_score = None, 0.0
+        for ev in events:
+            if ev.get("league_slug") != league_slug:
+                continue
+            raw_start = ev.get("start_time_utc")
+            if not raw_start:
+                continue
+            try:
+                start = datetime.fromisoformat(raw_start.replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if start < window_start or start > window_end:
+                continue
+            # Fold the (now tournament-name-backfilled) tournament into the
+            # candidate text so identity scoring has something to compare a
+            # provider's "FedEx St. Jude Championship: McIlroy Group" against —
+            # SDP's own per-row title alone often doesn't name the tournament.
+            candidate = " ".join(x for x in [ev.get("tournament_name"), ev.get("home_team_name")] if x)
+            text_score = self._title_match_score(title_text, candidate, candidate_round_name=ev.get("round_name"))
+            hours_off = abs((start - now).total_seconds()) / 3600.0
+            time_score = max(0.0, 1.0 - hours_off / window_hrs)
+            combined = (text_score * 0.7) + (time_score * 0.3)
+            if combined > best_score:
+                best_score, best_event = combined, ev
+
+        return best_event if best_score >= 0.55 else None
 
     @staticmethod
     def _slugify_team(text):
@@ -1065,6 +1562,33 @@ class Plugin:
             elif home_score > away_score:
                 winner, loser = home_name, away_name
 
+        # Tennis-only (populated by SDP's per-match ATP/WTA ingest). Blank for
+        # every other sport — safe no-ops in templates that don't reference them.
+        tournament_name = event.get("tournament_name") or ""
+        round_name = event.get("round_name") or ""
+        court = event.get("court") or ""
+        court_line = f" on {court}" if court else ""
+        # Tennis scores arrive as free text in `notes` (e.g. "Djokovic bt Tirante
+        # 6-2 6-4"), not the numeric away_score/home_score team sports use.
+        result = event.get("notes") or ""
+        result_line = f" — {result}" if result else ""
+
+        # Golf/NASCAR/motorsport-only (single_title mode): the one descriptive
+        # broadcast-feed title IS the event, stored in home_team_name since
+        # there's no away side. PGA TOUR's rows ("Marquee Group - R. McIlroy,
+        # K. Reitan") don't repeat the tournament name themselves — SDP puts that
+        # on a separate marker row per tournament, backfilled by
+        # _inherit_tournament_names onto every row under it — so prepend it here
+        # when present (tournament_name is "" for sports that never had one, and
+        # for F1/NASCAR it already equals home_team_name, so this is a harmless
+        # no-op there rather than a duplicate).
+        home_title = event.get("home_team_name") or ""
+        event_title = (
+            f"{tournament_name}: {home_title}"
+            if tournament_name and tournament_name != home_title and tournament_name not in home_title
+            else home_title
+        )
+
         return {
             "away_team": away_slug,
             "home_team": home_slug,
@@ -1090,6 +1614,13 @@ class Plugin:
             "league_slug": event.get("league_slug") or "",
             "gamethumbs_base": (gamethumbs_base or "").rstrip("/"),
             "phase": phase,
+            "tournament_name": tournament_name,
+            "round_name": round_name,
+            "court": court,
+            "court_line": court_line,
+            "result": result,
+            "result_line": result_line,
+            "event_title": event_title,
         }
 
     @staticmethod
@@ -1161,12 +1692,25 @@ class Plugin:
         from apps.channels.models import Logo
         from datetime import datetime, timedelta, timezone
 
-        matchup = self._extract_matchup_teams(ch.name)
-        if not matchup:
-            return False
-        away_text, home_text = matchup
+        mode = _SPORT_MATCH_MODE.get(sport_slug, "matchup")
+        strip_noise = sport_slug in _NOISE_STRIP_SPORTS
 
-        event = self._find_sdp_event(away_text, home_text, sport_slug, events)
+        if mode == "single_title":
+            title_text = self._strip_provider_noise(ch.name)
+            if not title_text:
+                return False
+            event = self._find_sdp_event_single_title(title_text, sport_slug, events)
+        else:
+            matchup = self._extract_matchup_teams(ch.name, strip_noise=strip_noise)
+            if not matchup:
+                return False
+            away_text, home_text = matchup
+            # _person_name_score only kicks in its "Last, First" flip when a comma
+            # is actually present, so it's a strict superset of _team_match_score —
+            # safe default for every person-vs-person (rather than team-vs-team)
+            # sport, not just tennis.
+            score_fn = self._person_name_score if sport_slug in _PERSON_VS_PERSON_SPORTS else None
+            event = self._find_sdp_event(away_text, home_text, sport_slug, events, score_fn=score_fn)
         if not event:
             return False
 
@@ -1187,9 +1731,10 @@ class Plugin:
 
         gamethumbs_base = settings.get("sports_editor_gamethumbs_url") or "https://game-thumbs.tickarr.com"
         league_label = _SPORT_TEMPLATES.get(sport_slug, sport_slug)
+        defaults = self._sport_default_templates(sport_slug)
         vars_base = self._build_sdp_template_vars(event, gamethumbs_base, league_label, "pregame")
 
-        channel_name_tpl = settings.get(f"sport_tpl_{sport_slug}_channel_name") or "{away_team_pascal} @ {home_team_pascal}"
+        channel_name_tpl = settings.get(f"sport_tpl_{sport_slug}_channel_name") or defaults["channel_name"]
         new_name = self._render_sports_template(channel_name_tpl, vars_base)
         if new_name and new_name != ch.name:
             ch.name = new_name
@@ -1221,20 +1766,12 @@ class Plugin:
         ProgramData.objects.filter(epg=epg_entry).delete()
 
         batch = []
-        for b_start, b_end, title_key, desc_key, default_title, default_desc, phase in [
-            (pre_start, start, "pre_title", "pre_desc",
-             "{away_team_pascal} @ {home_team_pascal} - Pregame",
-             "{start_day}, {start_date} at {start_time_et_ct}{broadcast_line}{venue_line}",
-             "pregame"),
-            (start, est_end, "live_title", "live_desc",
-             "{away_team_pascal} @ {home_team_pascal}",
-             "Live: {away_team_pascal} at {home_team_pascal}{broadcast_line}{venue_line}",
-             "live"),
-            (est_end, post_end, "post_title", "post_desc",
-             "{away_team_pascal} @ {home_team_pascal} - Final",
-             "{score_line}{venue_line}",
-             "postgame"),
+        for b_start, b_end, title_key, desc_key, phase in [
+            (pre_start, start, "pre_title", "pre_desc", "pregame"),
+            (start, est_end, "live_title", "live_desc", "live"),
+            (est_end, post_end, "post_title", "post_desc", "postgame"),
         ]:
+            default_title, default_desc = defaults[title_key], defaults[desc_key]
             v = self._build_sdp_template_vars(event, gamethumbs_base, league_label, phase)
             title = self._render_sports_template(
                 settings.get(f"sport_tpl_{sport_slug}_{title_key}") or default_title, v
