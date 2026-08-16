@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T15:23:02Z",
+  "generated_at": "2026-08-16T17:58:46Z",
   "manifest": {
     "registry_url": "https://github.com/jstevenscl/epgeditarr",
     "registry_name": "jstevenscl/epgeditarr",
@@ -8,16 +8,16 @@
       {
         "slug": "epgeditarr",
         "name": "EPGeditARR",
-        "description": "Create transformed virtual copies of EPG sources using per-source, per-field regex and find/replace rules. Channels are auto-reassigned and kept in sync after every refresh. Generates fill EPG schedules for channels with no EPG data, and a Sports Editor with live-schedule matching for auto-synced sports channels.",
+        "description": "Create transformed virtual copies of EPG sources using per-source, per-field regex and find/replace rules. Channels are auto-reassigned and kept in sync after every refresh. Generates fill EPG schedules for channels with no EPG data, and a Sports Editor with live-schedule matching (93 leagues) for auto-synced sports channels.",
         "manifest_url": "manifest.json",
         "author": "jstevenscl",
         "license": "MIT",
-        "last_updated": "2026-08-15T15:23:02Z",
-        "latest_version": "0.3.00",
-        "latest_md5": "cec4379c2db418360a27479f2b102703",
-        "latest_sha256": "25cd38c8f0ada1ae5ca6d4961572c2b0678274cb9e6486ca27a8977b9d8d0b09",
-        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.3.00/epgeditarr-v0.3.00.zip",
-        "latest_size": 135573,
+        "last_updated": "2026-08-16T17:58:46Z",
+        "latest_version": "0.3.01",
+        "latest_md5": "d88ed41227654b78fd2aafbdf8a65aab",
+        "latest_sha256": "5be870b22493b72b1acfab141614ad4bad7bb68ca7e8b6ec77bdfc07ceac4560",
+        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.3.01/epgeditarr-v0.3.01.zip",
+        "latest_size": 145128,
         "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html"
       }
     ]
