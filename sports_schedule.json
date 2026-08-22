@@ -1,41 +1,6 @@
 {
-  "generated_at": "2026-08-22T16:26:54Z",
+  "generated_at": "2026-08-22T20:24:59Z",
   "events": [
-    {
-      "slug": "nascar",
-      "title": "NCS Pole Qualifying",
-      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · New Hampshire Motor Speedway",
-      "start_utc": "2026-08-22T14:30:00Z",
-      "end_utc": "2026-08-22T18:00:00Z",
-      "channels": [
-        "SiriusXM NASCAR Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Detroit Lions @ Washington Commanders",
-      "description": "NFL · Detroit Lions @ Washington Commanders",
-      "start_utc": "2026-08-22T16:00:00Z",
-      "end_utc": "2026-08-22T19:00:00Z",
-      "channels": [
-        "Washington Commanders",
-        "Detroit Lions",
-        "SiriusXM NFL Radio",
-        "SiriusXM Channel 380"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Brentford @ Tottenham",
-      "description": "SOCCER · Brentford @ Tottenham",
-      "start_utc": "2026-08-22T16:30:00Z",
-      "end_utc": "2026-08-22T18:30:00Z",
-      "channels": [
-        "Tottenham",
-        "Brentford",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "nfl",
       "title": "Cleveland Browns @ Buffalo Bills",
@@ -79,16 +44,6 @@
       ]
     },
     {
-      "slug": "nascar",
-      "title": "Team EJP 175",
-      "description": "SiriusXM NASCAR Radio · Team EJP 175 · New Hampshire Motor Speedway",
-      "start_utc": "2026-08-22T17:00:00Z",
-      "end_utc": "2026-08-22T20:30:00Z",
-      "channels": [
-        "SiriusXM NASCAR Radio"
-      ]
-    },
-    {
       "slug": "pga",
       "title": "BMW Championship",
       "description": "SiriusXM PGA Tour Radio · BMW Championship · Bellerive Country Club",
@@ -127,6 +82,19 @@
     },
     {
       "slug": "nfl",
+      "title": "Miami Dolphins @ New York Giants",
+      "description": "NFL · Miami Dolphins @ New York Giants",
+      "start_utc": "2026-08-22T20:00:00Z",
+      "end_utc": "2026-08-22T23:00:00Z",
+      "channels": [
+        "New York Giants",
+        "Miami Dolphins",
+        "SiriusXM NFL Radio",
+        "SiriusXM Channel 380"
+      ]
+    },
+    {
+      "slug": "nfl",
       "title": "Los Angeles Rams @ New Orleans Saints",
       "description": "NFL · Los Angeles Rams @ New Orleans Saints",
       "start_utc": "2026-08-22T20:00:00Z",
@@ -137,19 +105,6 @@
         "NFL Play-by-Play 225",
         "SiriusXM Channel 381",
         "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Miami Dolphins @ New York Giants",
-      "description": "NFL · Miami Dolphins @ New York Giants",
-      "start_utc": "2026-08-22T20:00:00Z",
-      "end_utc": "2026-08-22T23:00:00Z",
-      "channels": [
-        "New York Giants",
-        "Miami Dolphins",
-        "SiriusXM NFL Radio",
-        "SiriusXM Channel 380"
       ]
     },
     {
@@ -181,6 +136,19 @@
     },
     {
       "slug": "nfl",
+      "title": "New England Patriots @ Philadelphia Eagles",
+      "description": "NFL · New England Patriots @ Philadelphia Eagles",
+      "start_utc": "2026-08-22T23:00:00Z",
+      "end_utc": "2026-08-23T02:00:00Z",
+      "channels": [
+        "Philadelphia Eagles",
+        "New England Patriots",
+        "SiriusXM NFL Radio",
+        "SiriusXM Channel 380"
+      ]
+    },
+    {
+      "slug": "nfl",
       "title": "Cincinnati Bengals @ Chicago Bears",
       "description": "NFL · Cincinnati Bengals @ Chicago Bears",
       "start_utc": "2026-08-22T23:00:00Z",
@@ -191,19 +159,6 @@
         "NFL Play-by-Play 226",
         "SiriusXM Channel 382",
         "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "New England Patriots @ Philadelphia Eagles",
-      "description": "NFL · New England Patriots @ Philadelphia Eagles",
-      "start_utc": "2026-08-22T23:00:00Z",
-      "end_utc": "2026-08-23T02:00:00Z",
-      "channels": [
-        "Philadelphia Eagles",
-        "New England Patriots",
-        "SiriusXM NFL Radio",
-        "SiriusXM Channel 380"
       ]
     },
     {
