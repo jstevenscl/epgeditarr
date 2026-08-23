@@ -253,12 +253,18 @@ _PERSON_VS_PERSON_SPORTS = {"atp", "wta", "ufc", "most-valuable-promotions",
 
 # Sports whose raw auto-created channel names carry provider-specific noise
 # (numbered feed prefixes, trailing date/time suffixes, channel-number tags) that
-# needs stripping before matchup/title parsing. Scoped to every sport added after
-# the original 6 team sports — those 6 keep their exact original behavior (their
-# Rename Rules step already handles this for them, and there's no reason to risk
-# any regression on an already-shipped path); everything added since is new/
-# unproven anyway, so there's no downside to stripping consistently.
-_NOISE_STRIP_SPORTS = set(_SPORT_TEMPLATES) - {"nfl", "nba", "mlb", "nhl", "ncaa-football", "mls"}
+# needs stripping before matchup/title parsing. Originally scoped to exclude the
+# original 6 team sports (nfl/nba/mlb/nhl/ncaa-football/mls), on the assumption
+# that users would configure per-group Rename Rules to strip that noise before
+# Sport Template matching ever saw the name. In practice, users commonly enable
+# a Sport Template without setting up Rename Rules first, and the un-stripped
+# noise can dilute the fuzzy team-name match score enough to miss games whose
+# team names aren't an exact substring of the noisy text (see MLB report:
+# "MLB 01 | Toronto Blue Jays at New York Yankees HOME 22 Aug 01:35 PM ET").
+# Stripping is a conservative heuristic (only removes leading tag prefixes and
+# trailing date/tag suffixes — see docs/SPORT_TEMPLATES.md) so applying it
+# universally carries no real regression risk.
+_NOISE_STRIP_SPORTS = set(_SPORT_TEMPLATES)
 
 # ── Provider-noise stripping (golf/NASCAR/tennis auto-sync channel names) ──
 # Heuristic on purpose — real provider channel-naming conventions are wildly
@@ -367,7 +373,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.3.01"
+    version = "0.3.02"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
