@@ -195,6 +195,7 @@ Want real channel names, logos, and a Pregame/Live/Postgame EPG instead of just 
 | **Run Sport Templates Now** | Match each Sport-Template-enabled group's auto-created channels against the live schedule right now — renames matches, assigns logos, and generates Pregame/Live/Postgame EPG data. |
 | **Show Status** | Shows which sources are enabled, program counts, Fill EPG status, and configured rules. |
 | **Teardown** | Removes all virtual EPG sources (including Fill EPG) and reassigns channels back to their originals. |
+| **Restart Dispatcharr** | Reloads Dispatcharr's backend process so it picks up a plugin update — run this after every EPGeditARR install/update. Not a full container restart; the page goes offline for about 15 seconds. |
 
 ---
 

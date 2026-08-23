@@ -203,6 +203,8 @@ All of these are available in every template field (Channel Name, Logo URL, and 
 | `{court_line}` | ` on P&G Stadium Court` | Pre-formatted with leading " on ", blank (not just empty) when court is unknown |
 | `{result}` | `Novak Djokovic bt Thiago Agustin Tirante 6-2 6-4` | **Tennis only.** Free-text final result — tennis doesn't use the numeric `{score_line}` team sports do, since SDP reports it as text |
 | `{result_line}` | ` — Novak Djokovic bt Thiago Agustin Tirante 6-2 6-4` | Pre-formatted with a leading " — ", blank until the match has a result |
+| `{feed_tag}` | `HOME` | Populated when your provider runs separate regional-broadcast channels for the same game, tagged `HOME`/`AWAY`/`NATIONAL` right before the date/time in the raw auto-sync name (e.g. `... Baltimore Orioles HOME 23 Aug 01:35 PM ET`) — confirmed on MLB, and the same shape applies to any matchup sport (NBA, NFL, etc.) whose provider tags feeds this way. Blank for every other provider. |
+| `{feed_line}` | ` (Home Feed)` | Pre-formatted from `{feed_tag}` — blank (not just empty) when there's no feed tag, so a shared Channel Name template doesn't grow a dangling suffix for providers that don't split feeds |
 
 **Tip:** `{broadcast_line}` and `{venue_line}` already include their own leading space and connector word — just append them directly to a sentence, don't add your own " on " / " at " in front of them.
 
@@ -314,6 +316,7 @@ Every game gets a Pregame block running from midnight **UTC** on game day throug
 
 - **NCAA Football** — team names can be long; consider a shorter Channel Name like `{away_team} @ {home_team}` (using the slug instead of the full name) if your guide truncates titles.
 - **MLB** — add `{game_number_suffix}` to Channel Name to distinguish doubleheaders: `{away_team_pascal} @ {home_team_pascal}{game_number_suffix}`.
+- **Any league with separate HOME/AWAY regional feeds** — add `{feed_line}` to Channel Name so both feeds don't collide on an identical name: `{away_team_pascal} @ {home_team_pascal}{feed_line}` → `Tampa Bay Rays @ Baltimore Orioles (Home Feed)`.
 - **Any league** — swap `@` for `vs.` in Channel Name if you prefer that convention: `{away_team_pascal} vs. {home_team_pascal}`.
 
 ---

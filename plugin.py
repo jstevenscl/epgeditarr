@@ -285,6 +285,26 @@ _TRAILING_AT_DATE_RE = re.compile(
 )
 _TRAILING_ISO_DT_RE = re.compile(r'\s*\(\d{4}-\d{2}-\d{2}[^)]*\)\s*$')
 _TRAILING_CHANNEL_TAG_RE = re.compile(r'\s*:\s*[A-Za-z][A-Za-z ]{1,20}\d{1,4}\s*$')
+# Some providers (seen on MLB/NBA/NFL auto-sync feeds) tag each side's regional
+# broadcast as its own channel, e.g. "Tampa Bay Rays at Baltimore Orioles HOME
+# 23 Aug 01:35 PM ET" / "... AWAY 23 Aug 01:35 PM ET" / "... NATIONAL 23 Aug
+# 03:15 PM ET". Neither _TRAILING_AT_DATE_RE (day-before-month order, no "@")
+# nor _TRAILING_CHANNEL_TAG_RE catches this shape, so it used to survive into
+# the matchup split as part of the home team's text (e.g. "Baltimore Orioles
+# HOME 23 Aug 01:35 PM ET"), tanking the fuzzy-match score against the real
+# schedule and leaving the channel permanently unmatched. Strip it before
+# parsing; the optional feed word is captured separately by _extract_feed_tag
+# so it isn't lost, just moved out of the matchup text.
+_FEED_TAG_WORDS_RE_FRAG = r'HOME|AWAY|NATIONAL'
+_TRAILING_FEED_DATETIME_RE = re.compile(
+    rf'\s+(?:(?:{_FEED_TAG_WORDS_RE_FRAG})\s+)?'
+    rf'\d{{1,2}}\s+{_MONTHS_RE_FRAG}\s+\d{{1,2}}:\d{{2}}\s*(?:AM|PM)\s*(?:ET|CT|MT|PT)?\s*$',
+    re.IGNORECASE,
+)
+_TRAILING_FEED_TAG_ONLY_RE = re.compile(
+    rf'(?P<feed>{_FEED_TAG_WORDS_RE_FRAG})(?=\s+\d{{1,2}}\s+{_MONTHS_RE_FRAG}\s+\d{{1,2}}:\d{{2}})',
+    re.IGNORECASE,
+)
 # "TSN+ | Event 1 | 7:45AM PGA TOUR Live: ..." -- no digit before the first "|" so
 # _LEADING_FEED_TAG_RE doesn't catch it; handled as its own pipe-delimited shape.
 _LEADING_PIPE_EVENT_RE = re.compile(
@@ -373,7 +393,7 @@ _RULE_FORMAT_HELP = (
 
 class Plugin:
     name = "EPGeditARR"
-    version = "0.3.02"
+    version = "0.3.03"
     description = (
         "Transform EPG program data into virtual EPG sources using "
         "per-source, per-field regex and find/replace rules. "
@@ -1256,10 +1276,21 @@ class Plugin:
         s = (name or "").strip()
         s = _LEADING_PIPE_EVENT_RE.sub("", s).strip()
         s = _LEADING_FEED_TAG_RE.sub("", s).strip()
+        s = _TRAILING_FEED_DATETIME_RE.sub("", s).strip()
         s = _TRAILING_AT_DATE_RE.sub("", s).strip()
         s = _TRAILING_ISO_DT_RE.sub("", s).strip()
         s = _TRAILING_CHANNEL_TAG_RE.sub("", s).strip()
         return s
+
+    @staticmethod
+    def _extract_feed_tag(name):
+        """Pulls the HOME/AWAY/NATIONAL regional-feed marker out of a raw
+        provider channel name (see _TRAILING_FEED_DATETIME_RE above), if
+        present, before that text gets stripped as noise. Returns "" when the
+        provider doesn't tag feeds this way — safe no-op for every other
+        provider/sport."""
+        m = _TRAILING_FEED_TAG_ONLY_RE.search(name or "")
+        return m.group("feed").upper() if m else ""
 
     def _extract_matchup_teams(self, channel_name, strip_noise=False):
         """Split a channel name like 'Kansas City Chiefs @ Buffalo Bills' (already
@@ -1538,7 +1569,7 @@ class Plugin:
         start_time_utc = f"{fmt(dt_utc)} UTC"
         return start_short_utc, start_day_utc, start_date_utc, start_time_utc
 
-    def _build_sdp_template_vars(self, event, gamethumbs_base, league_label, phase):
+    def _build_sdp_template_vars(self, event, gamethumbs_base, league_label, phase, feed_tag=""):
         from datetime import datetime
 
         away_name = event.get("away_team_name") or event.get("away_team_abbr") or "Away"
@@ -1595,6 +1626,12 @@ class Plugin:
             else home_title
         )
 
+        # Some providers (see _extract_feed_tag) run separate HOME/AWAY/NATIONAL
+        # regional-broadcast channels for the same game — without this, both
+        # feeds would render to an identical Channel Name. Blank for every
+        # provider that doesn't tag feeds this way.
+        feed_line = f" ({feed_tag.title()} Feed)" if feed_tag else ""
+
         return {
             "away_team": away_slug,
             "home_team": home_slug,
@@ -1627,6 +1664,8 @@ class Plugin:
             "result": result,
             "result_line": result_line,
             "event_title": event_title,
+            "feed_tag": feed_tag,
+            "feed_line": feed_line,
         }
 
     @staticmethod
@@ -1700,6 +1739,9 @@ class Plugin:
 
         mode = _SPORT_MATCH_MODE.get(sport_slug, "matchup")
         strip_noise = sport_slug in _NOISE_STRIP_SPORTS
+        # Captured from the raw name before any noise-stripping removes it —
+        # see _extract_feed_tag / _TRAILING_FEED_DATETIME_RE.
+        feed_tag = self._extract_feed_tag(ch.name) if strip_noise else ""
 
         if mode == "single_title":
             title_text = self._strip_provider_noise(ch.name)
@@ -1738,7 +1780,7 @@ class Plugin:
         gamethumbs_base = settings.get("sports_editor_gamethumbs_url") or "https://game-thumbs.tickarr.com"
         league_label = _SPORT_TEMPLATES.get(sport_slug, sport_slug)
         defaults = self._sport_default_templates(sport_slug)
-        vars_base = self._build_sdp_template_vars(event, gamethumbs_base, league_label, "pregame")
+        vars_base = self._build_sdp_template_vars(event, gamethumbs_base, league_label, "pregame", feed_tag=feed_tag)
 
         channel_name_tpl = settings.get(f"sport_tpl_{sport_slug}_channel_name") or defaults["channel_name"]
         new_name = self._render_sports_template(channel_name_tpl, vars_base)
@@ -1778,7 +1820,7 @@ class Plugin:
             (est_end, post_end, "post_title", "post_desc", "postgame"),
         ]:
             default_title, default_desc = defaults[title_key], defaults[desc_key]
-            v = self._build_sdp_template_vars(event, gamethumbs_base, league_label, phase)
+            v = self._build_sdp_template_vars(event, gamethumbs_base, league_label, phase, feed_tag=feed_tag)
             title = self._render_sports_template(
                 settings.get(f"sport_tpl_{sport_slug}_{title_key}") or default_title, v
             )
@@ -2126,6 +2168,7 @@ class Plugin:
             "fill_epg":               self._action_fill_epg,
             "sports_editor_rename_now": self._action_sports_editor_rename_now,
             "sports_editor_epg_now":  self._action_sports_editor_epg_now,
+            "restart_dispatcharr":    self._action_restart_dispatcharr,
         }
         handler = handlers.get(action)
         if not handler:
@@ -2753,3 +2796,57 @@ class Plugin:
 
         self._disconnect_signal()
         return {"success": True, "message": "\n".join(lines)}
+
+    def _action_restart_dispatcharr(self, settings, logger):
+        """Send SIGHUP to Dispatcharr's WSGI master process instead of actually
+        restarting the container — both uWSGI and gunicorn treat SIGHUP to their
+        master as a graceful reload of the whole app (including freshly-updated
+        plugin code), in a couple seconds, without a real container bounce.
+
+        Dispatcharr's own docker/entrypoint.sh always launches uWSGI (never
+        gunicorn, in every mode: dev/debug/modular/production) — confirmed by
+        reading it directly, not assumed. uwsgi is tried first for that reason;
+        gunicorn is kept as a fallback for any environment that does run it.
+        PID 1 (the entrypoint script) is the last resort, but empirically does
+        nothing useful here — it has no SIGHUP trap (only TERM/INT), so this
+        only matters if neither WSGI server is found running as expected.
+
+        Uses `pgrep -o <name>` (bare process name, no `-f`) rather than `-of` —
+        `-f` matches the full command line, which self-matches pgrep's own
+        argv (it contains the search string as its last argument) and returns
+        a false-positive PID for whichever server name isn't actually running.
+        Confirmed this exact false-positive against gunicorn in dispatch-test
+        before switching to `-o`."""
+        import os
+        import signal as _signal
+        import subprocess
+        import threading
+        import time
+
+        def _find_master_pid(proc_name):
+            result = subprocess.run(
+                ["pgrep", "-o", proc_name],
+                capture_output=True, text=True,
+            )
+            pid = (result.stdout or "").strip()
+            return int(pid) if pid else None
+
+        def _do_restart():
+            time.sleep(2)
+            for proc_name in ("uwsgi", "gunicorn"):
+                pid = _find_master_pid(proc_name)
+                if pid:
+                    LOGGER.info(f"EPGeditARR: sending SIGHUP to {proc_name} master PID {pid}")
+                    try:
+                        os.kill(pid, _signal.SIGHUP)
+                        return
+                    except Exception as e:
+                        LOGGER.warning(f"EPGeditARR: SIGHUP to {proc_name} PID {pid} failed ({e})")
+            LOGGER.warning("EPGeditARR: no uwsgi/gunicorn master found, falling back to PID 1")
+            try:
+                os.kill(1, _signal.SIGHUP)
+            except Exception as e2:
+                LOGGER.error(f"EPGeditARR: restart failed: {e2}")
+
+        threading.Thread(target=_do_restart, daemon=True).start()
+        return {"success": True, "message": "Restart signal sent. Dispatcharr will reload in ~2 seconds.\n\nRefresh this page in about 15 seconds."}
