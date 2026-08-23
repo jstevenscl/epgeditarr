@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T17:38:19Z",
+  "generated_at": "2026-08-23T19:49:08Z",
   "manifest": {
     "registry_url": "https://github.com/jstevenscl/epgeditarr",
     "registry_name": "jstevenscl/epgeditarr",
@@ -12,12 +12,12 @@
         "manifest_url": "manifest.json",
         "author": "jstevenscl",
         "license": "MIT",
-        "last_updated": "2026-08-23T17:38:19Z",
-        "latest_version": "0.3.02",
-        "latest_md5": "c8ef3d1672907063ef126c73a225bce0",
-        "latest_sha256": "b48510d79480ab7d15072d3edf46a798fde7fe8997ee47a2f52dc1f8f63746a9",
-        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.3.02/epgeditarr-v0.3.02.zip",
-        "latest_size": 145455,
+        "last_updated": "2026-08-23T19:49:08Z",
+        "latest_version": "0.3.03",
+        "latest_md5": "7cdf015ca3bbaabfbb5c290e563d5b4e",
+        "latest_sha256": "4f1cae87f4e3796cceb9e1f9ac8bc4a136598996f71efca45243e296f3faf1a3",
+        "latest_url": "https://github.com/jstevenscl/epgeditarr/releases/download/v0.3.03/epgeditarr-v0.3.03.zip",
+        "latest_size": 147395,
         "help_url": "https://jstevenscl.github.io/epgeditarr/designer.html"
       }
     ]
